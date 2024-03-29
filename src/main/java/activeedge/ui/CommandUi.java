@@ -22,24 +22,11 @@ public class CommandUi {
         System.out.println("🚀✨ Take the next step in your Healthy Lifestyle! ✨🚀");
     }
 
-    public static void printMealList() {
-        System.out.println("Here are your logged meals for today");
-        int j = 1;
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Meal")) {
-                System.out.print(j + ". " + tasksList.get(i).toString().substring(5));
-                System.out.println(" kcal");
-                j++;
-            }
-        }
-    }
-
     public static void printFullList() {
         System.out.println("Logged data for today:");
-        System.out.print("Food ");
-        System.out.println("(food name, servings, calories):");
-        int j = 1;
 
+        System.out.println("Food ");
+        int j = 1;
         for (int i = 0; i < tasksList.size(); i++) {
             if (tasksList.get(i).toString().startsWith("Meal")) {
                 System.out.print(j + ". " + tasksList.get(i).toString().substring(5));
@@ -54,6 +41,15 @@ public class CommandUi {
                 System.out.print(k + ". " + tasksList.get(i).toString().substring(6));
                 System.out.println("");
                 k++;
+            }
+        }
+        System.out.println("Exercises:");
+        int l = 1;
+        for (int i = 0; i < tasksList.size(); i++) {
+            if (tasksList.get(i).toString().startsWith("Exercise")) {
+                System.out.print(l + ". " + tasksList.get(i).toString().substring(9));
+                System.out.println("");
+                l++;
             }
         }
 

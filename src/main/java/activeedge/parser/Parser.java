@@ -3,7 +3,6 @@ package activeedge.parser;
 import command.HelpCommand;
 import command.LogWaterCommand;
 import command.LogMealCommand;
-import command.ListMealsCommand;
 import command.ListFullCommand;
 import command.ShowCaloriesCommand;
 import command.ViewWaterIntakeCommand;
@@ -59,11 +58,7 @@ public class    Parser {
                 }
             } else if (input.startsWith("list")) {
                 if (tasksList.size() > 0) {
-                    if (input.substring(4).trim().contains("meals")) { //list meals
-                        new ListMealsCommand();
-                    } else { //list both
-                        new ListFullCommand();
-                    }
+                    new ListFullCommand();
                 } else {
                     System.out.println("There are no items in your list!");
                 }

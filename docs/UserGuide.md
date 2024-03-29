@@ -96,3 +96,4 @@ Here's a quick summary of commands available in ActiveEdge:
 * Delete items from list: `delete "Quanity of water/Food name`
 * List calorie and water intake: `list`
 * Clear: `clear`
+* Show daily summary of food, water intake and goals: `summary`

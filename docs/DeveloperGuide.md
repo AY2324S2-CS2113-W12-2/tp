@@ -84,9 +84,14 @@ in achieving their fitness objectives while navigating the challenges of univers
 
 ## Command Summary
 
-| Action                       | Format                                  |
-|------------------------------|-----------------------------------------|
-| Getting help                 | `help`                                  |
-| Adding entries for meals     | `log m/<MEAL_NAME> s/<SERVINGS>`        |
-| Adding entries for water     | `log w/<AMOUNT_OF_WATER>`               |
-| Adding entries for exercises | `exercise <EXERCISE_NAME> d/<DURATION>` |
+| Action                                                | Format   |
+|-------------------------------------------------------|----------|
+| Getting help                                          | `help`   |
+| Adding entries for meals                              | `log m/<MEAL_NAME> s/<SERVINGS>` |
+| Adding entries for water                              | `log w/<AMOUNT_OF_WATER>` |
+| Adding entries for exercises                          | `exercise <EXERCISE_NAME> d/<DURATION>` |
+| Viewing daily calories                                | `show c` |
+| Showing daily summary of food, water intake and goals | `summary` |
+| Deleting items from list                              | `delete "Quanity of water/Food name`       |
+| Setting daily calorie goal                            | `set goal c/CALORIE_GOAL` |
+| Setting daily water goal                             | `set goal w/WATER_GOAL`       |

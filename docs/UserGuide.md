@@ -122,3 +122,4 @@ Here's a quick summary of commands available in ActiveEdge:
 * Find: `find <KEYWORD>`
 * Delete items from list: `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`
 * Clear: `clear`
+* Show daily summary of food, water intake and goals: `summary`

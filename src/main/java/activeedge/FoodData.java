@@ -247,4 +247,19 @@ public class FoodData {
             }
         }
     }
+
+    public static String[][] appendItem(String[][] originalArray, String[] newItem) {
+        // Create a new array with one more row than the original
+        String[][] newArray = new String[originalArray.length + 1][2]; // Assuming each item has 2 elements
+
+        // Copy the contents of the original array to the new array
+        for (int i = 0; i < originalArray.length; i++) {
+            newArray[i] = originalArray[i];
+        }
+
+        // Add the new item to the last position of the new array
+        newArray[newArray.length - 1] = newItem;
+
+        return newArray;
+    }
 }

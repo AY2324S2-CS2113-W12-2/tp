@@ -23,6 +23,17 @@ Active Edge is comprised of 8 major components:
 ```FoodData```: Active Edge's food database\
 ```ExerciseData```: Active Edge's exercise database\
 
+Under commands, there are 17 sub-components:
+```AddBMICommand```: A command responsible for calculating and adding Body Mass Index (BMI) information.
+```AddGoalsCommand```: A command responsible for users to set and track their fitness goals.
+```AddHeightCommand```: A command responsible for users to input and track their height information for comprehensive health tracking.
+```AddWeightCommand```: A command responsible for users to input and track their weight measurements to monitor their progress and achievements.
+```ClearCommand```: A command responsible for users to clear or delete entries, such as meals, from their tracking history.
+```DeleteTaskCommand```: A command responsible for users to delete or remove exercise tasks.
+```FindCommand```: A command responsible for users to search specific keywords.
+```ShowSummaryCommand```: A command responsible for users to view a summary or overview of their calorie intake,calorie burnt during exercise .
+```ViewWaterIntakeCommand```: A command responsible for users to view and track their water intake levels.
+
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
 
@@ -87,8 +98,13 @@ in achieving their fitness objectives while navigating the challenges of univers
 
 ## Command Summary
 
-| Action                                | Format                                  |
-|---------------------------------------|-----------------------------------------|
+| Action                                                | Format   |
+|-------------------------------------------------------|----------|
+| Getting help                                          | `help`   |
+| Adding entries for meals                              | `log m/<MEAL_NAME> s/<SERVINGS>` |
+| Adding entries for water                              | `log w/<AMOUNT_OF_WATER>` |
+| Adding entries for exercises                          | `exercise <EXERCISE_NAME> d/<DURATION>` |
+| Showing daily summary of food, water intake and goals | `summary` |
 | Setting daily calories goal           | `set goal c/<CALORIE AMOUNT>`           |
 | Setting daily water goal              | `set goal w/<WATER AMOUNT>`             |
 | View daily calorie goal               | `show c`                                |
@@ -107,4 +123,3 @@ in achieving their fitness objectives while navigating the challenges of univers
 | Prints all exercise data              | `show exercises`                        |
 | Deletes the water/meal entry          | `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`  |
 | Clears all entry                      | `clear`                                 |
-

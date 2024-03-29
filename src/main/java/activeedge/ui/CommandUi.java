@@ -22,22 +22,10 @@ public class CommandUi {
         System.out.println("🚀✨ Take the next step in your Healthy Lifestyle! ✨🚀");
     }
 
-    public static void printMealList() {
-        System.out.println("Here are your logged meals for today");
-        int j = 1;
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Meal")) {
-                System.out.print(j + ". " + tasksList.get(i).toString().substring(5));
-                System.out.println(" kcal");
-                j++;
-            }
-        }
-    }
-
     public static void printFullList() {
         System.out.println("Logged data for today:");
 
-        System.out.print("Food ");
+        System.out.println("Food ");
         int j = 1;
         for (int i = 0; i < tasksList.size(); i++) {
             if (tasksList.get(i).toString().startsWith("Meal")) {
@@ -58,8 +46,8 @@ public class CommandUi {
         System.out.println("Exercises:");
         int l = 1;
         for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Exercises")) {
-                System.out.print(l + ". " + tasksList.get(i).toString().substring(10));
+            if (tasksList.get(i).toString().startsWith("Exercise")) {
+                System.out.print(l + ". " + tasksList.get(i).toString().substring(9));
                 System.out.println("");
                 l++;
             }
@@ -153,9 +141,9 @@ public class CommandUi {
     public static void printTaskNotFoundMessage() {
         System.out.println("Task not found.");
     }
-
     public static void printShowSummaryMessage(int totalCalories,int totalWaterIntake, int totalCaloriesBurnt,
-                                               String calorieGoal, String waterGoal) {
+                                              String calorieGoal, String waterGoal,
+                                               int netCalories, String calorieStatus) {
         System.out.println("Daily Summary:");
         System.out.println("Total calories consumed: " + totalCalories + " kcal");
         System.out.println("Total water consumed: " + totalWaterIntake + " ml");
@@ -163,6 +151,9 @@ public class CommandUi {
 
         System.out.println("Calorie goal: " + calorieGoal + " kcal");
         System.out.println("Water goal: " + waterGoal + " ml");
+
+        System.out.println("Net calories: " + netCalories + " kcal");
+        System.out.println("Calorie status: " + calorieStatus);
     }
 
     public static String formatDateTime(LocalDateTime dateTime) {

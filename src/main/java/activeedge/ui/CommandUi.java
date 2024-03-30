@@ -63,7 +63,7 @@ public class CommandUi {
 
     public static void printExerciseLogMessage(ExerciseTask exerciseTask) {
         System.out.println("You've logged " + Integer.toString(exerciseTask.getDuration()) +
-                " hours" + " of " + exerciseTask.getExerciseName() + ".") ;
+                " minutes" + " of " + exerciseTask.getExerciseName() + ".") ;
         System.out.println("Estimated calories burnt: " + Integer.toString(exerciseTask.getCaloriesBurnt()) + " kcal");
     }
 
@@ -136,6 +136,20 @@ public class CommandUi {
 
     public static void printTaskDeletedMessage(Task deletedTask) {
         System.out.println("Task deleted: " + deletedTask.getDescription());
+    }
+
+    public static void printFoodItemNotFoundMessage(String description){
+        System.out.println(description + " is not found in our food database.\n" +
+                "Please enter the following command to add it to the database and log your mea.l\n\n" +
+                "add m/[FOOD] c/[CALORIES_PER_SERVING(kCal)] s/[NUMBER_OF_SERVINGS]\n\n" +
+                "Eg: 'add m/"+ description +" c/120 s/2'\n"
+        );
+    }
+
+    public static void printAddFoodItemMessage(String description){
+        System.out.println(description + " has been added to the food database.\n" +
+                "logging your meal.......\n"
+        );
     }
 
     public static void printTaskNotFoundMessage() {

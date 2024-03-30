@@ -12,18 +12,25 @@ public class LogMealCommand {
     protected int servings;
     protected int mealCalories;
     protected LocalDateTime dateTime;
+    protected boolean isItemPresentInFoodData;
 
-    public LogMealCommand(String description, int servings, int mealCalories, LocalDateTime dateTime) {
+    public LogMealCommand(String description, int servings, int mealCalories, LocalDateTime dateTime,
+                          boolean isItemPresentInFoodData) {
         this.description = description;
         this.servings = servings;
         this.mealCalories = mealCalories;
         this.dateTime = dateTime;
+        this.isItemPresentInFoodData = isItemPresentInFoodData;
     }
 
     public void execute() throws ActiveEdgeException {
-        MealTask logMeal = new MealTask(description, servings, mealCalories, dateTime);
-        tasksList.add(logMeal);
-        CommandUi.printMealLogMessage(logMeal);
+        if (isItemPresentInFoodData){
+            MealTask logMeal = new MealTask(description, servings, mealCalories, dateTime);
+            tasksList.add(logMeal);
+            CommandUi.printMealLogMessage(logMeal);
+        } else {
+            CommandUi.printFoodItemNotFoundMessage(description);
+        }
     }
 
     public int getMealCalories() {

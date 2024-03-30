@@ -10,7 +10,7 @@ public class MealTaskTest {
     @Test
     public void testToString() {
         LocalDateTime dateTime = LocalDateTime.now();
-        LogMealCommand logMealCommand = new LogMealCommand("Sushi", 3, 1050, dateTime);
+        LogMealCommand logMealCommand = new LogMealCommand("Sushi", 3, 1050, dateTime, true);
         assertEquals("Sushi", logMealCommand.getDescription());
         assertEquals(3, logMealCommand.getServings());
         assertEquals(1050, logMealCommand.getMealCalories());

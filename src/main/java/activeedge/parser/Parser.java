@@ -14,6 +14,7 @@ import command.ActiveEdgeException;
 import command.LogExerciseCommand;
 import command.ShowSummaryCommand;
 import command.ClearCommand;
+import command.AddFoodItemCommand;
 
 import activeedge.Storage;
 
@@ -46,15 +47,34 @@ public class    Parser {
                     String description = logParts[1].trim();
                     int servings = Integer.parseInt(logParts[2]);
                     int calories = 0;
+                    boolean isItemPresentInFoodData = false;
 
                     for (int i = 0; i < foodItems.length; i++) {
                         if (foodItems[i][0].equals(description)) {
                             calories = Integer.parseInt(foodItems[i][1]) * servings;
+                            isItemPresentInFoodData = true;
                         }
                     }
+
                     LogMealCommand logMealCommand = new LogMealCommand(description, servings,
-                            calories, currentDateTime);
+                            calories, currentDateTime, isItemPresentInFoodData);
                     logMealCommand.execute();
+                } else if (items[0].equals("e")){
+                    String[] logParts = input.split("e/|d/");
+                    int length = logParts.length;
+                    assert length >= 3;
+                    String exerciseName = logParts[1].trim();
+                    int duration = Integer.parseInt(logParts[2]);
+                    int caloriesBurnt = 0;
+
+                    for (int i = 0; i < exercisesList.length; i++) {
+                        if (exercisesList[i][0].equals(exerciseName)) {
+                            caloriesBurnt = Integer.parseInt(exercisesList[i][1]) * duration;
+                        }
+                    }
+                    LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
+                            caloriesBurnt, currentDateTime);
+                    logExerciseCommand.execute();
                 }
             } else if (input.startsWith("list")) {
                 if (tasksList.size() > 0) {
@@ -108,27 +128,24 @@ public class    Parser {
             } else if(input.startsWith("delete")){
                 DeleteTaskCommand deleteCommand = new DeleteTaskCommand(input);
                 deleteCommand.execute();
-            } else if(input.startsWith("exercise")){
-                String[] logParts = input.substring(8).split("d/");
-                String exerciseName = logParts[0].trim();
-                int duration = Integer.parseInt(logParts[1]);
-                int caloriesBurnt = 0;
-
-                for (int i = 0; i < exercisesList.length; i++) {
-                    if (exercisesList[i][0].equals(exerciseName)) {
-                        caloriesBurnt = Integer.parseInt(exercisesList[i][1]) * duration;
-                    }
-                }
-                LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
-                        caloriesBurnt, currentDateTime);
-                logExerciseCommand.execute();
             } else if (input.startsWith("summary")) {
                 new ShowSummaryCommand().execute();
             } else if(input.equalsIgnoreCase("clear")) {
                 ClearCommand clearCommand = new ClearCommand();
                 clearCommand.execute();
+            } else if (input.startsWith("add m/")){
+                String[] logParts = input.split("m/|c/|s/");
+                int length = logParts.length;
+                assert length >= 3;
+                String description = logParts[1].trim();
+                int caloriesPerServing = Integer.parseInt(logParts[2].trim());
+                int servings = Integer.parseInt(logParts[3].trim());
 
-            } else {
+                AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
+                        caloriesPerServing, currentDateTime);
+                addFoodItemCommand.execute();
+            }
+            else {
                 System.out.println("Unknown command.");
             }
             Storage.saveLogsToFile("data/data.txt");

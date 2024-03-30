@@ -1,14 +1,23 @@
 # ActiveEdge Developer Guide 🥦🏃‍♂️
 
-## Acknowledgements
+## Introduction
+**ActiveEdge** is a program for a university students to manage their food intake, water intake and exercises via the Command Line Interface (CLI).
 
-{list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+## Quick Start
 
-## Design & implementation 🏹
+To get started quickly with ActiveEdge,
+follow these simple steps:
 
+1. Ensure that you have Java 11 or above installed.
+2. Down the latest version of `ActiveEdge` from [here](http://link.to/duke). 
+3. Copy the file into the folder you want to use as the home folder for your ActiveEdge.
+4. Open a command terminal, cd into the home folder you put the jar file in, and run the following command: java -jar ActiveEdge.jar. You should see a welcome screen.
+5. Type commands beside >>> and press Enter to execute it.
+(e.g. typing ```help``` and pressing Enter will show the help page).
+## Design & implementation 🏹  
 ### System Architecture
 
-[IMAGE will be added later]
+![System Architecture](../images/System-Architecture.png)
 
 The Architecture Diagram above shows a high-level overview of the architectural design of ActiveEdge.
 
@@ -112,7 +121,7 @@ in achieving their fitness objectives while navigating the challenges of univers
 | View daily goals                      | `show g`                                |
 | Adding entries for meals              | `log m/<MEAL_NAME> s/<SERVINGS>`        |
 | Adding entries for water              | `log w/<AMOUNT_OF_WATER>`               |
-| Adding entries for exercises          | `exercise <EXERCISE_NAME> d/<DURATION>` |
+| Adding entries for exercises          | `log e/<EXERCISE_NAME> d/<DURATION>` |
 | View all entries for meals logged     | `list meals`                            |
 | View all entries for water logged     | `list water`                            |
 | View all entries for exercises logged | `list exercises`                        |
@@ -122,4 +131,11 @@ in achieving their fitness objectives while navigating the challenges of univers
 | Prints all food data                  | `show food`                             |
 | Prints all exercise data              | `show exercises`                        |
 | Deletes the water/meal entry          | `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`  |
-| Clears all entry                      | `clear`                                 |
+| Clears all entry                      | `clear`
+| Adding new items to the food database and log meal         | `add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>` |
+
+
+
+## Acknowledgements
+
+{list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}

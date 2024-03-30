@@ -18,11 +18,5 @@ public class AddExerciseItemCommand {
 
     public void execute() throws ActiveEdgeException {
         String[] newItem = {description, Integer.toString(caloriesBurntPerMinute)};
-
-//      foodItems = appendItem(foodItems, newItem);
-//      CommandUi.printAddFoodItemMessage(description);
-//      LogMealCommand logMealCommand = new LogMealCommand(description, servings,
-//                caloriesPerSaving*servings, dateTime, true);
-//      logMealCommand.execute();
     }
 }

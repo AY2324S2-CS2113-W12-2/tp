@@ -20,7 +20,7 @@ public class ActiveEdge {
         Storage.fetchData();
         String input = in.nextLine();
 
-        while (!input.equalsIgnoreCase("bye")) {
+        while (!input.toLowerCase().contains("bye")) {
             parser.handleInput(input);
             input = in.nextLine();
         }

@@ -201,14 +201,18 @@ public class Storage {
                     } else if (task.startsWith("Exercise")){
                         String[] items = task.trim().split(" ");
                         int len = items.length;
-                        assert len >= 4;
+                        assert len >= 7;
                         String exerciseName = "";
-                        for (int i = 1; i <= len - 3; i++) {
-                            exerciseName = exerciseName + items[i];
+                        for(int i = 1; i <= len-7; i++) {
+                            if( i < len-7 ) {
+                                exerciseName = exerciseName + items[i] + " ";
+                            } else {
+                                exerciseName = exerciseName + items[i];
+                            }
                         }
                         ExerciseTask newTask = new ExerciseTask(exerciseName,
-                                Integer.parseInt(items[len - 3]),
-                                Integer.parseInt(items[len - 2]), dateTime);
+                                Integer.parseInt(items[len - 6]),
+                                Integer.parseInt(items[len - 5]), dateTime);
                         TaskList.tasksList.add(newTask);
                     }
                 }

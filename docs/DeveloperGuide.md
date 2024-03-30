@@ -121,7 +121,7 @@ in achieving their fitness objectives while navigating the challenges of univers
 | View daily goals                      | `show g`                                |
 | Adding entries for meals              | `log m/<MEAL_NAME> s/<SERVINGS>`        |
 | Adding entries for water              | `log w/<AMOUNT_OF_WATER>`               |
-| Adding entries for exercises          | `exercise <EXERCISE_NAME> d/<DURATION>` |
+| Adding entries for exercises          | `log e/<EXERCISE_NAME> d/<DURATION>` |
 | View all entries for meals logged     | `list meals`                            |
 | View all entries for water logged     | `list water`                            |
 | View all entries for exercises logged | `list exercises`                        |

@@ -63,7 +63,7 @@ public class CommandUi {
 
     public static void printExerciseLogMessage(ExerciseTask exerciseTask) {
         System.out.println("You've logged " + Integer.toString(exerciseTask.getDuration()) +
-                " hours" + " of " + exerciseTask.getExerciseName() + ".") ;
+                " minutes" + " of " + exerciseTask.getExerciseName() + ".") ;
         System.out.println("Estimated calories burnt: " + Integer.toString(exerciseTask.getCaloriesBurnt()) + " kcal");
     }
 

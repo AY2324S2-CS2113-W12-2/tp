@@ -2,8 +2,16 @@ package activeedge.ui;
 
 import command.ActiveEdgeException;
 
+/**
+ * The GoalsUi class provides user interface functionalities for managing health goals in the ActiveEdge application.
+ */
 public class GoalsUi {
 
+    /**
+     * Prints a message confirming the addition of a new health goal.
+     * @param description The description of the goal ('c' for calories, 'w' for water).
+     * @param goalAmount The amount of the goal to be achieved.
+     */
     public static void printAddGoalMessage(String description, int goalAmount) {
         try {
             String goalType;
@@ -25,8 +33,14 @@ public class GoalsUi {
         }
     }
 
+    /**
+     * Prints the current health goals set by the user.
+     * @param calorieGoal The daily calorie goal.
+     * @param waterGoal The daily water intake goal.
+     */
     public static void printShowGoalsMessage(int calorieGoal, int waterGoal) {
         System.out.println("Current goals: Daily calories: " + calorieGoal + "kcal" +
                 ", Daily water: " + waterGoal + "ml.");
     }
 }
+

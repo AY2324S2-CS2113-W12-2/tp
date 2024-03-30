@@ -31,6 +31,16 @@ Active Edge is comprised of 8 major components:
 ```LogList```: Maintains logged data throughout the application's runtime.\
 ```FoodData```: Active Edge's food database\
 ```ExerciseData```: Active Edge's exercise database\
+### Generic Sequence Diagram
+
+### Main Component
+The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
+![Main](../images/Main Component.png)
+
+### UI Package
+The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating interactions such as printing welcome messages, 
+logging meal and exercise data, displaying goal information, providing help instructions, and managing user queries and commands for health tracking and goal setting.
+![Ui](../images/Ui Package.png)
 
 Under commands, there are 17 sub-components:
 ```AddBMICommand```: A command responsible for calculating and adding Body Mass Index (BMI) information.

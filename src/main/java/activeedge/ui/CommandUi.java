@@ -146,11 +146,26 @@ public class CommandUi {
         );
     }
 
+    public static void printExerciseItemNotFoundMessage(String exerciseName){
+        System.out.println(exerciseName + " is not found in our food database.\n" +
+                "Please enter the following command to add it to the database and log your mea.l\n\n" +
+                "add m/[FOOD] c/[CALORIES_PER_SERVING(kCal)] s/[NUMBER_OF_SERVINGS]\n\n" +
+                "Eg: 'add m/"+ exerciseName +" c/120 d/2'\n"
+        );
+    }
+
     public static void printAddFoodItemMessage(String description){
         System.out.println(description + " has been added to the food database.\n" +
                 "logging your meal.......\n"
         );
     }
+
+    public static void printAddExerciseMessage(String exerciseName) {
+        System.out.println(exerciseName + " has been added to the exercise database.\n" +
+                "logging your exercise.......\n"
+        );
+    }
+
 
     public static void printTaskNotFoundMessage() {
         System.out.println("Task not found.");

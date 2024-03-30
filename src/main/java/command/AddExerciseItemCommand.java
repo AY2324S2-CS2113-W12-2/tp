@@ -4,12 +4,23 @@ import activeedge.ui.CommandUi;
 import activeedge.ExerciseData;
 import java.time.LocalDateTime;
 
+/**
+ * The AddExerciseItemCommand class represents a command to add a new exercise item to the ActiveEdge application.
+ * It encapsulates the exercise name, duration, calories burnt per minute, and the date and time of the exercise.
+ */
 public class AddExerciseItemCommand {
-    protected String exerciseName;
-    protected int duration;
-    protected int caloriesBurntPerMinute;
-    protected LocalDateTime dateTime;
+    protected String exerciseName; // The name of the exercise
+    protected int duration; // The duration of the exercise in minutes
+    protected int caloriesBurntPerMinute; // The number of calories burnt per minute during the exercise
+    protected LocalDateTime dateTime; // The date and time when the exercise was performed
 
+    /**
+     * Constructs an AddExerciseItemCommand with the specified exercise details.
+     * @param exerciseName The name of the exercise.
+     * @param duration The duration of the exercise in minutes.
+     * @param caloriesBurntPerMinute The number of calories burnt per minute during the exercise.
+     * @param dateTime The date and time when the exercise was performed.
+     */
     public AddExerciseItemCommand(String exerciseName, int duration, int caloriesBurntPerMinute,
                                   LocalDateTime dateTime) {
         this.exerciseName = exerciseName;
@@ -18,6 +29,11 @@ public class AddExerciseItemCommand {
         this.dateTime = dateTime;
     }
 
+    /**
+     * Executes the AddExerciseItemCommand by adding the exercise to the list of exercises, printing a success message,
+     * and logging the exercise in the application's data.
+     * @throws ActiveEdgeException If an error occurs during the execution of the command.
+     */
     public void execute() throws ActiveEdgeException {
         String[] newExercise = {exerciseName, Integer.toString(caloriesBurntPerMinute)};
         ExerciseData.exercisesList = appendItem(ExerciseData.exercisesList, newExercise);
@@ -27,6 +43,12 @@ public class AddExerciseItemCommand {
         logExerciseCommand.execute();
     }
 
+    /**
+     * Appends a new exercise item to the array of exercises.
+     * @param originalArray The original array of exercises.
+     * @param newItem The new exercise item to be appended.
+     * @return The updated array of exercises with the new item appended.
+     */
     private String[][] appendItem(String[][] originalArray, String[] newItem) {
         // Create a new array with one more row than the original
         String[][] newArray = new String[originalArray.length + 1][2]; // Assuming each item has 2 elements
@@ -42,4 +64,3 @@ public class AddExerciseItemCommand {
         return newArray;
     }
 }
-

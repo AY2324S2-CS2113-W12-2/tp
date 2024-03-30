@@ -131,7 +131,9 @@ in achieving their fitness objectives while navigating the challenges of univers
 | Prints all food data                  | `show food`                             |
 | Prints all exercise data              | `show exercises`                        |
 | Deletes the water/meal entry          | `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`  |
-| Clears all entry                      | `clear`     
+| Clears all entry                      | `clear`
+| Adding new items to the food database and log meal         | `add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>` |
+
 
 
 ## Acknowledgements

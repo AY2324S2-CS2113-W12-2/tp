@@ -123,3 +123,4 @@ Here's a quick summary of commands available in ActiveEdge:
 * Delete items from list: `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`
 * Clear: `clear`
 * Show daily summary of food, water intake and goals: `summary`
+* Add new food item to the database and log meal: `add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>`

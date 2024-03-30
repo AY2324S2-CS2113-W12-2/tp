@@ -34,6 +34,20 @@ Example of usage:
 
 `log m/chicken rice s/1`
 
+### Adding new food item to database and logs meal to list: `add`
+- Adds a new food item to the existing list of food items.
+- Ensure user can input any kind of food to leep track their calories.
+
+Format: `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>`
+
+* The `<MEAL_NAME>` can be from any food item.
+* The `CALORIES_PER_SERVING` can be a rough guage of calorie amount of the food item
+* The `<NUMBER_OF_SERVINGS>` can be any integer value.
+
+Example of usage:
+
+`add m/carrot cake c/500 s/2`
+
 ### Logging Water Intake : `log`
 - Logs the quantity of water consumed.
 - Tracks progress towards a customizable water intake goal.
@@ -73,7 +87,7 @@ Example of usage:
 -Deletes a meal/quantity of water(water intake) from the task list.
 -Supports deletion of tasks based on their descriptions.
 
-Format: `delete QUANTITY_OF_WATER ml` / `delete MEAL_NAME`
+Format: `delete <QUANTITY_OF_WATER> ml` / `delete <MEAL_NAME>`
 
 * The `QUANTITY_OF_WATER` can be the quantity of water the 
 user logged previously and wishes to delete.
@@ -84,6 +98,20 @@ Example of usage:
 
 `delete 100 ml`
 `delete sushi`
+
+### Log exercises: `log`
+- Logs the exercises performed.
+- Track how many calories have burnt.
+
+Format: `delete e/<EXERCISE_NAME> d/<DURATION>`
+
+* The `EXERCISE_NAME` can any form of exercise done.
+* The `DURATION` can be the number of minutes the exercise has been done.
+
+Example of usage:
+
+`delete e/calisthetics d/10`
+
 
 ## FAQ ❓
 

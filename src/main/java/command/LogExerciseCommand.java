@@ -17,13 +17,18 @@ public class LogExerciseCommand {
     protected int duration;
     protected int caloriesBurnt;
     protected LocalDateTime dateTime;
+    protected boolean isItemPresentInExerciseData;
 
 
-    public LogExerciseCommand(String exerciseName, int duration, int caloriesBurnt, LocalDateTime dateTime) {
+
+
+    public LogExerciseCommand(String exerciseName, int duration, int caloriesBurnt, LocalDateTime dateTime,
+                              boolean isItemPresentInExerciseData) {
         this.exerciseName = exerciseName;
         this.duration = duration;
         this.caloriesBurnt = caloriesBurnt;
         this.dateTime = dateTime;
+        this.isItemPresentInExerciseData = isItemPresentInExerciseData;
     }
 
     /**
@@ -34,9 +39,14 @@ public class LogExerciseCommand {
      * @throws ActiveEdgeException if any error occurs during the execution process
      */
     public void execute() throws ActiveEdgeException {
-        ExerciseTask logExercise = new ExerciseTask(exerciseName, duration, caloriesBurnt, dateTime);
-        tasksList.add(logExercise);
-        CommandUi.printExerciseLogMessage(logExercise);
+
+        if (isItemPresentInExerciseData){
+            ExerciseTask logExercise = new ExerciseTask(exerciseName, duration, caloriesBurnt, dateTime);
+            tasksList.add(logExercise);
+            CommandUi.printExerciseLogMessage(logExercise);
+        } else {
+            CommandUi.printExerciseItemNotFoundMessage(exerciseName);
+        }
     }
 
     public String getExerciseName() {

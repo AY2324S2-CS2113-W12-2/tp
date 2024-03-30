@@ -15,6 +15,7 @@ import command.LogExerciseCommand;
 import command.ShowSummaryCommand;
 import command.ClearCommand;
 import command.AddFoodItemCommand;
+import command.AddExerciseItemCommand;
 
 import activeedge.Storage;
 
@@ -66,14 +67,16 @@ public class    Parser {
                     String exerciseName = logParts[1].trim();
                     int duration = Integer.parseInt(logParts[2]);
                     int caloriesBurnt = 0;
+                    boolean isItemPresentInExerciseData = false;
 
                     for (int i = 0; i < exercisesList.length; i++) {
                         if (exercisesList[i][0].equals(exerciseName)) {
                             caloriesBurnt = Integer.parseInt(exercisesList[i][1]) * duration;
+                            isItemPresentInExerciseData = true;
                         }
                     }
                     LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
-                            caloriesBurnt, currentDateTime);
+                            caloriesBurnt, currentDateTime, isItemPresentInExerciseData);
                     logExerciseCommand.execute();
                 }
             } else if (input.startsWith("list")) {
@@ -133,19 +136,39 @@ public class    Parser {
             } else if(input.equalsIgnoreCase("clear")) {
                 ClearCommand clearCommand = new ClearCommand();
                 clearCommand.execute();
-            } else if (input.startsWith("add m/")){
+            } else if (input.startsWith("add m/")) {
                 String[] logParts = input.split("m/|c/|s/");
                 int length = logParts.length;
-                assert length >= 3;
-                String description = logParts[1].trim();
-                int caloriesPerServing = Integer.parseInt(logParts[2].trim());
-                int servings = Integer.parseInt(logParts[3].trim());
+                if (length >= 4) {
+                    String description = logParts[1].trim();
+                    int caloriesPerServing = Integer.parseInt(logParts[2].trim());
+                    int servings = Integer.parseInt(logParts[3].trim());
 
-                AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
-                        caloriesPerServing, currentDateTime);
-                addFoodItemCommand.execute();
-            }
-            else {
+                    AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
+                            caloriesPerServing, currentDateTime);
+                    addFoodItemCommand.execute();
+                } else {
+                    System.out.println("Invalid command. Please enter 'add m/[FOOD] c/[CALORIES_PER_SERVING(kCal)]" +
+                            " s/[NUMBER_OF_SERVINGS]'.");
+                    System.out.println("For example, 'add m/Pizza c/300 s/2'. Enter 'help' for more information.");
+                }
+            } else if (input.startsWith("add e/")) {
+                String[] logParts = input.split("e/|c/|d/");
+                int length = logParts.length;
+                if (length >= 4) {
+                    String description = logParts[1].trim();
+                    int caloriesBurntPerMinute = Integer.parseInt(logParts[2].trim());
+                    int duration = Integer.parseInt(logParts[3].trim());
+
+                    AddExerciseItemCommand addExerciseItemCommand = new AddExerciseItemCommand(description, duration,
+                            caloriesBurntPerMinute, currentDateTime);
+                    addExerciseItemCommand.execute();
+                } else {
+                    System.out.println("Invalid command. Please enter 'add e/[EXERCISE_NAME] " +
+                            "c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'.");
+                    System.out.println("For example, 'add e/Running c/10 d/30'. Enter 'help' for more information.");
+                }
+            } else {
                 System.out.println("Unknown command.");
             }
             Storage.saveLogsToFile("data/data.txt");

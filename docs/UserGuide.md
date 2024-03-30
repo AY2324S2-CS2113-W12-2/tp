@@ -36,7 +36,7 @@ Example of usage:
 
 ### Adding new food item to database and logs meal to list: `add`
 - Adds a new food item to the existing list of food items.
-- Ensure user can input any kind of food to leep track their calories.
+- Ensures user can input any kind of food to keep track their calories.
 
 Format: `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>`
 
@@ -112,6 +112,20 @@ Example of usage:
 
 `delete e/calisthetics d/10`
 
+### Adding new exercise item to database and logs exercise to list: `add`
+- Adds a new exercise item to the existing list of exercises.
+- Ensures user can input any kind of exercise to keep track of their calories.
+
+Format: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_PER_MIN>`
+
+* The `<EXERCISE>` can be any form.
+* The `<CALORIES_BURNT_PER_MIN>` can be a rough guage of calories being burnt.
+* The `<DURATION_PER_MIN>` can be any integer value.
+
+Example of usage:
+
+`add m/carrot cake c/500 s/2`
+
 
 ## FAQ ❓
 
@@ -126,6 +140,10 @@ and then copy the "data.txt" file into this newly created folder.
 **A**: Unfortunately, deleted entries are not recoverable, so it's 
 important to be careful when using the delete command.
 
+**Q**: I accidentally clearedthe data. Is there a way to recover it?
+
+**A**: Unfortunately, cleared data are not recoverable, so it's
+important to be careful when using the clear command.
 
 
 ## Command Summary
@@ -149,6 +167,7 @@ Here's a quick summary of commands available in ActiveEdge:
 * Help: `help`
 * Find: `find <KEYWORD>`
 * Delete items from list: `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`
-* Clear: `clear`
 * Show daily summary of food, water intake and goals: `summary`
-* Add new food item to the database and log meal: `add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>`
+* Add new food item to the database and log meal:`add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>`
+* Add new exercise to database and log it: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN>`
+* Clear: `clear`

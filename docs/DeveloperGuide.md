@@ -33,6 +33,25 @@ Active Edge is comprised of 8 major components:
 ```ExerciseData```: Active Edge's exercise database\
 ### Generic Sequence Diagram
 
+### Parser
+The Parser components can be found within the Parser package.
+It is responsible for parsing the input String of the user, and returning an appropriate XYZCommand class.
+If the input is invalid, it throws exceptions to the Error package for error handling.
+The Parser Class Diagram below shows how Execute, Parser, Error, Command classes of their respective packages work together.
+
+### Storage
+Storage is the main class responsible for file operations and data management.
+UserDetailsList, LogHeight, and LogWeight handle user details such as height and weight logs.
+TaskList manages various types of tasks including goals, meals, water intake, and exercises.
+GoalTask, MealTask, WaterTask, and ExerciseTask are specific task types with their attributes.
+AddBMICommand, AddHeightCommand, and AddWeightCommand are commands for adding BMI, height, and weight respectively.
+The relationships depicted in the diagram are primarily composition and inheritance:
+
+Storage has composition relationships with UserDetailsList and TaskList as it manages instances of these classes.
+UserDetailsList and TaskList have a composition relationship with their respective contained classes (LogHeight, LogWeight, GoalTask, MealTask, WaterTask, ExerciseTask) 
+as they hold lists of instances of these classes. AddBMICommand, AddHeightCommand, and AddWeightCommand are standalone commands 
+used within the Storage class but don't directly interact with the other classes in the diagram.
+
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
 ![Main](../images/Main Component.png)

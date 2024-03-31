@@ -248,6 +248,13 @@ public class FoodData {
         }
     }
 
+    /**
+     * Appends a new item to the original array.
+     *
+     * @param originalArray The original array to which the new item will be appended.
+     * @param newItem       The new item to be appended in the format [food name, calories].
+     * @return The new array with the new item appended.
+     */
     public static String[][] appendItem(String[][] originalArray, String[] newItem) {
         // Create a new array with one more row than the original
         String[][] newArray = new String[originalArray.length + 1][2]; // Assuming each item has 2 elements

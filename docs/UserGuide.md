@@ -126,6 +126,39 @@ Example of usage:
 
 `add m/carrot cake c/500 s/2`
 
+### Testing data for food items 
+
+-Users can use these data to test out the application
+
+| Food Item      | Calorie Intake |
+|----------------|----------------|
+| fried chicken  | 543            |
+| chicken burger | 357            |
+| beef burger    | 500            |
+| fish burger    | 379            |
+| sambar rice    | 187            |
+| medu vadai     | 108            |
+| udon           | 400            |
+| edamame        | 120            |
+| sambal belacan | 75             |
+| telur masin    | 85             |
+
+### Testing data for list of exercises
+
+-Users can use these data to test out the application
+
+| Food Item     | Calories Burnt Per minute |
+|---------------|---------------------------|
+| running       | 10                        |
+| cycling       | 8                         |
+| swimming      | 8                         |
+| jumping jacks | 10                        |
+| walking       | 4                         |
+| yoga          | 3                         |
+| aerobics      | 10                        |
+| basketball    | 9                         |
+| tennis        | 7                         |
+| squash        | 8                         |
 
 ## FAQ ❓
 

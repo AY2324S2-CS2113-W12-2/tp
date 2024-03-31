@@ -66,7 +66,7 @@ public class    Parser {
                                 calories, currentDateTime, isItemPresentInFoodData);
                         logMealCommand.execute();
                     } catch(NumberFormatException e){
-                          System.out.println("Servings must be an integer value. Please try again.");
+                        System.out.println("Servings must be an integer value. Please try again.");
                     }
                 } else if (items[0].equals("e")){
                     String[] logParts = input.split("e/|d/");
@@ -158,7 +158,8 @@ public class    Parser {
                                 caloriesPerServing, currentDateTime);
                         addFoodItemCommand.execute();
                     } catch(NumberFormatException e){
-                        System.out.println("Servings and calories per serving must be an integer value. Please try again.");
+                        System.out.println("Servings and calories per serving must be an integer value. " +
+                                "Please try again.");
                     }
                 } else {
                     System.out.println("Invalid command. Please enter 'add m/[FOOD] c/[CALORIES_PER_SERVING(kCal)]" +
@@ -174,11 +175,12 @@ public class    Parser {
                         int caloriesBurntPerMinute = Integer.parseInt(logParts[2].trim());
                         int duration = Integer.parseInt(logParts[3].trim());
 
-                        AddExerciseItemCommand addExerciseItemCommand = new AddExerciseItemCommand(description, duration,
-                                caloriesBurntPerMinute, currentDateTime);
+                        AddExerciseItemCommand addExerciseItemCommand = new AddExerciseItemCommand(description,
+                                duration, caloriesBurntPerMinute, currentDateTime);
                         addExerciseItemCommand.execute();
                     } catch(NumberFormatException e){
-                        System.out.println("Duration and calories burnt per minute must be an integer value. Please try again.");
+                        System.out.println("Duration and calories burnt per minute must be an integer value. " +
+                                "Please try again.");
                     }
                 } else {
                     System.out.println("Invalid command. Please enter 'add e/[EXERCISE_NAME] " +

@@ -69,12 +69,34 @@ public class CommandUi {
 
     public static void printShowCalMessage() {
         int totalCalories = 0;
+        int totalCaloriesFromMeals = 0;
+        int totalCaloriesFromExercises = 0;
         String goal = "0";
         for (int i = 0; i < tasksList.size(); i++) {
             String[] parts = tasksList.get(i).toString().split(" ");
             int len = parts.length;
-            if(tasksList.get(i).toString().startsWith("Meal")) {
-                totalCalories = totalCalories + Integer.parseInt(parts[len-1]);
+            String taskString = tasksList.get(i).toString();
+            int kcalIndex = -1;
+            for (int j = 0; j < len; j++) {
+                if (parts[j].equals("kcal")) {
+                    kcalIndex = j - 1; // Assuming calorie value is just before "kcal"
+                    break;
+                }
+            }
+
+            // Check if kcal index is found and the part at that index is a valid integer
+            if (kcalIndex >= 0 && kcalIndex < parts.length) {
+                String calorieString = parts[kcalIndex];
+                if (calorieString.matches("\\d+")) { // Check if it's a valid integer
+                    int calories = Integer.parseInt(calorieString);
+                    if (taskString.startsWith("Meal")) {
+                        totalCaloriesFromMeals += calories;
+                    } else if (taskString.startsWith("Exercise")) {
+                        totalCaloriesFromExercises += calories;
+                    }
+                } else {
+                    System.out.println("Skipping non-integer calorie value: " + calorieString);
+                }
             }
             if(tasksList.get(i).toString().startsWith("Goal")) {
                 if (parts[1].equals("c")) {
@@ -82,6 +104,7 @@ public class CommandUi {
                 }
             }
         }
+        totalCalories = totalCaloriesFromMeals - totalCaloriesFromExercises;
         System.out.print("Total calories today: ");
         System.out.println(totalCalories + " kcal out of " + goal + " kcal");
     }

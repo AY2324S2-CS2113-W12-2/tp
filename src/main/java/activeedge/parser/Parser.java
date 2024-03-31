@@ -46,20 +46,28 @@ public class    Parser {
                     int length = logParts.length;
                     assert length >= 3;
                     String description = logParts[1].trim();
-                    int servings = Integer.parseInt(logParts[2]);
-                    int calories = 0;
-                    boolean isItemPresentInFoodData = false;
-
-                    for (int i = 0; i < foodItems.length; i++) {
-                        if (foodItems[i][0].equals(description)) {
-                            calories = Integer.parseInt(foodItems[i][1]) * servings;
-                            isItemPresentInFoodData = true;
+                    try {
+                        int servings = Integer.parseInt(logParts[2]);
+                        if (servings != Double.parseDouble(logParts[2])) {
+                            System.out.println("Servings must be an integer value.");
+                            return;
                         }
-                    }
+                        int calories = 0;
+                        boolean isItemPresentInFoodData = false;
 
-                    LogMealCommand logMealCommand = new LogMealCommand(description, servings,
-                            calories, currentDateTime, isItemPresentInFoodData);
-                    logMealCommand.execute();
+                        for (int i = 0; i < foodItems.length; i++) {
+                            if (foodItems[i][0].equals(description)) {
+                                calories = Integer.parseInt(foodItems[i][1]) * servings;
+                                isItemPresentInFoodData = true;
+                            }
+                        }
+
+                        LogMealCommand logMealCommand = new LogMealCommand(description, servings,
+                                calories, currentDateTime, isItemPresentInFoodData);
+                        logMealCommand.execute();
+                    } catch(NumberFormatException e){
+                          System.out.println("Servings must be an integer value. Please try again.");
+                    }
                 } else if (items[0].equals("e")){
                     String[] logParts = input.split("e/|d/");
                     int length = logParts.length;
@@ -78,7 +86,9 @@ public class    Parser {
                     LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
                             caloriesBurnt, currentDateTime, isItemPresentInExerciseData);
                     logExerciseCommand.execute();
+
                 }
+
             } else if (input.startsWith("list")) {
                 if (tasksList.size() > 0) {
                     new ListFullCommand();
@@ -141,12 +151,15 @@ public class    Parser {
                 int length = logParts.length;
                 if (length >= 4) {
                     String description = logParts[1].trim();
-                    int caloriesPerServing = Integer.parseInt(logParts[2].trim());
-                    int servings = Integer.parseInt(logParts[3].trim());
-
-                    AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
-                            caloriesPerServing, currentDateTime);
-                    addFoodItemCommand.execute();
+                    try {
+                        int servings = Integer.parseInt(logParts[3].trim());
+                        int caloriesPerServing = Integer.parseInt(logParts[2].trim());
+                        AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
+                                caloriesPerServing, currentDateTime);
+                        addFoodItemCommand.execute();
+                    } catch(NumberFormatException e){
+                        System.out.println("Servings and calories per serving must be an integer value. Please try again.");
+                    }
                 } else {
                     System.out.println("Invalid command. Please enter 'add m/[FOOD] c/[CALORIES_PER_SERVING(kCal)]" +
                             " s/[NUMBER_OF_SERVINGS]'.");
@@ -157,12 +170,16 @@ public class    Parser {
                 int length = logParts.length;
                 if (length >= 4) {
                     String description = logParts[1].trim();
-                    int caloriesBurntPerMinute = Integer.parseInt(logParts[2].trim());
-                    int duration = Integer.parseInt(logParts[3].trim());
+                    try {
+                        int caloriesBurntPerMinute = Integer.parseInt(logParts[2].trim());
+                        int duration = Integer.parseInt(logParts[3].trim());
 
-                    AddExerciseItemCommand addExerciseItemCommand = new AddExerciseItemCommand(description, duration,
-                            caloriesBurntPerMinute, currentDateTime);
-                    addExerciseItemCommand.execute();
+                        AddExerciseItemCommand addExerciseItemCommand = new AddExerciseItemCommand(description, duration,
+                                caloriesBurntPerMinute, currentDateTime);
+                        addExerciseItemCommand.execute();
+                    } catch(NumberFormatException e){
+                        System.out.println("Duration and calories burnt per minute must be an integer value. Please try again.");
+                    }
                 } else {
                     System.out.println("Invalid command. Please enter 'add e/[EXERCISE_NAME] " +
                             "c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'.");

@@ -32,6 +32,11 @@ Active Edge is comprised of 8 major components:
 ```FoodData```: Active Edge's food database\
 ```ExerciseData```: Active Edge's exercise database\
 ### Generic Sequence Diagram
+The generic sequence diagram provides a visual representation of the interactions between various components within the
+ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such
+as user interface, data storage, and task management.
+
+![Generic]("C:\Users\nikhi\OneDrive\Desktop\Nikhil\Generic Sequence Diagram.png")
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.

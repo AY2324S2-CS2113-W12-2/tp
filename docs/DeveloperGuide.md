@@ -18,7 +18,7 @@
     - [Value Proposition](#value-proposition)
 - [User Stories](#user-stories)
 - [Non-Functional Requirements](#non-functional-requirements)
-- [Manual Testing](#instructions for manual testing)
+- [Manual Testing](#instructions-for-manual-testing)
 - [Command Summary](#command-summary)
 - [Glossary](#glossary)
 - [Acknowledgements](#acknowledgements)

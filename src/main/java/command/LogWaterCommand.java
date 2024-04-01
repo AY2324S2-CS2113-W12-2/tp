@@ -5,7 +5,6 @@ import activeedge.ui.CommandUi;
 import activeedge.task.TaskList;
 import java.time.LocalDateTime;
 
-
 /**
  * Represents a command to log water intake.
  */
@@ -25,25 +24,22 @@ public class LogWaterCommand {
 
     /**
      * Executes the command to log water intake.
-     *
-     * @throws ActiveEdgeException If an error occurs during execution.
      */
-    public void execute() throws ActiveEdgeException {
+    public void execute() {
         int quantity = 0;
         try {
             quantity = Integer.parseInt(quantityString);
+            //@@author nikhil-2101
+            assert quantity >= 0;
+            if (quantity <= 0) {
+                System.out.println("Water quantity must be above 0. Please try again.");
+            } else {
+                WaterTask waterTask = new WaterTask(quantity, dateTime);
+                TaskList.tasksList.add(waterTask);
+                CommandUi.printWaterLogMessage(waterTask);
+            }
         } catch (NumberFormatException e) {
-            throw new ActiveEdgeException("Invalid water quantity. Please provide a valid integer.");
-        }
-
-        assert quantity > 0 : "Water quantity must be above 0";
-
-        if (quantity <= 0) {
-            System.out.println("Water quantity must be above 0. Please try again.");
-        } else {
-            WaterTask waterTask = new WaterTask(quantity, dateTime);
-            TaskList.tasksList.add(waterTask);
-            CommandUi.printWaterLogMessage(waterTask);
+            System.out.println("Invalid water quantity. Please provide a valid integer.");
         }
     }
 }

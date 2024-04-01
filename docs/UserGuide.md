@@ -19,7 +19,6 @@ follow these simple steps:
 
 ## Features 
 
-{Give detailed description of each feature}
 
 ### Logging Calorie Intake : `log`
 - Adds a new meal to the log along with the number of servings.

@@ -60,7 +60,7 @@ The generic sequence diagram provides a visual representation of the interaction
 ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such
 as user interface, data storage, and task management.
 
-![Generic](..\images\Generic Sequence Diagram.png)
+![Generic Sequence Diagram](../images/Generic-Sequence-Diagram.png)
 
 ### Parser
 The Parser components can be found within the Parser package.
@@ -83,7 +83,7 @@ used within the Storage class but don't directly interact with the other classes
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
-![Main](../images/Main Component.png)
+![Main Component](../images/Main Component.png)
 
 ### UI Package
 The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating interactions such as printing welcome messages, 

@@ -3,7 +3,7 @@ package activeedge;
 import activeedge.task.GoalTask;
 import activeedge.task.MealTask;
 import activeedge.task.TaskList;
-import activeedge.task.ExerciseTask;
+import activeedge.task.LogExercise;
 import activeedge.task.WaterTask;
 import activeedge.userdetails.LogHeight;
 import activeedge.userdetails.LogWeight;
@@ -210,7 +210,7 @@ public class Storage {
                                 exerciseName = exerciseName + items[i];
                             }
                         }
-                        ExerciseTask newTask = new ExerciseTask(exerciseName,
+                        LogExercise newTask = new LogExercise(exerciseName,
                                 Integer.parseInt(items[len - 6]),
                                 Integer.parseInt(items[len - 5]), dateTime);
                         TaskList.tasksList.add(newTask);

@@ -31,8 +31,6 @@ import java.time.format.DateTimeFormatter;
  * and fetching data from files.
  */
 public class Storage {
-
-
     /**
      * Ensures that the directory for a given file path exists.
      * If the directory does not exist, it creates all necessary parent directories.
@@ -84,6 +82,62 @@ public class Storage {
         }
     }
 
+    public static void listEmpty() {
+        System.out.print("\n");
+        int i = 0;
+        int j = 0;
+        System.out.println("Since you are new here, let's start with your height and weight " +
+                "to set things up!");
+        try {
+            int heightInput = 0;
+            int weightInput = 0;
+            while (j < 1) {
+                System.out.println("Please input your height (in cm): ");
+                Scanner scanner = new Scanner(System.in);
+                try {
+                    heightInput = Integer.valueOf(scanner.nextLine());
+                    AddHeightCommand addHeightCommand = new AddHeightCommand(heightInput, LocalDateTime.now());
+                    addHeightCommand.execute();
+                    saveLogsToFile("data/data.txt");
+                    j++;
+                } catch (NumberFormatException e) {
+                    System.out.println("Please input a whole number only");
+                }
+            }
+            while (i < 1) {
+                System.out.println("Please input your weight (in kg): ");
+                Scanner scanner = new Scanner(System.in);
+                try {
+                    weightInput = Integer.valueOf(scanner.nextLine());
+                    AddWeightCommand addWeightCommand = new AddWeightCommand(weightInput, LocalDateTime.now());
+                    addWeightCommand.execute();
+                    saveLogsToFile("data/data.txt");
+                    i++;
+                } catch (NumberFormatException e) {
+                    System.out.println("Please input a whole number only");
+                }
+            }
+            double heightMeters = (double) heightInput/100;
+            int bmi = (int) (weightInput/(heightMeters*heightMeters));
+            AddBMICommand addBMICommand = new AddBMICommand(bmi, LocalDateTime.now());
+            addBMICommand.execute();
+            saveLogsToFile("data/data.txt");
+            System.out.println("Your BMI is " + bmi);
+            if (bmi < 19) {
+                System.out.println("You are in the underweight range.");
+            } else if (bmi < 25) {
+                System.out.println("You are in the healthy weight range.");
+            } else if (bmi < 30) {
+                System.out.println("You are in the overweight range.");
+            } else {
+                System.out.println("You are in the obese weight range.");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("You can now start logging data! Type 'help' " +
+                "if you are not sure how to use ActiveEdge.");
+    }
 
     /**
      * Fetches and loads data from a specified data file into the application's memory.
@@ -94,67 +148,12 @@ public class Storage {
         String filePath = Paths.get(System.getProperty("user.dir"), "data", "data.txt").toString();
         File file = new File(filePath);
 
-
         if (!file.exists()) {
             createFile(filePath);
         }
         if (file.length() == 0 ) {
-            System.out.print("\n");
-            int i = 0;
-            int j = 0;
-            System.out.println("Since you are new here, let's start with your height and weight " +
-                    "to set things up!");
-            try {
-                int heightInput = 0;
-                int weightInput = 0;
-                while (j < 1) {
-                    System.out.println("Please input your height (in cm): ");
-                    Scanner scanner = new Scanner(System.in);
-                    try {
-                        heightInput = Integer.valueOf(scanner.nextLine());
-                        AddHeightCommand addHeightCommand = new AddHeightCommand(heightInput, LocalDateTime.now());
-                        addHeightCommand.execute();
-                        saveLogsToFile("data/data.txt");
-                        j++;
-                    } catch (NumberFormatException e) {
-                        System.out.println("Please input a whole number only");
-                    }
-                }
-                while (i < 1) {
-                    System.out.println("Please input your weight (in kg): ");
-                    Scanner scanner = new Scanner(System.in);
-                    try {
-                        weightInput = Integer.valueOf(scanner.nextLine());
-                        AddWeightCommand addWeightCommand = new AddWeightCommand(weightInput, LocalDateTime.now());
-                        addWeightCommand.execute();
-                        saveLogsToFile("data/data.txt");
-                        i++;
-                    } catch (NumberFormatException e) {
-                        System.out.println("Please input a whole number only");
-                    }
-                }
-                double heightMeters = (double) heightInput/100;
-                int bmi = (int) (weightInput/(heightMeters*heightMeters));
-                AddBMICommand addBMICommand = new AddBMICommand(bmi, LocalDateTime.now());
-                addBMICommand.execute();
-                saveLogsToFile("data/data.txt");
-                System.out.println("Your BMI is " + bmi);
-                if (bmi < 19) {
-                    System.out.println("You are in the underweight range.");
-                } else if (bmi < 25) {
-                    System.out.println("You are in the healthy weight range.");
-                } else if (bmi < 30) {
-                    System.out.println("You are in the overweight range.");
-                } else {
-                    System.out.println("You are in the obese weight range.");
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            System.out.println("You can now start logging data! Type 'help' " +
-                    "if you are not sure how to use ActiveEdge.");
-        }else {
-
+            listEmpty();
+        } else {
             try (Scanner scanner = new Scanner(file)) {
                 while (scanner.hasNext()) {
                     String task = scanner.nextLine();

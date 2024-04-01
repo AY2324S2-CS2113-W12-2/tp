@@ -1,11 +1,11 @@
 # ActiveEdge Developer Guide 🥦🏃‍♂️
 
 ## Table of Contents
-- [Introduction](#introduction-)
+- [Introduction](#introduction)
     - [Purpose](#purpose)
     - [How to use the Developer Guide](#how-to-use-the-developer-guide)
 - [Quick Start](#quick-start)
-- [Design & Implementation](#design--implementation-)
+- [Design & Implementation](#design--implementation)
     - [System Architecture](#system-architecture)
     - [Main Component](#main-component)
     - [UI Package](#ui-package)
@@ -13,19 +13,21 @@
     - [Command Package](#command-package)
     - [LogList Package](#entrylist-package)
     - [Storage Package](#storage-package)
-- [Product Scope](#product-scope-)
+- [Product Scope](#product-scope)
     - [Target User Profile](#target-user-profile)
     - [Value Proposition](#value-proposition)
-- [User Stories](#user-stories-)
-- [Non-Functional Requirements](#non-functional-requirements-)
-- [Manual Testing](#instructions for manual testing)
+- [User Stories](#user-stories)
+- [Non-Functional Requirements](#non-functional-requirements)
+- [Manual Testing](#instructions-for-manual-testing)
 - [Command Summary](#command-summary)
-- [Glossary](#glossary-)
-- [Acknowledgements](#acknowledgements-)
+- [Glossary](#glossary)
+- [Acknowledgements](#acknowledgements)
 
 ## Introduction
 **ActiveEdge** is a program for a university students to manage their food intake, water intake and exercises via the Command Line Interface (CLI).
 ### Purpose
+This document specifies the architectural and software design decisions in the implementation of **ActiveEdge**.
+
 ### How to use the Developer Guide
 ## Quick Start
 
@@ -60,7 +62,7 @@ The generic sequence diagram provides a visual representation of the interaction
 ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such
 as user interface, data storage, and task management.
 
-![Generic](..\images\Generic Sequence Diagram.png)
+![Generic Sequence Diagram](../images/Generic-Sequence-Diagram.png)
 
 ### Parser
 The Parser components can be found within the Parser package.
@@ -83,7 +85,7 @@ used within the Storage class but don't directly interact with the other classes
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
-![Main](../images/Main Component.png)
+![Main Component](../images/Main Component.png)
 
 ### UI Package
 The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating interactions such as printing welcome messages, 

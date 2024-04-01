@@ -60,7 +60,7 @@ The generic sequence diagram provides a visual representation of the interaction
 ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such
 as user interface, data storage, and task management.
 
-![Generic]("C:\Users\nikhi\OneDrive\Desktop\Nikhil\Generic Sequence Diagram.png")
+![Generic](..\images\Generic Sequence Diagram.png)
 
 ### Parser
 The Parser components can be found within the Parser package.

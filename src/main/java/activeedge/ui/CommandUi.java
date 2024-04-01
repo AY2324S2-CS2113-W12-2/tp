@@ -2,7 +2,7 @@ package activeedge.ui;
 
 import static activeedge.task.TaskList.tasksList;
 
-import activeedge.task.ExerciseTask;
+import activeedge.task.LogExercise;
 import activeedge.task.Task;
 import activeedge.task.WaterTask;
 import activeedge.task.MealTask;
@@ -61,10 +61,10 @@ public class CommandUi {
         System.out.println("Estimated calories: " + Integer.toString(mealTask.getMealCalories()) + " kcal");
     }
 
-    public static void printExerciseLogMessage(ExerciseTask exerciseTask) {
-        System.out.println("You've logged " + Integer.toString(exerciseTask.getDuration()) +
-                " minutes" + " of " + exerciseTask.getExerciseName() + ".") ;
-        System.out.println("Estimated calories burnt: " + Integer.toString(exerciseTask.getCaloriesBurnt()) + " kcal");
+    public static void printExerciseLogMessage(LogExercise logExercise) {
+        System.out.println("You've logged " + Integer.toString(logExercise.getDuration()) +
+                " minutes" + " of " + logExercise.getExerciseName() + ".") ;
+        System.out.println("Estimated calories burnt: " + Integer.toString(logExercise.getCaloriesBurnt()) + " kcal");
     }
 
     public static void printShowCalMessage() {

@@ -1,3 +1,6 @@
-Height 170 cm (Recorded on: 2024-04-01T13:14:40.731679)
-Weight 60 kg (Recorded on: 2024-04-01T13:14:42.740554)
-BMI 20 (Recorded on: 2024-04-01T13:14:42.744284)
+
+Height 170 cm (Recorded on: 2024-03-30T00:13:20.821885)
+Weight 60 kg (Recorded on: 2024-03-30T00:13:23.814384)
+Meal sushi 2 700 kcal (Recorded on: 2024-03-30T00:13:33.845526)
+Exercise running 40 400 kcal (Recorded on: 2024-03-30T00:14:23.372149)
+

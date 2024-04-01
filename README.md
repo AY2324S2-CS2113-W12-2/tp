@@ -7,6 +7,6 @@ The purpose of this user guide is to familiarize you with the program and help y
 Its main job is to store and present your logs which makes maintaining a healthy lifestyle so much more convenient!
 
 Useful links:
-* [User Guide](UserGuide.md)
-* [Developer Guide](DeveloperGuide.md)
-* [About Us](AboutUs.md)
+* [User Guide](/docs/UserGuide.md)
+* [Developer Guide](/docs/DeveloperGuide.md)
+* [About Us](/docs.AboutUs.md)

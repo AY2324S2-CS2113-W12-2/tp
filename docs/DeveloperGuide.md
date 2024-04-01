@@ -35,7 +35,7 @@ Active Edge is comprised of 8 major components:
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
-![Main](../images/Main Component.png)
+![Main Component](../images/Main-Component.png)
 
 ### UI Package
 The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating interactions such as printing welcome messages, 

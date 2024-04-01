@@ -1,4 +1,6 @@
 package activeedge;
+import command.AddExerciseItemCommand;
+
 
 /**
  * The ExerciseData class stores information about various exercise activities.
@@ -106,6 +108,20 @@ public class ExerciseData {
             int caloriesBurnt = Integer.parseInt(exercise[1]);
             assert caloriesBurnt > 0 : "Calories burnt per minute must be positive";
         }
+    }
+
+    /**
+     * Checks if an exercise with the given exercise name already exists in the list of exercises.
+     * @param exerciseName The name of the exercise to check.
+     * @return true if the exercise exists, false otherwise.
+     */
+    public static boolean exerciseExists(String exerciseName) {
+        for (String[] exercise : exercisesList) {
+            if (exercise[0].equalsIgnoreCase(exerciseName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

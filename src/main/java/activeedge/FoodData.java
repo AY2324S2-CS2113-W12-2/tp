@@ -249,6 +249,21 @@ public class FoodData {
     }
 
     /**
+     * Checks if a food item with the given description already exists in the list of food items.
+     * @param description The description of the food item to check.
+     * @return true if the food item exists, false otherwise.
+     */
+
+    public static boolean foodItemExists(String description) {
+        for (String[] foodItem : foodItems) {
+            if (foodItem[0].equalsIgnoreCase(description)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Appends a new item to the original array.
      *
      * @param originalArray The original array to which the new item will be appended.

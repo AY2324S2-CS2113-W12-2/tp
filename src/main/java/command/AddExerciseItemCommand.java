@@ -35,12 +35,18 @@ public class AddExerciseItemCommand {
      * @throws ActiveEdgeException If an error occurs during the execution of the command.
      */
     public void execute() throws ActiveEdgeException {
-        String[] newExercise = {exerciseName, Integer.toString(caloriesBurntPerMinute)};
-        ExerciseData.exercisesList = appendItem(ExerciseData.exercisesList, newExercise);
-        CommandUi.printAddExerciseMessage(exerciseName);
-        LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
-                caloriesBurntPerMinute*duration, dateTime, true);
-        logExerciseCommand.execute();
+        if (ExerciseData.exerciseExists(exerciseName)) {
+            // Exercise activity exists, log it
+            CommandUi.promptLogExerciseMessage(exerciseName);
+        }
+        else {
+            String[] newExercise = {exerciseName, Integer.toString(caloriesBurntPerMinute)};
+            ExerciseData.exercisesList = appendItem(ExerciseData.exercisesList, newExercise);
+            CommandUi.printAddExerciseMessage(exerciseName);
+            LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
+                    caloriesBurntPerMinute * duration, dateTime, true);
+            logExerciseCommand.execute();
+        }
     }
 
     /**
@@ -49,7 +55,7 @@ public class AddExerciseItemCommand {
      * @param newItem The new exercise item to be appended.
      * @return The updated array of exercises with the new item appended.
      */
-    private String[][] appendItem(String[][] originalArray, String[] newItem) {
+    public static String[][] appendItem(String[][] originalArray, String[] newItem) {
         // Create a new array with one more row than the original
         String[][] newArray = new String[originalArray.length + 1][2]; // Assuming each item has 2 elements
 

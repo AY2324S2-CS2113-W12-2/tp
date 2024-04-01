@@ -232,11 +232,12 @@ public class FoodData {
     /**
      * Prints the calories of each food item in the foodItems array.
      */
-
-    public static void printFood(){
-        for (int i = 0; i < foodItems.length; i++){
-            // Print the calorie value
-            System.out.println(foodItems[i][1]);
+    // In FoodData class
+    public static void printFood() {
+        for (int i = 0; i < foodItems.length; i++) {
+            // Concatenate the food name, calories, and "kcal" in the same line
+            String foodInfo = "Food Name: " + foodItems[i][0] + " | Calories: " + foodItems[i][1] + " kcal";
+            System.out.println(foodInfo);
 
             // Assert that the calorie value is a valid integer
             try {

@@ -19,7 +19,6 @@ follow these simple steps:
 
 ## Features 
 
-{Give detailed description of each feature}
 
 ### Logging Calorie Intake : `log`
 - Adds a new meal to the log along with the number of servings.
@@ -28,7 +27,7 @@ follow these simple steps:
 Format: `log m/<MEAL_NAME> s/<SERVINGS>`
 
 * The `<MEAL_NAME>` can be from any food from the food list.
-* The `<SERVINGS>` can be any interger value.  
+* The `<SERVINGS>` can be any integer value.  
 
 Example of usage: 
 
@@ -83,34 +82,36 @@ Example of usage:
 `set goal w/2000`
 `show g`
 
-### Delete meals/water: `delete`
+### Delete meals/water/exercises: `delete`
 -Deletes a meal/quantity of water(water intake) from the task list.
 -Supports deletion of tasks based on their descriptions.
 
-Format: `delete <QUANTITY_OF_WATER> ml` / `delete <MEAL_NAME>`
+Format: `delete <QUANTITY_OF_WATER> ml` / `delete <MEAL_NAME>` / `delete <EXERCISE_NAME>`
 
 * The `QUANTITY_OF_WATER` can be the quantity of water the 
 user logged previously and wishes to delete.
 * The `MEAL_NAME` can be the name of the meal the user 
 previously logged in and wishes to delete.
+* The `EXERCISE_NAME` can be the name of the exercise.
 
 Example of usage:
 
 `delete 100 ml`
 `delete sushi`
+`delete calisthenics`
 
 ### Log exercises: `log`
 - Logs the exercises performed.
 - Track how many calories have burnt.
 
-Format: `delete e/<EXERCISE_NAME> d/<DURATION>`
+Format: `log e/<EXERCISE_NAME> d/<DURATION>`
 
 * The `EXERCISE_NAME` can any form of exercise done.
 * The `DURATION` can be the number of minutes the exercise has been done.
 
 Example of usage:
 
-`delete e/calisthetics d/10`
+`log e/running d/10`
 
 ### Adding new exercise item to database and logs exercise to list: `add`
 - Adds a new exercise item to the existing list of exercises.
@@ -124,8 +125,41 @@ Format: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>`
 
 Example of usage:
 
-`add m/carrot cake c/500 s/2`
+`add e/calisthenics c/10 d/5`
 
+### Testing data for food items 
+
+-Users can use these data to test out the application
+
+| Food Item      | Calorie Intake |
+|----------------|----------------|
+| fried chicken  | 543            |
+| chicken burger | 357            |
+| beef burger    | 500            |
+| fish burger    | 379            |
+| sambar rice    | 187            |
+| medu vadai     | 108            |
+| udon           | 400            |
+| edamame        | 120            |
+| sambal belacan | 75             |
+| telur masin    | 85             |
+
+### Testing data for list of exercises
+
+-Users can use these data to test out the application
+
+| Food Item     | Calories Burnt Per minute |
+|---------------|---------------------------|
+| running       | 10                        |
+| cycling       | 8                         |
+| swimming      | 8                         |
+| jumping jacks | 10                        |
+| walking       | 4                         |
+| yoga          | 3                         |
+| aerobics      | 10                        |
+| basketball    | 9                         |
+| tennis        | 7                         |
+| squash        | 8                         |
 
 ## FAQ ❓
 

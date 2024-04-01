@@ -1,8 +1,34 @@
 # ActiveEdge Developer Guide 🥦🏃‍♂️
 
+## Table of Contents
+- [Introduction](#introduction)
+    - [Purpose](#purpose)
+    - [How to use the Developer Guide](#how-to-use-the-developer-guide)
+- [Quick Start](#quick-start)
+- [Design & Implementation](#design--implementation)
+    - [System Architecture](#system-architecture)
+    - [Main Component](#main-component)
+    - [UI Package](#ui-package)
+    - [Parser Package](#parser-package)
+    - [Command Package](#command-package)
+    - [LogList Package](#entrylist-package)
+    - [Storage Package](#storage-package)
+- [Product Scope](#product-scope)
+    - [Target User Profile](#target-user-profile)
+    - [Value Proposition](#value-proposition)
+- [User Stories](#user-stories)
+- [Non-Functional Requirements](#non-functional-requirements)
+- [Manual Testing](#instructions-for-manual-testing)
+- [Command Summary](#command-summary)
+- [Glossary](#glossary)
+- [Acknowledgements](#acknowledgements)
+
 ## Introduction
 **ActiveEdge** is a program for a university students to manage their food intake, water intake and exercises via the Command Line Interface (CLI).
+### Purpose
+This document specifies the architectural and software design decisions in the implementation of **ActiveEdge**.
 
+### How to use the Developer Guide
 ## Quick Start
 
 To get started quickly with ActiveEdge,
@@ -32,10 +58,35 @@ Active Edge is comprised of 8 major components:
 ```FoodData```: Active Edge's food database\
 ```ExerciseData```: Active Edge's exercise database\
 ### Generic Sequence Diagram
+The generic sequence diagram provides a visual representation of the interactions between various components within the
+ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such
+as user interface, data storage, and task management.
+
+![Generic Sequence Diagram](../images/Generic-Sequence-Diagram.png)
+
+### Parser
+The Parser components can be found within the Parser package.
+It is responsible for parsing the input String of the user, and returning an appropriate XYZCommand class.
+If the input is invalid, it throws exceptions to the Error package for error handling.
+The Parser Class Diagram below shows how Execute, Parser, Error, Command classes of their respective packages work together.
+
+### Storage
+Storage is the main class responsible for file operations and data management.
+UserDetailsList, LogHeight, and LogWeight handle user details such as height and weight logs.
+TaskList manages various types of tasks including goals, meals, water intake, and exercises.
+GoalTask, MealTask, WaterTask, and ExerciseTask are specific task types with their attributes.
+AddBMICommand, AddHeightCommand, and AddWeightCommand are commands for adding BMI, height, and weight respectively.
+The relationships depicted in the diagram are primarily composition and inheritance:
+
+Storage has composition relationships with UserDetailsList and TaskList as it manages instances of these classes.
+UserDetailsList and TaskList have a composition relationship with their respective contained classes (LogHeight, LogWeight, GoalTask, MealTask, WaterTask, ExerciseTask) 
+as they hold lists of instances of these classes. AddBMICommand, AddHeightCommand, and AddWeightCommand are standalone commands 
+used within the Storage class but don't directly interact with the other classes in the diagram.
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
 ![Main Component](../images/Main-Component.png)
+
 
 ### UI Package
 The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating interactions such as printing welcome messages, 

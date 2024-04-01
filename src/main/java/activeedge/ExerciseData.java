@@ -1,4 +1,3 @@
-
 package activeedge;
 
 /**
@@ -109,6 +108,11 @@ public class ExerciseData {
         }
     }
 
+    /**
+     * The main method checks the exercise data validity and prints the exercises.
+     *
+     * @param args The command-line arguments (not used in this method).
+     */
     public static void main(String[] args) {
         // Check exercise data validity
         assertExerciseData();

@@ -26,8 +26,11 @@ public class LogWaterCommand {
      * Executes the command to log water intake.
      */
     public void execute() {
+        int quantity = 0;
         try {
-            int quantity = Integer.parseInt(quantityString);
+            quantity = Integer.parseInt(quantityString);
+            //@@author nikhil-2101
+            assert quantity >= 0;
             if (quantity <= 0) {
                 System.out.println("Water quantity must be above 0. Please try again.");
             } else {

@@ -38,8 +38,7 @@ public class AddExerciseItemCommand {
         if (ExerciseData.exerciseExists(exerciseName)) {
             // Exercise activity exists, log it
             CommandUi.promptLogExerciseMessage(exerciseName);
-        }
-        else {
+        } else {
             String[] newExercise = {exerciseName, Integer.toString(caloriesBurntPerMinute)};
             ExerciseData.exercisesList = appendItem(ExerciseData.exercisesList, newExercise);
             CommandUi.printAddExerciseMessage(exerciseName);

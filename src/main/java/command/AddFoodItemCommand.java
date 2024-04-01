@@ -1,6 +1,5 @@
 package command;
 
-import activeedge.ExerciseData;
 import activeedge.ui.CommandUi;
 
 import static activeedge.FoodData.foodItems;
@@ -27,8 +26,7 @@ public class AddFoodItemCommand {
         if (FoodData.foodItemExists(description)) {
             // Food item exists, prompt user to log it
             CommandUi.promptLogFoodMessage(description);
-        }
-        else {
+        } else {
             String[] newItem = {description, Integer.toString(caloriesPerSaving)};
 
             foodItems = appendItem(foodItems, newItem);

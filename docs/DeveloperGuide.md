@@ -167,31 +167,25 @@ in achieving their fitness objectives while navigating the challenges of univers
 
 ## Command Summary
 
-| Action                                                | Format   |
-|-------------------------------------------------------|----------|
-| Getting help                                          | `help`   |
-| Adding entries for meals                              | `log m/<MEAL_NAME> s/<SERVINGS>` |
-| Adding entries for water                              | `log w/<AMOUNT_OF_WATER>` |
-| Adding entries for exercises                          | `exercise <EXERCISE_NAME> d/<DURATION>` |
-| Showing daily summary of food, water intake and goals | `summary` |
-| Setting daily calories goal           | `set goal c/<CALORIE AMOUNT>`           |
-| Setting daily water goal              | `set goal w/<WATER AMOUNT>`             |
-| View daily calorie goal               | `show c`                                |
-| View daily water goal                 | `show w`                                |
-| View daily goals                      | `show g`                                |
-| Adding entries for meals              | `log m/<MEAL_NAME> s/<SERVINGS>`        |
-| Adding entries for water              | `log w/<AMOUNT_OF_WATER>`               |
-| Adding entries for exercises          | `log e/<EXERCISE_NAME> d/<DURATION>` |
-| View all entries for meals logged     | `list meals`                            |
-| View all entries for water logged     | `list water`                            |
-| View all entries for exercises logged | `list exercises`                        |
-| View all entries logged               | `list`                                  |
-| Getting help                          | `help`                                  |
-| Find entries that contain the keyword | `find <KEYWORD>`                        |
-| Prints all food data                  | `show food`                             |
-| Prints all exercise data              | `show exercises`                        |
-| Deletes the water/meal entry          | `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`  |
-| Clears all entry                      | `clear`
+| Action                                                | Format                                                                    |
+|-------------------------------------------------------|---------------------------------------------------------------------------|
+| Getting help                                          | `help`                                                                    |
+| Adding entries for meals                              | `log m/<MEAL_NAME> s/<SERVINGS>`                                          |
+| Adding entries for water                              | `log w/<AMOUNT_OF_WATER>`                                                 |
+| Adding entries for exercises                          | `log e/<EXERCISE_NAME> d/<DURATION>`                                      |
+| Showing daily summary of food, water intake and goals | `summary`                                                                 |
+| Setting daily calories goal           | `set goal c/<CALORIE AMOUNT>`                                             |
+| Setting daily water goal              | `set goal w/<WATER AMOUNT>`                                               |
+| View daily calorie goal               | `show c`                                                                  |
+| View daily water goal                 | `show w`                                                                  |
+| View daily goals                      | `show g`                                                                  |
+| View all entries logged               | `list`                                                                    |
+| Getting help                          | `help`                                                                    |
+| Find entries that contain the keyword | `find <KEYWORD>`                                                          |
+| Prints all food data                  | `show food`                                                               |
+| Prints all exercise data              | `show exercises`                                                          |
+| Deletes the water/meal entry          | `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`                                    |
+| Clears all entry                      | `clear`                                                                   
 | Adding new items to the food database and log meal         | `add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>` |
 
 

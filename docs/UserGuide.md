@@ -33,6 +33,8 @@ Example of usage:
 
 `log m/chicken rice s/1`
 
+![Main](../images/Logging meal name.png)
+
 ### Adding new food item to database and logs meal to list: `add`
 - Adds a new food item to the existing list of food items.
 - Ensures user can input any kind of food to keep track their calories.
@@ -59,6 +61,8 @@ Example of usage:
 
 `log w/100`
 
+![Main](../images/Logging water intake.png)
+
 ### Viewing Water Intake: `show`
 -Displays the total water intake and the percentage of water 
 that has been consumed in comparison to the water intake goal.
@@ -82,7 +86,10 @@ Example of usage:
 `set goal w/2000`
 `show g`
 
+![Main](../images/Goal Setting.png)
+
 ### Delete meals/water/exercises: `delete`
+
 -Deletes a meal/quantity of water(water intake) from the task list.
 -Supports deletion of tasks based on their descriptions.
 
@@ -100,6 +107,8 @@ Example of usage:
 `delete sushi`
 `delete calisthenics`
 
+![Main](../images/Deleting meals.png)
+
 ### Log exercises: `log`
 - Logs the exercises performed.
 - Track how many calories have burnt.
@@ -112,6 +121,8 @@ Format: `log e/<EXERCISE_NAME> d/<DURATION>`
 Example of usage:
 
 `log e/running d/10`
+
+![Main](../images/Logging exercises.png)
 
 ### Adding new exercise item to database and logs exercise to list: `add`
 - Adds a new exercise item to the existing list of exercises.
@@ -191,12 +202,9 @@ Here's a quick summary of commands available in ActiveEdge:
 * View goals: `show g`
 * Log meals: `log m/<MEAL_NAME> s/<SERVINGS>`
 * View daily calories: `show c`
-* View entries for logged meals: `list meals`
 * Log water: `log w/<AMOUNT_OF_WATER>`
 * View water intake: `show w`
-* View entries for logged water: `list water`
 * Log exercise: `log e/<EXERCISE_NAME> d/<DURATION>`
-* View entries for logged exercises: `list exercises`
 * View all entries logged: `list`
 * Help: `help`
 * Find: `find <KEYWORD>`
@@ -205,3 +213,5 @@ Here's a quick summary of commands available in ActiveEdge:
 * Add new food item to the database and log meal:`add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>`
 * Add new exercise to database and log it: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN>`
 * Clear: `clear`
+* Prints all food data: `show food`
+* Prints all exercise data: `show exercises`

@@ -4,3 +4,4 @@ Exercise calisthenics 5 40 kcal (Recorded on: 2024-04-01T13:40:03.195227400)
 Exercise swimming 10 80 kcal (Recorded on: 2024-04-01T13:40:14.273507400)
 Exercise running 4 40 kcal (Recorded on: 2024-04-01T13:40:26.432616300)
 Exercise running 5 25 kcal (Recorded on: 2024-04-01T13:49:49.622509)
+

@@ -1,5 +1,6 @@
 package activeedge.parser;
 
+import activeedge.ExerciseData;
 import command.HelpCommand;
 import command.LogWaterCommand;
 import command.LogMealCommand;
@@ -32,9 +33,11 @@ public class    Parser {
             LocalDateTime currentDateTime = LocalDateTime.now();
             if (input.contains("help")) {
                 new HelpCommand();
-            } else if (input.equalsIgnoreCase("list foods")) {
+            } else if (input.equalsIgnoreCase("FoodData")) {
                 FoodData.printFood();
-            }else if (input.startsWith("log")) {
+            }else if (input.equalsIgnoreCase("ExerciseData")) {
+                ExerciseData.printExercises();
+            } else if (input.startsWith("log")) {
                 String parts = input.substring(4);
                 String[] items = parts.split("/");
                 if (items[0].equals("w")) {

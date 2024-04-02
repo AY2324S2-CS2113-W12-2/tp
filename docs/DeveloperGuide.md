@@ -87,6 +87,16 @@ The Parser Class Diagram below shows how Execute, Parser, Error, Command classes
 
 ![Main](../images/Parser.png)
 
+### Command
+
+In the provided code, commands are represented as individual classes, each encapsulating a specific action or operation 
+within the ActiveEdge application, promoting modularity and separation of concerns.
+
+![Command](../images/Command-Class.png)
+
+
+
+
 ### Storage
 Storage is the main class responsible for file operations and data management.
 UserDetailsList, LogHeight, and LogWeight handle user details such as height and weight logs.

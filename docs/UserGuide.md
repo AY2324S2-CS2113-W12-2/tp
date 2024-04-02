@@ -19,7 +19,6 @@ follow these simple steps:
 
 ## Features 
 
-{Give detailed description of each feature}
 
 ### Logging Calorie Intake : `log`
 - Adds a new meal to the log along with the number of servings.
@@ -28,7 +27,7 @@ follow these simple steps:
 Format: `log m/<MEAL_NAME> s/<SERVINGS>`
 
 * The `<MEAL_NAME>` can be from any food from the food list.
-* The `<SERVINGS>` can be any interger value.  
+* The `<SERVINGS>` can be any integer value.  
 
 Example of usage: 
 
@@ -89,21 +88,24 @@ Example of usage:
 
 ![Main](../images/Goal Setting.png)
 
-### Delete meals/water: `delete`
+### Delete meals/water/exercises: `delete`
+
 -Deletes a meal/quantity of water(water intake) from the task list.
 -Supports deletion of tasks based on their descriptions.
 
-Format: `delete <QUANTITY_OF_WATER> ml` / `delete <MEAL_NAME>`
+Format: `delete <QUANTITY_OF_WATER> ml` / `delete <MEAL_NAME>` / `delete <EXERCISE_NAME>`
 
 * The `QUANTITY_OF_WATER` can be the quantity of water the 
 user logged previously and wishes to delete.
 * The `MEAL_NAME` can be the name of the meal the user 
 previously logged in and wishes to delete.
+* The `EXERCISE_NAME` can be the name of the exercise.
 
 Example of usage:
 
 `delete 100 ml`
 `delete sushi`
+`delete calisthenics`
 
 ![Main](../images/Deleting meals.png)
 
@@ -111,14 +113,14 @@ Example of usage:
 - Logs the exercises performed.
 - Track how many calories have burnt.
 
-Format: `delete e/<EXERCISE_NAME> d/<DURATION>`
+Format: `log e/<EXERCISE_NAME> d/<DURATION>`
 
 * The `EXERCISE_NAME` can any form of exercise done.
 * The `DURATION` can be the number of minutes the exercise has been done.
 
 Example of usage:
 
-`delete e/calisthetics d/10`
+`log e/running d/10`
 
 ![Main](../images/Logging exercises.png)
 
@@ -134,7 +136,7 @@ Format: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_PER_MIN>`
 
 Example of usage:
 
-`add m/carrot cake c/500 s/2`
+`add e/calisthenics c/10 d/5`
 
 ### Testing data for food items 
 
@@ -200,12 +202,9 @@ Here's a quick summary of commands available in ActiveEdge:
 * View goals: `show g`
 * Log meals: `log m/<MEAL_NAME> s/<SERVINGS>`
 * View daily calories: `show c`
-* View entries for logged meals: `list meals`
 * Log water: `log w/<AMOUNT_OF_WATER>`
 * View water intake: `show w`
-* View entries for logged water: `list water`
 * Log exercise: `log e/<EXERCISE_NAME> d/<DURATION>`
-* View entries for logged exercises: `list exercises`
 * View all entries logged: `list`
 * Help: `help`
 * Find: `find <KEYWORD>`
@@ -214,3 +213,5 @@ Here's a quick summary of commands available in ActiveEdge:
 * Add new food item to the database and log meal:`add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>`
 * Add new exercise to database and log it: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN>`
 * Clear: `clear`
+* Prints all food data: `show food`
+* Prints all exercise data: `show exercises`

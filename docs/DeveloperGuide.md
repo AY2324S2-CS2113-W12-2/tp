@@ -1,7 +1,33 @@
 # ActiveEdge Developer Guide 🥦🏃‍♂️
 
+## Table of Contents
+- [Introduction](#introduction)
+    - [Purpose](#purpose)
+    - [How to use the Developer Guide](#how-to-use-the-developer-guide)
+- [Quick Start](#quick-start)
+- [Design & Implementation](#design--implementation)
+    - [System Architecture](#system-architecture)
+    - [Main Component](#main-component)
+    - [UI Package](#ui-package)
+    - [Parser Package](#parser-package)
+    - [Command Package](#command-package)
+    - [LogList Package](#entrylist-package)
+    - [Storage Package](#storage-package)
+- [Product Scope](#product-scope)
+    - [Target User Profile](#target-user-profile)
+    - [Value Proposition](#value-proposition)
+- [User Stories](#user-stories)
+- [Non-Functional Requirements](#non-functional-requirements)
+- [Manual Testing](#instructions-for-manual-testing)
+- [Command Summary](#command-summary)
+- [Glossary](#glossary)
+- [Acknowledgements](#acknowledgements)
+
 ## Introduction
 **ActiveEdge** is a program for a university students to manage their food intake, water intake and exercises via the Command Line Interface (CLI).
+### Purpose
+This document specifies the architectural and software design decisions in the implementation of **ActiveEdge**.
+
 
 ### How to Use a Developer Guide
 
@@ -17,7 +43,6 @@ Seeking a brief overview of all features?
 Check out the Command Summary page for a summary of all commands.
 Uncertain about a specific term's meaning?
 Refer to the Glossary page for clarification.
-
 
 ## Quick Start
 
@@ -48,6 +73,11 @@ Active Edge is comprised of 8 major components:
 ```FoodData```: Active Edge's food database\
 ```ExerciseData```: Active Edge's exercise database\
 ### Generic Sequence Diagram
+The generic sequence diagram provides a visual representation of the interactions between various components within the
+ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such
+as user interface, data storage, and task management.
+
+![Generic Sequence Diagram](../images/Generic-Sequence-Diagram.png)
 
 ### Parser
 The Parser components can be found within the Parser package.
@@ -75,7 +105,7 @@ used within the Storage class but don't directly interact with the other classes
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
-![Main](../images/Main Component.png)
+![Main Component](../images/Main Component.png)
 
 ### UI Package
 The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating interactions such as printing welcome messages, 
@@ -93,6 +123,44 @@ Under commands, there are 17 sub-components:
 ```ShowSummaryCommand```: A command responsible for users to view a summary or overview of their calorie intake,calorie burnt during exercise .
 ```ViewWaterIntakeCommand```: A command responsible for users to view and track their water intake levels.
 
+### Task Package
+This package is structured to manage and represent various types of tasks within an application, potentially for goal tracking, 
+exercise logging, meal recording, and water intake monitoring. There are 3 main components of this package.
+![Ui](../images/Task_package.png)
+
+**Base class:`Task`**
++ **Purpose**: Serves as the foundational class for all types of tasks. It encapsulates the common
+attribute all tasks share, which is a description
++ **Attributes**: `description`: A `String` that provides a brief description of the task.
++ **Methods**: 
+  + `getDescription()`
+  + `toString()`
+
+**Derived class:`GoalTask`**
++ **Attributes**: Stores information about goals
++ **Functionality**: Allows users to log their goals
+
+**Derived class:`LogExercise`**
++ **Attributes**: Stores information about exercises, such as the name of food, duration, and calories burnt 
++ **Functionality**: Allows users to log their exercsies
+
+**Derived class:`MealTask`**
++ **Attributes**: Stores information about meals, such as the name of food, number of servings, and calories
++ **Functionality**: Allows users to log their meals 
+
+**Derived class:`WaterTask`**
++ **Attributes**: Stores information about water intake, such as the amount of water
++ **Functionality**: Allows users to log their water intake
+
+**Utility class:`TaskList`**
++ **Purpose**: Manages a collection of `Task` objects (including all derived types).
++ **Attributes**: `tasksList`: A static ArrayList that stores instances of `Task` and its subclasses.
++ **Methods**:
+  + `add(Task task)`
+  + `delete(int index)`
+  + `get()`
+  + `clearTasks()`
+  
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
 
@@ -158,32 +226,26 @@ in achieving their fitness objectives while navigating the challenges of univers
 
 ## Command Summary
 
-| Action                                                | Format   |
-|-------------------------------------------------------|----------|
-| Getting help                                          | `help`   |
-| Adding entries for meals                              | `log m/<MEAL_NAME> s/<SERVINGS>` |
-| Adding entries for water                              | `log w/<AMOUNT_OF_WATER>` |
-| Adding entries for exercises                          | `exercise <EXERCISE_NAME> d/<DURATION>` |
-| Showing daily summary of food, water intake and goals | `summary` |
-| Setting daily calories goal           | `set goal c/<CALORIE AMOUNT>`           |
-| Setting daily water goal              | `set goal w/<WATER AMOUNT>`             |
-| View daily calorie goal               | `show c`                                |
-| View daily water goal                 | `show w`                                |
-| View daily goals                      | `show g`                                |
-| Adding entries for meals              | `log m/<MEAL_NAME> s/<SERVINGS>`        |
-| Adding entries for water              | `log w/<AMOUNT_OF_WATER>`               |
-| Adding entries for exercises          | `log e/<EXERCISE_NAME> d/<DURATION>` |
-| View all entries for meals logged     | `list meals`                            |
-| View all entries for water logged     | `list water`                            |
-| View all entries for exercises logged | `list exercises`                        |
-| View all entries logged               | `list`                                  |
-| Getting help                          | `help`                                  |
-| Find entries that contain the keyword | `find <KEYWORD>`                        |
-| Prints all food data                  | `show food`                             |
-| Prints all exercise data              | `show exercises`                        |
-| Deletes the water/meal entry          | `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`  |
-| Clears all entry                      | `clear`
-| Adding new items to the food database and log meal         | `add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>` |
+| Action                                                | Format                                                                     |
+|-------------------------------------------------------|----------------------------------------------------------------------------|
+| Adding entries for meals                              | `log m/<MEAL_NAME> s/<SERVINGS>`                                           |
+| Adding entries for water                              | `log w/<AMOUNT_OF_WATER>`                                                  |
+| Adding entries for exercises                          | `log e/<EXERCISE_NAME> d/<DURATION>`                                       |
+| Showing daily summary of food, water intake and goals | `summary`                                                                  |
+| Setting daily calories goal                           | `set goal c/<CALORIE AMOUNT>`                                              |
+| Setting daily water goal                              | `set goal w/<WATER AMOUNT>`                                                |
+| View daily calorie intake                             | `show c`                                                                   |
+| View daily water intake                               | `show w`                                                                   |
+| View daily goals                                      | `show g`                                                                   |
+| View all entries logged                               | `list`                                                                     |
+| Getting help                                          | `help`                                                                     |
+| Find entries that contain the keyword                 | `find <KEYWORD>`                                                           |
+| Prints all food data                                  | `show food`                                                                |
+| Prints all exercise data                              | `show exercises`                                                           |
+| Deletes the water/meal entry                          | `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`                                     |
+| Clears all entry                                      | `clear`                                                                    |
+| Adding new items to the food database and log meal    | `add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>`  |
+| Adding new exercise to database and log it:           | `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN>`   |
 
 
 

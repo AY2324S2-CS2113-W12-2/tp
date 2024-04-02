@@ -1,7 +1,7 @@
 package command;
 
 import activeedge.ui.CommandUi;
-import activeedge.task.ExerciseTask;
+import activeedge.task.LogExercise;
 import static activeedge.task.TaskList.tasksList;
 import java.time.LocalDateTime;
 
@@ -43,7 +43,7 @@ public class LogExerciseCommand {
     public void execute() throws ActiveEdgeException {
 
         if (isItemPresentInExerciseData){
-            ExerciseTask logExercise = new ExerciseTask(exerciseName, duration, caloriesBurnt, dateTime);
+            LogExercise logExercise = new LogExercise(exerciseName, duration, caloriesBurnt, dateTime);
             tasksList.add(logExercise);
             CommandUi.printExerciseLogMessage(logExercise);
         } else {

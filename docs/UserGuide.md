@@ -34,6 +34,8 @@ Example of usage:
 
 `log m/chicken rice s/1`
 
+![Main](../images/Logging meal name.png)
+
 ### Adding new food item to database and logs meal to list: `add`
 - Adds a new food item to the existing list of food items.
 - Ensures user can input any kind of food to keep track their calories.
@@ -60,6 +62,8 @@ Example of usage:
 
 `log w/100`
 
+![Main](../images/Logging water intake.png)
+
 ### Viewing Water Intake: `show`
 -Displays the total water intake and the percentage of water 
 that has been consumed in comparison to the water intake goal.
@@ -83,6 +87,8 @@ Example of usage:
 `set goal w/2000`
 `show g`
 
+![Main](../images/Goal Setting.png)
+
 ### Delete meals/water: `delete`
 -Deletes a meal/quantity of water(water intake) from the task list.
 -Supports deletion of tasks based on their descriptions.
@@ -99,6 +105,8 @@ Example of usage:
 `delete 100 ml`
 `delete sushi`
 
+![Main](../images/Deleting meals.png)
+
 ### Log exercises: `log`
 - Logs the exercises performed.
 - Track how many calories have burnt.
@@ -111,6 +119,8 @@ Format: `delete e/<EXERCISE_NAME> d/<DURATION>`
 Example of usage:
 
 `delete e/calisthetics d/10`
+
+![Main](../images/Logging exercises.png)
 
 ### Adding new exercise item to database and logs exercise to list: `add`
 - Adds a new exercise item to the existing list of exercises.

@@ -3,6 +3,22 @@
 ## Introduction
 **ActiveEdge** is a program for a university students to manage their food intake, water intake and exercises via the Command Line Interface (CLI).
 
+### How to Use a Developer Guide
+
+Are you a newcomer?
+No problem, navigate to the Quick Start section.
+Feeling disoriented within the content?
+Refer to the Table of Contents to find the appropriate pages.
+Require assistance with the features?
+Consult the Features section in the User Guide for thorough guidance.
+Have inquiries for us?
+Visit the FAQ section in the User Guide.
+Seeking a brief overview of all features?
+Check out the Command Summary page for a summary of all commands.
+Uncertain about a specific term's meaning?
+Refer to the Glossary page for clarification.
+
+
 ## Quick Start
 
 To get started quickly with ActiveEdge,
@@ -39,6 +55,8 @@ It is responsible for parsing the input String of the user, and returning an app
 If the input is invalid, it throws exceptions to the Error package for error handling.
 The Parser Class Diagram below shows how Execute, Parser, Error, Command classes of their respective packages work together.
 
+![Main](../images/Parser.png)
+
 ### Storage
 Storage is the main class responsible for file operations and data management.
 UserDetailsList, LogHeight, and LogWeight handle user details such as height and weight logs.
@@ -46,6 +64,9 @@ TaskList manages various types of tasks including goals, meals, water intake, an
 GoalTask, MealTask, WaterTask, and ExerciseTask are specific task types with their attributes.
 AddBMICommand, AddHeightCommand, and AddWeightCommand are commands for adding BMI, height, and weight respectively.
 The relationships depicted in the diagram are primarily composition and inheritance:
+
+
+![Main](../images/Storage.png)
 
 Storage has composition relationships with UserDetailsList and TaskList as it manages instances of these classes.
 UserDetailsList and TaskList have a composition relationship with their respective contained classes (LogHeight, LogWeight, GoalTask, MealTask, WaterTask, ExerciseTask) 
@@ -123,8 +144,9 @@ in achieving their fitness objectives while navigating the challenges of univers
 
 
 ## Non-Functional Requirements
-
-{Give non-functional requirements}
+1. Should be portable and working on any mainstream OS as long as it has Java 11 or above installed.
+2. Should be able to hold up to 100 food items or list of exercises without any lag in the performance of the app  for typical usage.
+3. The average keyboard user should complete tasks more quickly using ActiveEdge compared to a standard GUI application.
 
 ## Glossary
 

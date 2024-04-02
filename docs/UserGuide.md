@@ -191,12 +191,9 @@ Here's a quick summary of commands available in ActiveEdge:
 * View goals: `show g`
 * Log meals: `log m/<MEAL_NAME> s/<SERVINGS>`
 * View daily calories: `show c`
-* View entries for logged meals: `list meals`
 * Log water: `log w/<AMOUNT_OF_WATER>`
 * View water intake: `show w`
-* View entries for logged water: `list water`
 * Log exercise: `log e/<EXERCISE_NAME> d/<DURATION>`
-* View entries for logged exercises: `list exercises`
 * View all entries logged: `list`
 * Help: `help`
 * Find: `find <KEYWORD>`
@@ -205,3 +202,5 @@ Here's a quick summary of commands available in ActiveEdge:
 * Add new food item to the database and log meal:`add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>`
 * Add new exercise to database and log it: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN>`
 * Clear: `clear`
+* Prints all food data: `show food`
+* Prints all exercise data: `show exercises`

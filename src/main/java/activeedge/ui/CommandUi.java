@@ -7,7 +7,6 @@ import activeedge.task.Task;
 import activeedge.task.WaterTask;
 import activeedge.task.MealTask;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
@@ -153,10 +152,17 @@ public class CommandUi {
         System.out.println(LINE);
     }
 
+    /**
+     * Prints a message indicating that the delete request format is invalid.
+     */
     public static void printInvalidDeleteFormatMessage() {
         System.out.println("This is an invalid request. Please try again!");
     }
 
+    /**
+     * Prints a message confirming the deletion of a task.
+     * @param deletedTask The task that was deleted.
+     */
     public static void printTaskDeletedMessage(Task deletedTask) {
         System.out.println("Task deleted: " + deletedTask.getDescription());
     }
@@ -176,6 +182,7 @@ public class CommandUi {
                 "Eg: 'add m/"+ exerciseName +" c/120 d/2'\n"
         );
     }
+
 
     public static void printAddFoodItemMessage(String description){
         System.out.println(description + " has been added to the food database.\n" +
@@ -208,14 +215,30 @@ public class CommandUi {
         System.out.println("Calorie status: " + calorieStatus);
     }
 
-    public static String formatDateTime(LocalDateTime dateTime) {
-        return dateTime.format(DATE_TIME_FORMATTER);
-    }
     public static void printAllTasksClearedMessage() {
         System.out.println("All logged data has been cleared.");
     }
     public static void printDataAlreadyClearedMessage() {
         System.out.println("Logged data has already been cleared.");
+    }
+
+    /**
+     * Prompts the user to log an exercise instead of adding it because it already exists.
+     * @param exerciseName The name of the existing exercise.
+     */
+
+    public static void promptLogExerciseMessage(String exerciseName) {
+        System.out.println("The exercise '" + exerciseName + " already exists. Please log " + exerciseName +
+                " instead of adding it.");
+    }
+
+    /**
+     * Prompts the user to log a food item instead of adding it because it already exists.
+     * @param foodItemName The name of the existing food item.
+     */
+    public static void promptLogFoodMessage(String foodItemName) {
+        System.out.println("The food item '" + foodItemName + "' already exists. Please log " + foodItemName +
+                " instead of adding it.");
     }
 
 }

@@ -1,5 +1,7 @@
-Height 170 cm (Recorded on: 2024-03-30T00:13:20.821885)
-Weight 60 kg (Recorded on: 2024-03-30T00:13:23.814384)
-Meal sushi 2 700 kcal (Recorded on: 2024-03-30T00:13:33.845526)
-Exercise running 40 400 kcal (Recorded on: 2024-03-30T00:14:23.372149)
+Height 180 cm (Recorded on: 2024-04-01T13:38:36.005228800)
+Weight 88 kg (Recorded on: 2024-04-01T13:38:37.002732)
+Exercise calisthenics 5 40 kcal (Recorded on: 2024-04-01T13:40:03.195227400)
+Exercise swimming 10 80 kcal (Recorded on: 2024-04-01T13:40:14.273507400)
+Exercise running 4 40 kcal (Recorded on: 2024-04-01T13:40:26.432616300)
+Exercise running 5 25 kcal (Recorded on: 2024-04-01T13:49:49.622509)
 

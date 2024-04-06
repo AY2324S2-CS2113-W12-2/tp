@@ -1,5 +1,6 @@
 package activeedge;
 
+
 /**
  * The ExerciseData class stores information about various exercise activities.
  */
@@ -89,13 +90,16 @@ public class ExerciseData {
     /**
      * Prints the exercise details for each exercise activity in the exerciseList array.
      */
+    // In ExerciseData class
     public static void printExercises() {
         for (int i = 0; i < exercisesList.length; i++) {
-            System.out.println("Exercise Name: " + exercisesList[i][0]);
-            System.out.println("Calories Burnt Per Minute: " + exercisesList[i][1]);
-            System.out.println(); // Empty line for readability
+            // Concatenate the exercise name and calories burnt per minute in the same line
+            String exerciseInfo = "Exercise Name: " + exercisesList[i][0] + " | Calories Burnt Per Minute: "
+                    + exercisesList[i][1] +" kcal";
+            System.out.println(exerciseInfo);
         }
     }
+
     /**
      * Asserts that the exercise data is valid.
      * For example, it checks that each exercise has a non-empty name and a positive calories burnt value.
@@ -106,6 +110,20 @@ public class ExerciseData {
             int caloriesBurnt = Integer.parseInt(exercise[1]);
             assert caloriesBurnt > 0 : "Calories burnt per minute must be positive";
         }
+    }
+
+    /**
+     * Checks if an exercise with the given exercise name already exists in the list of exercises.
+     * @param exerciseName The name of the exercise to check.
+     * @return true if the exercise exists, false otherwise.
+     */
+    public static boolean exerciseExists(String exerciseName) {
+        for (String[] exercise : exercisesList) {
+            if (exercise[0].equalsIgnoreCase(exerciseName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

@@ -232,11 +232,12 @@ public class FoodData {
     /**
      * Prints the calories of each food item in the foodItems array.
      */
-
-    public static void printFood(){
-        for (int i = 0; i < foodItems.length; i++){
-            // Print the calorie value
-            System.out.println(foodItems[i][1]);
+    // In FoodData class
+    public static void printFood() {
+        for (int i = 0; i < foodItems.length; i++) {
+            // Concatenate the food name, calories, and "kcal" in the same line
+            String foodInfo = "Food Name: " + foodItems[i][0] + " | Calories: " + foodItems[i][1] + " kcal";
+            System.out.println(foodInfo);
 
             // Assert that the calorie value is a valid integer
             try {
@@ -246,6 +247,21 @@ public class FoodData {
                 System.err.println("Invalid calorie value for food item: " + foodItems[i][0]);
             }
         }
+    }
+
+    /**
+     * Checks if a food item with the given description already exists in the list of food items.
+     * @param description The description of the food item to check.
+     * @return true if the food item exists, false otherwise.
+     */
+
+    public static boolean foodItemExists(String description) {
+        for (String[] foodItem : foodItems) {
+            if (foodItem[0].equalsIgnoreCase(description)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

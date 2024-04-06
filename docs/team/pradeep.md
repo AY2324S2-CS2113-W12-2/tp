@@ -38,4 +38,5 @@ approving PRs and made sure respective issues were solved with the code.
 insights and offering support on the forum. I reported bugs and provided assistance in resolving issues in other team's 
 products, showcasing my helping tendency and commitment to collaboration.
 
-My leadership, dedication, and technical expertise have been instrumental in the success of our project. I believe my contributions warrant a favorable evaluation and recognition for my efforts.
+My leadership, dedication, and technical expertise have been instrumental in the success of our project. I believe my 
+contributions warrant a favorable evaluation and recognition for my efforts.

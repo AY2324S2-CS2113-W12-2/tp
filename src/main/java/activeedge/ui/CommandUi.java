@@ -164,22 +164,22 @@ public class CommandUi {
      * @param deletedTask The task that was deleted.
      */
     public static void printTaskDeletedMessage(Task deletedTask) {
-        System.out.println("Task deleted: " + deletedTask.getDescription());
+        System.out.println("Log deleted: " + deletedTask.getDescription());
     }
 
     public static void printFoodItemNotFoundMessage(String description){
         System.out.println(description + " is not found in our food database.\n" +
-                "Please enter the following command to add it to the database and log your mea.l\n\n" +
+                "Please enter the following command to add it to the database and log your meal.\n\n" +
                 "add m/[FOOD] c/[CALORIES_PER_SERVING(kCal)] s/[NUMBER_OF_SERVINGS]\n\n" +
                 "Eg: 'add m/"+ description +" c/120 s/2'\n"
         );
     }
 
     public static void printExerciseItemNotFoundMessage(String exerciseName){
-        System.out.println(exerciseName + " is not found in our food database.\n" +
-                "Please enter the following command to add it to the database and log your mea.l\n\n" +
-                "add m/[FOOD] c/[CALORIES_PER_SERVING(kCal)] s/[NUMBER_OF_SERVINGS]\n\n" +
-                "Eg: 'add m/"+ exerciseName +" c/120 d/2'\n"
+        System.out.println(exerciseName + " is not found in our exercise database.\n" +
+                "Please enter the following command to add it to the database and log your exercise.\n\n" +
+                "add e/[EXERCISE] c/[CALORIES_BURNT_PER_MIN(kCal)] s/[DURATION_IN_MIN]\n\n" +
+                "Eg: 'add e/"+ exerciseName +" c/120 d/2'\n"
         );
     }
 

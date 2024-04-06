@@ -128,11 +128,11 @@ Example of usage:
 - Adds a new exercise item to the existing list of exercises.
 - Ensures user can input any kind of exercise to keep track of their calories.
 
-Format: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_PER_MIN>`
+Format: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>`
 
 * The `<EXERCISE>` can be any form.
 * The `<CALORIES_BURNT_PER_MIN>` can be a rough guage of calories being burnt.
-* The `<DURATION_PER_MIN>` can be any integer value.
+* The `<DURATION_IN_MIN>` can be any integer value.
 
 Example of usage:
 
@@ -185,7 +185,7 @@ and then copy the "data.txt" file into this newly created folder.
 **A**: Unfortunately, deleted entries are not recoverable, so it's 
 important to be careful when using the delete command.
 
-**Q**: I accidentally clearedthe data. Is there a way to recover it?
+**Q**: I accidentally cleared the data. Is there a way to recover it?
 
 **A**: Unfortunately, cleared data are not recoverable, so it's
 important to be careful when using the clear command.

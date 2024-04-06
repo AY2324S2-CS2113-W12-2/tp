@@ -135,7 +135,7 @@ public class Storage {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        System.out.println("You can now start logging data! Type 'help' " +
+        System.out.println("You can now start setting goals and logging data! Type 'help' " +
                 "if you are not sure how to use ActiveEdge.");
     }
 

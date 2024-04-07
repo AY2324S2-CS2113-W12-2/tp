@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+autonumber
+participant ActiveEdge
+participant CommandUi
+
+ActiveEdge -> CommandUi: PrintMealLogMessage()
+ActiveEdge -> CommandUi: PrintExerciseLogMessage()
+ActiveEdge -> CommandUi: PrintWaterLogMessage()
+ActiveEdge -> CommandUi: PrintAddFoodItemMessage()
+ActiveEdge -> CommandUi: PrintAddExerciseMessage()
+
+
+@enduml

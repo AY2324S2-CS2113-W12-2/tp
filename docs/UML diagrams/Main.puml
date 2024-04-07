@@ -2,10 +2,39 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
+User -> ActiveEdge: Run()
+note right of ActiveEdge
+    Create new Scanner object
+end note
+ActiveEdge -> CommandUi: PrintWelcomeMessage()
+note right of ActiveEdge
+    Print welcome message to console
+end note
+ActiveEdge -> Parser: Create Parser object
+note right of ActiveEdge
+    Initialize Parser for handling input
+end note
+ActiveEdge -> Storage: FetchData()
+note right of ActiveEdge
+    Fetch data from storage
+end note
+ActiveEdge -> Scanner: NextLine()
+note right of ActiveEdge
+    Read input from the user
+end note
+loop until "bye" is entered
+    ActiveEdge -> Parser: HandleInput(input)
+    note right of ActiveEdge
+        Handle the input using the Parser
+    end note
+    ActiveEdge -> Scanner: NextLine()
+    note right of ActiveEdge
+        Read the next input from the user
+    end note
+end loop
+ActiveEdge -> ByeUi: PrintByeMessage()
+note right of ActiveEdge
+    Print bye message to console
+end note
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
 @enduml

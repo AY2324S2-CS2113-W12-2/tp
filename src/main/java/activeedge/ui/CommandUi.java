@@ -70,6 +70,7 @@ public class CommandUi {
         int totalCalories = 0;
         int totalCaloriesFromMeals = 0;
         int totalCaloriesFromExercises = 0;
+        int caloriegoal;
         String goal = "0";
         for (int i = 0; i < tasksList.size(); i++) {
             String[] parts = tasksList.get(i).toString().split(" ");
@@ -98,14 +99,32 @@ public class CommandUi {
                 }
             }
             if(tasksList.get(i).toString().startsWith("Goal")) {
-                if (parts[1].equals("c")) {
+                if (parts[1].equals("Calorie")) {
                     goal = parts[2].toString();
                 }
             }
         }
         totalCalories = totalCaloriesFromMeals - totalCaloriesFromExercises;
+
         System.out.print("Total calories today: ");
-        System.out.println(totalCalories + " kcal out of " + goal + " kcal");
+        System.out.println(totalCalories + " kcal consumed out of " + goal + " kcal goal");
+
+        int totalSurplus = totalCalories - Integer.parseInt(goal);
+        System.out.print("Total calories consumed today: ");
+        System.out.println("You have burned " + totalCaloriesFromExercises + " today!");
+        System.out.println("You have consumed " + totalCaloriesFromMeals + " kcal out of " + goal + " kcal");
+        if(totalCaloriesFromMeals > Integer.parseInt(goal)) {
+            System.out.println("You have exceeded your calorie intake goal!");
+        } else{
+            System.out.println("You're doing an excellent job of managing your calorie intake!");
+        }
+        if(totalSurplus > 0){
+            System.out.println("Calorie surplus at the moment --> " + totalSurplus);
+        }
+        else{
+            System.out.println("Calorie deficit at the moment --> " + -totalSurplus);
+        }
+
     }
 
     public static void printWaterLogMessage(WaterTask newWaterTask) {
@@ -236,4 +255,12 @@ public class CommandUi {
                 " instead of adding it.");
     }
 
+    public static void printCalorieExceedingWarning() {
+        System.out.println("WARNING: You are exceeding your calorie intake!");
+    }
+
+
+    public static void printErrorMessage(String errorMessage) {
+        System.out.println("ERROR: " + errorMessage);
+    }
 }

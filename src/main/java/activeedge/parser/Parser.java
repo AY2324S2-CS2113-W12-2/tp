@@ -8,7 +8,6 @@ import command.ListFullCommand;
 import command.ShowCaloriesCommand;
 import command.ViewWaterIntakeCommand;
 import command.ShowGoalsCommand;
-import command.AddGoalsCommand;
 import command.FindCommand;
 import command.DeleteTaskCommand;
 import command.ActiveEdgeException;
@@ -48,47 +47,60 @@ public class    Parser {
                     String[] logParts = input.split("m/|s/");
                     int length = logParts.length;
                     assert length >= 3;
-                    String description = logParts[1].trim();
-                    try {
-                        int servings = Integer.parseInt(logParts[2]);
-                        if (servings != Double.parseDouble(logParts[2])) {
-                            System.out.println("Servings must be an integer value.");
-                            return;
-                        }
-                        int calories = 0;
-                        boolean isItemPresentInFoodData = false;
-
-                        for (int i = 0; i < foodItems.length; i++) {
-                            if (foodItems[i][0].equals(description)) {
-                                calories = Integer.parseInt(foodItems[i][1]) * servings;
-                                isItemPresentInFoodData = true;
+                    if(length >= 3) {
+                        String description = logParts[1].trim();
+                        try {
+                            int servings = Integer.parseInt(logParts[2]);
+                            if (servings != Double.parseDouble(logParts[2])) {
+                                System.out.println("Servings must be an integer value.");
+                                return;
                             }
-                        }
+                            int calories = 0;
+                            boolean isItemPresentInFoodData = false;
 
-                        LogMealCommand logMealCommand = new LogMealCommand(description, servings,
-                                calories, currentDateTime, isItemPresentInFoodData);
-                        logMealCommand.execute();
-                    } catch(NumberFormatException e){
-                        System.out.println("Servings must be an integer value. Please try again.");
+                            for (int i = 0; i < foodItems.length; i++) {
+                                if (foodItems[i][0].equals(description)) {
+                                    calories = Integer.parseInt(foodItems[i][1]) * servings;
+                                    isItemPresentInFoodData = true;
+                                }
+                            }
+
+                            LogMealCommand logMealCommand = new LogMealCommand(description, servings,
+                                    calories, currentDateTime, isItemPresentInFoodData);
+                            logMealCommand.execute();
+                        } catch (NumberFormatException e) {
+                            System.out.println("Servings must be an integer value. Please try again.");
+                        }
+                    } else {
+                        System.out.println("Invalid command. Please enter 'log m/[FOOD]" +
+                                " s/[NUMBER_OF_SERVINGS]'.");
+                        System.out.println("For example, 'log m/chicken rice s/2'. Enter 'help' for more information.");
                     }
                 } else if (items[0].equals("e")){
                     String[] logParts = input.split("e/|d/");
                     int length = logParts.length;
                     assert length >= 3;
-                    String exerciseName = logParts[1].trim();
-                    int duration = Integer.parseInt(logParts[2]);
-                    int caloriesBurnt = 0;
-                    boolean isItemPresentInExerciseData = false;
+                    if(length >= 3) {
+                        String exerciseName = logParts[1].trim();
+                        int duration = Integer.parseInt(logParts[2]);
+                        int caloriesBurnt = 0;
+                        boolean isItemPresentInExerciseData = false;
 
-                    for (int i = 0; i < exercisesList.length; i++) {
-                        if (exercisesList[i][0].equals(exerciseName)) {
-                            caloriesBurnt = Integer.parseInt(exercisesList[i][1]) * duration;
-                            isItemPresentInExerciseData = true;
+                        for (int i = 0; i < exercisesList.length; i++) {
+                            if (exercisesList[i][0].equals(exerciseName)) {
+                                caloriesBurnt = Integer.parseInt(exercisesList[i][1]) * duration;
+                                isItemPresentInExerciseData = true;
+                            }
                         }
+                        LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
+                                caloriesBurnt, currentDateTime, isItemPresentInExerciseData);
+                        logExerciseCommand.execute();
                     }
-                    LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
-                            caloriesBurnt, currentDateTime, isItemPresentInExerciseData);
-                    logExerciseCommand.execute();
+                    else {
+                        System.out.println("Invalid command. Please enter 'log e/[EXERCISE]" +
+                                " D/[DURATION_IN_MINUTES]'.");
+                        System.out.println("For example, 'log e/running d/10'. Enter 'help' for more information.");
+                    }
 
                 }
 
@@ -100,7 +112,11 @@ public class    Parser {
                 }
             } else if (input.startsWith("show")) { //show calories, water, and goals
                 String[] parts = input.split(" ");
-                if (parts[1].startsWith("c")) { //shows calorie
+                if(parts.length == 1){
+                    System.out.println("Please specify what you wish to view: ");
+                    System.out.println("1. 'show w' to view your current water intake");
+                    System.out.println("2. 'show c' to view your current calories intake");
+                } else if (parts[1].startsWith("c")) { //shows calorie
                     new ShowCaloriesCommand();
                 } else if (parts[1].startsWith("w")) { //shows water
                     ViewWaterIntakeCommand viewWaterIntakeCommand = new ViewWaterIntakeCommand();
@@ -110,34 +126,6 @@ public class    Parser {
                     showGoalsCommand.execute();
                 } else {
                     System.out.println("Invalid command!\n");
-                }
-            } else if (input.startsWith("set goal")) {
-                // Handle setting goals
-                String[] parts = input.split("/");
-                if (parts.length != 2) {
-                    System.out.println("Invalid command. " +
-                            "Please use the format 'set goal c/NUMBER' or 'set goal w/NUMBER'.");
-                    return;
-                }
-                String goalType = parts[0].substring(parts[0].length() - 1);
-                try {
-                    int goalAmount = Integer.parseInt(parts[1]);
-                    if (goalAmount <= 0) {
-                        System.out.println("Goal amount must be a positive integer.");
-                        return;
-                    }
-                    assert goalAmount > 0 : "Goal amount must be positive integer";
-                    if (goalType.equals("c")) {
-                        new AddGoalsCommand(goalType, goalAmount, currentDateTime).execute();
-                    } else if (goalType.equals("w")) {
-                        new AddGoalsCommand(goalType, goalAmount, currentDateTime).execute();
-                    } else {
-                        System.out.println("Invalid goal type. " +
-                                "Please use 'c' for calories or 'w' for water.");
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid goal amount. " +
-                            "Please provide a valid integer.");
                 }
             } else if(input.startsWith("find")) {
                 new FindCommand(input);
@@ -157,9 +145,14 @@ public class    Parser {
                     try {
                         int servings = Integer.parseInt(logParts[3].trim());
                         int caloriesPerServing = Integer.parseInt(logParts[2].trim());
-                        AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
-                                caloriesPerServing, currentDateTime);
-                        addFoodItemCommand.execute();
+                        if(servings == 0 || caloriesPerServing == 0){
+                            System.out.println("Please input a value above 0!");
+                        }
+                        else {
+                            AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
+                                    caloriesPerServing, currentDateTime);
+                            addFoodItemCommand.execute();
+                        }
                     } catch(NumberFormatException e){
                         System.out.println("Servings and calories per serving must be an integer value. " +
                                 "Please try again.");

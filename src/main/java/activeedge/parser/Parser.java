@@ -51,8 +51,8 @@ public class    Parser {
                         String description = logParts[1].trim();
                         try {
                             int servings = Integer.parseInt(logParts[2]);
-                            if (servings != Double.parseDouble(logParts[2])) {
-                                System.out.println("Servings must be an integer value.");
+                            if (servings != Double.parseDouble(logParts[2]) || servings <= 0) {
+                                System.out.println("Servings must be a positive integer value.");
                                 return;
                             }
                             int calories = 0;
@@ -64,12 +64,11 @@ public class    Parser {
                                     isItemPresentInFoodData = true;
                                 }
                             }
-
                             LogMealCommand logMealCommand = new LogMealCommand(description, servings,
                                     calories, currentDateTime, isItemPresentInFoodData);
                             logMealCommand.execute();
                         } catch (NumberFormatException e) {
-                            System.out.println("Servings must be an integer value. Please try again.");
+                            System.out.println("Servings must be a positive integer value. Please try again.");
                         }
                     } else {
                         System.out.println("Invalid command. Please enter 'log m/[FOOD]" +
@@ -82,26 +81,33 @@ public class    Parser {
                     assert length >= 3;
                     if(length >= 3) {
                         String exerciseName = logParts[1].trim();
-                        int duration = Integer.parseInt(logParts[2]);
-                        int caloriesBurnt = 0;
-                        boolean isItemPresentInExerciseData = false;
-
-                        for (int i = 0; i < exercisesList.length; i++) {
-                            if (exercisesList[i][0].equals(exerciseName)) {
-                                caloriesBurnt = Integer.parseInt(exercisesList[i][1]) * duration;
-                                isItemPresentInExerciseData = true;
+                        try {
+                            int duration = Integer.parseInt(logParts[2]);
+                            if (duration <= 0) {
+                                System.out.println("Duration must be a positive integer value.");
+                                return;
                             }
+                            int caloriesBurnt = 0;
+                            boolean isItemPresentInExerciseData = false;
+
+                            for (int i = 0; i < exercisesList.length; i++) {
+                                if (exercisesList[i][0].equals(exerciseName)) {
+                                    caloriesBurnt = Integer.parseInt(exercisesList[i][1]) * duration;
+                                    isItemPresentInExerciseData = true;
+                                }
+                            }
+                            LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
+                                    caloriesBurnt, currentDateTime, isItemPresentInExerciseData);
+                            logExerciseCommand.execute();
+                        } catch (NumberFormatException e) {
+                            System.out.println("Duration must be a positive integer value. Please try again.");
                         }
-                        LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
-                                caloriesBurnt, currentDateTime, isItemPresentInExerciseData);
-                        logExerciseCommand.execute();
                     }
                     else {
                         System.out.println("Invalid command. Please enter 'log e/[EXERCISE]" +
                                 " D/[DURATION_IN_MINUTES]'.");
                         System.out.println("For example, 'log e/running d/10'. Enter 'help' for more information.");
                     }
-
                 }
 
             } else if (input.startsWith("list")) {

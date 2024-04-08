@@ -159,7 +159,7 @@ Example of usage:
 
 -Users can use these data to test out the application
 
-| Food Item     | Calories Burnt Per minute |
+| Exercise Item | Calories Burnt Per minute |
 |---------------|---------------------------|
 | running       | 10                        |
 | cycling       | 8                         |
@@ -193,25 +193,24 @@ important to be careful when using the clear command.
 
 ## Command Summary
 
-{Give a 'cheat sheet' of commands here}
-
 Here's a quick summary of commands available in ActiveEdge:
 
-* Set daily calorie goal: `set goal c/<CALORIE_GOAL>`
-* Set daily water goal: `set goal w/<WATER_GOAL>`
-* View goals: `show g`
-* Log meals: `log m/<MEAL_NAME> s/<SERVINGS>`
-* View daily calories: `show c`
-* Log water: `log w/<AMOUNT_OF_WATER>`
-* View water intake: `show w`
-* Log exercise: `log e/<EXERCISE_NAME> d/<DURATION>`
-* View all entries logged: `list`
-* Help: `help`
-* Find: `find <KEYWORD>`
-* Delete items from list: `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`
-* Show daily summary of food, water intake and goals: `summary`
-* Add new food item to the database and log meal:`add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>`
-* Add new exercise to database and log it: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN>`
-* Clear: `clear`
-* Prints all food data: `show food`
-* Prints all exercise data: `show exercises`
+
+1. set goal c/<CALORIE_GOAL> | Sets the daily calorie goal.
+2. set goal w/<WATER_GOAL> | Sets the daily water goal.
+3. show g | Displays the set goals.
+4. log m/<MEAL_NAME> s/<SERVINGS> | Logs consumed meals and their servings.
+5. show c | Displays the daily calorie intake.
+6. log w/<AMOUNT_OF_WATER> | Logs consumed water amount.
+7. show w | Displays the water intake.
+8. log e/<EXERCISE_NAME> d/<DURATION> | Logs performed exercises and their duration.
+9. list | Shows all logged entries.
+10. help | Provides assistance.
+11. find <KEYWORD> | Searches for entries with a specified keyword.
+12. delete <AMOUNT_OF_WATER>/<MEAL_NAME> | Deletes specified entries from the list.
+13. summary | Shows a daily summary of food, water intake, and goals.
+14. add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS> | Adds a new food item to the database and logs a meal.
+15. add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN> | Adds a new exercise to the database and logs it.
+16. clear | Clears the interface.
+17. show food | Prints all food data.
+18. show exercises | Prints all exercise data.

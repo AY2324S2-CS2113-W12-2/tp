@@ -158,7 +158,8 @@ public class Storage {
                     if (calorieGoal <= 0) {
                         throw new IllegalArgumentException("Calorie goal must be a positive integer.");
                     }
-                    AddCalorieGoalCommand addCalorieGoalCommand = new AddCalorieGoalCommand(calorieGoal, LocalDateTime.now());
+                    AddCalorieGoalCommand addCalorieGoalCommand = new
+                            AddCalorieGoalCommand(calorieGoal, LocalDateTime.now());
                     addCalorieGoalCommand.execute();
                     saveLogsToFile("data/data.txt");
                     k++;

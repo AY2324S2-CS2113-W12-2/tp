@@ -8,8 +8,6 @@ import command.ListFullCommand;
 import command.ShowCaloriesCommand;
 import command.ViewWaterIntakeCommand;
 import command.ShowGoalsCommand;
-import command.AddCalorieGoalCommand;
-import command.AddWaterGoalCommand;
 import command.FindCommand;
 import command.DeleteTaskCommand;
 import command.ActiveEdgeException;

@@ -1,6 +1,5 @@
 package activeedge.ui;
 
-import command.ActiveEdgeException;
 
 /**
  * The GoalsUi class provides user interface functionalities for managing health goals in the ActiveEdge application.

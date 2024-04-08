@@ -18,5 +18,5 @@ public class AddWaterGoalCommand {
         tasksList.add(waterGoalTask);
         // Add logic to save water goal to task list
     }
-    
+
 }

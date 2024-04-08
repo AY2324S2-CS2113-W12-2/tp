@@ -33,8 +33,8 @@ public class LogMealCommand {
                 tasksList.add(logMeal);
                 CommandUi.printMealLogMessage(logMeal);
                 if (exceedsCalorieGoal(totalCaloriesConsumed)) {
-                        CommandUi.printCalorieExceedingWarning();
-                    }
+                    CommandUi.printCalorieExceedingWarning();
+                }
             } else {
                 CommandUi.printFoodItemNotFoundMessage(description);
             }

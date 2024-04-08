@@ -104,34 +104,34 @@ public class Storage {
                 System.out.println("Please input your height (in cm): ");
                 try {
                     heightInput = Integer.parseInt(scanner.nextLine());
-                    if (heightInput <= 0) {
-                        throw new IllegalArgumentException("Height must be a positive integer.");
+                    if (heightInput >= 50 && heightInput <= 300) {
+                        AddHeightCommand addHeightCommand = new
+                                AddHeightCommand(heightInput, LocalDateTime.now());
+                        addHeightCommand.execute();
+                        saveLogsToFile("data/data.txt");
+                        j++;
+                    } else {
+                        System.out.println("Please input a whole number between 50 and 300!");
                     }
-                    AddHeightCommand addHeightCommand = new AddHeightCommand(heightInput, LocalDateTime.now());
-                    addHeightCommand.execute();
-                    saveLogsToFile("data/data.txt");
-                    j++;
                 } catch (NumberFormatException e) {
-                    System.out.println("Please input a whole number only");
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    System.out.println("Please input a whole number between 50 and 300!");
                 }
             }
             while (i < 1) {
                 System.out.println("Please input your weight (in kg): ");
                 try {
                     weightInput = Integer.parseInt(scanner.nextLine());
-                    if (weightInput <= 0) {
-                        throw new IllegalArgumentException("Weight must be a positive integer.");
+                    if (weightInput >= 1 && weightInput <= 700) {
+                        AddWeightCommand addWeightCommand = new
+                                AddWeightCommand(weightInput, LocalDateTime.now());
+                        addWeightCommand.execute();
+                        saveLogsToFile("data/data.txt");
+                        i++;
+                    } else {
+                        System.out.println("Please input a whole number between 1 and 700!");
                     }
-                    AddWeightCommand addWeightCommand = new AddWeightCommand(weightInput, LocalDateTime.now());
-                    addWeightCommand.execute();
-                    saveLogsToFile("data/data.txt");
-                    i++;
                 } catch (NumberFormatException e) {
-                    System.out.println("Please input a whole number only");
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    System.out.println("Please input a whole number between 1 and 700!");
                 }
             }
             double heightMeters = (double) heightInput / 100;
@@ -152,21 +152,20 @@ public class Storage {
 
             // Prompt for setting daily calorie goal
             while (k < 1) {
-                System.out.println("Please set your daily calorie goal: ");
+                System.out.println("Please set your daily calorie goal (in cal): ");
                 try {
                     calorieGoal = Integer.parseInt(scanner.nextLine());
-                    if (calorieGoal <= 0) {
-                        throw new IllegalArgumentException("Calorie goal must be a positive integer.");
+                    if (calorieGoal >= 1 && calorieGoal <= 50000) {
+                        AddCalorieGoalCommand addCalorieGoalCommand = new
+                                AddCalorieGoalCommand(calorieGoal, LocalDateTime.now());
+                        addCalorieGoalCommand.execute();
+                        saveLogsToFile("data/data.txt");
+                        k++;
+                    } else {
+                        System.out.println("Please input a whole number between 1 and 50000!");
                     }
-                    AddCalorieGoalCommand addCalorieGoalCommand = new
-                            AddCalorieGoalCommand(calorieGoal, LocalDateTime.now());
-                    addCalorieGoalCommand.execute();
-                    saveLogsToFile("data/data.txt");
-                    k++;
                 } catch (NumberFormatException e) {
-                    System.out.println("Please input a whole number only");
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    System.out.println("Please input a whole number between 1 and 50000!");
                 }
             }
 
@@ -175,17 +174,17 @@ public class Storage {
                 System.out.println("Please set your daily water goal (in ml): ");
                 try {
                     waterGoal = Integer.parseInt(scanner.nextLine());
-                    if (waterGoal <= 0) {
-                        throw new IllegalArgumentException("Water goal must be a positive integer.");
+                    if (waterGoal >= 1 && waterGoal <= 6000) {
+                        AddWaterGoalCommand addWaterGoalCommand = new
+                                AddWaterGoalCommand(waterGoal, LocalDateTime.now());
+                        addWaterGoalCommand.execute();
+                        saveLogsToFile("data/data.txt");
+                        l++;
+                    } else {
+                        System.out.println("Please input a whole number between 1 and 6000!");
                     }
-                    AddWaterGoalCommand addWaterGoalCommand = new AddWaterGoalCommand(waterGoal, LocalDateTime.now());
-                    addWaterGoalCommand.execute();
-                    saveLogsToFile("data/data.txt");
-                    l++;
                 } catch (NumberFormatException e) {
-                    System.out.println("Please input a whole number only");
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    System.out.println("Please input a whole number between 1 and 6000!");
                 }
             }
         } catch (Exception e) {

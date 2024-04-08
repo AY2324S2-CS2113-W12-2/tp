@@ -205,12 +205,11 @@ Here's a quick summary of commands available in ActiveEdge:
 7. show w | Displays the water intake.
 8. log e/<EXERCISE_NAME> d/<DURATION> | Logs performed exercises and their duration.
 9. list | Shows all logged entries.
-10. help | Provides assistance.
+10. help | Provides assistance for user guide.
 11. find <KEYWORD> | Searches for entries with a specified keyword.
 12. delete <AMOUNT_OF_WATER>/<MEAL_NAME> | Deletes specified entries from the list.
 13. summary | Shows a daily summary of food, water intake, and goals.
 14. add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS> | Adds a new food item to the database and logs a meal.
 15. add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN> | Adds a new exercise to the database and logs it.
 16. clear | Clears the interface.
-17. show food | Prints all food data.
-18. show exercises | Prints all exercise data.
+17. bye| exit the program

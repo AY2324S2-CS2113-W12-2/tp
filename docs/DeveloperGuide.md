@@ -50,7 +50,7 @@ To get started quickly with ActiveEdge,
 follow these simple steps:
 
 1. Ensure that you have Java 11 or above installed.
-2. Down the latest version of `ActiveEdge` from [here](http://link.to/duke). 
+2. Down the latest version of `ActiveEdge` from [here](https://github.com/AY2324S2-CS2113-W12-2/tp/releases). 
 3. Copy the file into the folder you want to use as the home folder for your ActiveEdge.
 4. Open a command terminal, cd into the home folder you put the jar file in, and run the following command: java -jar ActiveEdge.jar. You should see a welcome screen.
 5. Type commands beside >>> and press Enter to execute it.
@@ -58,7 +58,7 @@ follow these simple steps:
 ## Design & implementation 🏹  
 ### System Architecture
 
-![System Architecture](../images/System-Architecture.png)
+![System Architecture](https://github.com/SuveenE/tp/blob/master/images/System-Architecture.png?raw=true)
 
 The Architecture Diagram above shows a high-level overview of the architectural design of ActiveEdge.
 
@@ -77,7 +77,7 @@ The generic sequence diagram provides a visual representation of the interaction
 ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such
 as user interface, data storage, and task management.
 
-![Generic Sequence Diagram](../images/Generic-Sequence-Diagram.png)
+![Generic Sequence Diagram](https://github.com/SuveenE/tp/blob/master/images/Generic-Sequence-Diagram.png?raw=true)
 
 ### Parser
 The Parser components can be found within the Parser package.
@@ -85,14 +85,14 @@ It is responsible for parsing the input String of the user, and returning an app
 If the input is invalid, it throws exceptions to the Error package for error handling.
 The Parser Class Diagram below shows how Execute, Parser, Error, Command classes of their respective packages work together.
 
-![Main](../images/Parser.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Parser.png?raw=true)
 
 ### Command
 
 In the provided code, commands are represented as individual classes, each encapsulating a specific action or operation 
 within the ActiveEdge application, promoting modularity and separation of concerns.
 
-![Command](../images/Command-Class.png)
+![Command](https://github.com/SuveenE/tp/blob/master/images/Command-Class.png?raw=true)
 
 
 
@@ -106,7 +106,7 @@ AddBMICommand, AddHeightCommand, and AddWeightCommand are commands for adding BM
 The relationships depicted in the diagram are primarily composition and inheritance:
 
 
-![Main](../images/Storage.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Storage.png?raw=true)
 
 Storage has composition relationships with UserDetailsList and TaskList as it manages instances of these classes.
 UserDetailsList and TaskList have a composition relationship with their respective contained classes (LogHeight, LogWeight, GoalTask, MealTask, WaterTask, ExerciseTask) 
@@ -115,13 +115,13 @@ used within the Storage class but don't directly interact with the other classes
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
-![Main Component](../images/Main-Component.png)
+![Main Component](https://github.com/SuveenE/tp/blob/master/images/Main-Component.png?raw=true)
 
 
 ### UI Package
 The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating interactions such as printing welcome messages, 
 logging meal and exercise data, displaying goal information, providing help instructions, and managing user queries and commands for health tracking and goal setting.
-![Ui Package](../images/Ui-Package.png)
+![Ui Package](https://github.com/SuveenE/tp/blob/master/images/Ui-package.png?raw=true)
 
 Under commands, there are 17 sub-components:
 ```AddBMICommand```: A command responsible for calculating and adding Body Mass Index (BMI) information.
@@ -137,7 +137,7 @@ Under commands, there are 17 sub-components:
 ### Task Package
 This package is structured to manage and represent various types of tasks within an application, potentially for goal tracking, 
 exercise logging, meal recording, and water intake monitoring. There are 3 main components of this package.
-![Ui](../images/Task_package.png)
+![Ui](https://github.com/SuveenE/tp/blob/master/images/Task_package.png?raw=true)
 
 **Base class:`Task`**
 + **Purpose**: Serves as the foundational class for all types of tasks. It encapsulates the common

@@ -1,5 +1,7 @@
 package command;
 
+import activeedge.task.GoalTask;
+import activeedge.task.Task;
 import activeedge.ui.CommandUi;
 import activeedge.task.MealTask;
 
@@ -23,15 +25,24 @@ public class LogMealCommand {
         this.isItemPresentInFoodData = isItemPresentInFoodData;
     }
 
-    public void execute() throws ActiveEdgeException {
-        if (isItemPresentInFoodData){
-            MealTask logMeal = new MealTask(description, servings, mealCalories, dateTime);
-            tasksList.add(logMeal);
-            CommandUi.printMealLogMessage(logMeal);
-        } else {
-            CommandUi.printFoodItemNotFoundMessage(description);
+    public void execute() {
+        try {
+            if (isItemPresentInFoodData) {
+                MealTask logMeal = new MealTask(description, servings, mealCalories, dateTime);
+                int totalCaloriesConsumed = calculateTotalCaloriesConsumed() + mealCalories;
+                tasksList.add(logMeal);
+                CommandUi.printMealLogMessage(logMeal);
+                if (exceedsCalorieGoal(totalCaloriesConsumed)) {
+                    CommandUi.printCalorieExceedingWarning();
+                }
+            } else {
+                CommandUi.printFoodItemNotFoundMessage(description);
+            }
+        } catch(Exception e){
+            CommandUi.printErrorMessage("An error occurred while logging the meal: " + e.getMessage());
         }
     }
+
 
     public int getMealCalories() {
         return mealCalories;
@@ -44,4 +55,27 @@ public class LogMealCommand {
     public int getServings() {
         return servings;
     }
+
+    // Helper method to calculate the total calories consumed including the logged meal
+    private int calculateTotalCaloriesConsumed() {
+        int totalCaloriesConsumed = 0;
+        for (int i = 0; i < tasksList.size(); i++) {
+            if (tasksList.get(i) instanceof MealTask) {
+                totalCaloriesConsumed += ((MealTask) tasksList.get(i)).getMealCalories();
+            }
+        }
+        return totalCaloriesConsumed;
+    }
+
+    // Helper method to check if the total calories consumed exceed the calorie goal
+    private boolean exceedsCalorieGoal(int totalCaloriesConsumed) {
+        for (Task task : tasksList) {
+            if (task instanceof GoalTask && task.getDescription().equals("calories")) {
+                int calorieGoal = ((GoalTask) task).getGoalAmount();
+                return totalCaloriesConsumed > calorieGoal;
+            }
+        }
+        return false;
+    }
+
 }

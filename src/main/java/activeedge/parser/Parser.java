@@ -80,20 +80,27 @@ public class    Parser {
                     String[] logParts = input.split("e/|d/");
                     int length = logParts.length;
                     assert length >= 3;
-                    String exerciseName = logParts[1].trim();
-                    int duration = Integer.parseInt(logParts[2]);
-                    int caloriesBurnt = 0;
-                    boolean isItemPresentInExerciseData = false;
+                    if(length >= 3) {
+                        String exerciseName = logParts[1].trim();
+                        int duration = Integer.parseInt(logParts[2]);
+                        int caloriesBurnt = 0;
+                        boolean isItemPresentInExerciseData = false;
 
-                    for (int i = 0; i < exercisesList.length; i++) {
-                        if (exercisesList[i][0].equals(exerciseName)) {
-                            caloriesBurnt = Integer.parseInt(exercisesList[i][1]) * duration;
-                            isItemPresentInExerciseData = true;
+                        for (int i = 0; i < exercisesList.length; i++) {
+                            if (exercisesList[i][0].equals(exerciseName)) {
+                                caloriesBurnt = Integer.parseInt(exercisesList[i][1]) * duration;
+                                isItemPresentInExerciseData = true;
+                            }
                         }
+                        LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
+                                caloriesBurnt, currentDateTime, isItemPresentInExerciseData);
+                        logExerciseCommand.execute();
                     }
-                    LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
-                            caloriesBurnt, currentDateTime, isItemPresentInExerciseData);
-                    logExerciseCommand.execute();
+                    else {
+                        System.out.println("Invalid command. Please enter 'log e/[EXERCISE]" +
+                                " D/[DURATION_IN_MINUTES]'.");
+                        System.out.println("For example, 'log e/running d/10'. Enter 'help' for more information.");
+                    }
 
                 }
 
@@ -105,7 +112,11 @@ public class    Parser {
                 }
             } else if (input.startsWith("show")) { //show calories, water, and goals
                 String[] parts = input.split(" ");
-                if (parts[1].startsWith("c")) { //shows calorie
+                if(parts.length == 1){
+                    System.out.println("Please specify what you wish to view: ");
+                    System.out.println("1. 'show w' to view your current water intake");
+                    System.out.println("2. 'show c' to view your current calories intake");
+                } else if (parts[1].startsWith("c")) { //shows calorie
                     new ShowCaloriesCommand();
                 } else if (parts[1].startsWith("w")) { //shows water
                     ViewWaterIntakeCommand viewWaterIntakeCommand = new ViewWaterIntakeCommand();
@@ -134,9 +145,14 @@ public class    Parser {
                     try {
                         int servings = Integer.parseInt(logParts[3].trim());
                         int caloriesPerServing = Integer.parseInt(logParts[2].trim());
-                        AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
-                                caloriesPerServing, currentDateTime);
-                        addFoodItemCommand.execute();
+                        if(servings == 0 || caloriesPerServing == 0){
+                            System.out.println("Please input a value above 0!");
+                        }
+                        else {
+                            AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
+                                    caloriesPerServing, currentDateTime);
+                            addFoodItemCommand.execute();
+                        }
                     } catch(NumberFormatException e){
                         System.out.println("Servings and calories per serving must be an integer value. " +
                                 "Please try again.");

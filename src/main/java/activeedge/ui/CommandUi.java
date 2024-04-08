@@ -105,8 +105,26 @@ public class CommandUi {
             }
         }
         totalCalories = totalCaloriesFromMeals - totalCaloriesFromExercises;
+
         System.out.print("Total calories today: ");
         System.out.println(totalCalories + " kcal consumed out of " + goal + " kcal goal");
+
+        int totalSurplus = totalCalories - Integer.parseInt(goal);
+        System.out.print("Total calories consumed today: ");
+        System.out.println("You have burned " + totalCaloriesFromExercises + " today!");
+        System.out.println("You have consumed " + totalCaloriesFromMeals + " kcal out of " + goal + " kcal");
+        if(totalCaloriesFromMeals > Integer.parseInt(goal)) {
+            System.out.println("You have exceeded your calorie intake goal!");
+        } else{
+            System.out.println("You're doing an excellent job of managing your calorie intake!");
+        }
+        if(totalSurplus > 0){
+            System.out.println("Calorie surplus at the moment --> " + totalSurplus);
+        }
+        else{
+            System.out.println("Calorie deficit at the moment --> " + -totalSurplus);
+        }
+
     }
 
     public static void printWaterLogMessage(WaterTask newWaterTask) {

@@ -172,7 +172,8 @@ public class    Parser {
                         int servings = Integer.parseInt(logParts[3].trim());
                         int caloriesPerServing = Integer.parseInt(logParts[2].trim());
                         if (!input.matches("add m/[^ ]+ c/\\d+ s/\\d+")) {
-                            System.out.println("Warning: The input format is incorrect. Please enter 'add e/[EXERCISE_NAME] c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'.");
+                            System.out.println("Warning: The input format is incorrect. Please enter " +
+                                    "'add m/[MEAL_NAME] c/[CALORIES] s/[NUMBER_OF_SERVINGS]'.");
                             return; // Return from the method to avoid further processing
                         }
                         if(servings == 0 || caloriesPerServing == 0){
@@ -202,7 +203,8 @@ public class    Parser {
                         int duration = Integer.parseInt(logParts[3].trim());
 
                         if (!input.matches("add e/[^ ]+ c/\\d+ d/\\d+")) {
-                            System.out.println("Warning: The input format is incorrect. Please enter 'add e/[EXERCISE_NAME] c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'.");
+                            System.out.println("Warning: The input format is incorrect. Please enter " +
+                                    "'add e/[EXERCISE_NAME] c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'.");
                             return; // Return from the method to avoid further processing
                         }
 

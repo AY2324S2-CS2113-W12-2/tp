@@ -88,26 +88,43 @@ Example of usage:
 
 ![Main](https://github.com/SuveenE/tp/blob/master/images/Goal%20Setting.png?raw=true)
 
-### Delete meals/water/exercises: `delete`
+### Delete meal logs: `delete`
 
--Deletes a meal/quantity of water(water intake) from the task list.
--Supports deletion of tasks based on their descriptions.
+Deletes a meal from the logs list.
 
-Format: `delete <QUANTITY_OF_WATER> ml` / `delete <MEAL_NAME>` / `delete <EXERCISE_NAME>`
+Format:  `delete <MEAL_NAME>`
 
-* The `QUANTITY_OF_WATER` can be the quantity of water the 
-user logged previously and wishes to delete.
-* The `MEAL_NAME` can be the name of the meal the user 
-previously logged in and wishes to delete.
-* The `EXERCISE_NAME` can be the name of the exercise.
+If you have **multiple logs with the same meal name**, use the additional parameter N to specify which entry to delete.
+
+Format: `delete <MEAL_NAME> i/<N>`
 
 Example of usage:
 
-`delete 100 ml`
-`delete sushi`
-`delete calisthenics`
+`delete chicken rice`  
+`delete chicken rice i/2`
 
-![Main](https://github.com/SuveenE/tp/blob/master/images/Deleting%20meals.png?raw=true)
+* The `MEAL_NAME` is the name of the meal the user
+  previously logged in and wishes to delete.
+* The `N` is the N<sup>th</sup> log from the same meal that the user wishes to delete. Note: `N` starts with 1.
+  
+### Delete water logs: `delete`
+
+Deletes a water log from the logs list.
+
+Format:  `delete <QUANTITY_OF_WATER>`
+
+If you have **multiple logs with the same water quantity**, use the additional parameter N to specify which entry to delete.
+
+Format: `delete <QUANTITY_OF_WATER> i/2`
+
+Example of usage:
+
+`delete 1000 ml`  
+`delete 1000 ml i/2` 
+
+* The `QUANTITY_OF_WATER` can be the quantity of water the
+  user logged previously and wishes to delete.
+* The `N` is the N<sup>th</sup> log from the same meal that the user wishes to delete. Note: `N` starts with 1.
 
 ### Log exercises: `log`
 - Logs the exercises performed.
@@ -206,7 +223,8 @@ Here's a quick summary of commands available in ActiveEdge:
 9. list | Shows all logged entries.
 10. help | Provides assistance for user guide.
 11. find <KEYWORD> | Searches for entries with a specified keyword.
-12. delete <AMOUNT_OF_WATER>/<MEAL_NAME> | Deletes specified entries from the list.
+12. delete <AMOUNT_OF_WATER>/<MEAL_NAME>  | Deletes specified entries from the list. Check the 
+    specific section above to see how to delete a entry when there are multiple entries from the same name/quantity.
 13. summary | Shows a daily summary of food, water intake, and goals.
 14. add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS> | Adds a new food item to the database and logs a meal.
 15. add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN> | Adds a new exercise to the database and logs it.

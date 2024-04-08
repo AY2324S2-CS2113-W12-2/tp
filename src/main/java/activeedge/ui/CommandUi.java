@@ -212,8 +212,17 @@ public class CommandUi {
 
 
     public static void printTaskNotFoundMessage() {
-        System.out.println("Task not found.");
+        System.out.println("Log not found. View all logged entries using 'list'.");
     }
+
+    public static void printWaterLogFoundFormatErrorMessage(int amount){
+        System.out.println("Did you mean 'delete " + amount + "'" );
+    }
+
+    public static void printDeleteMealInvalidIndexMessage(){
+        System.out.println("Invalid index. View all logged entries using 'list'." );
+    }
+
     public static void printShowSummaryMessage(int totalCalories,int totalWaterIntake, int totalCaloriesBurnt,
                                               String calorieGoal, String waterGoal,
                                                int netCalories, String calorieStatus) {

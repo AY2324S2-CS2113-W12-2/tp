@@ -7,39 +7,67 @@ import activeedge.task.TaskList;
 
 public class DeleteTaskCommand {
     private String description;
+    private int index;
+    private boolean errorRaised;
 
     public DeleteTaskCommand(String inputTrimmed) {
         String[] parts = inputTrimmed.split(" ", 2); // Split at the first space
-        if (parts.length == 2) {
-            this.description = parts[1].trim();
-        } else {
+        String[] indexParts;
+
+        this.errorRaised = false;
+        if(parts.length == 2){
+            if(parts[1].contains("i/")){
+                indexParts = parts[1].trim().split("i/");
+                this.index = Integer.parseInt(indexParts[1].trim());
+                this.description = indexParts[0].trim();
+            }
+            else {
+                //If no index to be deleted is passed, 1 is considered as the index.
+                this.index = 1;
+                this.description = parts[1].trim();
+            }
+        }else {
             CommandUi.printInvalidDeleteFormatMessage();
+            this.errorRaised = true;
         }
     }
 
     public void execute() {
         // Search for the task with the specified description
         boolean taskFound = false;
+        int countIndex = 0;
         for (int i = 0; i < TaskList.tasksList.size(); i++) {
             Task task = TaskList.tasksList.get(i);
             if (task.getDescription().toLowerCase().startsWith("water")) {
                 if (task instanceof WaterTask) { // Check if it's a WaterTask before casting
                     WaterTask waterTask = (WaterTask) task;
-                    if ((waterTask.getQuantity() + " ml").equalsIgnoreCase(description)) {
-                        Task deletedTask = TaskList.delete(i);
-                        CommandUi.printTaskDeletedMessage(deletedTask);
-                        taskFound = true;
-                        break;
+
+                    if (((waterTask.getQuantity()) + " ml").equalsIgnoreCase(description)) {
+                        countIndex = countIndex + 1;
+                        if(countIndex == index){
+                            Task deletedTask = TaskList.delete(i);
+                            CommandUi.printTaskDeletedMessage(deletedTask);
+                            taskFound = true;
+                            break;
+                        }
                     }
                 }
             } else if (task.getDescription().equalsIgnoreCase(description)) {
-                Task deletedTask = TaskList.delete(i);
-                CommandUi.printTaskDeletedMessage(deletedTask);
-                taskFound = true;
-                break;
+                countIndex = countIndex + 1;
+                if (countIndex == index){
+                    Task deletedTask = TaskList.delete(i);
+                    CommandUi.printTaskDeletedMessage(deletedTask);
+                    taskFound = true;
+                    break;
+                }
             }
         }
-        if (!taskFound) {
+
+        if(index > countIndex){
+            CommandUi.printDeleteMealInvalidIndexMessage();
+            this.errorRaised = true;
+        }
+        if (!taskFound && !errorRaised) {
             CommandUi.printTaskNotFoundMessage();
         }
     }

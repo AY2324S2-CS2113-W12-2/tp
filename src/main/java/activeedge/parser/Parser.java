@@ -47,28 +47,34 @@ public class    Parser {
                     String[] logParts = input.split("m/|s/");
                     int length = logParts.length;
                     assert length >= 3;
-                    String description = logParts[1].trim();
-                    try {
-                        int servings = Integer.parseInt(logParts[2]);
-                        if (servings != Double.parseDouble(logParts[2])) {
-                            System.out.println("Servings must be an integer value.");
-                            return;
-                        }
-                        int calories = 0;
-                        boolean isItemPresentInFoodData = false;
-
-                        for (int i = 0; i < foodItems.length; i++) {
-                            if (foodItems[i][0].equals(description)) {
-                                calories = Integer.parseInt(foodItems[i][1]) * servings;
-                                isItemPresentInFoodData = true;
+                    if(length >= 3) {
+                        String description = logParts[1].trim();
+                        try {
+                            int servings = Integer.parseInt(logParts[2]);
+                            if (servings != Double.parseDouble(logParts[2])) {
+                                System.out.println("Servings must be an integer value.");
+                                return;
                             }
-                        }
+                            int calories = 0;
+                            boolean isItemPresentInFoodData = false;
 
-                        LogMealCommand logMealCommand = new LogMealCommand(description, servings,
-                                calories, currentDateTime, isItemPresentInFoodData);
-                        logMealCommand.execute();
-                    } catch(NumberFormatException e){
-                        System.out.println("Servings must be an integer value. Please try again.");
+                            for (int i = 0; i < foodItems.length; i++) {
+                                if (foodItems[i][0].equals(description)) {
+                                    calories = Integer.parseInt(foodItems[i][1]) * servings;
+                                    isItemPresentInFoodData = true;
+                                }
+                            }
+
+                            LogMealCommand logMealCommand = new LogMealCommand(description, servings,
+                                    calories, currentDateTime, isItemPresentInFoodData);
+                            logMealCommand.execute();
+                        } catch (NumberFormatException e) {
+                            System.out.println("Servings must be an integer value. Please try again.");
+                        }
+                    } else {
+                        System.out.println("Invalid command. Please enter 'log m/[FOOD]" +
+                                " s/[NUMBER_OF_SERVINGS]'.");
+                        System.out.println("For example, 'log m/chicken rice s/2'. Enter 'help' for more information.");
                     }
                 } else if (items[0].equals("e")){
                     String[] logParts = input.split("e/|d/");

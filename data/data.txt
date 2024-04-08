@@ -1,7 +1,5 @@
-Height 170 cm (Recorded on: 2024-04-08T17:46:53.138619200)
-Weight 70 kg (Recorded on: 2024-04-08T17:46:55.141882100)
-BMI 24 (Recorded on: 2024-04-08T17:46:55.155053200)
-Goal Calorie 8000 (Recorded on: 2024-04-08T17:46:58.151641200)
-Goal Water 900 (Recorded on: 2024-04-08T17:47:00.159822800)
-Meal chicken rice 1 450 kcal (Recorded on: 2024-04-08T17:47:25.312640300)
-Water 90 ml (Recorded on: 2024-04-08T17:47:31.364977600)
+Height 180 cm (Recorded on: 2024-04-01T13:38:36.005228800)
+Weight 88 kg (Recorded on: 2024-04-01T13:38:37.002732)
+Goal c 1000 (Recorded on: 2024-04-08T12:14:03.431690600)
+Meal prata 2 244 kcal (Recorded on: 2024-04-08T12:14:45.895822600)
+

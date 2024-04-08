@@ -16,9 +16,9 @@ public class CommandUi {
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm");
 
     public static void printWelcomeMessage() {
-        String logo = "🌟 ACTIVE EDGE 🌟";
+        String logo = "ACTIVE EDGE!";
         System.out.println("Welcome to " + logo);
-        System.out.println("🚀✨ Take the next step in your Healthy Lifestyle! ✨🚀");
+        System.out.println("Take the next step in your Healthy Lifestyle!");
     }
 
     public static void printFullList() {
@@ -125,27 +125,22 @@ public class CommandUi {
         int matchingTasksIndex = 1;
         boolean found = false;
 
-        // Search in the food section
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Meal") && tasksList.get(i).toString().contains(word)) {
+        for (Task task : tasksList) {
+            String taskString = task.toString().trim(); // Trim the task string
+            if (taskString.startsWith("Meal") && taskString.contains(word)) {
                 System.out.print(matchingTasksIndex + ". ");
-                System.out.println(tasksList.get(i).toString().substring(5) + " kcal");
+                System.out.println(taskString.substring(5) + " kcal");
                 matchingTasksIndex++;
-                found = true; // Indicate that a match was found
+                found = true;
+
+            } else if (taskString.startsWith("Water") && taskString.contains(word)) {
+                System.out.print(matchingTasksIndex + ". ");
+                System.out.println(taskString.substring(6) + " ml");
+                matchingTasksIndex++;
+                found = true;
             }
         }
 
-        // Search in the water section
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Water") && tasksList.get(i).toString().contains(word)) {
-                System.out.print(matchingTasksIndex + ". ");
-                System.out.println(tasksList.get(i).toString().substring(6) + " ml");
-                matchingTasksIndex++;
-                found = true; // Indicate that a match was found
-            }
-        }
-
-        // If no matching tasks were found, print a message
         if (!found) {
             System.out.println("No matching tasks found.");
         }
@@ -242,4 +237,12 @@ public class CommandUi {
                 " instead of adding it.");
     }
 
+    public static void printCalorieExceedingWarning() {
+        System.out.println("WARNING: You are exceeding your calorie intake!");
+    }
+
+
+    public static void printErrorMessage(String errorMessage) {
+        System.out.println("ERROR: " + errorMessage);
+    }
 }

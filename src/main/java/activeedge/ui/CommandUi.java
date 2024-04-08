@@ -241,4 +241,12 @@ public class CommandUi {
                 " instead of adding it.");
     }
 
+    public static void printCalorieExceedingWarning() {
+        System.out.println("WARNING: You are exceeding your calorie intake!");
+    }
+
+
+    public static void printErrorMessage(String errorMessage) {
+        System.out.println("ERROR: " + errorMessage);
+    }
 }

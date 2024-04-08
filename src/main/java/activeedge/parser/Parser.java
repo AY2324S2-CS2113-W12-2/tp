@@ -40,7 +40,16 @@ public class    Parser {
             } else if (input.startsWith("log")) {
                 String parts = input.substring(4);
                 String[] items = parts.split("/");
-                if (items[0].equals("w")) {
+                if(input.trim().equalsIgnoreCase("log")){
+                    System.out.println("Please specify what you wish to view: ");
+                    System.out.println("1. 'log w/[QUANTITY_OF_WATER]' to log your water intake");
+                    System.out.println("2. 'log m/[MEAL_NAME] s/[NUMBER_OF_SERVINGS]' to " +
+                            "log your meals");
+                    System.out.println("3. 'log e/[EXERCISE_NAME] d/[DURATION_OF_EXERCISE]' to " +
+                            "log your exercises");
+                    return;
+                }
+                else if (items[0].equals("w")) {
                     String quantityString = items[1];
                     LogWaterCommand logWaterCommand = new LogWaterCommand(quantityString, currentDateTime);
                     logWaterCommand.execute();

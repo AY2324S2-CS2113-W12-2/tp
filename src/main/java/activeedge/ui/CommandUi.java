@@ -70,6 +70,7 @@ public class CommandUi {
         int totalCalories = 0;
         int totalCaloriesFromMeals = 0;
         int totalCaloriesFromExercises = 0;
+        int caloriegoal;
         String goal = "0";
         for (int i = 0; i < tasksList.size(); i++) {
             String[] parts = tasksList.get(i).toString().split(" ");
@@ -98,14 +99,14 @@ public class CommandUi {
                 }
             }
             if(tasksList.get(i).toString().startsWith("Goal")) {
-                if (parts[1].equals("c")) {
+                if (parts[1].equals("Calorie")) {
                     goal = parts[2].toString();
                 }
             }
         }
         totalCalories = totalCaloriesFromMeals - totalCaloriesFromExercises;
         System.out.print("Total calories today: ");
-        System.out.println(totalCalories + " kcal out of " + goal + " kcal");
+        System.out.println(totalCalories + " kcal consumed out of " + goal + " kcal goal");
     }
 
     public static void printWaterLogMessage(WaterTask newWaterTask) {

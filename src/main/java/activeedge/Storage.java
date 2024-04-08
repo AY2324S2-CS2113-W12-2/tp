@@ -11,6 +11,9 @@ import activeedge.userdetails.UserDetailsList;
 import command.AddBMICommand;
 import command.AddHeightCommand;
 import command.AddWeightCommand;
+import command.AddCalorieGoalCommand;
+import command.AddWaterGoalCommand;
+
 
 
 import java.io.File;
@@ -86,39 +89,53 @@ public class Storage {
         System.out.print("\n");
         int i = 0;
         int j = 0;
+        int k = 0;
+        int l = 0;
         System.out.println("Since you are new here, let's start with your height and weight " +
                 "to set things up!");
+        Scanner scanner = new Scanner(System.in); // Create Scanner object outside the loop
+
         try {
             int heightInput = 0;
             int weightInput = 0;
+            int calorieGoal = 0;
+            int waterGoal = 0;
             while (j < 1) {
                 System.out.println("Please input your height (in cm): ");
-                Scanner scanner = new Scanner(System.in);
                 try {
-                    heightInput = Integer.valueOf(scanner.nextLine());
+                    heightInput = Integer.parseInt(scanner.nextLine());
+                    if (heightInput <= 0) {
+                        throw new IllegalArgumentException("Height must be a positive integer.");
+                    }
                     AddHeightCommand addHeightCommand = new AddHeightCommand(heightInput, LocalDateTime.now());
                     addHeightCommand.execute();
                     saveLogsToFile("data/data.txt");
                     j++;
                 } catch (NumberFormatException e) {
                     System.out.println("Please input a whole number only");
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
                 }
             }
             while (i < 1) {
                 System.out.println("Please input your weight (in kg): ");
-                Scanner scanner = new Scanner(System.in);
                 try {
-                    weightInput = Integer.valueOf(scanner.nextLine());
+                    weightInput = Integer.parseInt(scanner.nextLine());
+                    if (weightInput <= 0) {
+                        throw new IllegalArgumentException("Weight must be a positive integer.");
+                    }
                     AddWeightCommand addWeightCommand = new AddWeightCommand(weightInput, LocalDateTime.now());
                     addWeightCommand.execute();
                     saveLogsToFile("data/data.txt");
                     i++;
                 } catch (NumberFormatException e) {
                     System.out.println("Please input a whole number only");
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
                 }
             }
-            double heightMeters = (double) heightInput/100;
-            int bmi = (int) (weightInput/(heightMeters*heightMeters));
+            double heightMeters = (double) heightInput / 100;
+            int bmi = (int) (weightInput / (heightMeters * heightMeters));
             AddBMICommand addBMICommand = new AddBMICommand(bmi, LocalDateTime.now());
             addBMICommand.execute();
             saveLogsToFile("data/data.txt");
@@ -132,12 +149,56 @@ public class Storage {
             } else {
                 System.out.println("You are in the obese weight range.");
             }
+
+            // Prompt for setting daily calorie goal
+            while (k < 1) {
+                System.out.println("Please set your daily calorie goal: ");
+                try {
+                    calorieGoal = Integer.parseInt(scanner.nextLine());
+                    if (calorieGoal <= 0) {
+                        throw new IllegalArgumentException("Calorie goal must be a positive integer.");
+                    }
+                    AddCalorieGoalCommand addCalorieGoalCommand = new AddCalorieGoalCommand(calorieGoal, LocalDateTime.now());
+                    addCalorieGoalCommand.execute();
+                    saveLogsToFile("data/data.txt");
+                    k++;
+                } catch (NumberFormatException e) {
+                    System.out.println("Please input a whole number only");
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
+            // Prompt for setting daily water goal
+            while (l < 1) {
+                System.out.println("Please set your daily water goal (in ml): ");
+                try {
+                    waterGoal = Integer.parseInt(scanner.nextLine());
+                    if (waterGoal <= 0) {
+                        throw new IllegalArgumentException("Water goal must be a positive integer.");
+                    }
+                    AddWaterGoalCommand addWaterGoalCommand = new AddWaterGoalCommand(waterGoal, LocalDateTime.now());
+                    addWaterGoalCommand.execute();
+                    saveLogsToFile("data/data.txt");
+                    l++;
+                } catch (NumberFormatException e) {
+                    System.out.println("Please input a whole number only");
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-        System.out.println("You can now start setting goals and logging data! Type 'help' " +
+
+        System.out.println("You can now start logging data! Type 'help' " +
                 "if you are not sure how to use ActiveEdge.");
     }
+
+
+
+
+
 
     /**
      * Fetches and loads data from a specified data file into the application's memory.

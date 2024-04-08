@@ -106,27 +106,22 @@ public class CommandUi {
         int matchingTasksIndex = 1;
         boolean found = false;
 
-        // Search in the food section
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Meal") && tasksList.get(i).toString().contains(word)) {
+        for (Task task : tasksList) {
+            String taskString = task.toString().trim(); // Trim the task string
+            if (taskString.startsWith("Meal") && taskString.contains(word)) {
                 System.out.print(matchingTasksIndex + ". ");
-                System.out.println(tasksList.get(i).toString().substring(5) + " kcal");
+                System.out.println(taskString.substring(5) + " kcal");
                 matchingTasksIndex++;
-                found = true; // Indicate that a match was found
+                found = true;
+
+            } else if (taskString.startsWith("Water") && taskString.contains(word)) {
+                System.out.print(matchingTasksIndex + ". ");
+                System.out.println(taskString.substring(6) + " ml");
+                matchingTasksIndex++;
+                found = true;
             }
         }
 
-        // Search in the water section
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Water") && tasksList.get(i).toString().contains(word)) {
-                System.out.print(matchingTasksIndex + ". ");
-                System.out.println(tasksList.get(i).toString().substring(6) + " ml");
-                matchingTasksIndex++;
-                found = true; // Indicate that a match was found
-            }
-        }
-
-        // If no matching tasks were found, print a message
         if (!found) {
             System.out.println("No matching tasks found.");
         }

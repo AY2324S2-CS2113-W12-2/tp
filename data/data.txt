@@ -1,5 +1,6 @@
-Height 180 cm (Recorded on: 2024-04-01T13:38:36.005228800)
-Weight 88 kg (Recorded on: 2024-04-01T13:38:37.002732)
-Goal c 1000 (Recorded on: 2024-04-08T12:14:03.431690600)
-Meal prata 2 244 kcal (Recorded on: 2024-04-08T12:14:45.895822600)
-
+Height 170 cm (Recorded on: 2024-04-08T20:30:32.676632)
+Weight 78 kg (Recorded on: 2024-04-08T20:30:35.697101100)
+Goal Calorie 2699 (Recorded on: 2024-04-08T20:30:39.738915900)
+Goal Water 3000 (Recorded on: 2024-04-08T20:30:43.775523800)
+Water 6000 ml (Recorded on: 2024-04-08T20:52:43.953821)
+Water 4000 ml (Recorded on: 2024-04-08T21:19:12.369533)

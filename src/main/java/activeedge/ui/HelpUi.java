@@ -11,7 +11,7 @@ public class HelpUi {
      * Prints a detailed help message to the standard output.
      */
     public static void printHelpMessage() {
-        System.out.println(" Welcome to Active Edge! Here are the available commands:\n" +
+        System.out.println("Welcome to Active Edge! Here are the available commands:\n" +
                 "Log meals: log m/FOOD s/NUMBER_OF_SERVINGS\n" +
                 "Add meals to database: add m/[FOOD] c/[CALORIES_PER_SERVING(kCal)] s/[NUMBER_OF_SERVINGS]\n" +
                 "View daily calories: show c\n" +
@@ -25,10 +25,10 @@ public class HelpUi {
                 "d/[DURATION_IN_MINUTES]\n" +
                 "View exercises: list exercises\n" +
                 "Help: help\n" +
-                "Find: find 'keyword'\n" +
+                "Find: find <KEYWORD>\n" +
                 "Delete items from list: delete 'Quantity of water/Food name'\n" +
-                "List calorie and water intake: list\n" +
+                "View all logged entries.: list\n" +
                 "Clear: clear\n" +
-                "Start tracking your health goals now! If you have any questions, feel free to ask." );
+                "Start tracking your health goals now!" );
     }
 }

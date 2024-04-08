@@ -24,12 +24,13 @@ import static activeedge.FoodData.foodItems;
 import static activeedge.ExerciseData.exercisesList;
 import activeedge.FoodData;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 
 public class    Parser {
     public void handleInput(String input) {
         try {
-            LocalDateTime currentDateTime = LocalDateTime.now();
+            LocalDateTime currentDateTime = LocalDateTime.now();;
             if (input.contains("help")) {
                 new HelpCommand();
             } else if (input.equalsIgnoreCase("FoodData")) {

@@ -111,12 +111,12 @@ public class    Parser {
                     System.out.println("1. 'show w' to view your current water intake");
                     System.out.println("2. 'show c' to view your current calories intake");
                     System.out.println("3. 'show g' to view your current goals");
-                } else if (inputSplit[1].startsWith("c")) { //shows calorie
+                } else if (inputSplit[1].equalsIgnoreCase("c")) { //shows calorie
                     new ShowCaloriesCommand();
-                } else if (inputSplit[1].startsWith("w")) { //shows water
+                } else if (inputSplit[1].equalsIgnoreCase("w")) { //shows water
                     ViewWaterIntakeCommand viewWaterIntakeCommand = new ViewWaterIntakeCommand();
                     viewWaterIntakeCommand.execute();
-                } else if (inputSplit[1].startsWith("g")) {  //shows goals
+                } else if (inputSplit[1].equalsIgnoreCase("g")) {  //shows goals
                     ShowGoalsCommand showGoalsCommand = new ShowGoalsCommand();
                     showGoalsCommand.execute();
                 } else {

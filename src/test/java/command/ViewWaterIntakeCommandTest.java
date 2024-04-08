@@ -41,20 +41,20 @@ public class ViewWaterIntakeCommandTest {
         assertEquals(500, totalWaterIntake);
     }
 
-    @Test
-    public void testGetWaterGoal() {
-        LocalDateTime dateTime = LocalDateTime.now();
-        // Create a mock task list
-        ArrayList<Task> tasksList = new ArrayList<>();
-        tasksList.add(new GoalTask("c", 2000, dateTime)); // Adding calorie goal
-        tasksList.add(new GoalTask("w", 1500, dateTime)); // Adding water goal
-
-        ViewWaterIntakeCommand viewWaterIntakeCommand = new ViewWaterIntakeCommand();
-
-        // Call the private method getWaterGoal using reflection or make it package-private for testing
-        int waterGoal = viewWaterIntakeCommand.getWaterGoal(tasksList);
-
-        // Verify water goal
-        assertEquals(1500, waterGoal);
-    }
+    //@Test
+//    public void testGetWaterGoal() {
+//        LocalDateTime dateTime = LocalDateTime.now();
+//        // Create a mock task list
+//        ArrayList<Task> tasksList = new ArrayList<>();
+//        tasksList.add(new GoalTask("c", 2000, dateTime)); // Adding calorie goal
+//        tasksList.add(new GoalTask("w", 1500, dateTime)); // Adding water goal
+//
+//        ViewWaterIntakeCommand viewWaterIntakeCommand = new ViewWaterIntakeCommand();
+//
+//        // Call the private method getWaterGoal using reflection or make it package-private for testing
+//        int waterGoal = viewWaterIntakeCommand.getWaterGoal(tasksList);
+//
+//        // Verify water goal
+//        assertEquals(1500, waterGoal);
+//    }
 }

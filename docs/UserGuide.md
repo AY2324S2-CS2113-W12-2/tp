@@ -122,7 +122,7 @@ Example of usage:
 
 `log e/running d/10`
 
-![Main](https://github.com/SuveenE/tp/blob/master/images/Logging%20exercises.png?raw=true)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Logging-exercises.png?raw=true)
 
 ### Adding new exercise item to database and logs exercise to list: `add`
 - Adds a new exercise item to the existing list of exercises.

@@ -29,14 +29,9 @@ import java.time.LocalDateTime;
 public class    Parser {
     public void handleInput(String input) {
         try {
+            String[] inputSplit = input.split(" ");
             LocalDateTime currentDateTime = LocalDateTime.now();
-            if (input.contains("help")) {
-                new HelpCommand();
-            } else if (input.equalsIgnoreCase("FoodData")) {
-                FoodData.printFood();
-            }else if (input.equalsIgnoreCase("ExerciseData")) {
-                ExerciseData.printExercises();
-            } else if (input.startsWith("log")) {
+            if (inputSplit[0].equalsIgnoreCase("log")) {
                 String parts = input.substring(4);
                 String[] items = parts.split("/");
                 if (items[0].equals("w")) {
@@ -104,36 +99,42 @@ public class    Parser {
 
                 }
 
-            } else if (input.startsWith("list")) {
+            } else if (inputSplit[0].equalsIgnoreCase("list")) {
                 if (tasksList.size() > 0) {
                     new ListFullCommand();
                 } else {
                     System.out.println("There are no items in your list!");
                 }
-            } else if (input.startsWith("show")) { //show calories, water, and goals
-                String[] parts = input.split(" ");
-                if(parts.length == 1){
+            } else if (inputSplit[0].equalsIgnoreCase("show")) { //show calories, water, and goals
+                if (inputSplit.length == 1) {
                     System.out.println("Please specify what you wish to view: ");
                     System.out.println("1. 'show w' to view your current water intake");
                     System.out.println("2. 'show c' to view your current calories intake");
-                } else if (parts[1].startsWith("c")) { //shows calorie
+                    System.out.println("3. 'show g' to view your current goals");
+                } else if (inputSplit[1].startsWith("c")) { //shows calorie
                     new ShowCaloriesCommand();
-                } else if (parts[1].startsWith("w")) { //shows water
+                } else if (inputSplit[1].startsWith("w")) { //shows water
                     ViewWaterIntakeCommand viewWaterIntakeCommand = new ViewWaterIntakeCommand();
                     viewWaterIntakeCommand.execute();
-                } else if (parts[1].startsWith("g")) {  //shows goals
+                } else if (inputSplit[1].startsWith("g")) {  //shows goals
                     ShowGoalsCommand showGoalsCommand = new ShowGoalsCommand();
                     showGoalsCommand.execute();
                 } else {
-                    System.out.println("Invalid command!\n");
+                    System.out.println("We can only show water intake, calories intake or goals!");
                 }
-            } else if(input.startsWith("find")) {
-                new FindCommand(input);
-            } else if(input.startsWith("delete")){
+            } else if (inputSplit[0].equalsIgnoreCase("delete")) {
                 DeleteTaskCommand deleteCommand = new DeleteTaskCommand(input);
                 deleteCommand.execute();
-            } else if (input.startsWith("summary")) {
+            } else if(inputSplit[0].equalsIgnoreCase("find")) {
+                new FindCommand(input);
+            } else if (input.equalsIgnoreCase("summary")) {
                 new ShowSummaryCommand().execute();
+            } else if (input.equalsIgnoreCase("help")) {
+                new HelpCommand();
+            } else if (input.equalsIgnoreCase("FoodData")) {
+                FoodData.printFood();
+            } else if (input.equalsIgnoreCase("ExerciseData")) {
+                ExerciseData.printExercises();
             } else if(input.equalsIgnoreCase("clear")) {
                 ClearCommand clearCommand = new ClearCommand();
                 clearCommand.execute();

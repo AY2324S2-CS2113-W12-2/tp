@@ -24,24 +24,24 @@ public class CommandUi {
     public static void printFullList() {
         System.out.println("Logged data for today:");
 
-        System.out.println("Food ");
+        System.out.println("Food: ");
         int j = 1;
         for (int i = 0; i < tasksList.size(); i++) {
             if (tasksList.get(i).toString().startsWith("Meal")) {
-                System.out.print(j + ". " + tasksList.get(i).toString().substring(5));
-                System.out.println("");
+                System.out.println(j + ". " + tasksList.get(i).toString().substring(5));
                 j++;
             }
         }
+        System.out.println("");
         System.out.println("Water:");
         int k = 1;
         for (int i = 0; i < tasksList.size(); i++) {
             if (tasksList.get(i).toString().startsWith("Water")) {
-                System.out.print(k + ". " + tasksList.get(i).toString().substring(6));
-                System.out.println("");
+                System.out.println(k + ". " + tasksList.get(i).toString().substring(6));
                 k++;
             }
         }
+        System.out.println("");
         System.out.println("Exercises:");
         int l = 1;
         for (int i = 0; i < tasksList.size(); i++) {

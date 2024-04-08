@@ -142,35 +142,35 @@ Example of usage:
 
 -Users can use these data to test out the application
 
-| Food Item      | Calorie Intake |
-|----------------|----------------|
-| fried chicken  | 543            |
-| chicken burger | 357            |
-| beef burger    | 500            |
-| fish burger    | 379            |
-| sambar rice    | 187            |
-| medu vadai     | 108            |
-| udon           | 400            |
-| edamame        | 120            |
-| sambal belacan | 75             |
-| telur masin    | 85             |
+| Food Item      | Calorie Intake per serving (kcal/serving) |
+|----------------|-------------------------------------------|
+| fried chicken  | 543                                       |
+| chicken burger | 357                                       |
+| beef burger    | 500                                       |
+| fish burger    | 379                                       |
+| sambar rice    | 187                                       |
+| medu vadai     | 108                                       |
+| udon           | 400                                       |
+| edamame        | 120                                       |
+| sambal belacan | 75                                        |
+| telur masin    | 85                                        |
 
 ### Testing data for list of exercises
 
 -Users can use these data to test out the application
 
-| Exercise Item | Calories Burnt Per minute |
-|---------------|---------------------------|
-| running       | 10                        |
-| cycling       | 8                         |
-| swimming      | 8                         |
-| jumping jacks | 10                        |
-| walking       | 4                         |
-| yoga          | 3                         |
-| aerobics      | 10                        |
-| basketball    | 9                         |
-| tennis        | 7                         |
-| squash        | 8                         |
+| Exercise Item | Calories Burnt Per minute (kcal/min) |
+|---------------|--------------------------------------|
+| running       | 10                                   |
+| cycling       | 8                                    |
+| swimming      | 8                                    |
+| jumping jacks | 10                                   |
+| walking       | 4                                    |
+| yoga          | 3                                    |
+| aerobics      | 10                                   |
+| basketball    | 9                                    |
+| tennis        | 7                                    |
+| squash        | 8                                    |
 
 ## FAQ ❓
 
@@ -194,7 +194,6 @@ important to be careful when using the clear command.
 ## Command Summary
 
 Here's a quick summary of commands available in ActiveEdge:
-
 
 1. set goal c/<CALORIE_GOAL> | Sets the daily calorie goal.
 2. set goal w/<WATER_GOAL> | Sets the daily water goal.

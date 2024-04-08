@@ -15,7 +15,7 @@ To get started quickly with ActiveEdge,
 follow these simple steps:
 
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `ActiveEdge` from [here](http://link.to/duke).
+1. Down the latest version of `ActiveEdge` from [here](https://github.com/AY2324S2-CS2113-W12-2/tp/releases).
 
 ## Features 
 
@@ -33,7 +33,7 @@ Example of usage:
 
 `log m/chicken rice s/1`
 
-![Main](../images/Logging meal name.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Logging%20meal%20name.png?raw=true)
 
 ### Adding new food item to database and logs meal to list: `add`
 - Adds a new food item to the existing list of food items.
@@ -61,7 +61,7 @@ Example of usage:
 
 `log w/100`
 
-![Main](../images/Logging water intake.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Logging%20water%20intake.png?raw=true)
 
 ### Viewing Water Intake: `show`
 -Displays the total water intake and the percentage of water 
@@ -86,7 +86,7 @@ Example of usage:
 `set goal w/2000`
 `show g`
 
-![Main](../images/Goal Setting.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Goal%20Setting.png?raw=true)
 
 ### Delete meals/water/exercises: `delete`
 
@@ -107,7 +107,7 @@ Example of usage:
 `delete sushi`
 `delete calisthenics`
 
-![Main](../images/Deleting meals.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Deleting%20meals.png?raw=true)
 
 ### Log exercises: `log`
 - Logs the exercises performed.
@@ -122,7 +122,7 @@ Example of usage:
 
 `log e/running d/10`
 
-![Main](../images/Logging exercises.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Logging-exercises.png?raw=true)
 
 ### Adding new exercise item to database and logs exercise to list: `add`
 - Adds a new exercise item to the existing list of exercises.
@@ -142,35 +142,35 @@ Example of usage:
 
 -Users can use these data to test out the application
 
-| Food Item      | Calorie Intake |
-|----------------|----------------|
-| fried chicken  | 543            |
-| chicken burger | 357            |
-| beef burger    | 500            |
-| fish burger    | 379            |
-| sambar rice    | 187            |
-| medu vadai     | 108            |
-| udon           | 400            |
-| edamame        | 120            |
-| sambal belacan | 75             |
-| telur masin    | 85             |
+| Food Item      | Calorie Intake per serving (kcal/serving) |
+|----------------|-------------------------------------------|
+| fried chicken  | 543                                       |
+| chicken burger | 357                                       |
+| beef burger    | 500                                       |
+| fish burger    | 379                                       |
+| sambar rice    | 187                                       |
+| medu vadai     | 108                                       |
+| udon           | 400                                       |
+| edamame        | 120                                       |
+| sambal belacan | 75                                        |
+| telur masin    | 85                                        |
 
 ### Testing data for list of exercises
 
 -Users can use these data to test out the application
 
-| Food Item     | Calories Burnt Per minute |
-|---------------|---------------------------|
-| running       | 10                        |
-| cycling       | 8                         |
-| swimming      | 8                         |
-| jumping jacks | 10                        |
-| walking       | 4                         |
-| yoga          | 3                         |
-| aerobics      | 10                        |
-| basketball    | 9                         |
-| tennis        | 7                         |
-| squash        | 8                         |
+| Exercise Item | Calories Burnt Per minute (kcal/min) |
+|---------------|--------------------------------------|
+| running       | 10                                   |
+| cycling       | 8                                    |
+| swimming      | 8                                    |
+| jumping jacks | 10                                   |
+| walking       | 4                                    |
+| yoga          | 3                                    |
+| aerobics      | 10                                   |
+| basketball    | 9                                    |
+| tennis        | 7                                    |
+| squash        | 8                                    |
 
 ## FAQ ❓
 
@@ -193,25 +193,22 @@ important to be careful when using the clear command.
 
 ## Command Summary
 
-{Give a 'cheat sheet' of commands here}
-
 Here's a quick summary of commands available in ActiveEdge:
 
-* Set daily calorie goal: `set goal c/<CALORIE_GOAL>`
-* Set daily water goal: `set goal w/<WATER_GOAL>`
-* View goals: `show g`
-* Log meals: `log m/<MEAL_NAME> s/<SERVINGS>`
-* View daily calories: `show c`
-* Log water: `log w/<AMOUNT_OF_WATER>`
-* View water intake: `show w`
-* Log exercise: `log e/<EXERCISE_NAME> d/<DURATION>`
-* View all entries logged: `list`
-* Help: `help`
-* Find: `find <KEYWORD>`
-* Delete items from list: `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`
-* Show daily summary of food, water intake and goals: `summary`
-* Add new food item to the database and log meal:`add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>`
-* Add new exercise to database and log it: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN>`
-* Clear: `clear`
-* Prints all food data: `show food`
-* Prints all exercise data: `show exercises`
+1. set goal c/<CALORIE_GOAL> | Sets the daily calorie goal.
+2. set goal w/<WATER_GOAL> | Sets the daily water goal.
+3. show g | Displays the set goals.
+4. log m/<MEAL_NAME> s/<SERVINGS> | Logs consumed meals and their servings.
+5. show c | Displays the daily calorie intake.
+6. log w/<AMOUNT_OF_WATER> | Logs consumed water amount.
+7. show w | Displays the water intake.
+8. log e/<EXERCISE_NAME> d/<DURATION> | Logs performed exercises and their duration.
+9. list | Shows all logged entries.
+10. help | Provides assistance for user guide.
+11. find <KEYWORD> | Searches for entries with a specified keyword.
+12. delete <AMOUNT_OF_WATER>/<MEAL_NAME> | Deletes specified entries from the list.
+13. summary | Shows a daily summary of food, water intake, and goals.
+14. add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS> | Adds a new food item to the database and logs a meal.
+15. add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN> | Adds a new exercise to the database and logs it.
+16. clear | Clears the interface.
+17. bye| exit the program

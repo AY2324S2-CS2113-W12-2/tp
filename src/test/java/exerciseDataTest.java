@@ -2,6 +2,7 @@ import activeedge.ExerciseData;
 public class exerciseDataTest {
 
     public static void main(String[] args) {
+
         testExerciseDataValidity();
     }
 

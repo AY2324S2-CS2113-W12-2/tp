@@ -16,32 +16,32 @@ public class CommandUi {
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm");
 
     public static void printWelcomeMessage() {
-        String logo = "🌟 ACTIVE EDGE 🌟";
+        String logo = "ACTIVE EDGE!";
         System.out.println("Welcome to " + logo);
-        System.out.println("🚀✨ Take the next step in your Healthy Lifestyle! ✨🚀");
+        System.out.println("Take the next step in your Healthy Lifestyle!");
     }
 
     public static void printFullList() {
         System.out.println("Logged data for today:");
 
-        System.out.println("Food ");
+        System.out.println("Food: ");
         int j = 1;
         for (int i = 0; i < tasksList.size(); i++) {
             if (tasksList.get(i).toString().startsWith("Meal")) {
-                System.out.print(j + ". " + tasksList.get(i).toString().substring(5));
-                System.out.println("");
+                System.out.println(j + ". " + tasksList.get(i).toString().substring(5));
                 j++;
             }
         }
+        System.out.println("");
         System.out.println("Water:");
         int k = 1;
         for (int i = 0; i < tasksList.size(); i++) {
             if (tasksList.get(i).toString().startsWith("Water")) {
-                System.out.print(k + ". " + tasksList.get(i).toString().substring(6));
-                System.out.println("");
+                System.out.println(k + ". " + tasksList.get(i).toString().substring(6));
                 k++;
             }
         }
+        System.out.println("");
         System.out.println("Exercises:");
         int l = 1;
         for (int i = 0; i < tasksList.size(); i++) {
@@ -70,6 +70,7 @@ public class CommandUi {
         int totalCalories = 0;
         int totalCaloriesFromMeals = 0;
         int totalCaloriesFromExercises = 0;
+        int caloriegoal;
         String goal = "0";
         for (int i = 0; i < tasksList.size(); i++) {
             String[] parts = tasksList.get(i).toString().split(" ");
@@ -98,12 +99,16 @@ public class CommandUi {
                 }
             }
             if(tasksList.get(i).toString().startsWith("Goal")) {
-                if (parts[1].equals("c")) {
+                if (parts[1].equals("Calorie")) {
                     goal = parts[2].toString();
                 }
             }
         }
         totalCalories = totalCaloriesFromMeals - totalCaloriesFromExercises;
+
+        System.out.print("Total calories today: ");
+        System.out.println(totalCalories + " kcal consumed out of " + goal + " kcal goal");
+
         int totalSurplus = totalCalories - Integer.parseInt(goal);
         System.out.print("Total calories consumed today: ");
         System.out.println("You have burned " + totalCaloriesFromExercises + " today!");
@@ -119,6 +124,7 @@ public class CommandUi {
         else{
             System.out.println("Calorie deficit at the moment --> " + -totalSurplus);
         }
+
     }
 
     public static void printWaterLogMessage(WaterTask newWaterTask) {
@@ -137,27 +143,22 @@ public class CommandUi {
         int matchingTasksIndex = 1;
         boolean found = false;
 
-        // Search in the food section
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Meal") && tasksList.get(i).toString().contains(word)) {
+        for (Task task : tasksList) {
+            String taskString = task.toString().trim(); // Trim the task string
+            if (taskString.startsWith("Meal") && taskString.contains(word)) {
                 System.out.print(matchingTasksIndex + ". ");
-                System.out.println(tasksList.get(i).toString().substring(5) + " kcal");
+                System.out.println(taskString.substring(5) + " kcal");
                 matchingTasksIndex++;
-                found = true; // Indicate that a match was found
+                found = true;
+
+            } else if (taskString.startsWith("Water") && taskString.contains(word)) {
+                System.out.print(matchingTasksIndex + ". ");
+                System.out.println(taskString.substring(6) + " ml");
+                matchingTasksIndex++;
+                found = true;
             }
         }
 
-        // Search in the water section
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Water") && tasksList.get(i).toString().contains(word)) {
-                System.out.print(matchingTasksIndex + ". ");
-                System.out.println(tasksList.get(i).toString().substring(6) + " ml");
-                matchingTasksIndex++;
-                found = true; // Indicate that a match was found
-            }
-        }
-
-        // If no matching tasks were found, print a message
         if (!found) {
             System.out.println("No matching tasks found.");
         }

@@ -1,17 +1,59 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-autonumber
 
-autonumber
-participant ActiveEdge
-participant CommandUi
+class CommandUi {
+    - LINE: String
+    - DATE_TIME_FORMATTER: DateTimeFormatter
+    + printWelcomeMessage(): void
+    + printMealLogMessage(mealTask: MealTask): void
+    + printExerciseLogMessage(logExercise: LogExercise): void
+    + printShowCalMessage(): void
+    + printWaterLogMessage(newWaterTask: WaterTask): void
+    + printWaterIntakeMessage(totalWaterIntake: int, waterGoal: int): void
+    + printMatchingTasks(word: String): void
+    + printTaskDeletedMessage(deletedTask: Task): void
+    + printFoodItemNotFoundMessage(description: String): void
+    + printExerciseItemNotFoundMessage(exerciseName: String): void
+    + printAddFoodItemMessage(description: String): void
+    + printAddExerciseMessage(exerciseName: String): void
+    + promptLogExerciseMessage(exerciseName: String): void
+    + promptLogFoodMessage(foodItemName: String): void
+}
 
-ActiveEdge -> CommandUi: PrintMealLogMessage()
-ActiveEdge -> CommandUi: PrintExerciseLogMessage()
-ActiveEdge -> CommandUi: PrintWaterLogMessage()
-ActiveEdge -> CommandUi: PrintAddFoodItemMessage()
-ActiveEdge -> CommandUi: PrintAddExerciseMessage()
+class MealTask {
+    - servings: int
+    - foodName: String
+    - mealCalories: int
+    + getServings(): int
+    + getFoodName(): String
+    + getMealCalories(): int
+}
+
+class LogExercise {
+    - duration: int
+    - exerciseName: String
+    - caloriesBurnt: int
+    + getDuration(): int
+    + getExerciseName(): String
+    + getCaloriesBurnt(): int
+}
+
+class WaterTask {
+    - quantity: int
+    + getQuantity(): int
+}
+
+class Task {
+    - description: String
+    + getDescription(): String
+}
+
+CommandUi --> MealTask : uses
+CommandUi --> LogExercise : uses
+CommandUi --> WaterTask : uses
+CommandUi --> Task : uses
+
 
 
 @enduml

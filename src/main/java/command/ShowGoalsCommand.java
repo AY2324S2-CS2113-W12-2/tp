@@ -25,9 +25,9 @@ public class ShowGoalsCommand {
             if (task instanceof GoalTask) {
                 GoalTask goalTask = (GoalTask) task; // Cast Task to GoalTask
                 // Check if the goal is related to calories
-                if (goalTask.getDescription().startsWith("c")) {
+                if (goalTask.getDescription().startsWith("Calorie")) {
                     calorieGoal = goalTask.getGoalAmount(); // Retrieve calorie goal
-                } else if (goalTask.getDescription().startsWith("w")) {
+                } else if (goalTask.getDescription().startsWith("Water")) {
                     waterGoal = goalTask.getGoalAmount(); // Retrieve water goal
                 }
             }

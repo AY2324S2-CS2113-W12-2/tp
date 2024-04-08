@@ -11,6 +11,9 @@ import activeedge.userdetails.UserDetailsList;
 import command.AddBMICommand;
 import command.AddHeightCommand;
 import command.AddWeightCommand;
+import command.AddCalorieGoalCommand;
+import command.AddWaterGoalCommand;
+
 
 
 import java.io.File;
@@ -86,39 +89,53 @@ public class Storage {
         System.out.print("\n");
         int i = 0;
         int j = 0;
+        int k = 0;
+        int l = 0;
         System.out.println("Since you are new here, let's start with your height and weight " +
                 "to set things up!");
+        Scanner scanner = new Scanner(System.in); // Create Scanner object outside the loop
+
         try {
             int heightInput = 0;
             int weightInput = 0;
+            int calorieGoal = 0;
+            int waterGoal = 0;
             while (j < 1) {
                 System.out.println("Please input your height (in cm): ");
-                Scanner scanner = new Scanner(System.in);
                 try {
-                    heightInput = Integer.valueOf(scanner.nextLine());
-                    AddHeightCommand addHeightCommand = new AddHeightCommand(heightInput, LocalDateTime.now());
-                    addHeightCommand.execute();
-                    saveLogsToFile("data/data.txt");
-                    j++;
+                    heightInput = Integer.parseInt(scanner.nextLine());
+                    if (heightInput >= 50 && heightInput <= 300) {
+                        AddHeightCommand addHeightCommand = new
+                                AddHeightCommand(heightInput, LocalDateTime.now());
+                        addHeightCommand.execute();
+                        saveLogsToFile("data/data.txt");
+                        j++;
+                    } else {
+                        System.out.println("Please input a whole number between 50 and 300!");
+                    }
                 } catch (NumberFormatException e) {
-                    System.out.println("Please input a whole number only");
+                    System.out.println("Please input a whole number between 50 and 300!");
                 }
             }
             while (i < 1) {
                 System.out.println("Please input your weight (in kg): ");
-                Scanner scanner = new Scanner(System.in);
                 try {
-                    weightInput = Integer.valueOf(scanner.nextLine());
-                    AddWeightCommand addWeightCommand = new AddWeightCommand(weightInput, LocalDateTime.now());
-                    addWeightCommand.execute();
-                    saveLogsToFile("data/data.txt");
-                    i++;
+                    weightInput = Integer.parseInt(scanner.nextLine());
+                    if (weightInput >= 1 && weightInput <= 700) {
+                        AddWeightCommand addWeightCommand = new
+                                AddWeightCommand(weightInput, LocalDateTime.now());
+                        addWeightCommand.execute();
+                        saveLogsToFile("data/data.txt");
+                        i++;
+                    } else {
+                        System.out.println("Please input a whole number between 1 and 700!");
+                    }
                 } catch (NumberFormatException e) {
-                    System.out.println("Please input a whole number only");
+                    System.out.println("Please input a whole number between 1 and 700!");
                 }
             }
-            double heightMeters = (double) heightInput/100;
-            int bmi = (int) (weightInput/(heightMeters*heightMeters));
+            double heightMeters = (double) heightInput / 100;
+            int bmi = (int) (weightInput / (heightMeters * heightMeters));
             AddBMICommand addBMICommand = new AddBMICommand(bmi, LocalDateTime.now());
             addBMICommand.execute();
             saveLogsToFile("data/data.txt");
@@ -132,12 +149,56 @@ public class Storage {
             } else {
                 System.out.println("You are in the obese weight range.");
             }
+
+            // Prompt for setting daily calorie goal
+            while (k < 1) {
+                System.out.println("Please set your daily calorie goal (in cal): ");
+                try {
+                    calorieGoal = Integer.parseInt(scanner.nextLine());
+                    if (calorieGoal >= 1 && calorieGoal <= 50000) {
+                        AddCalorieGoalCommand addCalorieGoalCommand = new
+                                AddCalorieGoalCommand(calorieGoal, LocalDateTime.now());
+                        addCalorieGoalCommand.execute();
+                        saveLogsToFile("data/data.txt");
+                        k++;
+                    } else {
+                        System.out.println("Please input a whole number between 1 and 50000!");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Please input a whole number between 1 and 50000!");
+                }
+            }
+
+            // Prompt for setting daily water goal
+            while (l < 1) {
+                System.out.println("Please set your daily water goal (in ml): ");
+                try {
+                    waterGoal = Integer.parseInt(scanner.nextLine());
+                    if (waterGoal >= 1 && waterGoal <= 6000) {
+                        AddWaterGoalCommand addWaterGoalCommand = new
+                                AddWaterGoalCommand(waterGoal, LocalDateTime.now());
+                        addWaterGoalCommand.execute();
+                        saveLogsToFile("data/data.txt");
+                        l++;
+                    } else {
+                        System.out.println("Please input a whole number between 1 and 6000!");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Please input a whole number between 1 and 6000!");
+                }
+            }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-        System.out.println("You can now start setting goals and logging data! Type 'help' " +
+
+        System.out.println("You can now start logging data! Type 'help' " +
                 "if you are not sure how to use ActiveEdge.");
     }
+
+
+
+
+
 
     /**
      * Fetches and loads data from a specified data file into the application's memory.

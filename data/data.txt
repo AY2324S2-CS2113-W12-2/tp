@@ -1,8 +1,4 @@
 Height 180 cm (Recorded on: 2024-04-01T13:38:36.005228800)
 Weight 88 kg (Recorded on: 2024-04-01T13:38:37.002732)
-Exercise calisthenics 5 40 kcal (Recorded on: 2024-04-01T13:40:03.195227400)
-Exercise swimming 10 80 kcal (Recorded on: 2024-04-01T13:40:14.273507400)
-Exercise running 4 40 kcal (Recorded on: 2024-04-01T13:40:26.432616300)
-Exercise running 5 25 kcal (Recorded on: 2024-04-01T13:49:49.622509)
-
-
+Goal c 1000 (Recorded on: 2024-04-08T12:14:03.431690600)
+Meal prata 2 244 kcal (Recorded on: 2024-04-08T12:14:45.895822600)

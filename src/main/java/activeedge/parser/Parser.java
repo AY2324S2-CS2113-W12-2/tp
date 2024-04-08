@@ -31,13 +31,32 @@ public class    Parser {
         try {
             String[] inputSplit = input.split(" ");
             LocalDateTime currentDateTime = LocalDateTime.now();
+            if(input.trim().equalsIgnoreCase("log")){
+                System.out.println("Please specify what you wish to log: ");
+                System.out.println("1. 'log w/[QUANTITY_OF_WATER]' to log your water intake");
+                System.out.println("2. 'log m/[MEAL_NAME] s/[NUMBER_OF_SERVINGS]' to " +
+                        "log your meals");
+                System.out.println("3. 'log e/[EXERCISE_NAME] d/[DURATION_OF_EXERCISE]' to " +
+                        "log your exercises");
+                return;
+            }
             if (inputSplit[0].equalsIgnoreCase("log")) {
                 String parts = input.substring(4);
                 String[] items = parts.split("/");
+                if (!items[0].equals("w") && !items[0].equals("m") && !items[0].equals("e")) {
+                    System.out.println("Invalid command. Please enter a valid 'log' command.");
+                    return;
+                }
                 if (items[0].equals("w")) {
-                    String quantityString = items[1];
-                    LogWaterCommand logWaterCommand = new LogWaterCommand(quantityString, currentDateTime);
-                    logWaterCommand.execute();
+                    if(items.length < 2 || items[1].isEmpty()){
+                        System.out.println("Invalid command. Please enter 'log w/[WATER_QUANTITY]'.");
+                        System.out.println("For example, 'log w/300'. Enter 'help' for more information.");
+                    }
+                    else {
+                        String quantityString = items[1];
+                        LogWaterCommand logWaterCommand = new LogWaterCommand(quantityString, currentDateTime);
+                        logWaterCommand.execute();
+                    }
                 } else if (items[0].equals("m")) {
                     String[] logParts = input.split("m/|s/");
                     int length = logParts.length;
@@ -152,6 +171,11 @@ public class    Parser {
                     try {
                         int servings = Integer.parseInt(logParts[3].trim());
                         int caloriesPerServing = Integer.parseInt(logParts[2].trim());
+                        if (!input.matches("add m/[^ ]+ c/\\d+ s/\\d+")) {
+                            System.out.println("Warning: The input format is incorrect. Please enter " +
+                                    "'add m/[MEAL_NAME] c/[CALORIES] s/[NUMBER_OF_SERVINGS]'.");
+                            return; // Return from the method to avoid further processing
+                        }
                         if(servings == 0 || caloriesPerServing == 0){
                             System.out.println("Please input a value above 0!");
                         }
@@ -177,6 +201,12 @@ public class    Parser {
                     try {
                         int caloriesBurntPerMinute = Integer.parseInt(logParts[2].trim());
                         int duration = Integer.parseInt(logParts[3].trim());
+
+                        if (!input.matches("add e/[^ ]+ c/\\d+ d/\\d+")) {
+                            System.out.println("Warning: The input format is incorrect. Please enter " +
+                                    "'add e/[EXERCISE_NAME] c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'.");
+                            return; // Return from the method to avoid further processing
+                        }
 
                         AddExerciseItemCommand addExerciseItemCommand = new AddExerciseItemCommand(description,
                                 duration, caloriesBurntPerMinute, currentDateTime);

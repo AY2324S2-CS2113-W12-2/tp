@@ -28,7 +28,7 @@ public class ViewWaterIntakeCommand {
 
     public int getWaterGoal(ArrayList<Task> tasksList) {
         for (Task task : tasksList) {
-            if (task instanceof GoalTask && task.getDescription().startsWith("w")) {
+            if (task instanceof GoalTask && task.getDescription().startsWith("Water")) {
                 return ((GoalTask) task).getGoalAmount();
             }
         }

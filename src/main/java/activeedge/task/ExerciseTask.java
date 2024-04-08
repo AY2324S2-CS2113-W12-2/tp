@@ -22,7 +22,10 @@ public class ExerciseTask extends Task{
         this.duration = duration;
         this.caloriesBurnt = caloriesBurnt;
     }
-    public String getExerciseName() { return description; }
+    public String getExerciseName() {
+        return description;
+    }
+
 
     public int getDuration(){
         return duration;

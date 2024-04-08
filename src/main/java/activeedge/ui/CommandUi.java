@@ -70,6 +70,7 @@ public class CommandUi {
         int totalCalories = 0;
         int totalCaloriesFromMeals = 0;
         int totalCaloriesFromExercises = 0;
+        int caloriegoal;
         String goal = "0";
         for (int i = 0; i < tasksList.size(); i++) {
             String[] parts = tasksList.get(i).toString().split(" ");
@@ -98,12 +99,16 @@ public class CommandUi {
                 }
             }
             if(tasksList.get(i).toString().startsWith("Goal")) {
-                if (parts[1].equals("c")) {
+                if (parts[1].equals("Calorie")) {
                     goal = parts[2].toString();
                 }
             }
         }
         totalCalories = totalCaloriesFromMeals - totalCaloriesFromExercises;
+
+        System.out.print("Total calories today: ");
+        System.out.println(totalCalories + " kcal consumed out of " + goal + " kcal goal");
+
         int totalSurplus = totalCalories - Integer.parseInt(goal);
         System.out.print("Total calories consumed today: ");
         System.out.println("You have burned " + totalCaloriesFromExercises + " today!");
@@ -119,6 +124,7 @@ public class CommandUi {
         else{
             System.out.println("Calorie deficit at the moment --> " + -totalSurplus);
         }
+
     }
 
     public static void printWaterLogMessage(WaterTask newWaterTask) {

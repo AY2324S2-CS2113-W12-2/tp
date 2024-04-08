@@ -105,7 +105,8 @@ public class Storage {
                 try {
                     heightInput = Integer.parseInt(scanner.nextLine());
                     if (heightInput >= 50 && heightInput <= 300) {
-                        AddHeightCommand addHeightCommand = new AddHeightCommand(heightInput, LocalDateTime.now());
+                        AddHeightCommand addHeightCommand = new
+                                AddHeightCommand(heightInput, LocalDateTime.now());
                         addHeightCommand.execute();
                         saveLogsToFile("data/data.txt");
                         j++;
@@ -121,7 +122,8 @@ public class Storage {
                 try {
                     weightInput = Integer.parseInt(scanner.nextLine());
                     if (weightInput >= 1 && weightInput <= 700) {
-                        AddWeightCommand addWeightCommand = new AddWeightCommand(weightInput, LocalDateTime.now());
+                        AddWeightCommand addWeightCommand = new
+                                AddWeightCommand(weightInput, LocalDateTime.now());
                         addWeightCommand.execute();
                         saveLogsToFile("data/data.txt");
                         i++;
@@ -173,7 +175,8 @@ public class Storage {
                 try {
                     waterGoal = Integer.parseInt(scanner.nextLine());
                     if (waterGoal >= 1 && waterGoal <= 6000) {
-                        AddWaterGoalCommand addWaterGoalCommand = new AddWaterGoalCommand(waterGoal, LocalDateTime.now());
+                        AddWaterGoalCommand addWaterGoalCommand = new
+                                AddWaterGoalCommand(waterGoal, LocalDateTime.now());
                         addWaterGoalCommand.execute();
                         saveLogsToFile("data/data.txt");
                         l++;

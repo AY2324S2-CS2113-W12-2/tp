@@ -16,9 +16,9 @@ public class CommandUi {
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm");
 
     public static void printWelcomeMessage() {
-        String logo = "🌟 ACTIVE EDGE 🌟";
+        String logo = "ACTIVE EDGE!";
         System.out.println("Welcome to " + logo);
-        System.out.println("🚀✨ Take the next step in your Healthy Lifestyle! ✨🚀");
+        System.out.println("Take the next step in your Healthy Lifestyle!");
     }
 
     public static void printFullList() {

@@ -15,7 +15,7 @@ To get started quickly with ActiveEdge,
 follow these simple steps:
 
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `ActiveEdge` from [here](http://link.to/duke).
+1. Down the latest version of `ActiveEdge` from [here](https://github.com/AY2324S2-CS2113-W12-2/tp/releases).
 
 ## Features 
 
@@ -33,7 +33,7 @@ Example of usage:
 
 `log m/chicken rice s/1`
 
-![Main](../images/Logging meal name.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Logging%20meal%20name.png?raw=true)
 
 ### Adding new food item to database and logs meal to list: `add`
 - Adds a new food item to the existing list of food items.
@@ -61,7 +61,7 @@ Example of usage:
 
 `log w/100`
 
-![Main](../images/Logging water intake.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Logging%20water%20intake.png?raw=true)
 
 ### Viewing Water Intake: `show`
 -Displays the total water intake and the percentage of water 
@@ -86,7 +86,7 @@ Example of usage:
 `set goal w/2000`
 `show g`
 
-![Main](../images/Goal Setting.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Goal%20Setting.png?raw=true)
 
 ### Delete meals/water/exercises: `delete`
 
@@ -107,7 +107,7 @@ Example of usage:
 `delete sushi`
 `delete calisthenics`
 
-![Main](../images/Deleting meals.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Deleting%20meals.png?raw=true)
 
 ### Log exercises: `log`
 - Logs the exercises performed.
@@ -122,7 +122,7 @@ Example of usage:
 
 `log e/running d/10`
 
-![Main](../images/Logging-exercises.png)
+![Main](https://github.com/SuveenE/tp/blob/master/images/Logging-exercises.png?raw=true)
 
 ### Adding new exercise item to database and logs exercise to list: `add`
 - Adds a new exercise item to the existing list of exercises.

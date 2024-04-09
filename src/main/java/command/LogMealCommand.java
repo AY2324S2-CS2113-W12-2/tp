@@ -4,10 +4,7 @@ import activeedge.task.GoalTask;
 import activeedge.task.Task;
 import activeedge.ui.CommandUi;
 import activeedge.task.MealTask;
-
 import static activeedge.task.TaskList.tasksList;
-import java.time.LocalDateTime;
-
 
 public class LogMealCommand {
     protected String description;

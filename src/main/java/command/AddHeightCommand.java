@@ -2,8 +2,6 @@ package command;
 
 import activeedge.userdetails.LogHeight;
 import static activeedge.userdetails.UserDetailsList.detailsList;
-import java.time.LocalDateTime;
-
 
 public class AddHeightCommand {
     protected Integer height;

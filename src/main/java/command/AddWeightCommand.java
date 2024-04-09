@@ -2,8 +2,6 @@ package command;
 
 import activeedge.userdetails.LogWeight;
 import static activeedge.userdetails.UserDetailsList.detailsList;
-import java.time.LocalDateTime;
-
 
 public class AddWeightCommand {
     protected Integer weight;

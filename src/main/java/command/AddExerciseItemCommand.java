@@ -2,7 +2,6 @@ package command;
 
 import activeedge.ui.CommandUi;
 import activeedge.ExerciseData;
-import java.time.LocalDateTime;
 
 /**
  * The AddExerciseItemCommand class represents a command to add a new exercise item to the ActiveEdge application.

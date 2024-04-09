@@ -1,7 +1,5 @@
 package activeedge.userdetails;
 
-import java.time.LocalDateTime;
-
 /**
  * The LogHeight class represents a log of height details for a user.
  * It extends the UserDetails class and includes a timestamp for when the height was recorded.
@@ -18,26 +16,14 @@ public class LogHeight extends UserDetails {
      * Constructs a LogHeight object with the specified height value and timestamp.
      *
      * @param value    The height value.
-     * @param dateTime The date and time when the height was recorded.
+     * @param date The date when the height was recorded.
+     * @param time The time when the height was recorded.
      */
     public LogHeight(Integer value, String date, String time) {
         super(value);
         this.date = date;
         this.time = time;
     }
-
-    /**
-     * Gets the date and time when the height was recorded.
-     *
-     * @return The date and time when the height was recorded.
-     */
-//    public LocalDate getDate() {
-//        return date;
-//    }
-//
-//    public LocalTime getTime() {
-//        return time;
-//    }
 
     /**
      * Returns a string representation of the LogHeight object.

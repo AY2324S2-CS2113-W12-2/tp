@@ -3,7 +3,6 @@ package command;
 import activeedge.task.WaterTask;
 import activeedge.ui.CommandUi;
 import activeedge.task.TaskList;
-import java.time.LocalDateTime;
 
 /**
  * Represents a command to log water intake.

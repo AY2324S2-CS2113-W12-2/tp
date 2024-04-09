@@ -1,5 +1,4 @@
 package activeedge.task;
-import java.time.LocalDateTime;
 
 /**
  * Represents an exercise task that extends the functionality of a basic task

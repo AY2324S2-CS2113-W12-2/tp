@@ -3,7 +3,6 @@ package command;
 import activeedge.ui.CommandUi;
 import activeedge.task.LogExercise;
 import static activeedge.task.TaskList.tasksList;
-import java.time.LocalDateTime;
 
 /**
  * Represents a command to log exercise activities into the system.

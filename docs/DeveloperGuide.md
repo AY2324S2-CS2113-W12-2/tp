@@ -232,24 +232,25 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 
 | Action                                                | Format                                                                     |
 |-------------------------------------------------------|----------------------------------------------------------------------------|
-| Adding entries for meals                              | `log m/<MEAL_NAME> s/<SERVINGS>`                                           |
-| Adding entries for water                              | `log w/<AMOUNT_OF_WATER>`                                                  |
-| Adding entries for exercises                          | `log e/<EXERCISE_NAME> d/<DURATION>`                                       |
-| Showing daily summary of food, water intake and goals | `summary`                                                                  |
-| Setting daily calories goal                           | `set goal c/<CALORIE AMOUNT>`                                              |
-| Setting daily water goal                              | `set goal w/<WATER AMOUNT>`                                                |
-| View daily calorie intake                             | `show c`                                                                   |
-| View daily water intake                               | `show w`                                                                   |
-| View daily goals                                      | `show g`                                                                   |
-| View all entries logged                               | `list`                                                                     |
-| Getting help                                          | `help`                                                                     |
-| Find entries that contain the keyword                 | `find <KEYWORD>`                                                           |
-| Prints all food data                                  | `show food`                                                                |
-| Prints all exercise data                              | `show exercises`                                                           |
-| Deletes the water/meal entry                          | `delete <AMOUNT_OF_WATER>/<MEAL_NAME>`                                     |
-| Clears all entry                                      | `clear`                                                                    |
-| Adding new items to the food database and log meal    | `add m/<MEAL_NAME> c/<CALORIES_PER_SERVING(kCal)> s/<NUMBER_OF_SERVINGS>`  |
-| Adding new exercise to database and log it:           | `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(kCal)> d/<DURATION_PER_MIN>`   |
+| Log meal| `log m/<MEAL_NAME> s/<NUMBER_OF_SERVINGS>`
+| Log water intake | `log w/<AMOUNT_OF_WATER>`
+| Log exercises| `log e/<EXERCISE_NAME> d/<DURATION>`
+| View daily goals| `show g`
+| View daily calorie intake| `show c`
+| View daily water intake| `show w`
+| View all logged entries| `list`
+| View all food items in the database| `foodData`
+| View all exercises in the database| `exerciseData`
+| Delete meal logs| `delete <MEAL_NAME>`
+| Delete water logs| `delete <QUANTITY_OF_WATER> ml` 
+| Delete exercise logs| `delete <EXERCISE_NAME>` 
+| Log a meal not in the database| `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>`
+| Log an exercise not in the database| `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>`
+| Show daily summary| `summary`
+| Search for entries| `find`
+| Get help| `help`
+| Clear all logged entries| `clear`
+| Exit the program| `bye`
 
 
 

@@ -109,13 +109,10 @@ public class CommandUi {
         }
         totalCalories = totalCaloriesFromMeals - totalCaloriesFromExercises;
 
-        System.out.print("Total calories today: ");
-        System.out.println(totalCalories + " cal consumed out of " + goal + " cal goal");
-
         int totalSurplus = totalCalories - Integer.parseInt(goal);
-        System.out.print("Total calories consumed today: ");
         System.out.println("You have burned " + totalCaloriesFromExercises + " today!");
         System.out.println("You have consumed " + totalCaloriesFromMeals + " cal out of " + goal + " kcal");
+
         if(totalCaloriesFromMeals > Integer.parseInt(goal)) {
             System.out.println("You have exceeded your calorie intake goal!");
         } else{
@@ -123,8 +120,7 @@ public class CommandUi {
         }
         if(totalSurplus > 0){
             System.out.println("Calorie surplus at the moment --> " + totalSurplus);
-        }
-        else{
+        } else{
             System.out.println("Calorie deficit at the moment --> " + -totalSurplus);
         }
 
@@ -232,7 +228,7 @@ public class CommandUi {
     }
 
     public static void printShowSummaryMessage(int totalCalories,int totalWaterIntake, int totalCaloriesBurnt,
-                                              String calorieGoal, String waterGoal,
+                                               String calorieGoal, String waterGoal,
                                                int netCalories, String calorieStatus) {
         System.out.println("Daily Summary:");
         System.out.println("Total calories consumed: " + totalCalories + " cal");
@@ -271,6 +267,7 @@ public class CommandUi {
         System.out.println("The food item '" + foodItemName + "' already exists. Please log " + foodItemName +
                 " instead of adding it.");
     }
+
 
     public static void printCalorieExceedingWarning() {
         System.out.println("WARNING: You are exceeding your calorie intake!");

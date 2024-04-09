@@ -182,8 +182,7 @@ public class Parser {
                         }
                         if(servings == 0 || caloriesPerServing == 0){
                             System.out.println("Please input a value above 0!");
-                        }
-                        else {
+                        } else {
                             AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
                                     caloriesPerServing, date, time);
                             addFoodItemCommand.execute();

@@ -24,8 +24,7 @@ public class DeleteTaskCommand {
                     CommandUi.printInvalidItemIndexMessage();
                     this.errorRaised = true;
                 }
-            }
-            else {
+            } else {
                 //If no index to be deleted is passed, 1 is considered as the index.
                 this.index = 1;
                 this.description = parts[1].trim();

@@ -49,6 +49,11 @@ follow these simple steps:
 
 ---
 
+At the start of the application, new users are prompted to enter their **weight**, **height**,
+**daily calorie goal** and **daily water intake goal**.
+
+---
+
 ### Log meal : `log`
 Adds a new meal to the logs list along with the number of servings.
 

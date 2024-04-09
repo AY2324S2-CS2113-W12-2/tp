@@ -222,6 +222,11 @@ public class CommandUi {
         System.out.println("Did you mean 'delete " + amount + "'" );
     }
 
+    public static void printInvalidItemIndexMessage(){
+        System.out.println("Invalid log index. Please note the index should be 1 or above. \n" +
+                "If you don't have multiple logs from the same name, index is set to 1 by default .");
+    }
+
     public static void printDeleteMealInvalidIndexMessage(){
         System.out.println("Invalid index. View all logged entries using 'list'." );
     }

@@ -233,19 +233,19 @@ public class Storage {
                         task = task.replace("(", "").replace(")", "");
                         String[] items = task.split("\\s*\\|\\s*|\\s+");
                         int len = items.length;
-                        assert len >= 9;
+                        assert len >= 10;
 
                         String mealName = "";
                         //len-7 is the last item[] of the mealname. if mealname is fried chicken
                         // then item[len-7] = chicken
-                        for(int i = 1; i <= len-8; i++) {
-                            if( i < len-8 ) {
+                        for(int i = 1; i <= len-9; i++) {
+                            if( i < len-9 ) {
                                 mealName = mealName + items[i] + " ";
                             } else {
                                 mealName = mealName + items[i];
                             }
                         }
-                        int servings = Integer.parseInt(items[len-7]);
+                        int servings = Integer.parseInt(items[len-8]);
                         int mealCalories = Integer.parseInt(items[len-6]);
                         MealTask newTask = new MealTask(mealName, servings, mealCalories, date, time);
                         TaskList.tasksList.add(newTask);
@@ -270,17 +270,17 @@ public class Storage {
                         task = task.replace("(", "").replace(")", "");
                         String[] items = task.split("\\s*\\|\\s*|\\s+");
                         int len = items.length;
-                        assert len >= 9;
+                        assert len >= 10;
                         String exerciseName = "";
-                        for(int i = 1; i <= len-8; i++) {
-                            if( i < len-8 ) {
+                        for(int i = 1; i <= len-9; i++) {
+                            if( i < len-9 ) {
                                 exerciseName = exerciseName + items[i] + " ";
                             } else {
                                 exerciseName = exerciseName + items[i];
                             }
                         }
                         LogExercise newTask = new LogExercise(exerciseName,
-                                Integer.parseInt(items[len - 7]),
+                                Integer.parseInt(items[len - 8]),
                                 Integer.parseInt(items[len - 6]), date, time);
                         TaskList.tasksList.add(newTask);
                     }

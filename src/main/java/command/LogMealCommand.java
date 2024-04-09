@@ -27,12 +27,14 @@ public class LogMealCommand {
 
     public void execute() {
         try {
+            int calorieGoal = getCalorieGoal();
             if (isItemPresentInFoodData) {
                 MealTask logMeal = new MealTask(description, servings, mealCalories, dateTime);
                 int totalCaloriesConsumed = calculateTotalCaloriesConsumed() + mealCalories;
                 tasksList.add(logMeal);
                 CommandUi.printMealLogMessage(logMeal);
-                if (exceedsCalorieGoal(totalCaloriesConsumed)) {
+
+                if (totalCaloriesConsumed > calorieGoal) {
                     CommandUi.printCalorieExceedingWarning();
                 }
             } else {
@@ -59,23 +61,33 @@ public class LogMealCommand {
     // Helper method to calculate the total calories consumed including the logged meal
     private int calculateTotalCaloriesConsumed() {
         int totalCaloriesConsumed = 0;
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i) instanceof MealTask) {
-                totalCaloriesConsumed += ((MealTask) tasksList.get(i)).getMealCalories();
+        for (Task task : tasksList) {
+            if (task instanceof MealTask) {
+                totalCaloriesConsumed += ((MealTask) task).getMealCalories();
             }
         }
         return totalCaloriesConsumed;
     }
-
-    // Helper method to check if the total calories consumed exceed the calorie goal
-    private boolean exceedsCalorieGoal(int totalCaloriesConsumed) {
-        for (Task task : tasksList) {
-            if (task instanceof GoalTask && task.getDescription().equals("calories")) {
-                int calorieGoal = ((GoalTask) task).getGoalAmount();
-                return totalCaloriesConsumed > calorieGoal;
-            }
+    private int getCalorieGoal() {
+        GoalTask calorieGoalTask = findCalorieGoalTask();
+        if (calorieGoalTask != null) {
+            int calorieGoal = calorieGoalTask.getGoalAmount();
+            System.out.println("Retrieved calorie goal: " + calorieGoal); // Debug statement
+            return calorieGoal;
+        } else {
+            System.out.println("Calorie goal task not found!"); // Debug statement
+            // Handle the case where the calorie goal task is not found
+            // For example, you might return a default value or throw an exception
+            return 0; // Default value, replace it with your actual handling logic
         }
-        return false;
     }
 
+    private GoalTask findCalorieGoalTask() {
+        for (Task task : tasksList) {
+            if (task instanceof GoalTask && task.getDescription().equals("calories")) {
+                return (GoalTask) task;
+            }
+        }
+        return null;
+    }
 }

@@ -13,7 +13,7 @@ public class TaskList {
         }
     }
 
-    public void add(Task task) {
+    public static void add(Task task) {
         tasksList.add(task);
     }
 

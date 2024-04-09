@@ -2,6 +2,8 @@ package activeedge.task;
 
 import java.time.LocalDateTime;
 
+import static activeedge.task.TaskList.tasksList;
+
 /**
  * Represents a task with a specific goal amount.
  * Extends the Task class.
@@ -41,4 +43,8 @@ public class GoalTask extends Task {
         return "Goal " + this.getDescription() + " "
                 + this.getGoalAmount() + " (Recorded on: " + dateTime + ")";
     }
+
+//    public boolean exceedsCalorieGoal(int totalCaloriesConsumed) {
+//        return totalCaloriesConsumed > this.goalAmount;
+//    }
 }

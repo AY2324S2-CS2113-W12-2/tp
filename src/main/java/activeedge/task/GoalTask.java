@@ -1,7 +1,5 @@
 package activeedge.task;
 
-import java.time.LocalDateTime;
-
 /**
  * Represents a task with a specific goal amount.
  * Extends the Task class.

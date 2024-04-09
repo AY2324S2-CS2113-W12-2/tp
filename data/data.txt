@@ -6,3 +6,4 @@ Meal | fried chicken | 1 servings | 543 cal (Recorded on: 2024-04-09 23:04)
 Meal | sushi | 1 servings | 350 cal (Recorded on: 2024-04-09 23:06)
 Meal | fried chicken | 1 servings | 543 cal (Recorded on: 2024-04-09 23:08)
 Water | 3000 ml (Recorded on: 2024-04-09 23:08)
+

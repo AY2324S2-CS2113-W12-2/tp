@@ -122,6 +122,7 @@ Displays entries logged throughout the application usage period.
 
 Sample input: `list`    
 Expected output:
+
 ---
 
 ### View all food items in the database: `foodData`
@@ -129,6 +130,7 @@ Displays all the food items in the application database.
 
 Sample input: `foodData`    
 Expected output:
+
 ---
 
 ### View all exercises in the database: `exerciseData`
@@ -136,6 +138,7 @@ Displays all forms of exercises in the application database.
 
 Sample input: `exerciseData`    
 Expected output:
+
 ---
 
 ### Delete meal logs: `delete`
@@ -246,6 +249,7 @@ Shows a daily summary of food, water intake, and goals.
 
 Sample input: `summary`  
 Expected output:
+
 ---
 
 ### Search for entries: `find`

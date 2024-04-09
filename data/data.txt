@@ -1,7 +1,1 @@
-Height 170 cm (Recorded on: 2024-04-09 19:58)
-Weight 80 kg (Recorded on: 2024-04-09 19:58)
-BMI 27 (Recorded on: 2024-04-09 19:58)
-Goal Calorie 3000 (Recorded on: 2024-04-09 19:58)
-Goal Water 3000 (Recorded on: 2024-04-09 19:58)
-Meal sushi 2 700 cal (Recorded on: 2024-04-09 20:11)
-Exercise running 30 300 cal (Recorded on: 2024-04-09 20:35)
+

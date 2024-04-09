@@ -117,8 +117,7 @@ public class CommandUi {
         }
         if(totalSurplus > 0){
             System.out.println("Calorie surplus at the moment --> " + totalSurplus);
-        }
-        else{
+        } else{
             System.out.println("Calorie deficit at the moment --> " + -totalSurplus);
         }
 

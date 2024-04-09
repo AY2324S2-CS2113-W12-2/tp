@@ -2,7 +2,6 @@ package command;
 
 import activeedge.ui.CommandUi;
 import activeedge.ExerciseData;
-import java.time.LocalDateTime;
 
 /**
  * The AddExerciseItemCommand class represents a command to add a new exercise item to the ActiveEdge application.
@@ -12,21 +11,23 @@ public class AddExerciseItemCommand {
     protected String exerciseName; // The name of the exercise
     protected int duration; // The duration of the exercise in minutes
     protected int caloriesBurntPerMinute; // The number of calories burnt per minute during the exercise
-    protected LocalDateTime dateTime; // The date and time when the exercise was performed
-
+    protected String date; // The date when the exercise was performed
+    protected String time; // The time when the exercise was performed
     /**
      * Constructs an AddExerciseItemCommand with the specified exercise details.
      * @param exerciseName The name of the exercise.
      * @param duration The duration of the exercise in minutes.
      * @param caloriesBurntPerMinute The number of calories burnt per minute during the exercise.
-     * @param dateTime The date and time when the exercise was performed.
+     * @param date The date when the exercise was performed.
+     * @param time The time when the exercise was performed.
      */
     public AddExerciseItemCommand(String exerciseName, int duration, int caloriesBurntPerMinute,
-                                  LocalDateTime dateTime) {
+                                  String date, String time) {
         this.exerciseName = exerciseName;
         this.duration = duration;
         this.caloriesBurntPerMinute = caloriesBurntPerMinute;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
     }
 
     /**
@@ -43,7 +44,7 @@ public class AddExerciseItemCommand {
             ExerciseData.exercisesList = appendItem(ExerciseData.exercisesList, newExercise);
             CommandUi.printAddExerciseMessage(exerciseName);
             LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
-                    caloriesBurntPerMinute * duration, dateTime, true);
+                    caloriesBurntPerMinute * duration, date, time, true);
             logExerciseCommand.execute();
         }
     }

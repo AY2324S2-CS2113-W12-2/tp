@@ -3,7 +3,6 @@ package command;
 import activeedge.ui.CommandUi;
 import activeedge.task.LogExercise;
 import static activeedge.task.TaskList.tasksList;
-import java.time.LocalDateTime;
 
 /**
  * Represents a command to log exercise activities into the system.
@@ -14,7 +13,8 @@ public class LogExerciseCommand {
     protected String exerciseName; // The name of the exercise
     protected int duration; // The duration of the exercise in minutes
     protected int caloriesBurnt; // The total number of calories burnt during the exercise
-    protected LocalDateTime dateTime; // The date and time when the exercise was performed
+    protected String date; // The date when the exercise was performed
+    protected String time; // The time when the exercise was performed
     protected boolean isItemPresentInExerciseData; // Indicates if the exercise is present in the system's data
 
     /**
@@ -25,12 +25,13 @@ public class LogExerciseCommand {
      * @param dateTime The date and time when the exercise was performed.
      * @param isItemPresentInExerciseData Indicates if the exercise is present in the system's data.
      */
-    public LogExerciseCommand(String exerciseName, int duration, int caloriesBurnt, LocalDateTime dateTime,
+    public LogExerciseCommand(String exerciseName, int duration, int caloriesBurnt, String date, String time,
                               boolean isItemPresentInExerciseData) {
         this.exerciseName = exerciseName;
         this.duration = duration;
         this.caloriesBurnt = caloriesBurnt;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
         this.isItemPresentInExerciseData = isItemPresentInExerciseData;
     }
 
@@ -43,7 +44,7 @@ public class LogExerciseCommand {
     public void execute() throws ActiveEdgeException {
 
         if (isItemPresentInExerciseData){
-            LogExercise logExercise = new LogExercise(exerciseName, duration, caloriesBurnt, dateTime);
+            LogExercise logExercise = new LogExercise(exerciseName, duration, caloriesBurnt, date, time);
             tasksList.add(logExercise);
             CommandUi.printExerciseLogMessage(logExercise);
         } else {

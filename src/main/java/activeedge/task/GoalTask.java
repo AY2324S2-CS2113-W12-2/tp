@@ -10,7 +10,8 @@ import static activeedge.task.TaskList.tasksList;
  */
 public class GoalTask extends Task {
     private int goalAmount; // The amount associated with the goal task.
-    private LocalDateTime dateTime;
+    private String date;
+    private String time;
 
     /**
      * Constructs a GoalTask object with the provided description and goal amount.
@@ -18,10 +19,11 @@ public class GoalTask extends Task {
      * @param description The description of the goal task.
      * @param goalAmount  The amount associated with the goal task.
      */
-    public GoalTask(String description, int goalAmount, LocalDateTime dateTime) {
+    public GoalTask(String description, int goalAmount, String date, String time) {
         super(description); // Calls the constructor of the superclass (Task) with the provided description.
         this.goalAmount = goalAmount; // Initializes the goal amount.
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
     }
 
     /**
@@ -41,7 +43,7 @@ public class GoalTask extends Task {
     @Override
     public String toString() {
         return "Goal " + this.getDescription() + " "
-                + this.getGoalAmount() + " (Recorded on: " + dateTime + ")";
+                + this.getGoalAmount() + " (Recorded on: " + date + " " + time + ")";
     }
 
 //    public boolean exceedsCalorieGoal(int totalCaloriesConsumed) {

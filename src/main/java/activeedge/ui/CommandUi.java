@@ -57,13 +57,13 @@ public class CommandUi {
     public static void printMealLogMessage(MealTask mealTask) {
         System.out.println("You've logged " + Integer.toString(mealTask.getServings()) +
                 " servings" + " of " + mealTask.getFoodName() + ".") ;
-        System.out.println("Estimated calories: " + Integer.toString(mealTask.getMealCalories()) + " kcal");
+        System.out.println("Estimated calories: " + Integer.toString(mealTask.getMealCalories()) + " cal");
     }
 
     public static void printExerciseLogMessage(LogExercise logExercise) {
         System.out.println("You've logged " + Integer.toString(logExercise.getDuration()) +
                 " minutes" + " of " + logExercise.getExerciseName() + ".") ;
-        System.out.println("Estimated calories burnt: " + Integer.toString(logExercise.getCaloriesBurnt()) + " kcal");
+        System.out.println("Estimated calories burnt: " + Integer.toString(logExercise.getCaloriesBurnt()) + " cal");
     }
 
     public static void printShowCalMessage() {
@@ -76,17 +76,17 @@ public class CommandUi {
             String[] parts = tasksList.get(i).toString().split(" ");
             int len = parts.length;
             String taskString = tasksList.get(i).toString();
-            int kcalIndex = -1;
+            int calIndex = -1;
             for (int j = 0; j < len; j++) {
-                if (parts[j].equals("kcal")) {
-                    kcalIndex = j - 1; // Assuming calorie value is just before "kcal"
+                if (parts[j].equals("cal")) {
+                    calIndex = j - 1; // Assuming calorie value is just before "kcal"
                     break;
                 }
             }
 
             // Check if kcal index is found and the part at that index is a valid integer
-            if (kcalIndex >= 0 && kcalIndex < parts.length) {
-                String calorieString = parts[kcalIndex];
+            if (calIndex >= 0 && calIndex < parts.length) {
+                String calorieString = parts[calIndex];
                 if (calorieString.matches("\\d+")) { // Check if it's a valid integer
                     int calories = Integer.parseInt(calorieString);
                     if (taskString.startsWith("Meal")) {
@@ -107,12 +107,12 @@ public class CommandUi {
         totalCalories = totalCaloriesFromMeals - totalCaloriesFromExercises;
 
         System.out.print("Total calories today: ");
-        System.out.println(totalCalories + " kcal consumed out of " + goal + " kcal goal");
+        System.out.println(totalCalories + " cal consumed out of " + goal + " cal goal");
 
         int totalSurplus = totalCalories - Integer.parseInt(goal);
         System.out.print("Total calories consumed today: ");
         System.out.println("You have burned " + totalCaloriesFromExercises + " today!");
-        System.out.println("You have consumed " + totalCaloriesFromMeals + " kcal out of " + goal + " kcal");
+        System.out.println("You have consumed " + totalCaloriesFromMeals + " cal out of " + goal + " kcal");
         if(totalCaloriesFromMeals > Integer.parseInt(goal)) {
             System.out.println("You have exceeded your calorie intake goal!");
         } else{
@@ -184,7 +184,7 @@ public class CommandUi {
     public static void printFoodItemNotFoundMessage(String description){
         System.out.println(description + " is not found in our food database.\n" +
                 "Please enter the following command to add it to the database and log your meal.\n\n" +
-                "add m/[FOOD] c/[CALORIES_PER_SERVING(kCal)] s/[NUMBER_OF_SERVINGS]\n\n" +
+                "add m/[FOOD] c/[CALORIES_PER_SERVING(cal)] s/[NUMBER_OF_SERVINGS]\n\n" +
                 "Eg: 'add m/"+ description +" c/120 s/2'\n"
         );
     }
@@ -192,7 +192,7 @@ public class CommandUi {
     public static void printExerciseItemNotFoundMessage(String exerciseName){
         System.out.println(exerciseName + " is not found in our exercise database.\n" +
                 "Please enter the following command to add it to the database and log your exercise.\n\n" +
-                "add e/[EXERCISE] c/[CALORIES_BURNT_PER_MIN(kCal)] s/[DURATION_IN_MIN]\n\n" +
+                "add e/[EXERCISE] c/[CALORIES_BURNT_PER_MIN(cal)] s/[DURATION_IN_MIN]\n\n" +
                 "Eg: 'add e/"+ exerciseName +" c/120 d/2'\n"
         );
     }
@@ -227,14 +227,14 @@ public class CommandUi {
                                               String calorieGoal, String waterGoal,
                                                int netCalories, String calorieStatus) {
         System.out.println("Daily Summary:");
-        System.out.println("Total calories consumed: " + totalCalories + " kcal");
+        System.out.println("Total calories consumed: " + totalCalories + " cal");
         System.out.println("Total water consumed: " + totalWaterIntake + " ml");
-        System.out.println("Total calories burnt: " + totalCaloriesBurnt + " kcal");
+        System.out.println("Total calories burnt: " + totalCaloriesBurnt + " cal");
 
-        System.out.println("Calorie goal: " + calorieGoal + " kcal");
+        System.out.println("Calorie goal: " + calorieGoal + " cal");
         System.out.println("Water goal: " + waterGoal + " ml");
 
-        System.out.println("Net calories: " + netCalories + " kcal");
+        System.out.println("Net calories: " + netCalories + " cal");
         System.out.println("Calorie status: " + calorieStatus);
     }
 

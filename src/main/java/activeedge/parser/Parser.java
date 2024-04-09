@@ -26,7 +26,7 @@ import activeedge.FoodData;
 import java.time.LocalDateTime;
 
 
-public class    Parser {
+public class Parser {
     public void handleInput(String input) {
         try {
             String[] inputSplit = input.split(" ");
@@ -188,7 +188,7 @@ public class    Parser {
                                 "Please try again.");
                     }
                 } else {
-                    System.out.println("Invalid command. Please enter 'add m/[FOOD] c/[CALORIES_PER_SERVING(kCal)]" +
+                    System.out.println("Invalid command. Please enter 'add m/[FOOD] c/[CALORIES_PER_SERVING(cal)]" +
                             " s/[NUMBER_OF_SERVINGS]'.");
                     System.out.println("For example, 'add m/Pizza c/300 s/2'. Enter 'help' for more information.");
                 }

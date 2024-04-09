@@ -29,6 +29,6 @@ public class MealTask extends Task {
     @Override
     public String toString() {
         return "Meal " + this.getDescription() + " " + this.getServings() + " "
-                + this.getMealCalories() + " kcal (Recorded on: " + dateTime + ")";
+                + this.getMealCalories() + " cal (Recorded on: " + dateTime + ")";
     }
 }

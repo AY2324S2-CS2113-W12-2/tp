@@ -13,7 +13,7 @@ public class HelpUi {
     public static void printHelpMessage() {
         System.out.println("Welcome to Active Edge! Here are the available commands:\n" +
                 "Log meals: log m/[FOOD] s/[NUMBER_OF_SERVINGS]\n" +
-                "Add meals to database: add m/[FOOD] c/[CALORIES_PER_SERVING(kCal)] s/[NUMBER_OF_SERVINGS]\n" +
+                "Add meals to database: add m/[FOOD] c/[CALORIES_PER_SERVING(cal)] s/[NUMBER_OF_SERVINGS]\n" +
                 "View daily calories: show c\n" +
                 "Log water: log w/[WATER_QUANTITY]\n" +
                 "View water intake: show w\n" +

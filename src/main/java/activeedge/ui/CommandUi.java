@@ -25,33 +25,36 @@ public class CommandUi {
         System.out.println("Logged data for today:");
 
         System.out.println("Food: ");
+        System.out.print(LINE);
         int j = 1;
         for (int i = 0; i < tasksList.size(); i++) {
             if (tasksList.get(i).toString().startsWith("Meal")) {
-                System.out.println(j + ". " + tasksList.get(i).toString().substring(5));
+                System.out.println(j + ". " + tasksList.get(i).toString().substring(7));
                 j++;
             }
         }
-        System.out.println("");
+        System.out.println(LINE);
         System.out.println("Water:");
+        System.out.print(LINE);
         int k = 1;
         for (int i = 0; i < tasksList.size(); i++) {
             if (tasksList.get(i).toString().startsWith("Water")) {
-                System.out.println(k + ". " + tasksList.get(i).toString().substring(6));
+                System.out.println(k + ". " + tasksList.get(i).toString().substring(8));
                 k++;
             }
         }
-        System.out.println("");
+        System.out.println(LINE);
         System.out.println("Exercises:");
+        System.out.print(LINE);
         int l = 1;
         for (int i = 0; i < tasksList.size(); i++) {
             if (tasksList.get(i).toString().startsWith("Exercise")) {
-                System.out.print(l + ". " + tasksList.get(i).toString().substring(9));
+                System.out.print(l + ". " + tasksList.get(i).toString().substring(11));
                 System.out.println("");
                 l++;
             }
         }
-
+        System.out.println(LINE);
     }
 
     public static void printMealLogMessage(MealTask mealTask) {
@@ -214,6 +217,11 @@ public class CommandUi {
 
     public static void printWaterLogFoundFormatErrorMessage(int amount){
         System.out.println("Did you mean 'delete " + amount + "'" );
+    }
+
+    public static void printInvalidItemIndexMessage(){
+        System.out.println("Invalid log index. Please note the index should be 1 or above. \n" +
+                "If you don't have multiple logs from the same name, index is set to 1 by default .");
     }
 
     public static void printDeleteMealInvalidIndexMessage(){

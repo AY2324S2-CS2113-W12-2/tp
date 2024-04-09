@@ -30,7 +30,7 @@ public class MealTask extends Task {
 
     @Override
     public String toString() {
-        return "Meal " + this.getDescription() + " " + this.getServings() + " "
-                + this.getMealCalories() + " cal (Recorded on: " + date + " " + time + ")";
+        return "Meal" + " | " + this.getDescription() + " | " + this.getServings() + " servings | " +
+                this.getMealCalories() + " cal (Recorded on: " + date + " " + time + ")";
     }
 }

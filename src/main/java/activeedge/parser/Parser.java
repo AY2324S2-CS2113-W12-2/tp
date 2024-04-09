@@ -86,7 +86,8 @@ public class    Parser {
                         } else {
                             System.out.println("Invalid command. Please enter 'log m/[FOOD]" +
                                     " s/[NUMBER_OF_SERVINGS]'.");
-                            System.out.println("For example, 'log m/chicken rice s/2'. Enter 'help' for more information.");
+                            System.out.println("For example, 'log m/chicken rice s/2'. " +
+                                    "Enter 'help' for more information.");
                         }
                     } else if (items[0].equals("e")) {
                         String[] logParts = input.split("e/|d/");

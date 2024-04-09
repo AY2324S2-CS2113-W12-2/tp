@@ -230,7 +230,9 @@ public class Storage {
                     String date = dateTime.format(dateFormatter);
                     String time = dateTime.format(timeFormatter);
                     if (task.startsWith("Meal")) {
+                        //replaces parentheses with a white space
                         task = task.replace("(", "").replace(")", "");
+                        //splits string by "|" and white spaces
                         String[] items = task.split("\\s*\\|\\s*|\\s+");
                         int len = items.length;
                         assert len >= 10;

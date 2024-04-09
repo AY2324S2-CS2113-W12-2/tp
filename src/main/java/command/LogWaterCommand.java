@@ -3,23 +3,24 @@ package command;
 import activeedge.task.WaterTask;
 import activeedge.ui.CommandUi;
 import activeedge.task.TaskList;
-import java.time.LocalDateTime;
 
 /**
  * Represents a command to log water intake.
  */
 public class LogWaterCommand {
     private String quantityString;
-    private LocalDateTime dateTime;
+    private String date;
+    private String time;
 
     /**
      * Constructs a LogWaterCommand object with the specified quantity string.
      *
      * @param quantityString The string representing the quantity of water to log.
      */
-    public LogWaterCommand(String quantityString, LocalDateTime dateTime) {
+    public LogWaterCommand(String quantityString, String date, String time) {
         this.quantityString = quantityString;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
     }
 
     /**
@@ -34,7 +35,7 @@ public class LogWaterCommand {
             if (quantity <= 0) {
                 System.out.println("Water quantity must be above 0. Please try again.");
             } else {
-                WaterTask waterTask = new WaterTask(quantity, dateTime);
+                WaterTask waterTask = new WaterTask(quantity, date, time);
                 TaskList.tasksList.add(waterTask);
                 CommandUi.printWaterLogMessage(waterTask);
             }

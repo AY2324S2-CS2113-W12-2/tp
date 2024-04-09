@@ -1,24 +1,19 @@
 package activeedge.userdetails;
 
-import java.time.LocalDateTime;
-
-
 public class LogBMI extends UserDetails {
 
-    private LocalDateTime dateTime;
+    private String date;
+    private String time;
 
-    public LogBMI(Integer value, LocalDateTime dateTime) {
+    public LogBMI(Integer value, String date, String time) {
         super(value);
-        this.dateTime = dateTime;
-    }
-
-    public LocalDateTime getDateTime() {
-        return dateTime;
+        this.date = date;
+        this.time = time;
     }
 
     @Override
     public String toString() {
-        return "BMI " + getValue() + " (Recorded on: " + dateTime + ")";
+        return "BMI " + getValue() + " (Recorded on: " + date + " " + time + ")";
     }
 }
 

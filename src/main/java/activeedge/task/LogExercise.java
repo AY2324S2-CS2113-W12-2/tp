@@ -1,5 +1,4 @@
 package activeedge.task;
-import java.time.LocalDateTime;
 
 /**
  * Represents an exercise task that extends the functionality of a basic task
@@ -10,7 +9,8 @@ public class LogExercise extends Task{
     protected String exerciseName;
     protected int duration;
     protected Integer caloriesBurnt;
-    protected LocalDateTime dateTime;
+    protected String date;
+    protected String time;
 
 
     /**
@@ -20,11 +20,12 @@ public class LogExercise extends Task{
      * @param duration the duration of the exercise, in minutes
      * @param caloriesBurnt the number of calories burnt during the exercise
      */
-    public LogExercise(String exerciseName, int duration, int caloriesBurnt, LocalDateTime dateTime){
+    public LogExercise(String exerciseName, int duration, int caloriesBurnt, String date , String time){
         super(exerciseName);
         this.duration = duration;
         this.caloriesBurnt = caloriesBurnt;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
     }
     public String getExerciseName() {
         return description;
@@ -46,6 +47,6 @@ public class LogExercise extends Task{
     @Override
     public String toString() {
         return "Exercise " + this.getExerciseName() + " " + this.getDuration() + " "
-                + this.getCaloriesBurnt() + " kcal (Recorded on: " + dateTime + ")";
+                + this.getCaloriesBurnt() + " cal (Recorded on: " + date + " " + time + ")";
     }
 }

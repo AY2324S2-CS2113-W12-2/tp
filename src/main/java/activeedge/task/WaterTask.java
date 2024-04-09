@@ -1,13 +1,12 @@
 package activeedge.task;
-import java.time.LocalDateTime;
-
 
 /**
  * Represents a task related to water intake.
  * */
 public class WaterTask extends Task {
     private int quantity;
-    private LocalDateTime dateTime;
+    private String date;
+    private String time;
 
 
     /**
@@ -15,10 +14,11 @@ public class WaterTask extends Task {
      *
      * @param quantity The quantity of water intake.
      */
-    public WaterTask(int quantity, LocalDateTime dateTime) {
+    public WaterTask(int quantity, String date, String time) {
         super("Water intake");
         this.quantity = quantity;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
     }
 
     /**
@@ -38,9 +38,6 @@ public class WaterTask extends Task {
     @Override
     public String toString() {
         return "Water " + this.getQuantity() + " ml"
-                + " (Recorded on: " + dateTime + ")";
+                + " (Recorded on: " + date + " " + time + ")";
     }
-
-
-
 }

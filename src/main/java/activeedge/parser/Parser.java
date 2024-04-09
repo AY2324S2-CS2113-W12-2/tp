@@ -24,6 +24,7 @@ import static activeedge.FoodData.foodItems;
 import static activeedge.ExerciseData.exercisesList;
 import activeedge.FoodData;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class Parser {
@@ -31,6 +32,10 @@ public class Parser {
         try {
             String[] inputSplit = input.split(" ");
             LocalDateTime currentDateTime = LocalDateTime.now();
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+            String date = currentDateTime.format(dateFormatter);
+            String time = currentDateTime.format(timeFormatter);
             if (inputSplit[0].equalsIgnoreCase("log")) {
                 if (inputSplit.length == 1) {
                     System.out.println("Please specify what you wish to log: ");
@@ -53,7 +58,7 @@ public class Parser {
                             System.out.println("For example, 'log w/300'. Enter 'help' for more information.");
                         } else {
                             String quantityString = items[1];
-                            LogWaterCommand logWaterCommand = new LogWaterCommand(quantityString, currentDateTime);
+                            LogWaterCommand logWaterCommand = new LogWaterCommand(quantityString, date, time);
                             logWaterCommand.execute();
                         }
                     } else if (items[0].equals("m")) {
@@ -78,7 +83,7 @@ public class Parser {
                                     }
                                 }
                                 LogMealCommand logMealCommand = new LogMealCommand(description, servings,
-                                        calories, currentDateTime, isItemPresentInFoodData);
+                                        calories, date, time, isItemPresentInFoodData);
                                 logMealCommand.execute();
                             } catch (NumberFormatException e) {
                                 System.out.println("Servings must be a positive integer value. Please try again.");
@@ -111,7 +116,7 @@ public class Parser {
                                     }
                                 }
                                 LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
-                                        caloriesBurnt, currentDateTime, isItemPresentInExerciseData);
+                                        caloriesBurnt, date, time, isItemPresentInExerciseData);
                                 logExerciseCommand.execute();
                             } catch (NumberFormatException e) {
                                 System.out.println("Duration must be a positive integer value. Please try again.");
@@ -180,7 +185,7 @@ public class Parser {
                         }
                         else {
                             AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
-                                    caloriesPerServing, currentDateTime);
+                                    caloriesPerServing, date, time);
                             addFoodItemCommand.execute();
                         }
                     } catch(NumberFormatException e){
@@ -208,7 +213,7 @@ public class Parser {
                         }
 
                         AddExerciseItemCommand addExerciseItemCommand = new AddExerciseItemCommand(description,
-                                duration, caloriesBurntPerMinute, currentDateTime);
+                                duration, caloriesBurntPerMinute, date, time);
                         addExerciseItemCommand.execute();
                     } catch(NumberFormatException e){
                         System.out.println("Duration and calories burnt per minute must be an integer value. " +

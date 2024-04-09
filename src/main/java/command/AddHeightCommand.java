@@ -7,17 +7,17 @@ import java.time.LocalDateTime;
 
 public class AddHeightCommand {
     protected Integer height;
-    protected LocalDateTime dateTime;
+    protected String date;
+    protected String time;
 
-
-    public AddHeightCommand (Integer height, LocalDateTime dateTime) {
+    public AddHeightCommand (Integer height, String date, String time) {
         this.height = height;
-        this.dateTime = dateTime;
-
+        this.date = date;
+        this.time = time;
     }
 
     public void execute() throws ActiveEdgeException {
-        LogHeight logHeight = new LogHeight(height,dateTime);
+        LogHeight logHeight = new LogHeight(height,date, time);
         detailsList.add(logHeight);
     }
 }

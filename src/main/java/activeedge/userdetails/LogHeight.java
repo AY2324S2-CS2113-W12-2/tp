@@ -11,7 +11,8 @@ public class LogHeight extends UserDetails {
     /**
      * The date and time when the height was recorded.
      */
-    private LocalDateTime dateTime;
+    private String date;
+    private String time;
 
     /**
      * Constructs a LogHeight object with the specified height value and timestamp.
@@ -19,9 +20,10 @@ public class LogHeight extends UserDetails {
      * @param value    The height value.
      * @param dateTime The date and time when the height was recorded.
      */
-    public LogHeight(Integer value, LocalDateTime dateTime) {
+    public LogHeight(Integer value, String date, String time) {
         super(value);
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
     }
 
     /**
@@ -29,9 +31,13 @@ public class LogHeight extends UserDetails {
      *
      * @return The date and time when the height was recorded.
      */
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
+//    public LocalDate getDate() {
+//        return date;
+//    }
+//
+//    public LocalTime getTime() {
+//        return time;
+//    }
 
     /**
      * Returns a string representation of the LogHeight object.
@@ -41,6 +47,6 @@ public class LogHeight extends UserDetails {
      */
     @Override
     public String toString() {
-        return "Height " + this.getValue() + " cm" + " (Recorded on: " + dateTime + ")";
+        return "Height " + this.getValue() + " cm" + " (Recorded on: " + date + " " + time + ")";
     }
 }

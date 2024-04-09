@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,10 +27,14 @@ public class ViewWaterIntakeCommandTest {
     @Test
     public void testGetTotalWaterIntake() {
         LocalDateTime dateTime = LocalDateTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        String date = dateTime.format(dateFormatter);
+        String time = dateTime.format(timeFormatter);
         // Create a mock task list
         ArrayList<Task> tasksList = new ArrayList<>();
-        tasksList.add(new WaterTask(200, dateTime)); // Adding water intake
-        tasksList.add(new WaterTask(300, dateTime)); // Adding water intake
+        tasksList.add(new WaterTask(200, date, time)); // Adding water intake
+        tasksList.add(new WaterTask(300, date, time)); // Adding water intake
 
         ViewWaterIntakeCommand viewWaterIntakeCommand = new ViewWaterIntakeCommand();
 

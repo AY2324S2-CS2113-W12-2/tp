@@ -53,15 +53,17 @@ import java.time.LocalDateTime;
 
 public class AddCalorieGoalCommand {
     private int calorieGoal;
-    private LocalDateTime dateTime;
+    private String date;
+    private String time;
 
-    public AddCalorieGoalCommand(int calorieGoal, LocalDateTime dateTime) {
+    public AddCalorieGoalCommand(int calorieGoal, String date, String time) {
         this.calorieGoal = calorieGoal;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
     }
 
     public void execute() {
-        GoalTask calorieGoalTask = new GoalTask("Calorie", calorieGoal, dateTime);
+        GoalTask calorieGoalTask = new GoalTask("Calorie", calorieGoal, date, time);
 
         tasksList.add(calorieGoalTask);
         // Add logic to save calorie goal to task list

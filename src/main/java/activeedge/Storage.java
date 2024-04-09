@@ -86,6 +86,11 @@ public class Storage {
     }
 
     public static void listEmpty() {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        String date = currentDateTime.format(dateFormatter);
+        String time = currentDateTime.format(timeFormatter);
         System.out.print("\n");
         int i = 0;
         int j = 0;
@@ -106,7 +111,7 @@ public class Storage {
                     heightInput = Integer.parseInt(scanner.nextLine());
                     if (heightInput >= 50 && heightInput <= 300) {
                         AddHeightCommand addHeightCommand = new
-                                AddHeightCommand(heightInput, LocalDateTime.now());
+                                AddHeightCommand(heightInput, date, time);
                         addHeightCommand.execute();
                         saveLogsToFile("data/data.txt");
                         j++;
@@ -123,7 +128,7 @@ public class Storage {
                     weightInput = Integer.parseInt(scanner.nextLine());
                     if (weightInput >= 1 && weightInput <= 700) {
                         AddWeightCommand addWeightCommand = new
-                                AddWeightCommand(weightInput, LocalDateTime.now());
+                                AddWeightCommand(weightInput, date, time);
                         addWeightCommand.execute();
                         saveLogsToFile("data/data.txt");
                         i++;
@@ -136,7 +141,7 @@ public class Storage {
             }
             double heightMeters = (double) heightInput / 100;
             int bmi = (int) (weightInput / (heightMeters * heightMeters));
-            AddBMICommand addBMICommand = new AddBMICommand(bmi, LocalDateTime.now());
+            AddBMICommand addBMICommand = new AddBMICommand(bmi, date, time);
             addBMICommand.execute();
             saveLogsToFile("data/data.txt");
             System.out.println("Your BMI is " + bmi);
@@ -157,7 +162,7 @@ public class Storage {
                     calorieGoal = Integer.parseInt(scanner.nextLine());
                     if (calorieGoal >= 1 && calorieGoal <= 50000) {
                         AddCalorieGoalCommand addCalorieGoalCommand = new
-                                AddCalorieGoalCommand(calorieGoal, LocalDateTime.now());
+                                AddCalorieGoalCommand(calorieGoal, date, time);
                         addCalorieGoalCommand.execute();
                         saveLogsToFile("data/data.txt");
                         k++;
@@ -176,7 +181,7 @@ public class Storage {
                     waterGoal = Integer.parseInt(scanner.nextLine());
                     if (waterGoal >= 1 && waterGoal <= 6000) {
                         AddWaterGoalCommand addWaterGoalCommand = new
-                                AddWaterGoalCommand(waterGoal, LocalDateTime.now());
+                                AddWaterGoalCommand(waterGoal, date, time);
                         addWaterGoalCommand.execute();
                         saveLogsToFile("data/data.txt");
                         l++;
@@ -220,7 +225,10 @@ public class Storage {
                     String task = scanner.nextLine();
                     String dateTimeStr = extractDateTimeString(task);
                     LocalDateTime dateTime = parseDateTime(dateTimeStr);
-
+                    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+                    String date = dateTime.format(dateFormatter);
+                    String time = dateTime.format(timeFormatter);
                     if (task.startsWith("Meal")) {
                         String[] items = task.trim().split(" ");
                         int len = items.length;
@@ -229,50 +237,50 @@ public class Storage {
                         String mealName = "";
                         //len-7 is the last item[] of the mealname. if mealname is fried chicken
                         // then item[len-7] = chicken
-                        for(int i = 1; i <= len-7; i++) {
-                            if( i < len-7 ) {
+                        for(int i = 1; i <= len-8; i++) {
+                            if( i < len-8 ) {
                                 mealName = mealName + items[i] + " ";
                             } else {
                                 mealName = mealName + items[i];
                             }
                         }
-                        int servings = Integer.parseInt(items[len-6]);
-                        int mealCalories = Integer.parseInt(items[len-5]);
-                        MealTask newTask = new MealTask(mealName, servings, mealCalories, dateTime);
+                        int servings = Integer.parseInt(items[len-7]);
+                        int mealCalories = Integer.parseInt(items[len-6]);
+                        MealTask newTask = new MealTask(mealName, servings, mealCalories, date, time);
 
                         TaskList.tasksList.add(newTask);
 
                     } else if (task.startsWith("Goal")) {
                         String[] items = task.trim().split(" ");
-                        GoalTask newTask = new GoalTask(items[1], Integer.parseInt(items[2]), dateTime);
+                        GoalTask newTask = new GoalTask(items[1], Integer.parseInt(items[2]), date, time);
                         TaskList.tasksList.add(newTask);
                     } else if (task.startsWith("Water")) {
                         String[] items = task.trim().split(" ");
-                        WaterTask newTask = new WaterTask(Integer.parseInt(items[1]), dateTime);
+                        WaterTask newTask = new WaterTask(Integer.parseInt(items[1]), date, time);
                         TaskList.tasksList.add(newTask);
                     } else if (task.startsWith("Height")) {
                         String[] items = task.trim().split(" ");
-                        LogHeight newHeight = new LogHeight(Integer.parseInt(items[1]), dateTime);
+                        LogHeight newHeight = new LogHeight(Integer.parseInt(items[1]), date, time);
                         UserDetailsList.detailsList.add(newHeight);
                     } else if (task.startsWith("Weight")) {
                         String[] items = task.trim().split(" ");
-                        LogWeight newWeight = new LogWeight(Integer.parseInt(items[1]), dateTime);
+                        LogWeight newWeight = new LogWeight(Integer.parseInt(items[1]), date, time);
                         UserDetailsList.detailsList.add(newWeight);
                     } else if (task.startsWith("Exercise")){
                         String[] items = task.trim().split(" ");
                         int len = items.length;
                         assert len >= 7;
                         String exerciseName = "";
-                        for(int i = 1; i <= len-7; i++) {
-                            if( i < len-7 ) {
+                        for(int i = 1; i <= len-8; i++) {
+                            if( i < len-8 ) {
                                 exerciseName = exerciseName + items[i] + " ";
                             } else {
                                 exerciseName = exerciseName + items[i];
                             }
                         }
                         LogExercise newTask = new LogExercise(exerciseName,
-                                Integer.parseInt(items[len - 6]),
-                                Integer.parseInt(items[len - 5]), dateTime);
+                                Integer.parseInt(items[len - 7]),
+                                Integer.parseInt(items[len - 6]), date, time);
                         TaskList.tasksList.add(newTask);
                     }
                 }
@@ -292,7 +300,7 @@ public class Storage {
     private static LocalDateTime parseDateTime(String dateTimeStr) {
         try {
             // Use the correct DateTimeFormatter for your date-time strings
-            DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             return LocalDateTime.parse(dateTimeStr, formatter);
         } catch (DateTimeParseException e) {
             System.out.println("Error parsing date-time: " + e.getMessage());

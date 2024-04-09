@@ -13,13 +13,15 @@ public class AddFoodItemCommand {
     protected String description;
     protected int servings;
     protected int caloriesPerSaving;
-    protected LocalDateTime dateTime;
+    protected String date;
+    protected String time;
 
-    public AddFoodItemCommand(String description, int servings, int caloriesPerSaving, LocalDateTime dateTime) {
+    public AddFoodItemCommand(String description, int servings, int caloriesPerSaving, String date, String time) {
         this.description = description;
         this.servings = servings;
         this.caloriesPerSaving = caloriesPerSaving;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
     }
 
     public void execute() throws ActiveEdgeException {
@@ -32,7 +34,7 @@ public class AddFoodItemCommand {
             foodItems = appendItem(foodItems, newItem);
             CommandUi.printAddFoodItemMessage(description);
             LogMealCommand logMealCommand = new LogMealCommand(description, servings,
-                    caloriesPerSaving * servings, dateTime, true);
+                    caloriesPerSaving * servings, date, time, true);
             logMealCommand.execute();
         }
     }

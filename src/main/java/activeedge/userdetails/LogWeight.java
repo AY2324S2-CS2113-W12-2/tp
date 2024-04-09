@@ -11,7 +11,8 @@ public class LogWeight extends UserDetails {
     /**
      * The date and time when the weight was recorded.
      */
-    private LocalDateTime dateTime;
+    private String date;
+    private String time;
 
     /**
      * Constructs a LogWeight object with the specified weight value and timestamp.
@@ -19,9 +20,10 @@ public class LogWeight extends UserDetails {
      * @param value    The weight value.
      * @param dateTime The date and time when the weight was recorded.
      */
-    public LogWeight(Integer value, LocalDateTime dateTime) {
+    public LogWeight(Integer value, String date, String time) {
         super(value);
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
     }
 
     /**
@@ -29,9 +31,9 @@ public class LogWeight extends UserDetails {
      *
      * @return The date and time when the weight was recorded.
      */
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
+//    public LocalDateTime getDateTime() {
+//        return LocalDateTime.parse(date, time);
+//    }
 
     /**
      * Returns a string representation of the LogWeight object.
@@ -41,7 +43,7 @@ public class LogWeight extends UserDetails {
      */
     @Override
     public String toString() {
-        return "Weight " + this.getValue() + " kg" + " (Recorded on: " + dateTime + ")";
+        return "Weight " + this.getValue() + " kg" + " (Recorded on: " + date + " " + time + ")";
     }
 }
 

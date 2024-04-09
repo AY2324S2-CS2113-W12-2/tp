@@ -13,22 +13,24 @@ public class LogMealCommand {
     protected String description;
     protected int servings;
     protected int mealCalories;
-    protected LocalDateTime dateTime;
+    protected String date;
+    protected String time;
     protected boolean isItemPresentInFoodData;
 
-    public LogMealCommand(String description, int servings, int mealCalories, LocalDateTime dateTime,
+    public LogMealCommand(String description, int servings, int mealCalories, String date, String time,
                           boolean isItemPresentInFoodData) {
         this.description = description;
         this.servings = servings;
         this.mealCalories = mealCalories;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
         this.isItemPresentInFoodData = isItemPresentInFoodData;
     }
 
     public void execute() {
         try {
             if (isItemPresentInFoodData) {
-                MealTask logMeal = new MealTask(description, servings, mealCalories, dateTime);
+                MealTask logMeal = new MealTask(description, servings, mealCalories, date, time);
                 int totalCaloriesConsumed = calculateTotalCaloriesConsumed() + mealCalories;
                 tasksList.add(logMeal);
                 CommandUi.printMealLogMessage(logMeal);

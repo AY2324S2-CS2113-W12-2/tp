@@ -20,6 +20,10 @@ public class DeleteTaskCommand {
                 indexParts = parts[1].trim().split("i/");
                 this.index = Integer.parseInt(indexParts[1].trim());
                 this.description = indexParts[0].trim();
+                if(index <= 0){
+                    CommandUi.printInvalidItemIndexMessage();
+                    this.errorRaised = true;
+                }
             }
             else {
                 //If no index to be deleted is passed, 1 is considered as the index.

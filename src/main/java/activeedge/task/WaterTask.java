@@ -37,7 +37,7 @@ public class WaterTask extends Task {
      */
     @Override
     public String toString() {
-        return "Water " + this.getQuantity() + " ml"
+        return "Water" + " | " +this.getQuantity() + " ml"
                 + " (Recorded on: " + date + " " + time + ")";
     }
 }

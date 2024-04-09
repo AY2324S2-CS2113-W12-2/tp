@@ -41,6 +41,6 @@ public class ExerciseTask extends Task{
      */
     @Override
     public String toString() {
-        return "Exercise " + this.getExerciseName() + " " + this.getDuration() + " " + this.getCaloriesBurnt();
+        return "Exercise" + " | " + this.getExerciseName() + " | " + this.getDuration() + " | " + this.getCaloriesBurnt();
     }
 }

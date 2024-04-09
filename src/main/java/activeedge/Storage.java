@@ -230,9 +230,10 @@ public class Storage {
                     String date = dateTime.format(dateFormatter);
                     String time = dateTime.format(timeFormatter);
                     if (task.startsWith("Meal")) {
-                        String[] items = task.trim().split(" ");
+                        task = task.replace("(", "").replace(")", "");
+                        String[] items = task.split("\\s*\\|\\s*|\\s+");
                         int len = items.length;
-                        assert len >= 8;
+                        assert len >= 9;
 
                         String mealName = "";
                         //len-7 is the last item[] of the mealname. if mealname is fried chicken
@@ -247,15 +248,14 @@ public class Storage {
                         int servings = Integer.parseInt(items[len-7]);
                         int mealCalories = Integer.parseInt(items[len-6]);
                         MealTask newTask = new MealTask(mealName, servings, mealCalories, date, time);
-
                         TaskList.tasksList.add(newTask);
-
                     } else if (task.startsWith("Goal")) {
                         String[] items = task.trim().split(" ");
                         GoalTask newTask = new GoalTask(items[1], Integer.parseInt(items[2]), date, time);
                         TaskList.tasksList.add(newTask);
                     } else if (task.startsWith("Water")) {
-                        String[] items = task.trim().split(" ");
+                        task = task.replace("(", "").replace(")", "");
+                        String[] items = task.split("\\s*\\|\\s*|\\s+");
                         WaterTask newTask = new WaterTask(Integer.parseInt(items[1]), date, time);
                         TaskList.tasksList.add(newTask);
                     } else if (task.startsWith("Height")) {
@@ -267,9 +267,10 @@ public class Storage {
                         LogWeight newWeight = new LogWeight(Integer.parseInt(items[1]), date, time);
                         UserDetailsList.detailsList.add(newWeight);
                     } else if (task.startsWith("Exercise")){
-                        String[] items = task.trim().split(" ");
+                        task = task.replace("(", "").replace(")", "");
+                        String[] items = task.split("\\s*\\|\\s*|\\s+");
                         int len = items.length;
-                        assert len >= 7;
+                        assert len >= 9;
                         String exerciseName = "";
                         for(int i = 1; i <= len-8; i++) {
                             if( i < len-8 ) {

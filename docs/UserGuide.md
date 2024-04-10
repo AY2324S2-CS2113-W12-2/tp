@@ -35,6 +35,8 @@ follow these simple steps:
     - [Delete exercise logs: `delete`](#delete-exercise-logs-delete)
     - [Log a meal not in the database: `add`](#log-a-meal-not-in-the-database-add)
     - [Log an exercise not in the database: `add`](#log-an-exercise-not-in-the-database-add)
+    - [Change height input: `change`](#change-user-height-change)
+    - [Change weight input: `change`](#change-user-weight-change)
     - [Show daily summary: `summary`](#show-daily-summary-summary)
     - [Search for entries: `find`](#search-for-entries-find)
     - [Get help: `help`](#get-help-help)
@@ -55,8 +57,7 @@ At the start of the application, new users are prompted to enter their **weight*
 ---
 
 ### Log meal : `log`
-Adds a new meal to the logs list along with the number of servings.
-
+Logs the meals consumed along with the number of servings.
 
 Format: `log m/<MEAL_NAME> s/<NUMBER_OF_SERVINGS>`
 
@@ -241,6 +242,19 @@ Format: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>`
 
 Sample input: `add e/calisthenics c/10 d/5`     
 Expected output:
+
+---
+### Change user height: `change`
+Changes user height and updates the BMI value
+
+Format: `change h`
+
+---
+
+### Change user weight: `change`
+Changes user weight and updates the BMI value
+
+Format: `change w`
 
 ---
 

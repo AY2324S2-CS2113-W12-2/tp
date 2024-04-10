@@ -230,28 +230,29 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 
 ## Command Summary
 
-| Action                                                | Format                                                                     |
-|-------------------------------------------------------|----------------------------------------------------------------------------|
-| Log meal| `log m/<MEAL_NAME> s/<NUMBER_OF_SERVINGS>`
-| Log water intake | `log w/<AMOUNT_OF_WATER>`
-| Log exercises| `log e/<EXERCISE_NAME> d/<DURATION>`
-| View daily goals| `show g`
-| View daily calorie intake| `show c`
-| View daily water intake| `show w`
-| View all logged entries| `list`
-| View all food items in the database| `foodData`
-| View all exercises in the database| `exerciseData`
-| Delete meal logs| `delete <MEAL_NAME>`
-| Delete water logs| `delete <QUANTITY_OF_WATER> ml` 
-| Delete exercise logs| `delete <EXERCISE_NAME>` 
-| Log a meal not in the database| `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>`
-| Log an exercise not in the database| `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>`
-| Show daily summary| `summary`
-| Search for entries| `find`
-| Get help| `help`
-| Clear all logged entries| `clear`
-| Exit the program| `bye`
-
+| Action                              | Format                                                            |
+|-------------------------------------|-------------------------------------------------------------------|
+| Log meal                            | `log m/<MEAL_NAME> s/<NUMBER_OF_SERVINGS>`                        |
+| Log water intake                    | `log w/<AMOUNT_OF_WATER>`                                         |
+| Log exercises                       | `log e/<EXERCISE_NAME> d/<DURATION>`                              |
+| View daily goals                    | `show g`                                                          |
+| View daily calorie intake           | `show c`                                                          |
+| View daily water intake             | `show w`                                                          |
+| View all logged entries             | `list`                                                            |
+| View all food items in the database | `foodData`                                                        |
+| View all exercises in the database  | `exerciseData`                                                    |
+| Delete meal logs                    | `delete <MEAL_NAME>`                                              |
+| Delete water logs                   | `delete <QUANTITY_OF_WATER>`                                      |
+| Delete exercise logs                | `delete <EXERCISE_NAME>`                                          |  
+| Log a meal not in the database      | `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>` | 
+| Log an exercise not in the database | `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>` |
+| Show daily summary                  | `summary`                                                         |
+| Search for entries                  | `find`                                                            |
+| Get help                            | `help`                                                            |
+| Clear all logged entries            | `clear`                                                           |
+| Exit the program                    | `bye`                                                             |
+| Change height input                 | `change h`                                                        |
+| Change weight input                 | `change w`                                                        |
 
 
 ## Acknowledgements

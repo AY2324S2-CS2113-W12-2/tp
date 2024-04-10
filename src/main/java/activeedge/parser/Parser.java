@@ -139,9 +139,9 @@ public class Parser {
             } else if (inputSplit[0].equalsIgnoreCase("show")) { //show calories, water, and goals
                 if (inputSplit.length == 1) {
                     System.out.println("Please specify what you wish to view: ");
-                    System.out.println("1. 'show w' to view your current water intake");
-                    System.out.println("2. 'show c' to view your current calories intake");
-                    System.out.println("3. 'show g' to view your current goals");
+                    System.out.println("1. 'show w' to display your current water intake");
+                    System.out.println("2. 'show c' to display your current calories intake");
+                    System.out.println("3. 'show g' to display your current goals");
                 } else if (inputSplit[1].equalsIgnoreCase("c")) { //shows calorie
                     new ShowCaloriesCommand();
                 } else if (inputSplit[1].equalsIgnoreCase("w")) { //shows water
@@ -152,9 +152,9 @@ public class Parser {
                     showGoalsCommand.execute();
                 } else {
                     System.out.println("These are the only show commands: ");
-                    System.out.println("1. show w");
-                    System.out.println("2. show c");
-                    System.out.println("3. show g");
+                    System.out.println("1. show w - displays water intake ");
+                    System.out.println("2. show c - displays calorie intake");
+                    System.out.println("3. show g - displays goals");
                 }
             } else if (inputSplit[0].equalsIgnoreCase("delete")) {
                 DeleteTaskCommand deleteCommand = new DeleteTaskCommand(input);
@@ -239,8 +239,8 @@ public class Parser {
                     ChangeWeightCommand.execute();
                 } else {
                     System.out.println("These are the only change commands: ");
-                    System.out.println("1. change h");
-                    System.out.println("2. change w");
+                    System.out.println("1. change h - change height");
+                    System.out.println("2. change w - change weight");
                 }
             } else {
                 System.out.println("Unknown command.");

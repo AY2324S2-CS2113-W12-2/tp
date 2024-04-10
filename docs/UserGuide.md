@@ -245,14 +245,14 @@ Expected output:
 
 ---
 ### Change user height: `change`
-Allows users to change their height, deletes the old height input and updates their BMI
+Changes user height and updates the BMI value
 
 Format: `change h`
 
 ---
 
 ### Change user weight: `change`
-Allows users to change their weight, deletes the old weight input and updates their BMI
+Changes user weight and updates the BMI value
 
 Format: `change w`
 

@@ -46,7 +46,6 @@ public class ChangeHeightCommand {
                     int weight = GetWeightCommand.execute();
                     AddBMICommand addBMICommand = new AddBMICommand(newHeight, weight, date, time);
                     addBMICommand.execute();
-                    saveLogsToFile("data/data.txt");
                     i++;
                 } else {
                     System.out.println("Please input a whole number between 50 and 300!");

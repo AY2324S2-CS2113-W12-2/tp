@@ -5,6 +5,7 @@ import activeedge.task.MealTask;
 import activeedge.task.TaskList;
 import activeedge.task.LogExercise;
 import activeedge.task.WaterTask;
+import activeedge.userdetails.LogBMI;
 import activeedge.userdetails.LogHeight;
 import activeedge.userdetails.LogWeight;
 import activeedge.userdetails.UserDetailsList;
@@ -139,21 +140,10 @@ public class Storage {
                     System.out.println("Please input a whole number between 1 and 700!");
                 }
             }
-            double heightMeters = (double) heightInput / 100;
-            int bmi = (int) (weightInput / (heightMeters * heightMeters));
-            AddBMICommand addBMICommand = new AddBMICommand(bmi, date, time);
+
+            AddBMICommand addBMICommand = new AddBMICommand(heightInput, weightInput, date, time);
             addBMICommand.execute();
             saveLogsToFile("data/data.txt");
-            System.out.println("Your BMI is " + bmi);
-            if (bmi < 19) {
-                System.out.println("You are in the underweight range.");
-            } else if (bmi < 25) {
-                System.out.println("You are in the healthy weight range.");
-            } else if (bmi < 30) {
-                System.out.println("You are in the overweight range.");
-            } else {
-                System.out.println("You are in the obese weight range.");
-            }
 
             // Prompt for setting daily calorie goal
             while (k < 1) {
@@ -268,6 +258,10 @@ public class Storage {
                         String[] items = task.trim().split(" ");
                         LogWeight newWeight = new LogWeight(Integer.parseInt(items[1]), date, time);
                         UserDetailsList.detailsList.add(newWeight);
+                    } else if (task.startsWith("BMI")) {
+                        String[] items = task.trim().split(" ");
+                        LogBMI newBMI = new LogBMI(Integer.parseInt(items[1]), date, time);
+                        UserDetailsList.detailsList.add(newBMI);
                     } else if (task.startsWith("Exercise")){
                         task = task.replace("(", "").replace(")", "");
                         String[] items = task.split("\\s*\\|\\s*|\\s+");

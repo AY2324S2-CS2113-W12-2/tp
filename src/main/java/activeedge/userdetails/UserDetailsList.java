@@ -37,6 +37,14 @@ public class UserDetailsList {
         }
     }
 
+    public static UserDetails delete(int index) {
+        if (index >= 0 && index < detailsList.size()) {
+            return detailsList.remove(index);
+        } else {
+            throw new IndexOutOfBoundsException("Index is out of bounds.");
+        }
+    }
+
     /**
      * Clears the list of user details.
      */

@@ -146,13 +146,13 @@ public class CommandUi {
             String taskString = task.toString().trim(); // Trim the task string
             if (taskString.startsWith("Meal") && taskString.contains(word)) {
                 System.out.print(matchingTasksIndex + ". ");
-                System.out.println(taskString.substring(5) + " kcal");
+                System.out.println(taskString.substring(7));
                 matchingTasksIndex++;
                 found = true;
 
             } else if (taskString.startsWith("Water") && taskString.contains(word)) {
                 System.out.print(matchingTasksIndex + ". ");
-                System.out.println(taskString.substring(6) + " ml");
+                System.out.println(taskString.substring(8));
                 matchingTasksIndex++;
                 found = true;
             }

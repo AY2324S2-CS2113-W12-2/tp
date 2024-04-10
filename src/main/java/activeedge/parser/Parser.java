@@ -149,7 +149,7 @@ public class Parser {
                     ShowGoalsCommand showGoalsCommand = new ShowGoalsCommand();
                     showGoalsCommand.execute();
                 } else {
-                    System.out.println("We can only show water intake, calories intake or goals!");
+                    System.out.println("We can only show w, c or g!");
                 }
             } else if (inputSplit[0].equalsIgnoreCase("delete")) {
                 DeleteTaskCommand deleteCommand = new DeleteTaskCommand(input);

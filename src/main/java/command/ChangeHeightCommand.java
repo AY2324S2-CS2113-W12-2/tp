@@ -48,10 +48,10 @@ public class ChangeHeightCommand {
                     addBMICommand.execute();
                     i++;
                 } else {
-                    System.out.println("Please input a whole number between 50 and 300!");
+                    System.out.println("Please input a positive integer  between 50 and 300!");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Please input a whole number between 50 and 300!");
+                System.out.println("Please input a positive integer  between 50 and 300!");
             }
         }
     }

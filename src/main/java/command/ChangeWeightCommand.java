@@ -49,11 +49,11 @@ public class ChangeWeightCommand {
                     addBMICommand.execute();
                     i++;
                 } else {
-                    System.out.println("Please input a whole number between 1 and 700!");
+                    System.out.println("Please input a positive integer between 1 and 700!");
                 }
 
             } catch (NumberFormatException e) {
-                System.out.println("Please input a whole number between 1 and 700!");
+                System.out.println("Please input a positive integer between 1 and 700!");
             }
         }
     }

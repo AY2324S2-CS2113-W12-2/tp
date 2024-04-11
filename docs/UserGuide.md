@@ -53,8 +53,11 @@ follow these simple steps:
 
 ---
 
-At the start of the application, new users are prompted to enter their **weight**, **height**,
-**daily calorie goal** and **daily water intake goal**.
+At the start of the application, new users are prompted to enter the following information.
+1. **Height** in centimeters (cm)
+2. **Weight** in Kilograms (kg)
+3. **Daily calorie goal** in calories
+4. **Daily water intake goal** in millimeters (ml)
 
 ---
 

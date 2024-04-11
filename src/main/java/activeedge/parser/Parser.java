@@ -1,7 +1,6 @@
 package activeedge.parser;
 
 import activeedge.ExerciseData;
-import command.*;
 
 import command.HelpCommand;
 import command.LogWaterCommand;

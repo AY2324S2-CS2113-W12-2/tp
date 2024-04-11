@@ -39,7 +39,8 @@ public class ChangeCalorieGoalCommand {
                     AddCalorieGoalCommand addCalorieGoalCommand = new
                             AddCalorieGoalCommand(newCalorieGoal, date, time);
                     addCalorieGoalCommand.execute();
-                    System.out.println("You have successfully changed your calorie goal! You can continue logging data!");
+                    System.out.println("You have successfully changed your calorie goal! " +
+                            "You can continue logging data!");
                     saveLogsToFile("data/data.txt");
                     i++;
                 } else {

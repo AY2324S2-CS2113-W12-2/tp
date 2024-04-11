@@ -37,6 +37,8 @@ follow these simple steps:
     - [Log an exercise not in the database: `add`](#log-an-exercise-not-in-the-database-add)
     - [Change height input: `change`](#change-user-height-change)
     - [Change weight input: `change`](#change-user-weight-change)
+    - [Change daily calorie intake goal: `change`](#change-daily-calorie-intake-goal-change)
+    - [Change daily water intake goal: `change`](#change-daily-water-intake-goal-change)  
     - [Show daily summary: `summary`](#show-daily-summary-summary)
     - [Search for entries: `find`](#search-for-entries-find)
     - [Get help: `help`](#get-help-help)
@@ -258,6 +260,20 @@ Format: `change w`
 
 ---
 
+### Change daily calorie intake goal: `change`
+Changes the daily calorie intake goal.
+
+Format: `change cg`
+
+---
+
+### Change daily water intake goal: `change`
+Changes user weight and updates the BMI value
+
+Format: `change wg`
+
+---
+
 ### Show daily summary: `summary`
 Shows a daily summary of food, water intake, and goals.
 
@@ -338,8 +354,12 @@ Here's a quick summary of commands available in **ActiveEdge**:
 12. Delete exercise logs: `delete <EXERCISE_NAME>` [Click here](#delete-exercise-logs-delete) if you have multiple exercise logs from the same exercise.    
 13. Log a meal not in the database: `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>`   
 14. Log an exercise not in the database: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>`  
-15. Show daily summary: `summary`   
-16. Search for entries: `find`  
-17. Get help: `help`    
-18. Clear all logged entries: `clear`   
-19. Exit the program: `bye`
+15. Change user height: `change h`  
+16. Change user weight: `change w`  
+17. Change daily calorie intake goal: `change cg`
+18. Change daily water intake goal: `change wg`    
+19. Show daily summary: `summary`   
+20. Search for entries: `find`  
+21. Get help: `help`    
+22. Clear all logged entries: `clear`   
+23. Exit the program: `bye`

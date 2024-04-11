@@ -33,6 +33,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Parser {
     public void handleInput(String input) {
+        input = input.toLowerCase();
         try {
             String[] inputSplit = input.trim().split(" ");
             LocalDateTime currentDateTime = LocalDateTime.now();

@@ -4,7 +4,7 @@ import activeedge.task.GoalTask;
 import activeedge.task.MealTask;
 import activeedge.task.TaskList;
 import activeedge.task.LogExercise;
-import activeedge.task.WaterTask;
+import activeedge.task.LogWater;
 import activeedge.userdetails.LogBMI;
 import activeedge.userdetails.LogHeight;
 import activeedge.userdetails.LogWeight;
@@ -248,7 +248,7 @@ public class Storage {
                     } else if (task.startsWith("Water")) {
                         task = task.replace("(", "").replace(")", "");
                         String[] items = task.split("\\s*\\|\\s*|\\s+");
-                        WaterTask newTask = new WaterTask(Integer.parseInt(items[1]), date, time);
+                        LogWater newTask = new LogWater(Integer.parseInt(items[1]), date, time);
                         TaskList.tasksList.add(newTask);
                     } else if (task.startsWith("Height")) {
                         String[] items = task.trim().split(" ");

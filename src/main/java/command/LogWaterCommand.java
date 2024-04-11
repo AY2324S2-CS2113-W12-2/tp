@@ -1,6 +1,6 @@
 package command;
 
-import activeedge.task.WaterTask;
+import activeedge.task.LogWater;
 import activeedge.ui.CommandUi;
 import activeedge.task.TaskList;
 
@@ -35,7 +35,7 @@ public class LogWaterCommand {
             if (quantity <= 0) {
                 System.out.println("Water quantity must be above 0. Please try again.");
             } else {
-                WaterTask waterTask = new WaterTask(quantity, date, time);
+                LogWater waterTask = new LogWater(quantity, date, time);
                 TaskList.tasksList.add(waterTask);
                 CommandUi.printWaterLogMessage(waterTask);
             }

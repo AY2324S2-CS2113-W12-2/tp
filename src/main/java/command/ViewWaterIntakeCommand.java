@@ -4,7 +4,7 @@ import activeedge.task.GoalTask;
 import activeedge.task.TaskList;
 import activeedge.ui.CommandUi;
 import activeedge.task.Task;
-import activeedge.task.WaterTask;
+import activeedge.task.LogWater;
 
 import java.util.ArrayList;
 
@@ -19,8 +19,8 @@ public class ViewWaterIntakeCommand {
     int getTotalWaterIntake(ArrayList<Task> tasksList) {
         int totalWaterIntake = 0;
         for (Task task : tasksList) {
-            if (task instanceof WaterTask) {
-                totalWaterIntake += ((WaterTask) task).getQuantity();
+            if (task instanceof LogWater) {
+                totalWaterIntake += ((LogWater) task).getQuantity();
             }
         }
         return totalWaterIntake;

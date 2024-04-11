@@ -4,7 +4,7 @@ import static activeedge.task.TaskList.tasksList;
 
 import activeedge.task.LogExercise;
 import activeedge.task.Task;
-import activeedge.task.WaterTask;
+import activeedge.task.LogWater;
 import activeedge.task.MealTask;
 
 import java.time.format.DateTimeFormatter;
@@ -126,7 +126,7 @@ public class CommandUi {
 
     }
 
-    public static void printWaterLogMessage(WaterTask newWaterTask) {
+    public static void printWaterLogMessage(LogWater newWaterTask) {
         System.out.println("Successfully logged " + newWaterTask.getQuantity() + " ml of water.");
     }
 

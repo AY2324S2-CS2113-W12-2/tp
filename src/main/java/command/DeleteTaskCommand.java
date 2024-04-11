@@ -1,6 +1,6 @@
 package command;
 
-import activeedge.task.WaterTask;
+import activeedge.task.LogWater;
 import activeedge.ui.CommandUi;
 import activeedge.task.Task;
 import activeedge.task.TaskList;
@@ -42,8 +42,8 @@ public class DeleteTaskCommand {
         for (int i = 0; i < TaskList.tasksList.size(); i++) {
             Task task = TaskList.tasksList.get(i);
             if (task.getDescription().toLowerCase().startsWith("water")) {
-                if (task instanceof WaterTask) { // Check if it's a WaterTask before casting
-                    WaterTask waterTask = (WaterTask) task;
+                if (task instanceof LogWater) { // Check if it's a WaterTask before casting
+                    LogWater waterTask = (LogWater) task;
 
                     if (((waterTask.getQuantity()) + " ml").equalsIgnoreCase(description)) {
                         countIndex = countIndex + 1;

@@ -64,7 +64,7 @@ public class LogMealCommand {
                 return ((GoalTask) task).getGoalAmount();
             }
         }
-        return 0; // Return 0 if the calorie goal is not found
+        return 0;
     }
 
     private int calculateTotalCaloriesConsumed() {

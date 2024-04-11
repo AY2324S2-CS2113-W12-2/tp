@@ -1,7 +1,12 @@
 package command;
 
+<<<<<<< HEAD
 import activeedge.task.Task;
 import activeedge.task.LogWater;
+=======
+import activeedge.log.Log;
+import activeedge.log.LogWater;
+>>>>>>> cb76f05 (change all task to logs, fixed summary function)
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,14 +37,14 @@ public class ViewWaterIntakeCommandTest {
         String date = dateTime.format(dateFormatter);
         String time = dateTime.format(timeFormatter);
         // Create a mock task list
-        ArrayList<Task> tasksList = new ArrayList<>();
-        tasksList.add(new LogWater(200, date, time)); // Adding water intake
-        tasksList.add(new LogWater(300, date, time)); // Adding water intake
+        ArrayList<Log> logList = new ArrayList<>();
+        logList.add(new LogWater(200, date, time)); // Adding water intake
+        logList.add(new LogWater(300, date, time)); // Adding water intake
 
         ViewWaterIntakeCommand viewWaterIntakeCommand = new ViewWaterIntakeCommand();
 
         // Call method getTotalWaterIntake using reflection or make it package-private for testing
-        int totalWaterIntake = viewWaterIntakeCommand.getTotalWaterIntake(tasksList);
+        int totalWaterIntake = viewWaterIntakeCommand.getTotalWaterIntake(logList);
 
         // Verify total water intake
         assertEquals(500, totalWaterIntake);

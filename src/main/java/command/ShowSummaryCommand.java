@@ -1,9 +1,9 @@
 package command;
 
-import activeedge.task.Task;
+import activeedge.log.Log;
 import activeedge.ui.CommandUi;
 
-import static activeedge.task.TaskList.tasksList;
+import static activeedge.log.LogList.logList;
 
 public class ShowSummaryCommand {
     public void execute() {
@@ -14,18 +14,18 @@ public class ShowSummaryCommand {
         String calorieGoal = "0";
         String waterGoal = "0";
 
-        for (Task task : tasksList) {
-            if (task.toString().startsWith("Meal")) {
-                String[] parts = task.toString().split(" ");
-                totalCalories += Integer.parseInt(parts[parts.length - 1]);
-            } else if (task.toString().startsWith("Water")) {
-                String[] parts = task.toString().split(" ");
-                totalWaterIntake += Integer.parseInt(parts[parts.length - 1]);
-            } else if (task.toString().startsWith("Exercise")) {
-                String[] parts = task.toString().split(" ");
-                totalCaloriesBurnt += Integer.parseInt(parts[parts.length - 1]);
-            } else if (task.toString().startsWith("Goal")) {
-                String[] parts = task.toString().split(" ");
+        for (Log log : logList) {
+            if (log.toString().startsWith("Meal")) {
+                String[] parts = log.toString().split("\\s*\\|\\s*|\\s+");
+                totalCalories += Integer.parseInt(parts[parts.length - 6]);
+            } else if (log.toString().startsWith("Water")) {
+                String[] parts = log.toString().split("\\s*\\|\\s*|\\s+");
+                totalWaterIntake += Integer.parseInt(parts[1]);
+            } else if (log.toString().startsWith("Exercise")) {
+                String[] parts = log.toString().split("\\s*\\|\\s*|\\s+");
+                totalCaloriesBurnt += Integer.parseInt(parts[parts.length - 6]);
+            } else if (log.toString().startsWith("Goal")) {
+                String[] parts = log.toString().split(" ");
                 if (parts[1].equals("Calorie")) {
                     calorieGoal = parts[2];
                 } else if (parts[1].equals("Water")) {

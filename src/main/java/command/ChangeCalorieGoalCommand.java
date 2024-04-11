@@ -1,15 +1,14 @@
 package command;
 
-import activeedge.task.Task;
-import activeedge.task.TaskList;
-
+import activeedge.log.Log;
+import activeedge.log.LogList;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-import static activeedge.Storage.saveLogsToFile;
-import static activeedge.task.TaskList.tasksList;
+import static activeedge.log.LogList.logList;
+
 
 public class ChangeCalorieGoalCommand {
 
@@ -20,10 +19,10 @@ public class ChangeCalorieGoalCommand {
         String date = currentDateTime.format(dateFormatter);
         String time = currentDateTime.format(timeFormatter);
 
-        for (int i = 0; i < tasksList.size(); i++) {
-            Task tasksList = TaskList.tasksList.get(i);
-            if (tasksList.toString().startsWith("Goal Calorie")) {
-                TaskList.delete(i);
+        for (int i = 0; i < logList.size(); i++) {
+            Log logList = LogList.logList.get(i);
+            if (logList.toString().startsWith("Goal Calorie")) {
+                LogList.delete(i);
             }
         }
 
@@ -41,7 +40,6 @@ public class ChangeCalorieGoalCommand {
                     addCalorieGoalCommand.execute();
                     System.out.println("You have successfully changed your calorie goal! " +
                             "You can continue logging data!");
-                    saveLogsToFile("data/data.txt");
                     i++;
                 } else {
                     System.out.println("Please input a positive integer between 1 and 10000!");

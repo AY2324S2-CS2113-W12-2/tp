@@ -1,7 +1,7 @@
 package command;
 
-import activeedge.task.GoalTask;
-import activeedge.task.TaskList;
+import activeedge.log.LogGoals;
+import activeedge.log.LogList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +23,7 @@ public class ShowGoalsTest {
     @Test
     public void testExecute_noGoalsSet() {
         // Clear the task list before the test
-        TaskList.clearTasks();
+        LogList.clearTasks();
 
         // Create an instance of ShowGoalsCommand
         ShowGoalsCommand showGoalsCommand = new ShowGoalsCommand();
@@ -39,17 +39,17 @@ public class ShowGoalsTest {
     @Test
     public void testExecute_withGoalsSet() {
         // Clear the task list before setting goals
-        TaskList.clearTasks();
+        LogList.clearTasks();
 
         // Create mock goal tasks
-        GoalTask calorieGoalTask = new GoalTask("Calorie Goal", 2000,
+        LogGoals LogCalorieGoal = new LogGoals("Calorie Goal", 2000,
                 "2024-04-12", "08:00");
-        GoalTask waterGoalTask = new GoalTask("Water Goal", 2000,
+        LogGoals LogWaterGoal = new LogGoals("Water Goal", 2000,
                 "2024-04-12", "08:00");
 
         // Add goal tasks to the task list
-        TaskList.add(calorieGoalTask);
-        TaskList.add(waterGoalTask);
+        LogList.add(LogCalorieGoal);
+        LogList.add(LogWaterGoal);
 
         // Create an instance of ShowGoalsCommand
         ShowGoalsCommand showGoalsCommand = new ShowGoalsCommand();

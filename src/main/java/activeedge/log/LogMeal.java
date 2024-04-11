@@ -1,14 +1,14 @@
-package activeedge.task;
+package activeedge.log;
 
 import java.util.Optional;
 
-public class MealTask extends Task {
+public class LogMeal extends Log {
     protected Integer servings;
     protected Integer mealCalories;
     protected String date;
     protected String time;
 
-    public MealTask(String meal, int servings, int mealCalories, String date, String time){
+    public LogMeal (String meal, int servings, int mealCalories, String date, String time){
         super(meal);
         this.servings = Optional.ofNullable(servings).orElse(0);
         this.mealCalories = Optional.ofNullable(mealCalories).orElse(0);

@@ -1,8 +1,9 @@
 package command;
 
-import activeedge.task.GoalTask;
-import activeedge.task.Task;
-import activeedge.task.TaskList;
+
+import activeedge.log.Log;
+import activeedge.log.LogGoals;
+import activeedge.log.LogList;
 import activeedge.ui.GoalsUi;
 
 /**
@@ -20,10 +21,10 @@ public class ShowGoalsCommand {
         int waterGoal = 0; // The water goal set by the user
 
         // Iterate through the list of tasks
-        for (Task task : TaskList.tasksList) {
+        for (Log log : LogList.logList) {
             // Check if the task is an instance of GoalTask
-            if (task instanceof GoalTask) {
-                GoalTask goalTask = (GoalTask) task; // Cast Task to GoalTask
+            if (log instanceof LogGoals) {
+                LogGoals goalTask = (LogGoals) log; // Cast Task to GoalTask
                 // Check if the goal is related to calories
                 if (goalTask.getDescription().startsWith("Calorie")) {
                     calorieGoal = goalTask.getGoalAmount(); // Retrieve calorie goal

@@ -1,11 +1,11 @@
-package activeedge.task;
+package activeedge.log;
 
-public class Task {
+public class Log {
 
     protected Integer value;
     protected String description;
 
-    public Task(String description) {
+    public Log (String description) {
         this.description = description;
     }
 

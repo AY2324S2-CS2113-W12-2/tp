@@ -5,7 +5,7 @@
 package command;
 
 import activeedge.Storage;
-import activeedge.task.TaskList;
+import activeedge.log.LogList;
 import activeedge.ui.CommandUi;
 import activeedge.userdetails.UserDetailsList;
 
@@ -30,10 +30,10 @@ public class ClearCommand {
      * Otherwise, it clears both lists and prints a message indicating that all tasks are cleared.
      */
     public void execute() {
-        if (TaskList.tasksList.isEmpty() && UserDetailsList.detailsList.isEmpty()) {
+        if (LogList.logList.isEmpty() && UserDetailsList.detailsList.isEmpty()) {
             CommandUi.printDataAlreadyClearedMessage();
         } else {
-            TaskList.clearTasks();
+            LogList.clearTasks();
             UserDetailsList.clearDetailsList();
             CommandUi.printAllTasksClearedMessage();
             Storage.listEmpty();

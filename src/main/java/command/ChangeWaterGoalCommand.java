@@ -1,14 +1,14 @@
 package command;
 
-import activeedge.task.Task;
-import activeedge.task.TaskList;
+import activeedge.log.Log;
+import activeedge.log.LogList;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-import static activeedge.Storage.saveLogsToFile;
-import static activeedge.task.TaskList.tasksList;
+import static activeedge.log.LogList.logList;
+
 
 /**
  * The ChangeWaterGoalCommand class represents a command to change the user's daily water goal.
@@ -30,10 +30,10 @@ public class ChangeWaterGoalCommand {
         String time = currentDateTime.format(timeFormatter);
 
         // Remove existing water goal task
-        for (int i = 0; i < tasksList.size(); i++) {
-            Task tasksList = TaskList.tasksList.get(i);
-            if (tasksList.toString().startsWith("Goal Water")) {
-                TaskList.delete(i);
+        for (int i = 0; i < logList.size(); i++) {
+            Log logList = LogList.logList.get(i);
+            if (logList.toString().startsWith("Goal Water")) {
+                LogList.delete(i);
             }
         }
 
@@ -49,7 +49,6 @@ public class ChangeWaterGoalCommand {
                     AddWaterGoalCommand addWaterGoalCommand = new AddWaterGoalCommand(waterGoal, date, time);
                     addWaterGoalCommand.execute();
                     System.out.println("You have successfully changed your water goal! You can continue logging data!");
-                    saveLogsToFile("data/data.txt");
                     l++;
                 } else {
                     System.out.println("Please input a positive integer between 1 and 6000!");

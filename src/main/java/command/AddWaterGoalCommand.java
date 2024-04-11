@@ -1,7 +1,7 @@
 package command;
 
-import activeedge.task.GoalTask;
-import static activeedge.task.TaskList.tasksList;
+import activeedge.log.LogGoals;
+import static activeedge.log.LogList.logList;
 
 public class AddWaterGoalCommand {
     private int waterGoal;
@@ -19,8 +19,8 @@ public class AddWaterGoalCommand {
     }
 
     public void execute() {
-        GoalTask waterGoalTask = new GoalTask("Water", waterGoal, date, time);
-        tasksList.add(waterGoalTask);
+        LogGoals logWaterGoal = new LogGoals("Water", waterGoal, date, time);
+        logList.add(logWaterGoal);
         // Add logic to save water goal to task list
     }
 }

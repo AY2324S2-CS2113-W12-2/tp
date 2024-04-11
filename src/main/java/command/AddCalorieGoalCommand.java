@@ -46,8 +46,10 @@
 
 package command;
 
-import activeedge.task.GoalTask;
-import static activeedge.task.TaskList.tasksList;
+
+import activeedge.log.LogGoals;
+
+import static activeedge.log.LogList.logList;
 
 public class AddCalorieGoalCommand {
     private int calorieGoal;
@@ -61,9 +63,9 @@ public class AddCalorieGoalCommand {
     }
 
     public void execute() {
-        GoalTask calorieGoalTask = new GoalTask("Calorie", calorieGoal, date, time);
+        LogGoals calorieGoalTask = new LogGoals("Calorie", calorieGoal, date, time);
 
-        tasksList.add(calorieGoalTask);
+        logList.add(calorieGoalTask);
         // Add logic to save calorie goal to task list
     }
 }

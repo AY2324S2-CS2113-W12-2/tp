@@ -10,7 +10,7 @@ import command.ShowCaloriesCommand;
 import command.ViewWaterIntakeCommand;
 import command.ShowGoalsCommand;
 import command.FindCommand;
-import command.DeleteTaskCommand;
+import command.DeleteLogCommand;
 import command.ActiveEdgeException;
 import command.LogExerciseCommand;
 import command.ShowSummaryCommand;
@@ -24,7 +24,7 @@ import command.ChangeWaterGoalCommand;
 
 import activeedge.Storage;
 
-import static activeedge.task.TaskList.tasksList;
+import static activeedge.log.LogList.logList;
 import static activeedge.FoodData.foodItems;
 import static activeedge.ExerciseData.exercisesList;
 import activeedge.FoodData;
@@ -133,7 +133,7 @@ public class Parser {
                     }
                 }
             } else if (inputSplit[0].equalsIgnoreCase("list")) {
-                if (tasksList.size() > 0) {
+                if (logList.size() > 0) {
                     new ListFullCommand();
                 } else {
                     System.out.println("There are no items in your list!");
@@ -159,7 +159,7 @@ public class Parser {
                     System.out.println("3. show g - displays goals");
                 }
             } else if (inputSplit[0].equalsIgnoreCase("delete")) {
-                DeleteTaskCommand deleteCommand = new DeleteTaskCommand(input);
+                DeleteLogCommand deleteCommand = new DeleteLogCommand(input);
                 deleteCommand.execute();
             } else if(inputSplit[0].equalsIgnoreCase("find")) {
                 new FindCommand(input);
@@ -236,7 +236,8 @@ public class Parser {
                     System.out.println("Please specify what you want to change:");
                     System.out.println("1. 'change h' to change your height");
                     System.out.println("2. 'change w' to change your weight");
-                    System.out.println("3. 'change c' to change your calorie goal"); // Added calorie goal option
+                    System.out.println("3. 'change cg' to change your calorie goal");
+                    System.out.println("4. 'change wg' to change your water goal");// Added calorie goal option
                 } else if (inputSplit[1].equalsIgnoreCase("h")) {
                     ChangeHeightCommand.execute(); // Check if this requires arguments like new height
                 } else if (inputSplit[1].equalsIgnoreCase("w")) {
@@ -250,8 +251,7 @@ public class Parser {
                     System.out.println("1. change h - change height");
                     System.out.println("2. change w - change weight");
                     System.out.println("3. change cg - change calorie goal");
-                    System.out.println("3. change wg - change water goal");
-
+                    System.out.println("4. change wg - change water goal");
                 }
             }
             else {

@@ -178,7 +178,8 @@ Deletes a water log from the logs list. By default, it deletes the oldest log.
 
 Format:  `delete <QUANTITY_OF_WATER> ml`
 
-If you have **multiple logs with the same water quantity**, use the additional parameter N to specify which entry to delete.
+If you have **multiple logs with the same water quantity**, use the additional parameter N to specify which entry to 
+delete.
 
 Format: `delete <QUANTITY_OF_WATER> ml i/2`
 

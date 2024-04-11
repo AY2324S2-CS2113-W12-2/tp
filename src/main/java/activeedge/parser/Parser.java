@@ -238,10 +238,10 @@ public class Parser {
                 if (inputSplit.length == 1) {
                     System.out.println("Please specify what you want to change:");
                     System.out.println("1. 'change h' to change your height");
-                    System.out.println("2. 'change w' to  change your weight");
-                    System.out.println("3. 'change cg' to change calorie goal");
-                    System.out.println("4. 'change wg' to change water goal");
-                } else if (inputSplit[1].trim().equalsIgnoreCase("h")) {
+                    System.out.println("2. 'change w' to change your weight");
+                    System.out.println("3. 'change cg' to change your calorie goal");
+                    System.out.println("4. 'change wg' to change your water goal");// Added calorie goal option
+                } else if (inputSplit[1].equalsIgnoreCase("h")) {
                     ChangeHeightCommand.execute(); // Check if this requires arguments like new height
                 } else if (inputSplit[1].trim().equalsIgnoreCase("w")) {
                     ChangeWeightCommand.execute();

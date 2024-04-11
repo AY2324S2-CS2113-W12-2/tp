@@ -1,6 +1,5 @@
 package command;
 
-
 import activeedge.log.Log;
 import activeedge.log.LogList;
 import activeedge.log.LogWater;

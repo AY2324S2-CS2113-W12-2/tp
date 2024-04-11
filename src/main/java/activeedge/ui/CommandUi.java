@@ -135,7 +135,7 @@ public class CommandUi {
         System.out.println("Total water consumed today: " + totalWaterIntake +
                 " ml (" + String.format("%.0f%%", percentage) + " of " + waterGoal + "ml goal).");
     }
-
+    
     public static void printMatchingLog (String word) {
         System.out.println(LINE + "Here are the matching logs in your list:");
         int matchingLogIndex = 1;

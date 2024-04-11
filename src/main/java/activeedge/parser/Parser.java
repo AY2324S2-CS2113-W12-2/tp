@@ -1,23 +1,7 @@
 package activeedge.parser;
 
 import activeedge.ExerciseData;
-import command.HelpCommand;
-import command.LogWaterCommand;
-import command.LogMealCommand;
-import command.ListFullCommand;
-import command.ShowCaloriesCommand;
-import command.ViewWaterIntakeCommand;
-import command.ShowGoalsCommand;
-import command.FindCommand;
-import command.DeleteTaskCommand;
-import command.ActiveEdgeException;
-import command.LogExerciseCommand;
-import command.ShowSummaryCommand;
-import command.ClearCommand;
-import command.AddFoodItemCommand;
-import command.AddExerciseItemCommand;
-import command.ChangeHeightCommand;
-import command.ChangeWeightCommand;
+import command.*;
 
 import activeedge.Storage;
 
@@ -234,14 +218,22 @@ public class Parser {
                     System.out.println("Please specify what you want to change:");
                     System.out.println("1. 'change h' to change your height");
                     System.out.println("2. 'change w' to change your weight");
+                    System.out.println("2. 'change calorie goal' to change your weight");
+                    System.out.println("2. 'change water goal ' to change your weight");
                 } else if (inputSplit[1].equalsIgnoreCase("h")) {
                     ChangeHeightCommand.execute();
                 } else if (inputSplit[1].equalsIgnoreCase("w")) {
                     ChangeWeightCommand.execute();
+                } else if (inputSplit[1].equalsIgnoreCase("wg")) {
+                    ChangeWaterGoalCommand.execute();
+                } else if (inputSplit[1].equalsIgnoreCase("cg")) {
+                    ChangeCalorieGoalCommand.execute();
                 } else {
                     System.out.println("These are the only change commands: ");
                     System.out.println("1. change h - change height");
                     System.out.println("2. change w - change weight");
+                    System.out.println("2. change cg - change calorie goal");
+                    System.out.println("2. change wg - change weight goal");
                 }
             } else {
                 System.out.println("Unknown command.");

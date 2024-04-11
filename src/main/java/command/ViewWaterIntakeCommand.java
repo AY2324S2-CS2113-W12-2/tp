@@ -26,8 +26,8 @@ public class ViewWaterIntakeCommand {
         return totalWaterIntake;
     }
 
-    public int getWaterGoal(ArrayList<Log> tasksList) {
-        for (Log log : tasksList) {
+    public int getWaterGoal(ArrayList<Log> logList) {
+        for (Log log : logList) {
             if (log instanceof LogGoals && log.getDescription().startsWith("Water")) {
                 return ((LogGoals) log).getGoalAmount();
             }

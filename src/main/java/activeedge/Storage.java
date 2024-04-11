@@ -82,7 +82,7 @@ public class Storage {
                 fw.write(out + "\n");
             }
         } catch (IOException e) {
-            System.out.println("An error occurred while saving tasks to file: " + e.getMessage());
+            System.out.println("An error occurred while saving logs to file: " + e.getMessage());
         }
     }
 

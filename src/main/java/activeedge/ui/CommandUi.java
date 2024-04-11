@@ -78,7 +78,7 @@ public class CommandUi {
         for (int i = 0; i < logList.size(); i++) {
             String[] parts = logList.get(i).toString().split(" ");
             int len = parts.length;
-            String taskString = logList.get(i).toString();
+            String logString = logList.get(i).toString();
             int calIndex = -1;
             for (int j = 0; j < len; j++) {
                 if (parts[j].equals("cal")) {
@@ -92,9 +92,9 @@ public class CommandUi {
                 String calorieString = parts[calIndex];
                 if (calorieString.matches("\\d+")) { // Check if it's a valid integer
                     int calories = Integer.parseInt(calorieString);
-                    if (taskString.startsWith("Meal")) {
+                    if (logString.startsWith("Meal")) {
                         totalCaloriesFromMeals += calories;
-                    } else if (taskString.startsWith("Exercise")) {
+                    } else if (logString.startsWith("Exercise")) {
                         totalCaloriesFromExercises += calories;
                     }
                 } else {
@@ -138,28 +138,28 @@ public class CommandUi {
 
 
     public static void printMatchingLog (String word) {
-        System.out.println(LINE + "Here are the matching tasks in your list:");
-        int matchingTasksIndex = 1;
+        System.out.println(LINE + "Here are the matching logs in your list:");
+        int matchingLogIndex = 1;
         boolean found = false;
 
         for (Log log : logList) {
             String logString = log.toString().trim(); // Trim the task string
             if (logString.startsWith("Meal") && logString.contains(word)) {
-                System.out.print(matchingTasksIndex + ". ");
+                System.out.print(matchingLogIndex + ". ");
                 System.out.println(logString.substring(7));
-                matchingTasksIndex++;
+                matchingLogIndex++;
                 found = true;
 
             } else if (logString.startsWith("Water") && logString.contains(word)) {
-                System.out.print(matchingTasksIndex + ". ");
+                System.out.print(matchingLogIndex + ". ");
                 System.out.println(logString.substring(8));
-                matchingTasksIndex++;
+                matchingLogIndex++;
                 found = true;
             }
         }
 
         if (!found) {
-            System.out.println("No matching tasks found.");
+            System.out.println("No matching logs found.");
         }
 
         System.out.println(LINE);
@@ -176,7 +176,7 @@ public class CommandUi {
      * Prints a message confirming the deletion of a task.
      * @param deletedLog The task that was deleted.
      */
-    public static void printTaskDeletedMessage(Log deletedLog) {
+    public static void printLogDeletedMessage(Log deletedLog) {
         System.out.println("Log deleted: " + deletedLog.getDescription());
     }
 
@@ -210,7 +210,7 @@ public class CommandUi {
     }
 
 
-    public static void printTaskNotFoundMessage() {
+    public static void printLogNotFoundMessage() {
         System.out.println("Log not found. View all logged entries using 'list'.");
     }
 
@@ -242,7 +242,7 @@ public class CommandUi {
         System.out.println("Calorie status: " + calorieStatus);
     }
 
-    public static void printAllTasksClearedMessage() {
+    public static void printAllLogsClearedMessage() {
         System.out.println("All logged data has been cleared.");
     }
     public static void printDataAlreadyClearedMessage() {

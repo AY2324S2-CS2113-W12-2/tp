@@ -27,7 +27,7 @@ public class LogList {
         }
     }
 
-    public static void clearTasks() {
+    public static void clearLogs() {
         logList.clear();
     }
 

@@ -33,9 +33,9 @@ public class ClearCommand {
         if (LogList.logList.isEmpty() && UserDetailsList.detailsList.isEmpty()) {
             CommandUi.printDataAlreadyClearedMessage();
         } else {
-            LogList.clearTasks();
+            LogList.clearLogs();
             UserDetailsList.clearDetailsList();
-            CommandUi.printAllTasksClearedMessage();
+            CommandUi.printAllLogsClearedMessage();
             Storage.listEmpty();
         }
     }

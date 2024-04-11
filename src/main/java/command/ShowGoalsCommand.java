@@ -20,16 +20,16 @@ public class ShowGoalsCommand {
         int calorieGoal = 0; // The calorie goal set by the user
         int waterGoal = 0; // The water goal set by the user
 
-        // Iterate through the list of tasks
+        // Iterate through the list of logs
         for (Log log : LogList.logList) {
-            // Check if the task is an instance of GoalTask
+            // Check if the log is an instance of LogGoals
             if (log instanceof LogGoals) {
-                LogGoals goalTask = (LogGoals) log; // Cast Task to GoalTask
+                LogGoals logGoals = (LogGoals) log; // Cast Log to LogGoals
                 // Check if the goal is related to calories
-                if (goalTask.getDescription().startsWith("Calorie")) {
-                    calorieGoal = goalTask.getGoalAmount(); // Retrieve calorie goal
-                } else if (goalTask.getDescription().startsWith("Water")) {
-                    waterGoal = goalTask.getGoalAmount(); // Retrieve water goal
+                if (logGoals.getDescription().startsWith("Calorie")) {
+                    calorieGoal = logGoals.getGoalAmount(); // Retrieve calorie goal
+                } else if (logGoals.getDescription().startsWith("Water")) {
+                    waterGoal = logGoals.getGoalAmount(); // Retrieve water goal
                 }
             }
         }

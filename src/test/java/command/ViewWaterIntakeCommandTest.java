@@ -31,7 +31,7 @@ public class ViewWaterIntakeCommandTest {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         String date = dateTime.format(dateFormatter);
         String time = dateTime.format(timeFormatter);
-        // Create a mock task list
+        // Create a mock log list
         ArrayList<Log> logList = new ArrayList<>();
         logList.add(new LogWater(200, date, time)); // Adding water intake
         logList.add(new LogWater(300, date, time)); // Adding water intake

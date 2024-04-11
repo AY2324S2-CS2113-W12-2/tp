@@ -29,7 +29,7 @@ public class ChangeWaterGoalCommand {
         String date = currentDateTime.format(dateFormatter);
         String time = currentDateTime.format(timeFormatter);
 
-        // Remove existing water goal task
+        // Remove existing water goal log
         for (int i = 0; i < logList.size(); i++) {
             Log logList = LogList.logList.get(i);
             if (logList.toString().startsWith("Goal Water")) {

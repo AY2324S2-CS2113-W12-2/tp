@@ -21,7 +21,7 @@ public class AddWaterGoalCommand {
     public void execute() {
         LogGoals logWaterGoal = new LogGoals("Water", waterGoal, date, time);
         logList.add(logWaterGoal);
-        // Add logic to save water goal to task list
+        // Add logic to save water goal to log list
     }
 }
 

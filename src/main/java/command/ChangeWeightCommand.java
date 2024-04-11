@@ -10,8 +10,6 @@ import java.util.Scanner;
 import static activeedge.userdetails.UserDetailsList.detailsList;
 
 public class ChangeWeightCommand {
-
-
     public static void execute() throws ActiveEdgeException {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

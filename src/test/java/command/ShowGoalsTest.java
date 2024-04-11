@@ -22,8 +22,8 @@ public class ShowGoalsTest {
 
     @Test
     public void testExecute_noGoalsSet() {
-        // Clear the task list before the test
-        LogList.clearTasks();
+        // Clear the log list before the test
+        LogList.clearLogs();
 
         // Create an instance of ShowGoalsCommand
         ShowGoalsCommand showGoalsCommand = new ShowGoalsCommand();
@@ -38,16 +38,16 @@ public class ShowGoalsTest {
 
     @Test
     public void testExecute_withGoalsSet() {
-        // Clear the task list before setting goals
-        LogList.clearTasks();
+        // Clear the log list before setting goals
+        LogList.clearLogs();
 
-        // Create mock goal tasks
+        // Create mock goal logs
         LogGoals LogCalorieGoal = new LogGoals("Calorie Goal", 2000,
                 "2024-04-12", "08:00");
         LogGoals LogWaterGoal = new LogGoals("Water Goal", 2000,
                 "2024-04-12", "08:00");
 
-        // Add goal tasks to the task list
+        // Add goals to the log list
         LogList.add(LogCalorieGoal);
         LogList.add(LogWaterGoal);
 

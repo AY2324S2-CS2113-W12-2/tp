@@ -38,21 +38,21 @@ public class DeleteLogCommand {
     }
 
     public void execute() {
-        // Search for the task with the specified description
-        boolean taskFound = false;
+        // Search for the log with the specified description
+        boolean logFound = false;
         int countIndex = 0;
         for (int i = 0; i < LogList.logList.size(); i++) {
             Log log = LogList.logList.get(i);
             if (log.getDescription().toLowerCase().startsWith("water")) {
-                if (log instanceof LogWater) { // Check if it's a WaterTask before casting
+                if (log instanceof LogWater) { // Check if it's a WaterLog before casting
                     LogWater logWater = (LogWater) log;
 
                     if (((logWater.getQuantity()) + " ml").equalsIgnoreCase(description)) {
                         countIndex = countIndex + 1;
                         if(countIndex == index){
                             Log deletedLog = LogList.delete(i);
-                            CommandUi.printTaskDeletedMessage(deletedLog);
-                            taskFound = true;
+                            CommandUi.printLogDeletedMessage(deletedLog);
+                            logFound = true;
                             break;
                         }
                     }
@@ -61,8 +61,8 @@ public class DeleteLogCommand {
                 countIndex = countIndex + 1;
                 if (countIndex == index){
                     Log deletedLog = LogList.delete(i);
-                    CommandUi.printTaskDeletedMessage(deletedLog);
-                    taskFound = true;
+                    CommandUi.printLogDeletedMessage(deletedLog);
+                    logFound = true;
                     break;
                 }
             }
@@ -72,8 +72,8 @@ public class DeleteLogCommand {
             CommandUi.printDeleteMealInvalidIndexMessage();
             this.errorRaised = true;
         }
-        if (!taskFound && !errorRaised) {
-            CommandUi.printTaskNotFoundMessage();
+        if (!logFound && !errorRaised) {
+            CommandUi.printLogNotFoundMessage();
         }
     }
 }

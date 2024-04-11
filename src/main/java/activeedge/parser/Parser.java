@@ -198,7 +198,7 @@ public class Parser {
                     }
                 } else {
                     System.out.println("Invalid command. Please enter 'add m/[FOOD] c/[CALORIES_PER_SERVING(cal)]" +
-                            " s/[NUMBER_OF_SERVINGS]'.");
+                            " s/[NUMBER_OF_SERVINGS]'. Calories and servings must be a positive integer");
                     System.out.println("For example, 'add m/Pizza c/300 s/2'. Enter 'help' for more information.");
                 }
             } else if (input.startsWith("add e/")) {
@@ -225,7 +225,8 @@ public class Parser {
                     }
                 } else {
                     System.out.println("Invalid command. Please enter 'add e/[EXERCISE_NAME] " +
-                            "c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'.");
+                            "c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'. Calories burnt and duration " +
+                            "must be positive integer");
                     System.out.println("For example, 'add e/Running c/10 d/30'. Enter 'help' for more information.");
                 }
             } else if (inputSplit[0].equalsIgnoreCase("change")){

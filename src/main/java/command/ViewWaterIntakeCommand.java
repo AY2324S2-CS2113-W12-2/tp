@@ -5,11 +5,6 @@ import activeedge.log.LogGoals;
 import activeedge.log.LogList;
 import activeedge.log.LogWater;
 import activeedge.ui.CommandUi;
-<<<<<<< HEAD
-import activeedge.task.Task;
-import activeedge.task.LogWater;
-=======
->>>>>>> cb76f05 (change all task to logs, fixed summary function)
 
 import java.util.ArrayList;
 
@@ -23,15 +18,9 @@ public class ViewWaterIntakeCommand {
 
     int getTotalWaterIntake(ArrayList<Log> logList) {
         int totalWaterIntake = 0;
-<<<<<<< HEAD
-        for (Task task : tasksList) {
-            if (task instanceof LogWater) {
-                totalWaterIntake += ((LogWater) task).getQuantity();
-=======
         for (Log log : logList) {
             if (log instanceof LogWater) {
                 totalWaterIntake += ((LogWater) log).getQuantity();
->>>>>>> cb76f05 (change all task to logs, fixed summary function)
             }
         }
         return totalWaterIntake;

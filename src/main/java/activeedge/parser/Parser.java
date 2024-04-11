@@ -241,7 +241,7 @@ public class Parser {
                     System.out.println("2. 'change w' to  change your weight");
                     System.out.println("3. 'change cg' to change calorie goal");
                     System.out.println("4. 'change wg' to change water goal");
-                } else if (inputSplit[1].trim()equalsIgnoreCase("h")) {
+                } else if (inputSplit[1].trim().equalsIgnoreCase("h")) {
                     ChangeHeightCommand.execute(); // Check if this requires arguments like new height
                 } else if (inputSplit[1].trim().equalsIgnoreCase("w")) {
                     ChangeWeightCommand.execute();

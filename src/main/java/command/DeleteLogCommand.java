@@ -1,12 +1,10 @@
 package command;
 
-<<<<<<< HEAD:src/main/java/command/DeleteTaskCommand.java
-import activeedge.task.LogWater;
-=======
+
 import activeedge.log.Log;
 import activeedge.log.LogList;
 import activeedge.log.LogWater;
->>>>>>> cb76f05 (change all task to logs, fixed summary function):src/main/java/command/DeleteLogCommand.java
+
 import activeedge.ui.CommandUi;
 
 public class DeleteLogCommand {
@@ -43,19 +41,11 @@ public class DeleteLogCommand {
         // Search for the task with the specified description
         boolean taskFound = false;
         int countIndex = 0;
-<<<<<<< HEAD:src/main/java/command/DeleteTaskCommand.java
-        for (int i = 0; i < TaskList.tasksList.size(); i++) {
-            Task task = TaskList.tasksList.get(i);
-            if (task.getDescription().toLowerCase().startsWith("water")) {
-                if (task instanceof LogWater) { // Check if it's a WaterTask before casting
-                    LogWater waterTask = (LogWater) task;
-=======
         for (int i = 0; i < LogList.logList.size(); i++) {
             Log log = LogList.logList.get(i);
             if (log.getDescription().toLowerCase().startsWith("water")) {
                 if (log instanceof LogWater) { // Check if it's a WaterTask before casting
                     LogWater logWater = (LogWater) log;
->>>>>>> cb76f05 (change all task to logs, fixed summary function):src/main/java/command/DeleteLogCommand.java
 
                     if (((logWater.getQuantity()) + " ml").equalsIgnoreCase(description)) {
                         countIndex = countIndex + 1;

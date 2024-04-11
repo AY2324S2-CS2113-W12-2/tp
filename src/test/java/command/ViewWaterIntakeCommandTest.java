@@ -1,12 +1,7 @@
 package command;
 
-<<<<<<< HEAD
-import activeedge.task.Task;
-import activeedge.task.LogWater;
-=======
 import activeedge.log.Log;
 import activeedge.log.LogWater;
->>>>>>> cb76f05 (change all task to logs, fixed summary function)
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

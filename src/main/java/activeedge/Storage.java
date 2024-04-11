@@ -1,10 +1,10 @@
 package activeedge;
 
-import activeedge.task.GoalTask;
-import activeedge.task.MealTask;
-import activeedge.task.TaskList;
-import activeedge.task.LogExercise;
-import activeedge.task.WaterTask;
+import activeedge.log.LogGoals;
+import activeedge.log.LogMeal;
+import activeedge.log.LogList;
+import activeedge.log.LogExercise;
+import activeedge.log.LogWater;
 import activeedge.userdetails.LogBMI;
 import activeedge.userdetails.LogHeight;
 import activeedge.userdetails.LogWeight;
@@ -66,8 +66,8 @@ public class Storage {
     }
 
     /**
-     * Saves the current logs from {@code TaskList} to a file at the given file path.
-     * Each task is converted to a string and written to the file, one task per line.
+     * Saves the current logs from {@code LogList} to a file at the given file path.
+     * Each log is converted to a string and written to the file, one log per line.
      *
      * @param filePath The path of the file where logs should be saved.
      */
@@ -77,12 +77,12 @@ public class Storage {
                 String out = UserDetailsList.detailsList.get(i).toString();
                 fw.write(out + "\n");
             }
-            for (int i = 0; i < TaskList.tasksList.size(); i++) {
-                String out = TaskList.tasksList.get(i).toString();
+            for (int i = 0; i < LogList.logList.size(); i++) {
+                String out = LogList.logList.get(i).toString();
                 fw.write(out + "\n");
             }
         } catch (IOException e) {
-            System.out.println("An error occurred while saving tasks to file: " + e.getMessage());
+            System.out.println("An error occurred while saving logs to file: " + e.getMessage());
         }
     }
 
@@ -212,18 +212,18 @@ public class Storage {
         } else {
             try (Scanner scanner = new Scanner(file)) {
                 while (scanner.hasNext()) {
-                    String task = scanner.nextLine();
-                    String dateTimeStr = extractDateTimeString(task);
+                    String log = scanner.nextLine();
+                    String dateTimeStr = extractDateTimeString(log);
                     LocalDateTime dateTime = parseDateTime(dateTimeStr);
                     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                     DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
                     String date = dateTime.format(dateFormatter);
                     String time = dateTime.format(timeFormatter);
-                    if (task.startsWith("Meal")) {
+                    if (log.startsWith("Meal")) {
                         //replaces parentheses with a white space
-                        task = task.replace("(", "").replace(")", "");
+                        log = log.replace("(", "").replace(")", "");
                         //splits string by "|" and white spaces
-                        String[] items = task.split("\\s*\\|\\s*|\\s+");
+                        String[] items = log.split("\\s*\\|\\s*|\\s+");
                         int len = items.length;
                         assert len >= 10;
 
@@ -239,32 +239,32 @@ public class Storage {
                         }
                         int servings = Integer.parseInt(items[len-8]);
                         int mealCalories = Integer.parseInt(items[len-6]);
-                        MealTask newTask = new MealTask(mealName, servings, mealCalories, date, time);
-                        TaskList.tasksList.add(newTask);
-                    } else if (task.startsWith("Goal")) {
-                        String[] items = task.trim().split(" ");
-                        GoalTask newTask = new GoalTask(items[1], Integer.parseInt(items[2]), date, time);
-                        TaskList.tasksList.add(newTask);
-                    } else if (task.startsWith("Water")) {
-                        task = task.replace("(", "").replace(")", "");
-                        String[] items = task.split("\\s*\\|\\s*|\\s+");
-                        WaterTask newTask = new WaterTask(Integer.parseInt(items[1]), date, time);
-                        TaskList.tasksList.add(newTask);
-                    } else if (task.startsWith("Height")) {
-                        String[] items = task.trim().split(" ");
+                        LogMeal newLog = new LogMeal(mealName, servings, mealCalories, date, time);
+                        LogList.logList.add(newLog);
+                    } else if (log.startsWith("Goal")) {
+                        String[] items = log.trim().split(" ");
+                        LogGoals newLog = new LogGoals(items[1], Integer.parseInt(items[2]), date, time);
+                        LogList.logList.add(newLog);
+                    } else if (log.startsWith("Water")) {
+                        log = log.replace("(", "").replace(")", "");
+                        String[] items = log.split("\\s*\\|\\s*|\\s+");
+                        LogWater newLog = new LogWater(Integer.parseInt(items[1]), date, time);
+                        LogList.logList.add(newLog);
+                    } else if (log.startsWith("Height")) {
+                        String[] items = log.trim().split(" ");
                         LogHeight newHeight = new LogHeight(Integer.parseInt(items[1]), date, time);
                         UserDetailsList.detailsList.add(newHeight);
-                    } else if (task.startsWith("Weight")) {
-                        String[] items = task.trim().split(" ");
+                    } else if (log.startsWith("Weight")) {
+                        String[] items = log.trim().split(" ");
                         LogWeight newWeight = new LogWeight(Integer.parseInt(items[1]), date, time);
                         UserDetailsList.detailsList.add(newWeight);
-                    } else if (task.startsWith("BMI")) {
-                        String[] items = task.trim().split(" ");
+                    } else if (log.startsWith("BMI")) {
+                        String[] items = log.trim().split(" ");
                         LogBMI newBMI = new LogBMI(Integer.parseInt(items[1]), date, time);
                         UserDetailsList.detailsList.add(newBMI);
-                    } else if (task.startsWith("Exercise")){
-                        task = task.replace("(", "").replace(")", "");
-                        String[] items = task.split("\\s*\\|\\s*|\\s+");
+                    } else if (log.startsWith("Exercise")){
+                        log = log.replace("(", "").replace(")", "");
+                        String[] items = log.split("\\s*\\|\\s*|\\s+");
                         int len = items.length;
                         assert len >= 10;
                         String exerciseName = "";
@@ -275,10 +275,10 @@ public class Storage {
                                 exerciseName = exerciseName + items[i];
                             }
                         }
-                        LogExercise newTask = new LogExercise(exerciseName,
+                        LogExercise newLog = new LogExercise(exerciseName,
                                 Integer.parseInt(items[len - 8]),
                                 Integer.parseInt(items[len - 6]), date, time);
-                        TaskList.tasksList.add(newTask);
+                        LogList.logList.add(newLog);
                     }
                 }
             } catch (FileNotFoundException e) {
@@ -287,11 +287,11 @@ public class Storage {
         }
     }
 
-    private static String extractDateTimeString(String task) {
+    private static String extractDateTimeString(String log) {
         // Extracting date-time string between "Recorded on: " and ")"
-        int startIndex = task.indexOf("Recorded on: ") + "Recorded on: ".length();
-        int endIndex = task.lastIndexOf(")");
-        return task.substring(startIndex, endIndex);
+        int startIndex = log.indexOf("Recorded on: ") + "Recorded on: ".length();
+        int endIndex = log.lastIndexOf(")");
+        return log.substring(startIndex, endIndex);
     }
 
     private static LocalDateTime parseDateTime(String dateTimeStr) {

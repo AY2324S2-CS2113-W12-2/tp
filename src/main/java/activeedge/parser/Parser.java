@@ -18,6 +18,7 @@ import command.AddFoodItemCommand;
 import command.AddExerciseItemCommand;
 import command.ChangeHeightCommand;
 import command.ChangeWeightCommand;
+import command.ChangeCalorieGoalCommand;
 
 import activeedge.Storage;
 
@@ -27,7 +28,6 @@ import static activeedge.ExerciseData.exercisesList;
 import activeedge.FoodData;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 
 public class Parser {
     public void handleInput(String input) {
@@ -228,21 +228,26 @@ public class Parser {
                             "c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'.");
                     System.out.println("For example, 'add e/Running c/10 d/30'. Enter 'help' for more information.");
                 }
-            } else if (inputSplit[0].equalsIgnoreCase("change")){
+            } else if (inputSplit[0].equalsIgnoreCase("change")) {
                 if (inputSplit.length == 1) {
                     System.out.println("Please specify what you want to change:");
                     System.out.println("1. 'change h' to change your height");
                     System.out.println("2. 'change w' to change your weight");
+                    System.out.println("3. 'change c' to change your calorie goal"); // Added calorie goal option
                 } else if (inputSplit[1].equalsIgnoreCase("h")) {
-                    ChangeHeightCommand.execute();
+                    ChangeHeightCommand.execute(); // Check if this requires arguments like new height
                 } else if (inputSplit[1].equalsIgnoreCase("w")) {
-                    ChangeWeightCommand.execute();
+                    ChangeWeightCommand.execute(); // Check if this requires arguments like new weight
+                } else if (inputSplit[1].equalsIgnoreCase("c")) {
+                    ChangeCalorieGoalCommand.execute(); // Check if this requires arguments like new calorie goal
                 } else {
                     System.out.println("These are the only change commands: ");
                     System.out.println("1. change h - change height");
                     System.out.println("2. change w - change weight");
+                    System.out.println("3. change c - change calorie goal");
                 }
-            } else {
+            }
+            else {
                 System.out.println("Unknown command.");
             }
             Storage.saveLogsToFile("data/data.txt");

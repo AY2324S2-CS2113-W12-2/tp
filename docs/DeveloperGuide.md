@@ -94,9 +94,6 @@ within the ActiveEdge application, promoting modularity and separation of concer
 
 ![Command](https://github.com/SuveenE/tp/blob/master/images/Command-Class.png?raw=true)
 
-
-
-
 ### Storage
 Storage is the main class responsible for file operations and data management.
 UserDetailsList, LogHeight, and LogWeight handle user details such as height and weight logs.

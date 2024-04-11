@@ -1,6 +1,7 @@
 package activeedge.parser;
 
 import activeedge.ExerciseData;
+
 import command.HelpCommand;
 import command.LogWaterCommand;
 import command.LogMealCommand;
@@ -19,6 +20,7 @@ import command.AddExerciseItemCommand;
 import command.ChangeHeightCommand;
 import command.ChangeWeightCommand;
 import command.ChangeCalorieGoalCommand;
+import command.ChangeWaterGoalCommand;
 
 import activeedge.Storage;
 
@@ -198,7 +200,7 @@ public class Parser {
                     }
                 } else {
                     System.out.println("Invalid command. Please enter 'add m/[FOOD] c/[CALORIES_PER_SERVING(cal)]" +
-                            " s/[NUMBER_OF_SERVINGS]'.");
+                            " s/[NUMBER_OF_SERVINGS]'. Calories and servings must be a positive integer");
                     System.out.println("For example, 'add m/Pizza c/300 s/2'. Enter 'help' for more information.");
                 }
             } else if (input.startsWith("add e/")) {
@@ -225,7 +227,8 @@ public class Parser {
                     }
                 } else {
                     System.out.println("Invalid command. Please enter 'add e/[EXERCISE_NAME] " +
-                            "c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'.");
+                            "c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'. Calories burnt and duration " +
+                            "must be positive integer");
                     System.out.println("For example, 'add e/Running c/10 d/30'. Enter 'help' for more information.");
                 }
             } else if (inputSplit[0].equalsIgnoreCase("change")) {
@@ -237,14 +240,18 @@ public class Parser {
                 } else if (inputSplit[1].equalsIgnoreCase("h")) {
                     ChangeHeightCommand.execute(); // Check if this requires arguments like new height
                 } else if (inputSplit[1].equalsIgnoreCase("w")) {
-                    ChangeWeightCommand.execute(); // Check if this requires arguments like new weight
-                } else if (inputSplit[1].equalsIgnoreCase("c")) {
+                    ChangeWeightCommand.execute();
+                } else if (inputSplit[1].equalsIgnoreCase("wg")) {
+                    ChangeWaterGoalCommand.execute();
+                } else if (inputSplit[1].equalsIgnoreCase("cg")) {
                     ChangeCalorieGoalCommand.execute(); // Check if this requires arguments like new calorie goal
                 } else {
                     System.out.println("These are the only change commands: ");
                     System.out.println("1. change h - change height");
                     System.out.println("2. change w - change weight");
-                    System.out.println("3. change c - change calorie goal");
+                    System.out.println("3. change cg - change calorie goal");
+                    System.out.println("3. change wg - change water goal");
+
                 }
             }
             else {

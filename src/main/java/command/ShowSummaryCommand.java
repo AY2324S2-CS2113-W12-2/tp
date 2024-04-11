@@ -26,9 +26,9 @@ public class ShowSummaryCommand {
                 totalCaloriesBurnt += Integer.parseInt(parts[parts.length - 1]);
             } else if (task.toString().startsWith("Goal")) {
                 String[] parts = task.toString().split(" ");
-                if (parts[1].equals("c")) {
+                if (parts[1].equals("Calorie")) {
                     calorieGoal = parts[2];
-                } else if (parts[1].equals("w")) {
+                } else if (parts[1].equals("Water")) {
                     waterGoal = parts[2];
                 }
             }

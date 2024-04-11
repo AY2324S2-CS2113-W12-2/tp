@@ -42,18 +42,18 @@ public class ChangeWeightCommand {
                     AddWeightCommand addWeightCommand = new
                             AddWeightCommand(newWeight, date, time);
                     addWeightCommand.execute();
-                    System.out.println("You have successfully changed your height!");
+                    System.out.println("You have successfully changed your height! You can continue logging data!");
                     saveLogsToFile("data/data.txt");
                     int height = GetHeightCommand.execute();
                     AddBMICommand addBMICommand = new AddBMICommand(height, newWeight, date, time);
                     addBMICommand.execute();
                     i++;
                 } else {
-                    System.out.println("Please input a whole number between 1 and 700!");
+                    System.out.println("Please input a positive integer between 1 and 700!");
                 }
 
             } catch (NumberFormatException e) {
-                System.out.println("Please input a whole number between 1 and 700!");
+                System.out.println("Please input a positive integer between 1 and 700!");
             }
         }
     }

@@ -138,7 +138,7 @@ public class CommandUi {
 
 
     public static void printMatchingTasks(String word) {
-        System.out.println(LINE + " Here are the matching tasks in your list:");
+        System.out.println(LINE + "Here are the matching tasks in your list:");
         int matchingTasksIndex = 1;
         boolean found = false;
 

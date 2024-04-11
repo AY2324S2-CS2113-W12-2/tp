@@ -1,6 +1,8 @@
 package activeedge.task;
 
 public class Task {
+
+    protected Integer value;
     protected String description;
 
     public Task(String description) {
@@ -15,4 +17,5 @@ public class Task {
     public String toString() {
         return this.getDescription();
     }
+
 }

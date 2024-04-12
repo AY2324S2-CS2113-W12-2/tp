@@ -155,10 +155,10 @@ public class Parser {
                     ShowGoalsCommand showGoalsCommand = new ShowGoalsCommand();
                     showGoalsCommand.execute();
                 } else {
-                    System.out.println("These are the only show commands: ");
-                    System.out.println("1. show w - displays water intake ");
-                    System.out.println("2. show c - displays calorie intake");
-                    System.out.println("3. show g - displays goals");
+                    System.out.println("Please specify what you wish to view: ");
+                    System.out.println("1. 'show w' to display your current water intake");
+                    System.out.println("2. 'show c' to display your current calories intake");
+                    System.out.println("3. 'show g' to display your current goals");
                 }
             } else if (inputSplit[0].trim().equalsIgnoreCase("delete")) {
                 DeleteLogCommand deleteCommand = new DeleteLogCommand(input);
@@ -250,11 +250,11 @@ public class Parser {
                 } else if (inputSplit[1].trim().equalsIgnoreCase("cg")) {
                     ChangeCalorieGoalCommand.execute(); // Check if this requires arguments like new calorie goal
                 } else {
-                    System.out.println("These are the only change commands: ");
-                    System.out.println("1. change h - change height");
-                    System.out.println("2. change w - change weight");
-                    System.out.println("3. change cg - change calorie goal");
-                    System.out.println("4. change wg - change water goal");
+                    System.out.println("Please specify what you want to change:");
+                    System.out.println("1. 'change h' to change your height");
+                    System.out.println("2. 'change w' to change your weight");
+                    System.out.println("3. 'change cg' to change your calorie goal");
+                    System.out.println("4. 'change wg' to change your water goal");
                 }
             }
             else {

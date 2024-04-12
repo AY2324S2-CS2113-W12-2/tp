@@ -1,5 +1,9 @@
 package command;
 
+import activeedge.log.Log;
+import activeedge.log.LogGoals;
+import activeedge.log.LogList;
+import activeedge.log.LogMeal;
 import activeedge.ui.CommandUi;
 
 import static activeedge.FoodData.foodItems;
@@ -21,18 +25,47 @@ public class AddFoodItemCommand {
         this.time = time;
     }
 
-    public void execute() throws ActiveEdgeException {
-        if (FoodData.foodItemExists(description)) {
-            // Food item exists, prompt user to log it
-            CommandUi.promptLogFoodMessage(description);
-        } else {
-            String[] newItem = {description, Integer.toString(caloriesPerSaving)};
+    public void execute() {
+        try {
+            int calorieGoal = getCalorieGoal();
+            if (FoodData.foodItemExists(description)) {
+                // Food item exists, prompt user to log it
+                CommandUi.promptLogFoodMessage(description);
+            } else {
+                String[] newItem = {description, Integer.toString(caloriesPerSaving)};
 
-            foodItems = appendItem(foodItems, newItem);
-            CommandUi.printAddFoodItemMessage(description);
-            LogMealCommand logMealCommand = new LogMealCommand(description, servings,
-                    caloriesPerSaving * servings, date, time, true);
-            logMealCommand.execute();
+                foodItems = appendItem(foodItems, newItem);
+                CommandUi.printAddFoodItemMessage(description);
+                LogMealCommand logMealCommand = new LogMealCommand(description, servings,
+                        caloriesPerSaving * servings, date, time, true);
+                int totalCaloriesConsumed = calculateTotalCaloriesConsumed() + caloriesPerSaving;
+                logMealCommand.execute();
+                if (totalCaloriesConsumed > calorieGoal) {
+                    CommandUi.printCalorieExceedingWarning();
+                }
+
+            }
+        } catch(Exception e){
+            CommandUi.printErrorMessage("An error occurred while adding the meal: " + e.getMessage());
         }
+    }
+
+    private int getCalorieGoal() {
+        for (Log log : LogList.logList) {
+            if (log instanceof LogGoals && log.getDescription().startsWith("Calorie")) {
+                return ((LogGoals) log).getGoalAmount();
+            }
+        }
+        return 0;
+    }
+
+    private int calculateTotalCaloriesConsumed() {
+        int totalCaloriesConsumed = 0;
+        for (Log log : LogList.logList) {
+            if (log instanceof LogMeal) {
+                totalCaloriesConsumed += ((LogMeal) log).getMealCalories();
+            }
+        }
+        return totalCaloriesConsumed;
     }
 }

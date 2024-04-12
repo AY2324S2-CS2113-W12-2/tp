@@ -1,9 +1,9 @@
 package command;
 
-import activeedge.task.GoalTask;
-import activeedge.task.MealTask;
-import activeedge.task.Task;
-import activeedge.task.TaskList;
+import activeedge.log.Log;
+import activeedge.log.LogGoals;
+import activeedge.log.LogList;
+import activeedge.log.LogMeal;
 import activeedge.ui.CommandUi;
 
 import static activeedge.FoodData.foodItems;
@@ -51,9 +51,9 @@ public class AddFoodItemCommand extends Command {
     }
 
     private int getCalorieGoal() {
-        for (Task task : TaskList.tasksList) {
-            if (task instanceof GoalTask && task.getDescription().startsWith("Calorie")) {
-                return ((GoalTask) task).getGoalAmount();
+        for (Log log : LogList.logList) {
+            if (log instanceof LogGoals && log.getDescription().startsWith("Calorie")) {
+                return ((LogGoals) log).getGoalAmount();
             }
         }
         return 0;
@@ -61,9 +61,9 @@ public class AddFoodItemCommand extends Command {
 
     private int calculateTotalCaloriesConsumed() {
         int totalCaloriesConsumed = 0;
-        for (Task task : TaskList.tasksList) {
-            if (task instanceof MealTask) {
-                totalCaloriesConsumed += ((MealTask) task).getMealCalories();
+        for (Log log : LogList.logList) {
+            if (log instanceof LogMeal) {
+                totalCaloriesConsumed += ((LogMeal) log).getMealCalories();
             }
         }
         return totalCaloriesConsumed;

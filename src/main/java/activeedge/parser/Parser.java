@@ -24,7 +24,10 @@ import command.ChangeWeightCommand;
 import command.ChangeWaterGoalCommand;
 import command.ChangeCalorieGoalCommand;
 
-
+import static activeedge.log.LogList.logList;
+import static activeedge.FoodData.foodItems;
+import static activeedge.ExerciseData.exercisesList;
+import activeedge.FoodData;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -87,11 +90,11 @@ public class Parser {
             if (!items[0].trim().equals("w") && !items[0].trim().equals("m") && !items[0].trim().equals("e")) {
                 return new InvalidCommand("Invalid command. Please enter a valid 'log' command.");
             }
-            if (items[0].trim().equals("w")) {
+            else if (items[0].trim().equals("w")) {
                 return parseWaterLogCommand(items, date, time);
             } else if (items[0].trim().equals("m")) {
                 return parseMealLogCommand(input, date, time);
-            } else {
+            } else if(items[0].trim().equals("e")) {
                 return parseExerciseLogCommand(input, items, date, time);
             }
         }

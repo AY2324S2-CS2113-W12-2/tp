@@ -1,8 +1,9 @@
 package command;
 
 import activeedge.ui.CommandUi;
-import activeedge.task.LogExercise;
-import static activeedge.task.TaskList.tasksList;
+import activeedge.log.LogExercise;
+
+import static activeedge.log.LogList.logList;
 
 /**
  * Represents a command to log exercise activities into the system.
@@ -22,7 +23,8 @@ public class LogExerciseCommand extends Command{
      * @param exerciseName The name of the exercise.
      * @param duration The duration of the exercise in minutes.
      * @param caloriesBurnt The total number of calories burnt during the exercise.
-     * @param dateTime The date and time when the exercise was performed.
+     * @param date The date when the exercise was performed.
+     * @param time The time when the exercise was performed.
      * @param isItemPresentInExerciseData Indicates if the exercise is present in the system's data.
      */
     public LogExerciseCommand(String exerciseName, int duration, int caloriesBurnt, String date, String time,
@@ -45,7 +47,7 @@ public class LogExerciseCommand extends Command{
 
         if (isItemPresentInExerciseData){
             LogExercise logExercise = new LogExercise(exerciseName, duration, caloriesBurnt, date, time);
-            tasksList.add(logExercise);
+            logList.add(logExercise);
             CommandUi.printExerciseLogMessage(logExercise);
         } else {
             CommandUi.printExerciseItemNotFoundMessage(exerciseName);

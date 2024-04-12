@@ -153,7 +153,7 @@ Deletes a meal from the logs list. By default, it deletes the oldest log.
 
 Format:  `delete <MEAL_NAME>`
 
-If you have **multiple logs with the same meal name**, use the additional parameter N to specify which entry to delete.
+If you have **multiple logs with the same meal name**, use the additional parameter N to specify which log to delete.
 
 Format: `delete <MEAL_NAME> i/<N>`
 
@@ -178,7 +178,8 @@ Deletes a water log from the logs list. By default, it deletes the oldest log.
 
 Format:  `delete <QUANTITY_OF_WATER> ml`
 
-If you have **multiple logs with the same water quantity**, use the additional parameter N to specify which entry to delete.
+If you have **multiple logs with the same water quantity**, use the additional parameter N to specify which log to 
+delete.
 
 Format: `delete <QUANTITY_OF_WATER> ml i/2`
 
@@ -204,12 +205,12 @@ Deletes an exercise log from the logs list.  By default, it deletes the oldest l
 
 Format:  `delete <EXERCISE_NAME>`
 
-If you have **multiple logs with the same exercise**, use the additional parameter N to specify which entry to delete.
+If you have **multiple logs with the same exercise**, use the additional parameter N to specify which log to delete.
 
 Format: `delete <EXERCISE_NAME> i/<N>`
 
 * The `EXERCISE_NAME` is the form of exercise
-  previously logged in and the user wishes to delete.
+  previously logged in, and the user wishes to delete.
 * The `N` is the N<sup>th</sup> log from the exercise that the user wishes to delete. Note: `N` starts with 1.
 
 If you are unsure about the index, try `list` command and figure out the index first.
@@ -328,9 +329,9 @@ Expected output:
 Create a "data" folder within the ActiveEdge application directory, 
 and then copy the "data.txt" file into this newly created folder.
 
-**Q**: I accidentally deleted an entry. Is there a way to recover it?
+**Q**: I accidentally deleted a log. Is there a way to recover it?
 
-**A**: Unfortunately, deleted entries are not recoverable, so it's 
+**A**: Unfortunately, deleted logs are not recoverable, so it's 
 important to be careful when using the delete command.
 
 **Q**: I accidentally cleared the data. Is there a way to recover it?

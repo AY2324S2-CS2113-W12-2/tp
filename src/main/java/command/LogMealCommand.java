@@ -1,11 +1,12 @@
 package command;
 
-import activeedge.task.GoalTask;
-import activeedge.task.Task;
-import activeedge.task.TaskList;
+import activeedge.log.Log;
+import activeedge.log.LogGoals;
+import activeedge.log.LogList;
+import activeedge.log.LogMeal;
 import activeedge.ui.CommandUi;
-import activeedge.task.MealTask;
-import static activeedge.task.TaskList.tasksList;
+
+import static activeedge.log.LogList.logList;
 
 public class LogMealCommand extends Command{
     protected String description;
@@ -29,9 +30,9 @@ public class LogMealCommand extends Command{
         try {
             int calorieGoal = getCalorieGoal();
             if (isItemPresentInFoodData) {
-                MealTask logMeal = new MealTask(description, servings, mealCalories, date, time);
+                LogMeal logMeal = new LogMeal(description, servings, mealCalories, date, time);
                 int totalCaloriesConsumed = calculateTotalCaloriesConsumed() + mealCalories;
-                tasksList.add(logMeal);
+                logList.add(logMeal);
                 CommandUi.printMealLogMessage(logMeal);
 
                 if (totalCaloriesConsumed > calorieGoal) {
@@ -59,9 +60,9 @@ public class LogMealCommand extends Command{
     }
 
     private int getCalorieGoal() {
-        for (Task task : TaskList.tasksList) {
-            if (task instanceof GoalTask && task.getDescription().startsWith("Calorie")) {
-                return ((GoalTask) task).getGoalAmount();
+        for (Log log : LogList.logList) {
+            if (log instanceof LogGoals && log.getDescription().startsWith("Calorie")) {
+                return ((LogGoals) log).getGoalAmount();
             }
         }
         return 0;
@@ -69,9 +70,9 @@ public class LogMealCommand extends Command{
 
     private int calculateTotalCaloriesConsumed() {
         int totalCaloriesConsumed = 0;
-        for (Task task : TaskList.tasksList) {
-            if (task instanceof MealTask) {
-                totalCaloriesConsumed += ((MealTask) task).getMealCalories();
+        for (Log log : logList) {
+            if (log instanceof LogMeal) {
+                totalCaloriesConsumed += ((LogMeal) log).getMealCalories();
             }
         }
         return totalCaloriesConsumed;

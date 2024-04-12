@@ -1,14 +1,12 @@
 ## Manimaran Pradeep  - Project Portfolio Page
 
 ## Overview
-I am an adept idicidial contributor, known for excellent communication and teamwork. My strength lies 
-in meeting deadlines and facilitating productive discussions. I proactively organize meetings and delegate
-tasks, ensuring smooth project progress.
+Active Edge Fitness Tracker is a comprehensive health monitoring tool that meticulously tracks calorie intake,
+water consumption, and exercise routines. It ensures users stay aligned with their goals by monitoring their progress
+in real-time, allowing adjustments to be made to maintain consistency and achieve optimal fitness levels.
 
 ### Summary of Contributions
-**Code contributed:** https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=pradeep-cod&breakdown=true&sort=grou
-pTitle%20dsc&sortWithin=title&since=2024-02-23&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=
-docs~functional-code~test-code~other
+**Code contributed:** https://shorturl.at/msvFP
 
 **Enhancements implemented:** I spearheaded the implementation of critical enhancements, including the goal-setting and
 find features, along with the functionality for users to add new exercises and the clear function in order to clear all 

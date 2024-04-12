@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-import static activeedge.Storage.saveLogsToFile;
 import static activeedge.userdetails.UserDetailsList.detailsList;
 
 public class ChangeWeightCommand extends Command {
@@ -43,7 +42,6 @@ public class ChangeWeightCommand extends Command {
                             AddWeightCommand(newWeight, date, time);
                     addWeightCommand.execute();
                     System.out.println("You have successfully changed your height! You can continue logging data!");
-                    saveLogsToFile("data/data.txt");
                     int height = GetHeightCommand.execute();
                     AddBMICommand addBMICommand = new AddBMICommand(height, newWeight, date, time);
                     addBMICommand.execute();

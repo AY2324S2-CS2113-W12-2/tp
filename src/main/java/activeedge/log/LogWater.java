@@ -1,9 +1,9 @@
-package activeedge.task;
+package activeedge.log;
 
 /**
  * Represents a task related to water intake.
  * */
-public class LogWater extends Task {
+public class LogWater extends Log {
     private int quantity;
     private String date;
     private String time;
@@ -14,7 +14,7 @@ public class LogWater extends Task {
      *
      * @param quantity The quantity of water intake.
      */
-    public LogWater(int quantity, String date, String time) {
+    public LogWater (int quantity, String date, String time) {
         super("Water intake");
         this.quantity = quantity;
         this.date = date;

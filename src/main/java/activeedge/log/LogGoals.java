@@ -1,10 +1,10 @@
-package activeedge.task;
+package activeedge.log;
 
 /**
  * Represents a task with a specific goal amount.
  * Extends the Task class.
  */
-public class GoalTask extends Task {
+public class LogGoals extends Log {
     private int goalAmount; // The amount associated with the goal task.
     private String date;
     private String time;
@@ -15,7 +15,7 @@ public class GoalTask extends Task {
      * @param description The description of the goal task.
      * @param goalAmount  The amount associated with the goal task.
      */
-    public GoalTask(String description, int goalAmount, String date, String time) {
+    public LogGoals(String description, int goalAmount, String date, String time) {
         super(description); // Calls the constructor of the superclass (Task) with the provided description.
         this.goalAmount = goalAmount; // Initializes the goal amount.
         this.date = date;

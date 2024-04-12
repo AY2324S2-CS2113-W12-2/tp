@@ -19,7 +19,7 @@ note right of ":ActiveEdge"
     Fetch data from storage
 end note
 ":ActiveEdge" -> ":Scanner": NextLine()
-note right of ":ActiveEdge"
+note right of "ActiveEdge"
     Read input from the user
 end note
 loop until "bye" is entered

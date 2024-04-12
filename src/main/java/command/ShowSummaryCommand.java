@@ -51,8 +51,7 @@ public class ShowSummaryCommand {
             }
         }
 
-
-                int netCalories = totalCalories - totalCaloriesBurnt;
+        int netCalories = totalCalories - totalCaloriesBurnt;
         String calorieStatus = calculateCalorieStatus(netCalories, Integer.parseInt(calorieGoal));
 
         CommandUi.printShowSummaryMessage(height, weight, BMI, totalCalories,totalWaterIntake, totalCaloriesBurnt,

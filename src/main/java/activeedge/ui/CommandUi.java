@@ -226,7 +226,8 @@ public class CommandUi {
         System.out.println("Invalid index. View all logged entries using 'list'." );
     }
 
-    public static void printShowSummaryMessage(int height, int weight, int BMI, int totalCalories,int totalWaterIntake, int totalCaloriesBurnt,
+    public static void printShowSummaryMessage(int height, int weight, int BMI, int totalCalories,int
+                                               totalWaterIntake, int totalCaloriesBurnt,
                                                String calorieGoal, String waterGoal,
                                                int netCalories, String calorieStatus) {
         System.out.println("Daily Summary:");

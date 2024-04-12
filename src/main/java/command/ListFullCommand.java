@@ -1,8 +1,9 @@
 package command;
 
 import activeedge.ui.CommandUi;
-public class ListFullCommand {
-    public ListFullCommand() {
+public class ListFullCommand extends Command {
+
+    public void execute(){
         CommandUi.printFullList();
     }
 }

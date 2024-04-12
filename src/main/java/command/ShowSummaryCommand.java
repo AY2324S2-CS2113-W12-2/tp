@@ -5,7 +5,7 @@ import activeedge.ui.CommandUi;
 
 import static activeedge.task.TaskList.tasksList;
 
-public class ShowSummaryCommand {
+public class ShowSummaryCommand extends Command {
     public void execute() {
         int totalCalories = 0;
         int totalWaterIntake = 0;

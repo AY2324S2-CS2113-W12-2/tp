@@ -8,7 +8,7 @@ import activeedge.task.LogWater;
 
 import java.util.ArrayList;
 
-public class ViewWaterIntakeCommand {
+public class ViewWaterIntakeCommand extends Command {
     public void execute() {
         int totalWaterIntake = getTotalWaterIntake(TaskList.tasksList);
         int waterGoal = getWaterGoal(TaskList.tasksList);

@@ -9,7 +9,7 @@ import static activeedge.task.TaskList.tasksList;
  * It stores information about an exercise, including its name, duration, and
  * the total amount of calories burnt by doing the exercise.
  */
-public class LogExerciseCommand {
+public class LogExerciseCommand extends Command{
     protected String exerciseName; // The name of the exercise
     protected int duration; // The duration of the exercise in minutes
     protected int caloriesBurnt; // The total number of calories burnt during the exercise
@@ -41,7 +41,7 @@ public class LogExerciseCommand {
      * the system's task list. After logging the exercise, it displays a confirmation message.
      * @throws ActiveEdgeException if any error occurs during the execution process.
      */
-    public void execute() throws ActiveEdgeException {
+    public void execute() {
 
         if (isItemPresentInExerciseData){
             LogExercise logExercise = new LogExercise(exerciseName, duration, caloriesBurnt, date, time);

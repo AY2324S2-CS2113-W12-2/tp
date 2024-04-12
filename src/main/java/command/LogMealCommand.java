@@ -7,7 +7,7 @@ import activeedge.ui.CommandUi;
 import activeedge.task.MealTask;
 import static activeedge.task.TaskList.tasksList;
 
-public class LogMealCommand {
+public class LogMealCommand extends Command{
     protected String description;
     protected int servings;
     protected int mealCalories;

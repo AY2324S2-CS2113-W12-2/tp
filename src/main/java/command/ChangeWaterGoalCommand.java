@@ -14,7 +14,7 @@ import static activeedge.task.TaskList.tasksList;
  * The ChangeWaterGoalCommand class represents a command to change the user's daily water goal.
  * It prompts the user to set a new water goal and updates it in the task list.
  */
-public class ChangeWaterGoalCommand {
+public class ChangeWaterGoalCommand extends Command{
 
     /**
      * Executes the command to change the user's daily water goal.
@@ -22,7 +22,7 @@ public class ChangeWaterGoalCommand {
      *
      * @throws ActiveEdgeException if an error occurs during the execution of the command.
      */
-    public static void execute() throws ActiveEdgeException {
+    public void execute() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");

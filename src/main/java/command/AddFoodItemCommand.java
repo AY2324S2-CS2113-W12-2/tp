@@ -10,7 +10,7 @@ import static activeedge.FoodData.foodItems;
 import static activeedge.FoodData.appendItem;
 import activeedge.FoodData;
 
-public class AddFoodItemCommand {
+public class AddFoodItemCommand extends Command {
     protected String description;
     protected int servings;
     protected int caloriesPerSaving;

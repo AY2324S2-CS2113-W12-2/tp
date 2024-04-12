@@ -154,6 +154,11 @@ public class CommandUi {
                 System.out.println(logString.substring(8));
                 matchingLogIndex++;
                 found = true;
+            } else if (logString.startsWith("Exercise") && logString.contains(word)) {
+                System.out.print(matchingLogIndex + ". ");
+                System.out.println(logString.substring(11));
+                matchingLogIndex++;
+                found = true;
             }
         }
 

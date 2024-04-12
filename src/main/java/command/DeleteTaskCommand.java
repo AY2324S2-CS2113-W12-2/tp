@@ -1,14 +1,14 @@
 package command;
 
-import activeedge.task.WaterTask;
+import activeedge.task.LogWater;
 import activeedge.ui.CommandUi;
 import activeedge.task.Task;
 import activeedge.task.TaskList;
 
-public class DeleteTaskCommand {
-    private String description;
-    private int index;
-    private boolean errorRaised;
+public class DeleteTaskCommand extends Command{
+    private static String description;
+    private static int index;
+    private static boolean errorRaised;
 
     public DeleteTaskCommand(String inputTrimmed) {
         String[] parts = inputTrimmed.split(" ", 2); // Split at the first space
@@ -42,8 +42,8 @@ public class DeleteTaskCommand {
         for (int i = 0; i < TaskList.tasksList.size(); i++) {
             Task task = TaskList.tasksList.get(i);
             if (task.getDescription().toLowerCase().startsWith("water")) {
-                if (task instanceof WaterTask) { // Check if it's a WaterTask before casting
-                    WaterTask waterTask = (WaterTask) task;
+                if (task instanceof LogWater) { // Check if it's a WaterTask before casting
+                    LogWater waterTask = (LogWater) task;
 
                     if (((waterTask.getQuantity()) + " ml").equalsIgnoreCase(description)) {
                         countIndex = countIndex + 1;
@@ -68,7 +68,7 @@ public class DeleteTaskCommand {
 
         if(index > countIndex){
             CommandUi.printDeleteMealInvalidIndexMessage();
-            this.errorRaised = true;
+            errorRaised = true;
         }
         if (!taskFound && !errorRaised) {
             CommandUi.printTaskNotFoundMessage();

@@ -10,10 +10,10 @@ import java.util.Scanner;
 import static activeedge.Storage.saveLogsToFile;
 import static activeedge.userdetails.UserDetailsList.detailsList;
 
-public class ChangeWeightCommand {
+public class ChangeWeightCommand extends Command {
 
 
-    public static void execute() throws ActiveEdgeException {
+    public void execute() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
@@ -52,7 +52,7 @@ public class ChangeWeightCommand {
                     System.out.println("Please input a positive integer between 1 and 700!");
                 }
 
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | ActiveEdgeException e) {
                 System.out.println("Please input a positive integer between 1 and 700!");
             }
         }

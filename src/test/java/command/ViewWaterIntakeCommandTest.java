@@ -1,7 +1,7 @@
 package command;
 
 import activeedge.task.Task;
-import activeedge.task.WaterTask;
+import activeedge.task.LogWater;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,8 +33,8 @@ public class ViewWaterIntakeCommandTest {
         String time = dateTime.format(timeFormatter);
         // Create a mock task list
         ArrayList<Task> tasksList = new ArrayList<>();
-        tasksList.add(new WaterTask(200, date, time)); // Adding water intake
-        tasksList.add(new WaterTask(300, date, time)); // Adding water intake
+        tasksList.add(new LogWater(200, date, time)); // Adding water intake
+        tasksList.add(new LogWater(300, date, time)); // Adding water intake
 
         ViewWaterIntakeCommand viewWaterIntakeCommand = new ViewWaterIntakeCommand();
 

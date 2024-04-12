@@ -3,7 +3,7 @@ package command;
 import activeedge.userdetails.UserDetails;
 import static activeedge.userdetails.UserDetailsList.detailsList;
 
-public class GetHeightCommand {
+public class GetHeightCommand{
 
     public static int execute() {
         int height = 0;

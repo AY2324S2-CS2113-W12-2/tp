@@ -7,7 +7,7 @@ import activeedge.ui.CommandUi;
 import activeedge.task.MealTask;
 import static activeedge.task.TaskList.tasksList;
 
-public class LogMealCommand {
+public class LogMealCommand extends Command{
     protected String description;
     protected int servings;
     protected int mealCalories;
@@ -64,7 +64,7 @@ public class LogMealCommand {
                 return ((GoalTask) task).getGoalAmount();
             }
         }
-        return 0; // Return 0 if the calorie goal is not found
+        return 0;
     }
 
     private int calculateTotalCaloriesConsumed() {

@@ -12,6 +12,7 @@ public class GetWeightCommand {
             if (weightString.startsWith("Weight")){
                 String[] items = weightString.split(" ");
                 weight = Integer.parseInt(items[1]);
+                //System.out.println("Weight: " + weight + " kg");
             }
         }
         return weight;

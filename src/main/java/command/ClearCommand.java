@@ -13,7 +13,7 @@ import activeedge.userdetails.UserDetailsList;
  * The ClearCommand class represents a command to clear all tasks and user details in the system.
  * It provides functionality to execute the command.
  */
-public class ClearCommand {
+public class ClearCommand extends Command{
 
     /**
      * Constructs a ClearCommand object.

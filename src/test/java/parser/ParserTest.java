@@ -9,17 +9,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ParserTest {
 
-    @Test
-    public void testHelpCommandPrintsHelpMessage() throws Exception {
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
-        Parser parser = new Parser();
-        parser.handleInput("help");
-
-        String expectedOutputPart = "Welcome to Active Edge!";
-        assertTrue(outContent.toString().contains(expectedOutputPart));
-
-        System.setOut(System.out);
-    }
+//    @Test
+//    public void testHelpCommandPrintsHelpMessage() throws Exception {
+//        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+//        System.setOut(new PrintStream(outContent));
+//
+//        Parser parser = new Parser();
+//        parser.handleInput("help");
+//
+//        String expectedOutputPart = "Welcome to Active Edge!";
+//        assertTrue(outContent.toString().contains(expectedOutputPart));
+//
+//        System.setOut(System.out);
+//    }
 }

@@ -1,11 +1,11 @@
 package activeedge.ui;
 
-import static activeedge.task.TaskList.tasksList;
+import static activeedge.log.LogList.logList;
 
-import activeedge.task.LogExercise;
-import activeedge.task.Task;
-import activeedge.task.LogWater;
-import activeedge.task.MealTask;
+import activeedge.log.Log;
+import activeedge.log.LogExercise;
+import activeedge.log.LogMeal;
+import activeedge.log.LogWater;
 
 import java.time.format.DateTimeFormatter;
 
@@ -27,9 +27,9 @@ public class CommandUi {
         System.out.println("Food: ");
         System.out.print(LINE);
         int j = 1;
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Meal")) {
-                System.out.println(j + ". " + tasksList.get(i).toString().substring(7));
+        for (int i = 0; i < logList.size(); i++) {
+            if (logList.get(i).toString().startsWith("Meal")) {
+                System.out.println(j + ". " + logList.get(i).toString().substring(7));
                 j++;
             }
         }
@@ -37,9 +37,9 @@ public class CommandUi {
         System.out.println("Water:");
         System.out.print(LINE);
         int k = 1;
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Water")) {
-                System.out.println(k + ". " + tasksList.get(i).toString().substring(8));
+        for (int i = 0; i < logList.size(); i++) {
+            if (logList.get(i).toString().startsWith("Water")) {
+                System.out.println(k + ". " + logList.get(i).toString().substring(8));
                 k++;
             }
         }
@@ -47,9 +47,9 @@ public class CommandUi {
         System.out.println("Exercises:");
         System.out.print(LINE);
         int l = 1;
-        for (int i = 0; i < tasksList.size(); i++) {
-            if (tasksList.get(i).toString().startsWith("Exercise")) {
-                System.out.print(l + ". " + tasksList.get(i).toString().substring(11));
+        for (int i = 0; i < logList.size(); i++) {
+            if (logList.get(i).toString().startsWith("Exercise")) {
+                System.out.print(l + ". " + logList.get(i).toString().substring(11));
                 System.out.println("");
                 l++;
             }
@@ -57,10 +57,10 @@ public class CommandUi {
         System.out.println(LINE);
     }
 
-    public static void printMealLogMessage(MealTask mealTask) {
-        System.out.println("You've logged " + Integer.toString(mealTask.getServings()) +
-                " servings" + " of " + mealTask.getFoodName() + ".") ;
-        System.out.println("Estimated calories: " + Integer.toString(mealTask.getMealCalories()) + " cal");
+    public static void printMealLogMessage(LogMeal logMeal) {
+        System.out.println("You've logged " + Integer.toString(logMeal.getServings()) +
+                " servings" + " of " + logMeal.getFoodName() + ".") ;
+        System.out.println("Estimated calories: " + Integer.toString(logMeal.getMealCalories()) + " cal");
     }
 
     public static void printExerciseLogMessage(LogExercise logExercise) {
@@ -75,10 +75,10 @@ public class CommandUi {
         int totalCaloriesFromExercises = 0;
         int caloriegoal;
         String goal = "0";
-        for (int i = 0; i < tasksList.size(); i++) {
-            String[] parts = tasksList.get(i).toString().split(" ");
+        for (int i = 0; i < logList.size(); i++) {
+            String[] parts = logList.get(i).toString().split(" ");
             int len = parts.length;
-            String taskString = tasksList.get(i).toString();
+            String logString = logList.get(i).toString();
             int calIndex = -1;
             for (int j = 0; j < len; j++) {
                 if (parts[j].equals("cal")) {
@@ -92,16 +92,16 @@ public class CommandUi {
                 String calorieString = parts[calIndex];
                 if (calorieString.matches("\\d+")) { // Check if it's a valid integer
                     int calories = Integer.parseInt(calorieString);
-                    if (taskString.startsWith("Meal")) {
+                    if (logString.startsWith("Meal")) {
                         totalCaloriesFromMeals += calories;
-                    } else if (taskString.startsWith("Exercise")) {
+                    } else if (logString.startsWith("Exercise")) {
                         totalCaloriesFromExercises += calories;
                     }
                 } else {
                     System.out.println("Skipping non-integer calorie value: " + calorieString);
                 }
             }
-            if(tasksList.get(i).toString().startsWith("Goal")) {
+            if(logList.get(i).toString().startsWith("Goal")) {
                 if (parts[1].equals("Calorie")) {
                     goal = parts[2].toString();
                 }
@@ -126,8 +126,8 @@ public class CommandUi {
 
     }
 
-    public static void printWaterLogMessage(LogWater newWaterTask) {
-        System.out.println("Successfully logged " + newWaterTask.getQuantity() + " ml of water.");
+    public static void printWaterLogMessage(LogWater newLogWater) {
+        System.out.println("Successfully logged " + newLogWater.getQuantity() + " ml of water.");
     }
 
     public static void printWaterIntakeMessage(int totalWaterIntake, int waterGoal) {
@@ -136,30 +136,29 @@ public class CommandUi {
                 " ml (" + String.format("%.0f%%", percentage) + " of " + waterGoal + "ml goal).");
     }
 
-
-    public static void printMatchingTasks(String word) {
-        System.out.println(LINE + "Here are the matching tasks in your list:");
-        int matchingTasksIndex = 1;
+    public static void printMatchingLog (String word) {
+        System.out.println(LINE + "Here are the matching logs in your list:");
+        int matchingLogIndex = 1;
         boolean found = false;
 
-        for (Task task : tasksList) {
-            String taskString = task.toString().trim(); // Trim the task string
-            if (taskString.startsWith("Meal") && taskString.contains(word)) {
-                System.out.print(matchingTasksIndex + ". ");
-                System.out.println(taskString.substring(7));
-                matchingTasksIndex++;
+        for (Log log : logList) {
+            String logString = log.toString().trim(); // Trim the task string
+            if (logString.startsWith("Meal") && logString.contains(word)) {
+                System.out.print(matchingLogIndex + ". ");
+                System.out.println(logString.substring(7));
+                matchingLogIndex++;
                 found = true;
 
-            } else if (taskString.startsWith("Water") && taskString.contains(word)) {
-                System.out.print(matchingTasksIndex + ". ");
-                System.out.println(taskString.substring(8));
-                matchingTasksIndex++;
+            } else if (logString.startsWith("Water") && logString.contains(word)) {
+                System.out.print(matchingLogIndex + ". ");
+                System.out.println(logString.substring(8));
+                matchingLogIndex++;
                 found = true;
             }
         }
 
         if (!found) {
-            System.out.println("No matching tasks found.");
+            System.out.println("No matching logs found.");
         }
 
         System.out.println(LINE);
@@ -174,10 +173,10 @@ public class CommandUi {
 
     /**
      * Prints a message confirming the deletion of a task.
-     * @param deletedTask The task that was deleted.
+     * @param deletedLog The task that was deleted.
      */
-    public static void printTaskDeletedMessage(Task deletedTask) {
-        System.out.println("Log deleted: " + deletedTask.getDescription());
+    public static void printLogDeletedMessage(Log deletedLog) {
+        System.out.println("Log deleted: " + deletedLog.getDescription());
     }
 
     public static void printFoodItemNotFoundMessage(String description){
@@ -210,7 +209,7 @@ public class CommandUi {
     }
 
 
-    public static void printTaskNotFoundMessage() {
+    public static void printLogNotFoundMessage() {
         System.out.println("Log not found. View all logged entries using 'list'.");
     }
 
@@ -242,7 +241,7 @@ public class CommandUi {
         System.out.println("Calorie status: " + calorieStatus);
     }
 
-    public static void printAllTasksClearedMessage() {
+    public static void printAllLogsClearedMessage() {
         System.out.println("All logged data has been cleared.");
     }
     public static void printDataAlreadyClearedMessage() {

@@ -1,16 +1,17 @@
 package command;
 
-import activeedge.task.LogWater;
-import activeedge.ui.CommandUi;
-import activeedge.task.Task;
-import activeedge.task.TaskList;
+import activeedge.log.Log;
+import activeedge.log.LogList;
+import activeedge.log.LogWater;
 
-public class DeleteTaskCommand {
+import activeedge.ui.CommandUi;
+
+public class DeleteLogCommand {
     private String description;
     private int index;
     private boolean errorRaised;
 
-    public DeleteTaskCommand(String inputTrimmed) {
+    public DeleteLogCommand(String inputTrimmed) {
         String[] parts = inputTrimmed.split(" ", 2); // Split at the first space
         String[] indexParts;
 
@@ -36,31 +37,31 @@ public class DeleteTaskCommand {
     }
 
     public void execute() {
-        // Search for the task with the specified description
-        boolean taskFound = false;
+        // Search for the log with the specified description
+        boolean logFound = false;
         int countIndex = 0;
-        for (int i = 0; i < TaskList.tasksList.size(); i++) {
-            Task task = TaskList.tasksList.get(i);
-            if (task.getDescription().toLowerCase().startsWith("water")) {
-                if (task instanceof LogWater) { // Check if it's a WaterTask before casting
-                    LogWater waterTask = (LogWater) task;
+        for (int i = 0; i < LogList.logList.size(); i++) {
+            Log log = LogList.logList.get(i);
+            if (log.getDescription().toLowerCase().startsWith("water")) {
+                if (log instanceof LogWater) { // Check if it's a WaterLog before casting
+                    LogWater logWater = (LogWater) log;
 
-                    if (((waterTask.getQuantity()) + " ml").equalsIgnoreCase(description)) {
+                    if (((logWater.getQuantity()) + " ml").equalsIgnoreCase(description)) {
                         countIndex = countIndex + 1;
                         if(countIndex == index){
-                            Task deletedTask = TaskList.delete(i);
-                            CommandUi.printTaskDeletedMessage(deletedTask);
-                            taskFound = true;
+                            Log deletedLog = LogList.delete(i);
+                            CommandUi.printLogDeletedMessage(deletedLog);
+                            logFound = true;
                             break;
                         }
                     }
                 }
-            } else if (task.getDescription().equalsIgnoreCase(description)) {
+            } else if (log.getDescription().equalsIgnoreCase(description)) {
                 countIndex = countIndex + 1;
                 if (countIndex == index){
-                    Task deletedTask = TaskList.delete(i);
-                    CommandUi.printTaskDeletedMessage(deletedTask);
-                    taskFound = true;
+                    Log deletedLog = LogList.delete(i);
+                    CommandUi.printLogDeletedMessage(deletedLog);
+                    logFound = true;
                     break;
                 }
             }
@@ -70,8 +71,8 @@ public class DeleteTaskCommand {
             CommandUi.printDeleteMealInvalidIndexMessage();
             this.errorRaised = true;
         }
-        if (!taskFound && !errorRaised) {
-            CommandUi.printTaskNotFoundMessage();
+        if (!logFound && !errorRaised) {
+            CommandUi.printLogNotFoundMessage();
         }
     }
 }

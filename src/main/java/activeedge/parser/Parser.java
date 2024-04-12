@@ -1,7 +1,29 @@
 package activeedge.parser;
 
 import activeedge.Storage;
-import command.*;
+import command.Command;
+import command.ListFullCommand;
+import command.DeleteTaskCommand;
+import command.FindCommand;
+import command.ShowSummaryCommand;
+import command.HelpCommand;
+import command.PrintFoodCommand;
+import command.PrintExercisesCommand;
+import command.ClearCommand;
+import command.InvalidCommand;
+import command.LogWaterCommand;
+import command.LogMealCommand;
+import command.LogExerciseCommand;
+import command.ShowCaloriesCommand;
+import command.ViewWaterIntakeCommand;
+import command.ShowGoalsCommand;
+import command.AddFoodItemCommand;
+import command.AddExerciseItemCommand;
+import command.ChangeHeightCommand;
+import command.ChangeWeightCommand;
+import command.ChangeWaterGoalCommand;
+import command.ChangeCalorieGoalCommand;
+
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -188,7 +210,8 @@ public class Parser {
                     return new AddFoodItemCommand(description, servings, caloriesPerServing, date, time);
                 }
             } catch(NumberFormatException e){
-                return new InvalidCommand("Servings and calories per serving must be an integer value. Please try again.");
+                return new InvalidCommand("Servings and calories per serving must be an integer value. " +
+                        "Please try again.");
             }
         } else {
             return new InvalidCommand("Invalid command format.");
@@ -210,7 +233,8 @@ public class Parser {
 
                 return new AddExerciseItemCommand(description, duration, caloriesBurntPerMinute, date, time);
             } catch(NumberFormatException e){
-                return new InvalidCommand("Duration and calories burnt per minute must be an integer value. Please try again.");
+                return new InvalidCommand("Duration and calories burnt per minute must be an " +
+                        "integer value. Please try again.");
             }
         } else {
             return new InvalidCommand("Invalid command format.");

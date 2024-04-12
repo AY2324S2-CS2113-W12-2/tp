@@ -10,7 +10,7 @@ public class LogWater extends Log {
 
 
     /**
-     * Constructs a WaterTask object with the specified quantity.
+     * Constructs a LogWater object with the specified quantity.
      *
      * @param quantity The quantity of water intake.
      */
@@ -31,7 +31,7 @@ public class LogWater extends Log {
     }
 
     /**
-     * Returns a string representation of the WaterTask object.
+     * Returns a string representation of the LogWater object.
      *
      * @return A string representing the water task and its quantity.
      */

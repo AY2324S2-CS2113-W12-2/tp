@@ -4,8 +4,6 @@ import activeedge.log.LogList;
 import activeedge.log.LogWater;
 import activeedge.ui.CommandUi;
 
-import static activeedge.log.LogList.logList;
-
 /**
  * Represents a command to log water intake.
  */

@@ -136,7 +136,6 @@ public class CommandUi {
                 " ml (" + String.format("%.0f%%", percentage) + " of " + waterGoal + "ml goal).");
     }
 
-
     public static void printMatchingLog (String word) {
         System.out.println(LINE + "Here are the matching logs in your list:");
         int matchingLogIndex = 1;

@@ -15,8 +15,6 @@ import command.AddWeightCommand;
 import command.AddCalorieGoalCommand;
 import command.AddWaterGoalCommand;
 
-
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -26,8 +24,6 @@ import java.util.Scanner;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-
 
 /**
  * The {@code Storage} class handles file operations for the Health Tracker application.

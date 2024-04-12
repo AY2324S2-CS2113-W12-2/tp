@@ -226,10 +226,13 @@ public class CommandUi {
         System.out.println("Invalid index. View all logged entries using 'list'." );
     }
 
-    public static void printShowSummaryMessage(int totalCalories,int totalWaterIntake, int totalCaloriesBurnt,
+    public static void printShowSummaryMessage(int height, int weight, int BMI, int totalCalories,int totalWaterIntake, int totalCaloriesBurnt,
                                                String calorieGoal, String waterGoal,
                                                int netCalories, String calorieStatus) {
         System.out.println("Daily Summary:");
+        System.out.println("Height: " + height + " cm");
+        System.out.println("Weight: " + weight + " kg");
+        System.out.println("BMI: " + BMI);
         System.out.println("Total calories consumed: " + totalCalories + " cal");
         System.out.println("Total water consumed: " + totalWaterIntake + " ml");
         System.out.println("Total calories burnt: " + totalCaloriesBurnt + " cal");

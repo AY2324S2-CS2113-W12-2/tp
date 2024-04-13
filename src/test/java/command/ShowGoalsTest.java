@@ -32,7 +32,8 @@ public class ShowGoalsTest {
         showGoalsCommand.execute();
 
         // Assert that the output matches the expected message when no goals are set
-        assertEquals("Current goals: \n Daily calories: 0 cal\n Daily water: 0 ml",
+        assertEquals("Current goals \nDaily calories intake goal: " + 0 + " cal" +
+                        "\nDaily water intake goal: " + 0 + " ml",
                 outputStreamCaptor.toString().trim());
     }
 
@@ -58,7 +59,8 @@ public class ShowGoalsTest {
         showGoalsCommand.execute();
 
         // Assert that the output matches the expected message with the set goals
-        assertEquals("Current goals: \n Daily calories: 2000 cal\n Daily water: 2000 ml",
+        assertEquals("Current goals \nDaily calories intake goal: " + 2000 + " cal" +
+                        "\nDaily water intake goal: " + 2000 + " ml",
                 outputStreamCaptor.toString().trim());
     }
 }

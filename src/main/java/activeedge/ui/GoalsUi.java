@@ -12,8 +12,8 @@ public class GoalsUi {
      * @param waterGoal The daily water intake goal.
      */
     public static void printShowGoalsMessage(int calorieGoal, int waterGoal) {
-        System.out.println(" Current goals: \n Daily calories: " + calorieGoal + " cal" +
-                "\n Daily water: " + waterGoal + " ml");
+        System.out.println("Current goals \nDaily calories intake goal: " + calorieGoal + " cal" +
+                "\nDaily water intake goal: " + waterGoal + " ml");
     }
 }
 

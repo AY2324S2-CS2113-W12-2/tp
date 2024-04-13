@@ -50,7 +50,7 @@ public class LogExerciseCommand extends Command{
             logList.add(logExercise);
             CommandUi.printExerciseLogMessage(logExercise);
         } else {
-            CommandUi.printExerciseItemNotFoundMessage(exerciseName);
+            CommandUi.printExerciseItemNotFoundMessage(exerciseName, duration);
         }
     }
 }

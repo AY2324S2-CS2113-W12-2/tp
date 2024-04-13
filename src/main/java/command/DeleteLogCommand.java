@@ -5,11 +5,11 @@ import activeedge.log.LogList;
 import activeedge.log.LogWater;
 
 import activeedge.ui.CommandUi;
-public class DeleteTaskCommand extends Command{
+public class DeleteLogCommand extends Command{
     private static String description;
     private static int index;
     private static boolean errorRaised;
-    public DeleteTaskCommand(String inputTrimmed) {
+    public DeleteLogCommand(String inputTrimmed) {
         String[] parts = inputTrimmed.split(" ", 2); // Split at the first space
         String[] indexParts;
 
@@ -28,7 +28,7 @@ public class DeleteTaskCommand extends Command{
                 this.index = 1;
                 this.description = parts[1].trim();
             }
-        }else {
+        } else {
             CommandUi.printInvalidDeleteFormatMessage();
             this.errorRaised = true;
         }

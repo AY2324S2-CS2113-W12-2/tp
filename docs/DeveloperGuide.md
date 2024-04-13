@@ -228,18 +228,24 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 1. Launching the App 
     - Refer to the [Quick Start](#quick-start) to get ActiveEdge set up and running.
     - Enter your height, weight, calorie and water goals when prompted.
+   
 2. Getting help
     - Run the `help` command by typing `help` and hitting `Enter` key on your keyboard.
+   
 3. With the help guide, you can `log` or `add` meal, exercises and water to your tracker.
-    - 
+    - Run the following commands `log m/chicken rice s/1`/ `log e/running d/1` /
+      `add m/[FOOD] c/[CALORIES_PER_ERVING] s/[SERVINGS]`/ 
+      `add e/[EXERCISES] c/[CALORIES_BURNT_PER _MIN] d/[DURATION_IN_MINUTES]`
+   
 4. Run `list` to see your logged data.
-    -
+
 5. Use `delete` command with help of User Guide to delete any logged entries.
-    - 
+    - Run the following commands `delete chicken rice` / `delete running`
+   
 6. Run `summary` to track your calorie and water intake.
-    -
+
 7. Run the `bye` command to exit app
-    -
+
 ## Command Summary
 
 | Action                              | Format                                                            |

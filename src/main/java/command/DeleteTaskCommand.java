@@ -5,13 +5,11 @@ import activeedge.log.LogList;
 import activeedge.log.LogWater;
 
 import activeedge.ui.CommandUi;
-
-public class DeleteLogCommand {
-    private String description;
-    private int index;
-    private boolean errorRaised;
-
-    public DeleteLogCommand(String inputTrimmed) {
+public class DeleteTaskCommand extends Command{
+    private static String description;
+    private static int index;
+    private static boolean errorRaised;
+    public DeleteTaskCommand(String inputTrimmed) {
         String[] parts = inputTrimmed.split(" ", 2); // Split at the first space
         String[] indexParts;
 
@@ -69,7 +67,7 @@ public class DeleteLogCommand {
 
         if(index > countIndex){
             CommandUi.printDeleteMealInvalidIndexMessage();
-            this.errorRaised = true;
+            errorRaised = true;
         }
         if (!logFound && !errorRaised) {
             CommandUi.printLogNotFoundMessage();

@@ -10,7 +10,7 @@ import activeedge.ui.GoalsUi;
  * The ShowGoalsCommand class represents a command to display the current goals set by the user.
  * It retrieves the calorie and water goals from the TaskList and prints them using the GoalsUi.
  */
-public class ShowGoalsCommand {
+public class ShowGoalsCommand extends Command{
 
     /**
      * Executes the command by iterating through the list of tasks,

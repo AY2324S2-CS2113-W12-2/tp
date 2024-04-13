@@ -7,7 +7,7 @@ import activeedge.ui.CommandUi;
 /**
  * Represents a command to log water intake.
  */
-public class LogWaterCommand {
+public class LogWaterCommand extends Command{
     private String quantityString;
     private String date;
     private String time;
@@ -31,7 +31,7 @@ public class LogWaterCommand {
         try {
             quantity = Integer.parseInt(quantityString);
             //@@author nikhil-2101
-            assert quantity >= 0;
+            //assert quantity >= 0;
             if (quantity <= 0) {
                 System.out.println("Water quantity must be above 0. Please try again.");
             } else {

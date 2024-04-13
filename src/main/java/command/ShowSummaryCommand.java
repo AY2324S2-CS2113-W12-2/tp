@@ -3,10 +3,10 @@ package command;
 import activeedge.log.Log;
 import activeedge.userdetails.UserDetails;
 import activeedge.ui.CommandUi;
-
 import static activeedge.log.LogList.logList;
 import static activeedge.userdetails.UserDetailsList.detailsList;
-public class ShowSummaryCommand {
+
+public class ShowSummaryCommand extends Command {
     public void execute() {
         int totalCalories = 0;
         int totalWaterIntake = 0;

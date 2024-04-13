@@ -8,7 +8,7 @@ import activeedge.ui.CommandUi;
 
 import static activeedge.log.LogList.logList;
 
-public class LogMealCommand {
+public class LogMealCommand extends Command{
     protected String description;
     protected int servings;
     protected int mealCalories;

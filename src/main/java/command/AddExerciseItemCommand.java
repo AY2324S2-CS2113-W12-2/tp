@@ -7,7 +7,7 @@ import activeedge.ExerciseData;
  * The AddExerciseItemCommand class represents a command to add a new exercise item to the ActiveEdge application.
  * It encapsulates the exercise name, duration, calories burnt per minute, and the date and time of the exercise.
  */
-public class AddExerciseItemCommand {
+public class AddExerciseItemCommand extends Command {
     protected String exerciseName; // The name of the exercise
     protected int duration; // The duration of the exercise in minutes
     protected int caloriesBurntPerMinute; // The number of calories burnt per minute during the exercise
@@ -35,7 +35,7 @@ public class AddExerciseItemCommand {
      * and logging the exercise in the application's data.
      * @throws ActiveEdgeException If an error occurs during the execution of the command.
      */
-    public void execute() throws ActiveEdgeException {
+    public void execute() {
         if (ExerciseData.exerciseExists(exerciseName)) {
             // Exercise activity exists, log it
             CommandUi.promptLogExerciseMessage(exerciseName);
@@ -60,7 +60,7 @@ public class AddExerciseItemCommand {
         String[][] newArray = new String[originalArray.length + 1][2]; // Assuming each item has 2 elements
 
         // Copy the contents of the original array to the new array
-        for (int i = 0; i < originalArray.length; i++) {
+        for(int i = 0; i < originalArray.length; i++) {
             newArray[i] = originalArray[i];
         }
 

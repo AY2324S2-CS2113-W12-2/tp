@@ -8,7 +8,7 @@ import activeedge.ui.CommandUi;
 
 import java.util.ArrayList;
 
-public class ViewWaterIntakeCommand {
+public class ViewWaterIntakeCommand extends Command {
     public void execute() {
         int totalWaterIntake = getTotalWaterIntake(LogList.logList);
         int waterGoal = getWaterGoal(LogList.logList);

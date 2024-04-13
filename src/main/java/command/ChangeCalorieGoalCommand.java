@@ -10,9 +10,9 @@ import java.util.Scanner;
 import static activeedge.log.LogList.logList;
 
 
-public class ChangeCalorieGoalCommand {
+public class ChangeCalorieGoalCommand extends Command {
 
-    public static void execute() throws ActiveEdgeException {
+    public void execute() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");

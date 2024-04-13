@@ -58,10 +58,8 @@ public class Parser {
             return new PrintExercisesCommand();
         } else if (input.trim().equalsIgnoreCase("clear")) {
             return new ClearCommand();
-        } else if (input.trim().startsWith("add m/")) {
-            return parseAddMealCommand(input, date, time);
-        } else if (input.trim().startsWith("add e/")) {
-            return parseAddExerciseCommand(input, date, time);
+        } else if (input.trim().startsWith("add")) {
+            return parseAddCommand(input, date, time); // Call parseAddCommand
         } else if (inputSplit[0].trim().equalsIgnoreCase("change")) {
             return parseChangeCommand(input);
         } else {
@@ -81,14 +79,15 @@ public class Parser {
         } else {
             String parts = input.trim().substring(4);
             String[] items = parts.split("/");
-            if (!items[0].trim().equals("w") && !items[0].trim().equals("m") && !items[0].trim().equals("e")) {
-                return new InvalidCommand("Invalid command. Please enter a valid 'log' command.");
-            } else if (items[0].trim().equals("w")) {
+            if (items[0].trim().equals("w")) {
                 return parseWaterLogCommand(items, date, time);
             } else if (items[0].trim().equals("m")) {
                 return parseMealLogCommand(input, date, time);
             } else if(items[0].trim().equals("e")) {
                 return parseExerciseLogCommand(input, items, date, time);
+            }
+            else{
+                return new InvalidCommand("Invalid command. Please enter a valid 'log' command.");
             }
         }
         return null;
@@ -169,7 +168,6 @@ public class Parser {
                     "\"For example, 'log e/running d/10'. Enter 'help' for more information.\"");
         }
     }
-
     private Command parseShowCommand(String input) {
         String[] inputSplit = input.trim().split(" ", 2);
         if (inputSplit.length == 1) {
@@ -187,6 +185,16 @@ public class Parser {
             return new InvalidCommand("Invalid command. Please enter a valid 'show' command.");
         }
         return null;
+    }
+
+    public Command parseAddCommand(String input, String date, String time) {
+        if (input.trim().startsWith("add m/")) {
+            return parseAddMealCommand(input, date, time);
+        } else if (input.trim().startsWith("add e/")) {
+            return parseAddExerciseCommand(input, date, time);
+        } else {
+            return new InvalidCommand("Invalid add command");
+        }
     }
 
     private Command parseAddMealCommand(String input, String date, String time) {

@@ -85,8 +85,7 @@ public class Parser {
                 return parseMealLogCommand(input, date, time);
             } else if(items[0].trim().equals("e")) {
                 return parseExerciseLogCommand(input, items, date, time);
-            }
-            else{
+            } else{
                 return new InvalidCommand("Invalid command. Please enter a valid 'log' command.");
             }
         }
@@ -99,6 +98,9 @@ public class Parser {
                     "\"For example, 'log w/300'. Enter 'help' for more information.\"");
         } else {
             String quantityString = items[1];
+            if(Integer.parseInt(quantityString) > 6000){
+                return new InvalidCommand("Please enter a water value that is 6000ml or lesser");
+            }
             return new LogWaterCommand(quantityString, date, time);
         }
     }
@@ -113,6 +115,11 @@ public class Parser {
                 int servings = Integer.parseInt(logParts[2].trim());
                 if (servings != Double.parseDouble(logParts[2].trim()) || servings <= 0) {
                     return new InvalidCommand("Servings must be a positive integer value.");
+                } else if(servings > 10){
+                    return new InvalidCommand("Please re-enter a value that is 10 or below!\n" +
+                            "If you wish to enter a value of more than 10, please do log in\n" +
+                            "these meals twice by having the 2 different serving " +
+                            "values add up to your intended value.");
                 }
                 int mealCalories = 0;
                 boolean isItemPresentInFoodData = false;
@@ -145,6 +152,11 @@ public class Parser {
                 int duration = Integer.parseInt(logParts[2].trim());
                 if (duration <= 0) {
                     return new InvalidCommand("Duration must be a positive integer value.");
+                } else if(duration > 200){
+                    return new InvalidCommand("Please re-enter a value that is 200 or below!\n" +
+                            "If you wish to enter a value of more than 200, please do log in\n" +
+                            "these exercises twice by having the 2 different duration " +
+                            "values add up to your intended value.");
                 }
 
                 int caloriesBurnt = 0;
@@ -210,6 +222,13 @@ public class Parser {
                 }
                 if (servings == 0 || caloriesPerServing == 0) {
                     return new InvalidCommand("Please input a value above 0!");
+                } else if(servings > 10){
+                    return new InvalidCommand("Please re-enter a value that is 10 or below!\n" +
+                            "If you wish to enter a value of more than 10, please do log in\n" +
+                            "these meals twice by having the 2 different serving " +
+                            "values add up to your intended value.");
+                } else if(description.length() > 32){
+                    return new InvalidCommand("Please re-enter a food name that is within 32 characters!");
                 } else {
                     return new AddFoodItemCommand(description, servings, caloriesPerServing, date, time);
                 }
@@ -233,6 +252,14 @@ public class Parser {
 
                 if (!input.trim().matches("add e/[^ ]+ c/\\d+ d/\\d+")) {
                     return new InvalidCommand("Invalid command format.");
+                } else if(duration > 200){
+                    return new InvalidCommand("Please re-enter a value that is 200 or below!\n" +
+                            "If you wish to enter a value of more than 200, please do log in\n" +
+                            "these exercises twice by having the 2 different duration " +
+                            "values add up to your intended value.");
+                } else if(description.length() > 48){
+                    return new InvalidCommand("Please re-enter a exercise name " +
+                            "that is within 48 characters!");
                 }
 
                 return new AddExerciseItemCommand(description, duration, caloriesBurntPerMinute, date, time);

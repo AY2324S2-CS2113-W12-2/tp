@@ -39,7 +39,7 @@ public class LogMealCommand extends Command{
                     CommandUi.printCalorieExceedingWarning();
                 }
             } else {
-                CommandUi.printFoodItemNotFoundMessage(description);
+                CommandUi.printFoodItemNotFoundMessage(description, servings);
             }
         } catch(Exception e){
             CommandUi.printErrorMessage("An error occurred while logging the meal: " + e.getMessage());

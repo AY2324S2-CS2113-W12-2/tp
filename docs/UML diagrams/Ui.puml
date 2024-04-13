@@ -21,7 +21,7 @@ class CommandUi {
     + promptLogFoodMessage(foodItemName: String): void
 }
 
-class MealTask {
+class LogMeal {
     - servings: int
     - foodName: String
     - mealCalories: int
@@ -39,20 +39,20 @@ class LogExercise {
     + getCaloriesBurnt(): int
 }
 
-class WaterTask {
+class LogWater {
     - quantity: int
     + getQuantity(): int
 }
 
-class Task {
+class Log {
     - description: String
     + getDescription(): String
 }
 
-CommandUi --> MealTask : uses
+CommandUi --> LogMeal : uses
 CommandUi --> LogExercise : uses
-CommandUi --> WaterTask : uses
-CommandUi --> Task : uses
+CommandUi --> LogWater : uses
+CommandUi --> Log : uses
 
 
 

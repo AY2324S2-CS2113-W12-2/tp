@@ -5,12 +5,12 @@ import activeedge.log.LogList;
 import activeedge.log.LogWater;
 
 import activeedge.ui.CommandUi;
-public class DeleteTaskCommand extends Command{
-    private static String description;
-    private static int index;
-    private static boolean errorRaised;
-    public DeleteTaskCommand(String inputTrimmed) {
-        String[] parts = inputTrimmed.split(" ", 2); // Split at the first space
+public class DeleteLogCommand extends Command{
+    private String description;
+    private int index;
+    private boolean errorRaised;
+    public DeleteLogCommand(String inputTrimmed) {
+        String[] parts = inputTrimmed.trim().split("\\s+", 2); // Split at the first space
         String[] indexParts;
 
         this.errorRaised = false;
@@ -18,7 +18,7 @@ public class DeleteTaskCommand extends Command{
             if(parts[1].contains("i/")){
                 indexParts = parts[1].trim().split("i/");
                 this.index = Integer.parseInt(indexParts[1].trim());
-                this.description = indexParts[0].trim();
+                this.description = indexParts[0].trim().replaceAll("(?<=\\d)\\s+", "");
                 if(index <= 0){
                     CommandUi.printInvalidItemIndexMessage();
                     this.errorRaised = true;
@@ -26,9 +26,9 @@ public class DeleteTaskCommand extends Command{
             } else {
                 //If no index to be deleted is passed, 1 is considered as the index.
                 this.index = 1;
-                this.description = parts[1].trim();
+                this.description = parts[1].trim().replaceAll("(?<=\\d)\\s+", "");
             }
-        }else {
+        } else {
             CommandUi.printInvalidDeleteFormatMessage();
             this.errorRaised = true;
         }
@@ -44,7 +44,7 @@ public class DeleteTaskCommand extends Command{
                 if (log instanceof LogWater) { // Check if it's a WaterLog before casting
                     LogWater logWater = (LogWater) log;
 
-                    if (((logWater.getQuantity()) + " ml").equalsIgnoreCase(description)) {
+                    if (((logWater.getQuantity()) + "ml").equalsIgnoreCase(description)) {
                         countIndex = countIndex + 1;
                         if(countIndex == index){
                             Log deletedLog = LogList.delete(i);

@@ -37,6 +37,8 @@ follow these simple steps:
     - [Log an exercise not in the database: `add`](#log-an-exercise-not-in-the-database-add)
     - [Change height input: `change`](#change-user-height-change)
     - [Change weight input: `change`](#change-user-weight-change)
+    - [Change daily calorie intake goal: `change`](#change-daily-calorie-intake-goal-change)
+    - [Change daily water intake goal: `change`](#change-daily-water-intake-goal-change)  
     - [Show daily summary: `summary`](#show-daily-summary-summary)
     - [Search for entries: `find`](#search-for-entries-find)
     - [Get help: `help`](#get-help-help)
@@ -51,8 +53,11 @@ follow these simple steps:
 
 ---
 
-At the start of the application, new users are prompted to enter their **weight**, **height**,
-**daily calorie goal** and **daily water intake goal**.
+At the start of the application, new users are prompted to enter the following information.
+1. **Height** in centimeters (cm)
+2. **Weight** in Kilograms (kg)
+3. **Daily calorie goal** in calories
+4. **Daily water intake goal** in millimeters (ml)
 
 ---
 
@@ -148,7 +153,7 @@ Deletes a meal from the logs list. By default, it deletes the oldest log.
 
 Format:  `delete <MEAL_NAME>`
 
-If you have **multiple logs with the same meal name**, use the additional parameter N to specify which entry to delete.
+If you have **multiple logs with the same meal name**, use the additional parameter N to specify which log to delete.
 
 Format: `delete <MEAL_NAME> i/<N>`
 
@@ -173,7 +178,8 @@ Deletes a water log from the logs list. By default, it deletes the oldest log.
 
 Format:  `delete <QUANTITY_OF_WATER> ml`
 
-If you have **multiple logs with the same water quantity**, use the additional parameter N to specify which entry to delete.
+If you have **multiple logs with the same water quantity**, use the additional parameter N to specify which log to 
+delete.
 
 Format: `delete <QUANTITY_OF_WATER> ml i/2`
 
@@ -199,12 +205,12 @@ Deletes an exercise log from the logs list.  By default, it deletes the oldest l
 
 Format:  `delete <EXERCISE_NAME>`
 
-If you have **multiple logs with the same exercise**, use the additional parameter N to specify which entry to delete.
+If you have **multiple logs with the same exercise**, use the additional parameter N to specify which log to delete.
 
 Format: `delete <EXERCISE_NAME> i/<N>`
 
 * The `EXERCISE_NAME` is the form of exercise
-  previously logged in and the user wishes to delete.
+  previously logged in, and the user wishes to delete.
 * The `N` is the N<sup>th</sup> log from the exercise that the user wishes to delete. Note: `N` starts with 1.
 
 If you are unsure about the index, try `list` command and figure out the index first.
@@ -255,6 +261,20 @@ Format: `change h`
 Changes user weight and updates the BMI value
 
 Format: `change w`
+
+---
+
+### Change daily calorie intake goal: `change`
+Changes the daily calorie intake goal.
+
+Format: `change cg`
+
+---
+
+### Change daily water intake goal: `change`
+Changes user weight and updates the BMI value
+
+Format: `change wg`
 
 ---
 
@@ -309,9 +329,9 @@ Expected output:
 Create a "data" folder within the ActiveEdge application directory, 
 and then copy the "data.txt" file into this newly created folder.
 
-**Q**: I accidentally deleted an entry. Is there a way to recover it?
+**Q**: I accidentally deleted a log. Is there a way to recover it?
 
-**A**: Unfortunately, deleted entries are not recoverable, so it's 
+**A**: Unfortunately, deleted logs are not recoverable, so it's 
 important to be careful when using the delete command.
 
 **Q**: I accidentally cleared the data. Is there a way to recover it?
@@ -338,8 +358,12 @@ Here's a quick summary of commands available in **ActiveEdge**:
 12. Delete exercise logs: `delete <EXERCISE_NAME>` [Click here](#delete-exercise-logs-delete) if you have multiple exercise logs from the same exercise.    
 13. Log a meal not in the database: `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>`   
 14. Log an exercise not in the database: `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>`  
-15. Show daily summary: `summary`   
-16. Search for entries: `find`  
-17. Get help: `help`    
-18. Clear all logged entries: `clear`   
-19. Exit the program: `bye`
+15. Change user height: `change h`  
+16. Change user weight: `change w`  
+17. Change daily calorie intake goal: `change cg`
+18. Change daily water intake goal: `change wg`    
+19. Show daily summary: `summary`   
+20. Search for entries: `find`  
+21. Get help: `help`    
+22. Clear all logged entries: `clear`   
+23. Exit the program: `bye`

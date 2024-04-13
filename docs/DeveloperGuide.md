@@ -243,13 +243,16 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 | Delete exercise logs                | `delete <EXERCISE_NAME>`                                          |  
 | Log a meal not in the database      | `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>` | 
 | Log an exercise not in the database | `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>` |
+| Change height input                 | `change h`                                                        |
+| Change weight input                 | `change w`                                                        |
+| Change daily calorie intake goal                | `change cg`                                                        |
+| Change daily water intake goal                | `change wg`                                                        |
 | Show daily summary                  | `summary`                                                         |
 | Search for entries                  | `find`                                                            |
 | Get help                            | `help`                                                            |
 | Clear all logged entries            | `clear`                                                           |
 | Exit the program                    | `bye`                                                             |
-| Change height input                 | `change h`                                                        |
-| Change weight input                 | `change w`                                                        |
+                                                      |
 
 
 ## Acknowledgements

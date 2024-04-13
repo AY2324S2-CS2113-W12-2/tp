@@ -1,13 +1,13 @@
 package command;
 
-import activeedge.task.WaterTask;
+import activeedge.log.LogList;
+import activeedge.log.LogWater;
 import activeedge.ui.CommandUi;
-import activeedge.task.TaskList;
 
 /**
  * Represents a command to log water intake.
  */
-public class LogWaterCommand {
+public class LogWaterCommand extends Command{
     private String quantityString;
     private String date;
     private String time;
@@ -31,13 +31,13 @@ public class LogWaterCommand {
         try {
             quantity = Integer.parseInt(quantityString);
             //@@author nikhil-2101
-            assert quantity >= 0;
+            //assert quantity >= 0;
             if (quantity <= 0) {
                 System.out.println("Water quantity must be above 0. Please try again.");
             } else {
-                WaterTask waterTask = new WaterTask(quantity, date, time);
-                TaskList.tasksList.add(waterTask);
-                CommandUi.printWaterLogMessage(waterTask);
+                LogWater logWater = new LogWater(quantity, date, time);
+                LogList.logList.add(logWater);
+                CommandUi.printWaterLogMessage(logWater);
             }
         } catch (NumberFormatException e) {
             System.out.println("Invalid water quantity. Please provide a valid integer.");

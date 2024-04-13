@@ -7,13 +7,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-import static activeedge.Storage.saveLogsToFile;
 import static activeedge.userdetails.UserDetailsList.detailsList;
 
-public class ChangeWeightCommand {
+public class ChangeWeightCommand extends Command {
 
 
-    public static void execute() throws ActiveEdgeException {
+    public void execute() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
@@ -42,18 +41,17 @@ public class ChangeWeightCommand {
                     AddWeightCommand addWeightCommand = new
                             AddWeightCommand(newWeight, date, time);
                     addWeightCommand.execute();
-                    System.out.println("You have successfully changed your height!");
-                    saveLogsToFile("data/data.txt");
+                    System.out.println("You have successfully changed your height! You can continue logging data!");
                     int height = GetHeightCommand.execute();
                     AddBMICommand addBMICommand = new AddBMICommand(height, newWeight, date, time);
                     addBMICommand.execute();
                     i++;
                 } else {
-                    System.out.println("Please input a whole number between 1 and 700!");
+                    System.out.println("Please input a positive integer between 1 and 700!");
                 }
 
-            } catch (NumberFormatException e) {
-                System.out.println("Please input a whole number between 1 and 700!");
+            } catch (NumberFormatException | ActiveEdgeException e) {
+                System.out.println("Please input a positive integer between 1 and 700!");
             }
         }
     }

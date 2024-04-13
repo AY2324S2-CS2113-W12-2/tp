@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 //@@author alvinnnnnnnnnn
-public class MealTaskTest {
+public class LogMealTest {
     @Test
     public void testToString() {
         LocalDateTime dateTime = LocalDateTime.now();

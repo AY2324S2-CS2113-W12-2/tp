@@ -5,7 +5,7 @@
 package command;
 
 import activeedge.Storage;
-import activeedge.task.TaskList;
+import activeedge.log.LogList;
 import activeedge.ui.CommandUi;
 import activeedge.userdetails.UserDetailsList;
 
@@ -13,7 +13,7 @@ import activeedge.userdetails.UserDetailsList;
  * The ClearCommand class represents a command to clear all tasks and user details in the system.
  * It provides functionality to execute the command.
  */
-public class ClearCommand {
+public class ClearCommand extends Command{
 
     /**
      * Constructs a ClearCommand object.
@@ -30,12 +30,12 @@ public class ClearCommand {
      * Otherwise, it clears both lists and prints a message indicating that all tasks are cleared.
      */
     public void execute() {
-        if (TaskList.tasksList.isEmpty() && UserDetailsList.detailsList.isEmpty()) {
+        if (LogList.logList.isEmpty() && UserDetailsList.detailsList.isEmpty()) {
             CommandUi.printDataAlreadyClearedMessage();
         } else {
-            TaskList.clearTasks();
+            LogList.clearLogs();
             UserDetailsList.clearDetailsList();
-            CommandUi.printAllTasksClearedMessage();
+            CommandUi.printAllLogsClearedMessage();
             Storage.listEmpty();
         }
     }

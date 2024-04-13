@@ -1,258 +1,273 @@
 package activeedge.parser;
 
-import activeedge.ExerciseData;
+import activeedge.Storage;
+import command.Command;
+import command.ListFullCommand;
+import command.DeleteTaskCommand;
+import command.FindCommand;
+import command.ShowSummaryCommand;
 import command.HelpCommand;
+import command.PrintFoodCommand;
+import command.PrintExercisesCommand;
+import command.ClearCommand;
+import command.InvalidCommand;
 import command.LogWaterCommand;
 import command.LogMealCommand;
-import command.ListFullCommand;
+import command.LogExerciseCommand;
 import command.ShowCaloriesCommand;
 import command.ViewWaterIntakeCommand;
 import command.ShowGoalsCommand;
-import command.FindCommand;
-import command.DeleteTaskCommand;
-import command.ActiveEdgeException;
-import command.LogExerciseCommand;
-import command.ShowSummaryCommand;
-import command.ClearCommand;
 import command.AddFoodItemCommand;
 import command.AddExerciseItemCommand;
 import command.ChangeHeightCommand;
 import command.ChangeWeightCommand;
+import command.ChangeWaterGoalCommand;
 import command.ChangeCalorieGoalCommand;
-
-import activeedge.Storage;
-
-import static activeedge.task.TaskList.tasksList;
 import static activeedge.FoodData.foodItems;
 import static activeedge.ExerciseData.exercisesList;
-import activeedge.FoodData;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Parser {
-    public void handleInput(String input) {
-        try {
-            String[] inputSplit = input.split(" ");
-            LocalDateTime currentDateTime = LocalDateTime.now();
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-            String date = currentDateTime.format(dateFormatter);
-            String time = currentDateTime.format(timeFormatter);
-            if (inputSplit[0].equalsIgnoreCase("log")) {
-                if (inputSplit.length == 1) {
-                    System.out.println("Please specify what you wish to log: ");
-                    System.out.println("1. 'log w/[QUANTITY_OF_WATER]' to log your water intake");
-                    System.out.println("2. 'log m/[MEAL_NAME] s/[NUMBER_OF_SERVINGS]' to " +
-                            "log your meals");
-                    System.out.println("3. 'log e/[EXERCISE_NAME] d/[DURATION_OF_EXERCISE]' to " +
-                            "log your exercises");
-                    return;
-                } else {
-                    String parts = input.substring(4);
-                    String[] items = parts.split("/");
-                    if (!items[0].equals("w") && !items[0].equals("m") && !items[0].equals("e")) {
-                        System.out.println("Invalid command. Please enter a valid 'log' command.");
-                        return;
-                    }
-                    if (items[0].equals("w")) {
-                        if (items.length < 2 || items[1].isEmpty()) {
-                            System.out.println("Invalid command. Please enter 'log w/[WATER_QUANTITY]'.");
-                            System.out.println("For example, 'log w/300'. Enter 'help' for more information.");
-                        } else {
-                            String quantityString = items[1];
-                            LogWaterCommand logWaterCommand = new LogWaterCommand(quantityString, date, time);
-                            logWaterCommand.execute();
-                        }
-                    } else if (items[0].equals("m")) {
-                        String[] logParts = input.split("m/|s/");
-                        int length = logParts.length;
-                        assert length >= 3;
-                        if (length >= 3) {
-                            String description = logParts[1].trim();
-                            try {
-                                int servings = Integer.parseInt(logParts[2]);
-                                if (servings != Double.parseDouble(logParts[2]) || servings <= 0) {
-                                    System.out.println("Servings must be a positive integer value.");
-                                    return;
-                                }
-                                int calories = 0;
-                                boolean isItemPresentInFoodData = false;
+    public Command handleInput(String input) {
+        input = input.toLowerCase();
+        String[] inputSplit = input.trim().split(" ");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        String date = currentDateTime.format(dateFormatter);
+        String time = currentDateTime.format(timeFormatter);
 
-                                for (int i = 0; i < foodItems.length; i++) {
-                                    if (foodItems[i][0].equals(description)) {
-                                        calories = Integer.parseInt(foodItems[i][1]) * servings;
-                                        isItemPresentInFoodData = true;
-                                    }
-                                }
-                                LogMealCommand logMealCommand = new LogMealCommand(description, servings,
-                                        calories, date, time, isItemPresentInFoodData);
-                                logMealCommand.execute();
-                            } catch (NumberFormatException e) {
-                                System.out.println("Servings must be a positive integer value. Please try again.");
-                            }
-                        } else {
-                            System.out.println("Invalid command. Please enter 'log m/[FOOD]" +
-                                    " s/[NUMBER_OF_SERVINGS]'.");
-                            System.out.println("For example, 'log m/chicken rice s/2'. " +
-                                    "Enter 'help' for more information.");
-                        }
-                    } else if (items[0].equals("e")) {
-                        String[] logParts = input.split("e/|d/");
-                        int length = logParts.length;
-                        assert length >= 3;
-                        if (length >= 3) {
-                            String exerciseName = logParts[1].trim();
-                            try {
-                                int duration = Integer.parseInt(logParts[2]);
-                                if (duration <= 0) {
-                                    System.out.println("Duration must be a positive integer value.");
-                                    return;
-                                }
-                                int caloriesBurnt = 0;
-                                boolean isItemPresentInExerciseData = false;
-
-                                for (int i = 0; i < exercisesList.length; i++) {
-                                    if (exercisesList[i][0].equals(exerciseName)) {
-                                        caloriesBurnt = Integer.parseInt(exercisesList[i][1]) * duration;
-                                        isItemPresentInExerciseData = true;
-                                    }
-                                }
-                                LogExerciseCommand logExerciseCommand = new LogExerciseCommand(exerciseName, duration,
-                                        caloriesBurnt, date, time, isItemPresentInExerciseData);
-                                logExerciseCommand.execute();
-                            } catch (NumberFormatException e) {
-                                System.out.println("Duration must be a positive integer value. Please try again.");
-                            }
-                        } else {
-                            System.out.println("Invalid command. Please enter 'log e/[EXERCISE]" +
-                                    " D/[DURATION_IN_MINUTES]'.");
-                            System.out.println("For example, 'log e/running d/10'. Enter 'help' for more information.");
-                        }
-                    }
-                }
-            } else if (inputSplit[0].equalsIgnoreCase("list")) {
-                if (tasksList.size() > 0) {
-                    new ListFullCommand();
-                } else {
-                    System.out.println("There are no items in your list!");
-                }
-            } else if (inputSplit[0].equalsIgnoreCase("show")) { //show calories, water, and goals
-                if (inputSplit.length == 1) {
-                    System.out.println("Please specify what you wish to view: ");
-                    System.out.println("1. 'show w' to display your current water intake");
-                    System.out.println("2. 'show c' to display your current calories intake");
-                    System.out.println("3. 'show g' to display your current goals");
-                } else if (inputSplit[1].equalsIgnoreCase("c")) { //shows calorie
-                    new ShowCaloriesCommand();
-                } else if (inputSplit[1].equalsIgnoreCase("w")) { //shows water
-                    ViewWaterIntakeCommand viewWaterIntakeCommand = new ViewWaterIntakeCommand();
-                    viewWaterIntakeCommand.execute();
-                } else if (inputSplit[1].equalsIgnoreCase("g")) {  //shows goals
-                    ShowGoalsCommand showGoalsCommand = new ShowGoalsCommand();
-                    showGoalsCommand.execute();
-                } else {
-                    System.out.println("These are the only show commands: ");
-                    System.out.println("1. show w - displays water intake ");
-                    System.out.println("2. show c - displays calorie intake");
-                    System.out.println("3. show g - displays goals");
-                }
-            } else if (inputSplit[0].equalsIgnoreCase("delete")) {
-                DeleteTaskCommand deleteCommand = new DeleteTaskCommand(input);
-                deleteCommand.execute();
-            } else if(inputSplit[0].equalsIgnoreCase("find")) {
-                new FindCommand(input);
-            } else if (input.equalsIgnoreCase("summary")) {
-                new ShowSummaryCommand().execute();
-            } else if (input.equalsIgnoreCase("help")) {
-                new HelpCommand();
-            } else if (input.equalsIgnoreCase("FoodData")) {
-                FoodData.printFood();
-            } else if (input.equalsIgnoreCase("ExerciseData")) {
-                ExerciseData.printExercises();
-            } else if(input.equalsIgnoreCase("clear")) {
-                ClearCommand clearCommand = new ClearCommand();
-                clearCommand.execute();
-            } else if (input.startsWith("add m/")) {
-                String[] logParts = input.split("m/|c/|s/");
-                int length = logParts.length;
-                if (length >= 4) {
-                    String description = logParts[1].trim();
-                    try {
-                        int servings = Integer.parseInt(logParts[3].trim());
-                        int caloriesPerServing = Integer.parseInt(logParts[2].trim());
-                        if (!input.matches("add m/[^ ]+ c/\\d+ s/\\d+")) {
-                            System.out.println("Warning: The input format is incorrect. Please enter " +
-                                    "'add m/[MEAL_NAME] c/[CALORIES] s/[NUMBER_OF_SERVINGS]'.");
-                            return; // Return from the method to avoid further processing
-                        }
-                        if(servings == 0 || caloriesPerServing == 0){
-                            System.out.println("Please input a value above 0!");
-                        } else {
-                            AddFoodItemCommand addFoodItemCommand = new AddFoodItemCommand(description, servings,
-                                    caloriesPerServing, date, time);
-                            addFoodItemCommand.execute();
-                        }
-                    } catch(NumberFormatException e){
-                        System.out.println("Servings and calories per serving must be an integer value. " +
-                                "Please try again.");
-                    }
-                } else {
-                    System.out.println("Invalid command. Please enter 'add m/[FOOD] c/[CALORIES_PER_SERVING(cal)]" +
-                            " s/[NUMBER_OF_SERVINGS]'.");
-                    System.out.println("For example, 'add m/Pizza c/300 s/2'. Enter 'help' for more information.");
-                }
-            } else if (input.startsWith("add e/")) {
-                String[] logParts = input.split("e/|c/|d/");
-                int length = logParts.length;
-                if (length >= 4) {
-                    String description = logParts[1].trim();
-                    try {
-                        int caloriesBurntPerMinute = Integer.parseInt(logParts[2].trim());
-                        int duration = Integer.parseInt(logParts[3].trim());
-
-                        if (!input.matches("add e/[^ ]+ c/\\d+ d/\\d+")) {
-                            System.out.println("Warning: The input format is incorrect. Please enter " +
-                                    "'add e/[EXERCISE_NAME] c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'.");
-                            return; // Return from the method to avoid further processing
-                        }
-
-                        AddExerciseItemCommand addExerciseItemCommand = new AddExerciseItemCommand(description,
-                                duration, caloriesBurntPerMinute, date, time);
-                        addExerciseItemCommand.execute();
-                    } catch(NumberFormatException e){
-                        System.out.println("Duration and calories burnt per minute must be an integer value. " +
-                                "Please try again.");
-                    }
-                } else {
-                    System.out.println("Invalid command. Please enter 'add e/[EXERCISE_NAME] " +
-                            "c/[CALORIES_BURNT_PER_MINUTE] d/[DURATION_IN_MINUTES]'.");
-                    System.out.println("For example, 'add e/Running c/10 d/30'. Enter 'help' for more information.");
-                }
-            } else if (inputSplit[0].equalsIgnoreCase("change")) {
-                if (inputSplit.length == 1) {
-                    System.out.println("Please specify what you want to change:");
-                    System.out.println("1. 'change h' to change your height");
-                    System.out.println("2. 'change w' to change your weight");
-                    System.out.println("3. 'change c' to change your calorie goal"); // Added calorie goal option
-                } else if (inputSplit[1].equalsIgnoreCase("h")) {
-                    ChangeHeightCommand.execute(); // Check if this requires arguments like new height
-                } else if (inputSplit[1].equalsIgnoreCase("w")) {
-                    ChangeWeightCommand.execute(); // Check if this requires arguments like new weight
-                } else if (inputSplit[1].equalsIgnoreCase("c")) {
-                    ChangeCalorieGoalCommand.execute(); // Check if this requires arguments like new calorie goal
-                } else {
-                    System.out.println("These are the only change commands: ");
-                    System.out.println("1. change h - change height");
-                    System.out.println("2. change w - change weight");
-                    System.out.println("3. change c - change calorie goal");
-                }
-            }
-            else {
-                System.out.println("Unknown command.");
-            }
-            Storage.saveLogsToFile("data/data.txt");
-        } catch (ActiveEdgeException e) {
-            throw new RuntimeException(e);
+        if (inputSplit[0].equalsIgnoreCase("log")) {
+            return parseLogCommand(input, date, time);
+        } else if (inputSplit[0].trim().equalsIgnoreCase("list")) {
+            return new ListFullCommand();
+        } else if (inputSplit[0].trim().equalsIgnoreCase("show")) {
+            return parseShowCommand(input);
+        } else if (inputSplit[0].trim().equalsIgnoreCase("delete")) {
+            return new DeleteTaskCommand(input);
+        } else if (inputSplit[0].trim().equalsIgnoreCase("find")) {
+            return new FindCommand(input);
+        } else if (input.trim().equalsIgnoreCase("summary")) {
+            return new ShowSummaryCommand();
+        } else if (input.trim().equalsIgnoreCase("help")) {
+            return new HelpCommand();
+        } else if (input.trim().equalsIgnoreCase("FoodData")) {
+            return new PrintFoodCommand();
+        } else if (input.trim().equalsIgnoreCase("ExerciseData")) {
+            return new PrintExercisesCommand();
+        } else if (input.trim().equalsIgnoreCase("clear")) {
+            return new ClearCommand();
+        } else if (input.trim().startsWith("add")) {
+            return parseAddCommand(input, date, time); // Call parseAddCommand
+        } else if (inputSplit[0].trim().equalsIgnoreCase("change")) {
+            return parseChangeCommand(input);
+        } else {
+            System.out.println("Unknown command.");
         }
+        Storage.saveLogsToFile("data/data.txt");
+        return null;
+    }
+
+    private Command parseLogCommand(String input, String date, String time) {
+        String[] inputSplit = input.trim().split(" ");
+        if (inputSplit.length == 1) {
+            System.out.println("Please specify what you wish to log:");
+            System.out.println("1. 'log w/[QUANTITY_OF_WATER]' to log your water intake");
+            System.out.println("2. 'log m/[MEAL_NAME] s/[NUMBER_OF_SERVINGS]' to log your meals");
+            System.out.println("3. 'log e/[EXERCISE_NAME] d/[DURATION_OF_EXERCISE]' to log your exercises");
+        } else {
+            String parts = input.trim().substring(4);
+            String[] items = parts.split("/");
+            if (items[0].trim().equals("w")) {
+                return parseWaterLogCommand(items, date, time);
+            } else if (items[0].trim().equals("m")) {
+                return parseMealLogCommand(input, date, time);
+            } else if(items[0].trim().equals("e")) {
+                return parseExerciseLogCommand(input, items, date, time);
+            }
+            else{
+                return new InvalidCommand("Invalid command. Please enter a valid 'log' command.");
+            }
+        }
+        return null;
+    }
+
+    private Command parseWaterLogCommand(String[] items, String date, String time) {
+        if (items.length < 2 || items[1].isEmpty()) {
+            return new InvalidCommand("Invalid command. Please enter 'log w/[WATER_QUANTITY]'. " +
+                    "\"For example, 'log w/300'. Enter 'help' for more information.\"");
+        } else {
+            String quantityString = items[1];
+            return new LogWaterCommand(quantityString, date, time);
+        }
+    }
+
+    private Command parseMealLogCommand(String input, String date, String time) {
+        String[] logParts = input.trim().split("m/|s/");
+        int length = logParts.length;
+        assert length >= 3;
+        if (length >= 3) {
+            String description = logParts[1].trim();
+            try {
+                int servings = Integer.parseInt(logParts[2].trim());
+                if (servings != Double.parseDouble(logParts[2].trim()) || servings <= 0) {
+                    return new InvalidCommand("Servings must be a positive integer value.");
+                }
+                int mealCalories = 0;
+                boolean isItemPresentInFoodData = false;
+
+                for (int i = 0; i < foodItems.length; i++) {
+                    if (foodItems[i][0].equals(description)) {
+                        mealCalories = Integer.parseInt(foodItems[i][1]) * servings;
+                        isItemPresentInFoodData = true;
+                    }
+                }
+                return new LogMealCommand(description, servings, mealCalories, date, time, isItemPresentInFoodData);
+            } catch (NumberFormatException e) {
+                return new InvalidCommand("Servings must be a positive integer value. Please try again.");
+            }
+        } else {
+            return new InvalidCommand("Invalid command. Please enter " +
+                    "'log m/[FOOD] s/[NUMBER_OF_SERVINGS]'. " +
+                    "\"For example, 'log m/chicken rice s/2'. \" +\n" +
+                    " \"Enter 'help' for more information.\"");
+        }
+    }
+
+    private Command parseExerciseLogCommand(String input, String[] items, String date, String time) {
+        String[] logParts = input.trim().split("e/|d/");
+        int length = logParts.length;
+        assert length >= 3;
+        if (length >= 3) {
+            String exerciseName = logParts[1].trim();
+            try {
+                int duration = Integer.parseInt(logParts[2].trim());
+                if (duration <= 0) {
+                    return new InvalidCommand("Duration must be a positive integer value.");
+                }
+
+                int caloriesBurnt = 0;
+                boolean isItemPresentInExerciseData = false;
+
+                for (String[] exercise : exercisesList) {
+                    if (exercise[0].equalsIgnoreCase(exerciseName)) {
+                        caloriesBurnt = Integer.parseInt(exercise[1]) * duration;
+                        isItemPresentInExerciseData = true;
+                        break;
+                    }
+                }
+                return new LogExerciseCommand(exerciseName, duration, caloriesBurnt, date, time,
+                        isItemPresentInExerciseData);
+            } catch (NumberFormatException e) {
+                return new InvalidCommand("Duration must be a positive integer value. Please try again.");
+            }
+        } else {
+            return new InvalidCommand("Invalid command. Please enter " +
+                    "'log e/[EXERCISE] D/[DURATION_IN_MINUTES]'. " +
+                    "\"For example, 'log e/running d/10'. Enter 'help' for more information.\"");
+        }
+    }
+    private Command parseShowCommand(String input) {
+        String[] inputSplit = input.trim().split(" ", 2);
+        if (inputSplit.length == 1) {
+            System.out.println("Please specify what you wish to view:");
+            System.out.println("1. 'show w' to display your current water intake");
+            System.out.println("2. 'show c' to display your current calories intake");
+            System.out.println("3. 'show g' to display your current goals");
+        } else if (inputSplit[1].equalsIgnoreCase("c")) {
+            return new ShowCaloriesCommand();
+        } else if (inputSplit[1].trim().equalsIgnoreCase("w")) {
+            return new ViewWaterIntakeCommand();
+        } else if (inputSplit[1].trim().equalsIgnoreCase("g")) {
+            return new ShowGoalsCommand();
+        } else {
+            return new InvalidCommand("Invalid command. Please enter a valid 'show' command.");
+        }
+        return null;
+    }
+
+    public Command parseAddCommand(String input, String date, String time) {
+        if (input.trim().startsWith("add m/")) {
+            return parseAddMealCommand(input, date, time);
+        } else if (input.trim().startsWith("add e/")) {
+            return parseAddExerciseCommand(input, date, time);
+        } else {
+            return new InvalidCommand("Invalid add command");
+        }
+    }
+
+    private Command parseAddMealCommand(String input, String date, String time) {
+        String[] logParts = input.trim().split("m/|c/|s/");
+        int length = logParts.length;
+        if (length >= 4) {
+            String description = logParts[1].trim();
+            try {
+                int servings = Integer.parseInt(logParts[3].trim());
+                int caloriesPerServing = Integer.parseInt(logParts[2].trim());
+                if (!input.trim().matches("add m/[^ ]+ c/\\d+ s/\\d+")) {
+                    return new InvalidCommand("Invalid command format.");
+                }
+                if (servings == 0 || caloriesPerServing == 0) {
+                    return new InvalidCommand("Please input a value above 0!");
+                } else {
+                    return new AddFoodItemCommand(description, servings, caloriesPerServing, date, time);
+                }
+            } catch(NumberFormatException e){
+                return new InvalidCommand("Servings and calories per serving must be an integer value. " +
+                        "Please try again.");
+            }
+        } else {
+            return new InvalidCommand("Invalid command format.");
+        }
+    }
+
+    private Command parseAddExerciseCommand(String input, String date, String time) {
+        String[] logParts = input.trim().split("e/|c/|d/");
+        int length = logParts.length;
+        if (length >= 4) {
+            String description = logParts[1].trim();
+            try {
+                int caloriesBurntPerMinute = Integer.parseInt(logParts[2].trim());
+                int duration = Integer.parseInt(logParts[3].trim());
+
+                if (!input.trim().matches("add e/[^ ]+ c/\\d+ d/\\d+")) {
+                    return new InvalidCommand("Invalid command format.");
+                }
+
+                return new AddExerciseItemCommand(description, duration, caloriesBurntPerMinute, date, time);
+            } catch(NumberFormatException e){
+                return new InvalidCommand("Duration and calories burnt per minute must be an " +
+                        "integer value. Please try again.");
+            }
+        } else {
+            return new InvalidCommand("Invalid command format.");
+        }
+    }
+
+    private Command parseChangeCommand(String input) {
+        String[] inputSplit = input.trim().split(" ", 2);
+        if (inputSplit.length == 1) {
+            System.out.println("Please specify what you want to change:");
+            System.out.println("1. 'change h' - change your height");
+            System.out.println("2. 'change w' - change your weight");
+            System.out.println("3. 'change cg' - change calorie goal");
+            System.out.println("4. 'change wg' - change water goal");
+        } else if (inputSplit[1].trim().equalsIgnoreCase("g")) {
+            System.out.println("Please specify which goal you want to change:");
+            System.out.println("1. 'change cg' - change calorie goal");
+            System.out.println("2. 'change wg' - change water goal");
+        } else if (inputSplit[1].trim().equalsIgnoreCase("h")){
+            return new ChangeHeightCommand();
+        } else if (inputSplit[1].trim().equalsIgnoreCase("w")) {
+            return new ChangeWeightCommand();
+        } else if (inputSplit[1].trim().equalsIgnoreCase("wg")) {
+            return new ChangeWaterGoalCommand();
+        } else if (inputSplit[1].trim().equalsIgnoreCase("cg")) {
+            return new ChangeCalorieGoalCommand();
+        } else {
+            return new InvalidCommand("Invalid command. Please enter a valid 'change' command.");
+        }
+        return null;
     }
 }

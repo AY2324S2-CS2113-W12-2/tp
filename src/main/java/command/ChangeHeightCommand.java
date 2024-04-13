@@ -40,7 +40,7 @@ public class ChangeHeightCommand extends Command{
                     AddHeightCommand addHeightCommand = new
                             AddHeightCommand(newHeight, date, time);
                     addHeightCommand.execute();
-                    System.out.println("You have successfully changed your height! You can continue logging data!");
+                    System.out.println("You have successfully changed your height!");
                     int weight = GetWeightCommand.execute();
                     AddBMICommand addBMICommand = new AddBMICommand(newHeight, weight, date, time);
                     addBMICommand.execute();

@@ -28,7 +28,7 @@ public class DeleteLogCommand extends Command{
                 this.index = 1;
                 this.description = parts[1].trim();
             }
-        }else {
+        } else {
             CommandUi.printInvalidDeleteFormatMessage();
             this.errorRaised = true;
         }

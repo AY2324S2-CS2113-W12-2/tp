@@ -49,6 +49,18 @@ public class AddExerciseItemCommand extends Command {
         }
     }
 
+    public String getExerciseName() {
+        return exerciseName;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public int getCaloriesBurntPerMinute() {
+        return caloriesBurntPerMinute;
+    }
+
     /**
      * Appends a new exercise item to the array of exercises.
      * @param originalArray The original array of exercises.

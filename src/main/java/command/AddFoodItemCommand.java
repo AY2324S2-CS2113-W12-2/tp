@@ -46,6 +46,18 @@ public class AddFoodItemCommand extends Command {
         }
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public int getServings() {
+        return servings;
+    }
+
+    public int getCaloriesPerSaving() {
+        return caloriesPerSaving;
+    }
+
     private int getCalorieGoal() {
         for (Log log : LogList.logList) {
             if (log instanceof LogGoals && log.getDescription().startsWith("Calorie")) {

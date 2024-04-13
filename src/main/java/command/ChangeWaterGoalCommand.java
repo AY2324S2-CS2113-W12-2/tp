@@ -48,7 +48,7 @@ public class ChangeWaterGoalCommand extends Command{
                 if (waterGoal >= 1 && waterGoal <= 6000) {
                     AddWaterGoalCommand addWaterGoalCommand = new AddWaterGoalCommand(waterGoal, date, time);
                     addWaterGoalCommand.execute();
-                    System.out.println("You have successfully changed your water goal! You can continue logging data!");
+                    System.out.println("You have successfully changed your water goal!");
                     l++;
                 } else {
                     System.out.println("Please input a positive integer between 1 and 6000!");

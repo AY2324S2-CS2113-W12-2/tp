@@ -38,8 +38,7 @@ public class ChangeCalorieGoalCommand extends Command {
                     AddCalorieGoalCommand addCalorieGoalCommand = new
                             AddCalorieGoalCommand(newCalorieGoal, date, time);
                     addCalorieGoalCommand.execute();
-                    System.out.println("You have successfully changed your calorie goal! " +
-                            "You can continue logging data!");
+                    System.out.println("You have successfully changed your calorie goal! ");
                     i++;
                 } else {
                     System.out.println("Please input a positive integer between 1 and 10000!");

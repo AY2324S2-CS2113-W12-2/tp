@@ -3,7 +3,7 @@ package activeedge.parser;
 import activeedge.Storage;
 import command.Command;
 import command.ListFullCommand;
-import command.DeleteTaskCommand;
+import command.DeleteLogCommand;
 import command.FindCommand;
 import command.ShowSummaryCommand;
 import command.HelpCommand;
@@ -45,7 +45,7 @@ public class Parser {
         } else if (inputSplit[0].trim().equalsIgnoreCase("show")) {
             return parseShowCommand(input);
         } else if (inputSplit[0].trim().equalsIgnoreCase("delete")) {
-            return new DeleteTaskCommand(input);
+            return new DeleteLogCommand(input);
         } else if (inputSplit[0].trim().equalsIgnoreCase("find")) {
             return new FindCommand(input);
         } else if (input.trim().equalsIgnoreCase("summary")) {
@@ -63,7 +63,7 @@ public class Parser {
         } else if (inputSplit[0].trim().equalsIgnoreCase("change")) {
             return parseChangeCommand(input);
         } else {
-            System.out.println("Unknown command.");
+            System.out.println("Unknown command. Please enter 'help' to see all the commands.");
         }
         Storage.saveLogsToFile("data/data.txt");
         return null;
@@ -99,7 +99,8 @@ public class Parser {
             return new InvalidCommand("The water quantity cannot be empty. Please input a integer above 0!");
         }
         else if (!logParts[1].matches("[0-9]*")){
-            return new InvalidCommand("Water quantity must not contain symbols or characters. Please input a integer above 0!");
+            return new InvalidCommand("Water quantity must not contain symbols or characters. " +
+                    "Please input a integer above 0!");
         }
         else {
             String quantityString = logParts[1].trim();
@@ -218,7 +219,7 @@ public class Parser {
         } else if (input.trim().startsWith("add") && input.trim().contains("e/")) {
             return parseAddExerciseCommand(input, date, time);
         } else {
-            return new InvalidCommand("Invalid add command.");
+            return new InvalidCommand("Invalid add command. Type 'help' to see the two valid add commands.");
         }
     }
 
@@ -286,7 +287,8 @@ public class Parser {
                 int duration = Integer.parseInt(logParts[3].trim());
 
                 if(logParts[2].trim().isEmpty()){
-                    return new InvalidCommand("Calories burnt per minute cannot be empty. Please input a integer above 0!");
+                    return new InvalidCommand("Calories burnt per minute cannot be empty. " +
+                            "Please input a integer above 0!");
                 }
                 if (caloriesBurntPerMinute != Double.parseDouble(logParts[2].trim()) || caloriesBurntPerMinute <= 0) {
                     return new InvalidCommand("Calories burnt per minute must be a positive integer value.");

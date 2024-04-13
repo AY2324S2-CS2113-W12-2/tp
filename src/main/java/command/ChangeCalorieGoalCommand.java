@@ -1,3 +1,5 @@
+
+
 package command;
 
 import activeedge.userdetails.UserDetailsList;
@@ -10,8 +12,21 @@ import java.util.Scanner;
 import static activeedge.Storage.saveLogsToFile;
 import static activeedge.userdetails.UserDetailsList.detailsList;
 
+/**
+ * This class represents a command to change the user's calorie goal.
+ * It allows the user to input a new calorie goal within a specified range
+ * and updates the user details accordingly.
+ */
 public class ChangeCalorieGoalCommand {
 
+    /**
+     * Executes the command to change the user's calorie goal.
+     * Prompts the user to input a new calorie goal, validates the input,
+     * and updates the user details accordingly. Logs the change and saves
+     * it to a file.
+     *
+     * @throws ActiveEdgeException if there is an error executing the command.
+     */
     public static void execute() throws ActiveEdgeException {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -35,8 +50,7 @@ public class ChangeCalorieGoalCommand {
             try {
                 newCalorieGoal = Integer.parseInt(scanner.nextLine());
                 if (newCalorieGoal >= 1 && newCalorieGoal <= 10000) {
-                    AddCalorieGoalCommand addCalorieGoalCommand = new
-                            AddCalorieGoalCommand(newCalorieGoal, date, time);
+                    AddCalorieGoalCommand addCalorieGoalCommand = new AddCalorieGoalCommand(newCalorieGoal, date, time);
                     addCalorieGoalCommand.execute();
                     System.out.println("You have successfully changed your calorie goal!");
                     saveLogsToFile("data/data.txt");
@@ -50,5 +64,6 @@ public class ChangeCalorieGoalCommand {
         }
     }
 }
+
 
 

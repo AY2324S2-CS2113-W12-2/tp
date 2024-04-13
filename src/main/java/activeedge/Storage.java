@@ -200,7 +200,7 @@ public class Storage {
     public static void fetchData() {
         String filePath = Paths.get(System.getProperty("user.dir"), "data", "data.txt").toString();
         File file = new File(filePath);
-
+        ensureDirectoryExists(filePath);
         if (!file.exists()) {
             createFile(filePath);
         }

@@ -1,6 +1,9 @@
 package command;
 
-import activeedge.log.*;
+import activeedge.log.Log;
+import activeedge.log.LogGoals;
+import activeedge.log.LogList;
+import activeedge.log.LogWater;
 import activeedge.ui.CommandUi;
 
 import static activeedge.log.LogList.logList;

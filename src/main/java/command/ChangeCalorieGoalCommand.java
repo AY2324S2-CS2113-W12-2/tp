@@ -9,8 +9,20 @@ import java.util.Scanner;
 
 import static activeedge.log.LogList.logList;
 
+/**
+ * Represents a command to change the user's daily calorie goal.
+ * This command prompts the user to input a new calorie goal and validates
+ * the input before updating the log list and executing the necessary actions.
+ */
 
 public class ChangeCalorieGoalCommand extends Command {
+
+    /**
+     * Executes the command to change the user's daily calorie goal.
+     * Prompts the user to input a new calorie goal, validates the input,
+     * and updates the log list accordingly. It then executes the
+     * AddCalorieGoalCommand to save the new goal and logs the change.
+     */
 
     public void execute() {
         LocalDateTime currentDateTime = LocalDateTime.now();

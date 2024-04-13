@@ -33,17 +33,18 @@ public class ChangeHeightCommand extends Command{
         int newHeight = 0;
         int i = 0;
         while (i < 1) {
-            System.out.println("Please input your height (in cm): ");
+            System.out.println("Please input your new height (in cm): ");
             try {
                 newHeight = Integer.parseInt(scanner.nextLine());
                 if (newHeight >= 50 && newHeight <= 300) {
                     AddHeightCommand addHeightCommand = new
                             AddHeightCommand(newHeight, date, time);
                     addHeightCommand.execute();
-                    System.out.println("You have successfully changed your height!");
                     int weight = GetWeightCommand.execute();
                     AddBMICommand addBMICommand = new AddBMICommand(newHeight, weight, date, time);
                     addBMICommand.execute();
+                    System.out.println("You have successfully changed your height! " +
+                            "You can continue to log your data!");
                     i++;
                 } else {
                     System.out.println("Please input a positive integer  between 50 and 300!");

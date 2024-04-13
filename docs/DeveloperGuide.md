@@ -219,12 +219,22 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 
 ## Glossary
 
-* *glossary item* - Definition
-
+* *Log* - Entering your food, water and exercise data into the tracker.
+* *Add* - Adding new exercises and food items to existing food and exercise database.
+* *List* - Listing down the users' logged entries.
+* *Summary* - Summarises the logged data of total water, calorie intake comparing it to the goals of the users.
 ## Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
-
+1. Launching the App 
+    - Refer to the [Quick Start](#quick-start) to get ActiveEdge set up and running.
+    - Enter your height, weight, calorie and water goals when prompted.
+2. Getting help
+    - Run the `help` command by typing `help` and hitting `Enter` key on your keyboard.
+3. With the help guide, you can `log` or `add` meal, exercises and water to your tracker.
+4. Run `list` to see your logged data.
+5. Use `delete` command with help of User Guide to delete any logged entries.
+6. Run `summary` to track your calorie and water intake.
+7. Run the `bye` command to exit app
 ## Command Summary
 
 | Action                              | Format                                                            |
@@ -257,4 +267,4 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 
 ## Acknowledgements
 
-{list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+

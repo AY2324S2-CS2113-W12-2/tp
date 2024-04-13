@@ -8,11 +8,11 @@ import activeedge.ExerciseData;
  * It encapsulates the exercise name, duration, calories burnt per minute, and the date and time of the exercise.
  */
 public class AddExerciseItemCommand extends Command {
-    protected String exerciseName; // The name of the exercise
-    protected int duration; // The duration of the exercise in minutes
-    protected int caloriesBurntPerMinute; // The number of calories burnt per minute during the exercise
-    protected String date; // The date when the exercise was performed
-    protected String time; // The time when the exercise was performed
+    protected String exerciseName;
+    protected int duration;
+    protected int caloriesBurntPerMinute;
+    protected String date;
+    protected String time;
     /**
      * Constructs an AddExerciseItemCommand with the specified exercise details.
      * @param exerciseName The name of the exercise.
@@ -69,7 +69,9 @@ public class AddExerciseItemCommand extends Command {
      */
     public static String[][] appendItem(String[][] originalArray, String[] newItem) {
         // Create a new array with one more row than the original
-        String[][] newArray = new String[originalArray.length + 1][2]; // Assuming each item has 2 elements
+        String[][] newArray = new String[originalArray.length + 1][2];
+        assert originalArray.length > 0 && originalArray[0].length == 2 : "Each item in the original array does " +
+                "not have 2 elements";
 
         // Copy the contents of the original array to the new array
         for(int i = 0; i < originalArray.length; i++) {

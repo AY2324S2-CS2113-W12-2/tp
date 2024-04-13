@@ -16,18 +16,20 @@ and usability of our application.
 
 **Contributions to the UG:** My contributions to the User Guide were substantial. I authored the sections outlining the
 basic features of our program and played a key role in refining the user guide format to ensure clarity and 
-completeness and also implemented the FAQs.
+completeness and also implemented the FAQs. My team members built upon the basic structure of the UG I have created 
+initially.
 
 **Contributions to the DG:** I took the lead in creating comprehensive sequence diagrams for both the main component 
-and UI package and amended the target user profile. These diagrams provided invaluable insights into system 
-interactions, facilitating better understanding and development.
+and UI package, amended the target user profile and filled up the part on how a user can do manual testing. These 
+diagrams provided invaluable insights into system interactions, facilitating better understanding and development.
 
 **Contributions to team-based tasks:** Within our team, I took on the responsibility of ensuring equitable distribution
 of work among team members, ensuring that each member had an appropriate workload to maintain balance and productivity.
 We split the work equally, and I actively monitored progress to address any discrepancies. Whenever help was needed, I 
 provided support and guidance to my teammates, offering assistance and sharing knowledge to empower them in carrying
 out their tasks effectively. This collaborative approach fostered a supportive team environment and facilitated smooth 
-project execution.
+project execution. Moreover, I was proactive in fixing bugs whenever someone found a bug in our application and made 
+sure I reported bugs proactively when I find one as well.
 
 **Review/mentoring contributions:**  I effectively delegated tasks, ensured alignment, and conducted thorough reviews 
 of team members' work. I provided extensive feedback and guidance on Pull Requests (PRs), ensuring adherence to 

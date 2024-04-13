@@ -80,11 +80,11 @@ public class Parser {
             String parts = input.trim().substring(4);
             String[] items = parts.split("/");
             if (items[0].trim().equals("w")) {
-                return parseWaterLogCommand(items, date, time);
+                return parseWaterLogCommand(input, date, time);
             } else if (items[0].trim().equals("m")) {
                 return parseMealLogCommand(input, date, time);
             } else if(items[0].trim().equals("e")) {
-                return parseExerciseLogCommand(input, items, date, time);
+                return parseExerciseLogCommand(input,  date, time);
             }
             else{
                 return new InvalidCommand("Invalid command. Please enter a valid 'log' command.");
@@ -93,12 +93,16 @@ public class Parser {
         return null;
     }
 
-    private Command parseWaterLogCommand(String[] items, String date, String time) {
-        if (items.length < 2 || items[1].isEmpty()) {
-            return new InvalidCommand("Invalid command. Please enter 'log w/[WATER_QUANTITY]'. " +
-                    "\"For example, 'log w/300'. Enter 'help' for more information.\"");
-        } else {
-            String quantityString = items[1];
+    private Command parseWaterLogCommand(String input, String date, String time) {
+        String[] logParts = input.trim().split("w/");
+        if (logParts.length == 1) {
+            return new InvalidCommand("The water quantity cannot be empty. Please input a integer above 0!");
+        }
+        else if (!logParts[1].matches("[0-9]*")){
+            return new InvalidCommand("Water quantity must not contain symbols or characters. Please input a integer above 0!");
+        }
+        else {
+            String quantityString = logParts[1].trim();
             return new LogWaterCommand(quantityString, date, time);
         }
     }
@@ -107,8 +111,18 @@ public class Parser {
         String[] logParts = input.trim().split("m/|s/");
         int length = logParts.length;
         assert length >= 3;
+        if(length == 2){
+            return new InvalidCommand("The number of servings cannot be empty. Please input a integer above 0!");
+        }
         if (length >= 3) {
             String description = logParts[1].trim();
+            if(description.isEmpty()){
+                return new InvalidCommand("Meal name must not be empty.");
+            }
+
+            if(!description.matches("[a-zA-Z0-9 \\-]*")){
+                return new InvalidCommand("Meal name must not contain symbols.");
+            }
             try {
                 int servings = Integer.parseInt(logParts[2].trim());
                 if (servings != Double.parseDouble(logParts[2].trim()) || servings <= 0) {
@@ -135,12 +149,23 @@ public class Parser {
         }
     }
 
-    private Command parseExerciseLogCommand(String input, String[] items, String date, String time) {
+    private Command parseExerciseLogCommand(String input, String date, String time) {
         String[] logParts = input.trim().split("e/|d/");
         int length = logParts.length;
         assert length >= 3;
+        if(length == 2){
+            return new InvalidCommand("Duration cannot be empty. Please input a integer above 0!");
+        }
+
         if (length >= 3) {
             String exerciseName = logParts[1].trim();
+            if(exerciseName.isEmpty()){
+                return new InvalidCommand("Exercise name must not be empty.");
+            }
+
+            if(!exerciseName.matches("[a-zA-Z0-9 \\-]*")){
+                return new InvalidCommand("Exercise name must not contain symbols.");
+            }
             try {
                 int duration = Integer.parseInt(logParts[2].trim());
                 if (duration <= 0) {
@@ -193,16 +218,30 @@ public class Parser {
         } else if (input.trim().startsWith("add") && input.trim().contains("e/")) {
             return parseAddExerciseCommand(input, date, time);
         } else {
-            return new InvalidCommand("Invalid add command");
+            return new InvalidCommand("Invalid add command.");
         }
     }
 
     private Command parseAddMealCommand(String input, String date, String time) {
         String[] logParts = input.trim().split("m/|c/|s/");
         int length = logParts.length;
+
+        if(length == 3){
+            return new InvalidCommand("The number of servings cannot be empty. Please input a integer above 0!");
+        }
         if (length == 4) {
             String description = logParts[1].trim();
+            if(description.isEmpty()){
+                return new InvalidCommand("Meal name must not be empty.");
+            }
+
+            if(!description.matches("[a-zA-Z0-9 \\-]*")){
+                return new InvalidCommand("Meal name must not contain symbols.");
+            }
             try {
+                if(logParts[2].trim().isEmpty()){
+                    return new InvalidCommand("Calories per serving cannot be empty. Please input a integer above 0!");
+                }
                 int servings = Integer.parseInt(logParts[3].trim());
                 int caloriesPerServing = Integer.parseInt(logParts[2].trim());
                 if (servings != Double.parseDouble(logParts[3].trim()) || servings <= 0) {
@@ -230,11 +269,25 @@ public class Parser {
     private Command parseAddExerciseCommand(String input, String date, String time) {
         String[] logParts = input.trim().split("e/|c/|d/");
         int length = logParts.length;
+        if(length == 3){
+            return new InvalidCommand("Duration cannot be empty. Please input a integer above 0!");
+        }
         if (length >= 4) {
             String description = logParts[1].trim();
+            if(description.isEmpty()){
+                return new InvalidCommand("Exercise name must not be empty.");
+            }
+
+            if(!description.matches("[a-zA-Z0-9 \\-]*")){
+                return new InvalidCommand("Exercise name must not contain symbols.");
+            }
             try {
                 int caloriesBurntPerMinute = Integer.parseInt(logParts[2].trim());
                 int duration = Integer.parseInt(logParts[3].trim());
+
+                if(logParts[2].trim().isEmpty()){
+                    return new InvalidCommand("Calories burnt per minute cannot be empty. Please input a integer above 0!");
+                }
                 if (caloriesBurntPerMinute != Double.parseDouble(logParts[2].trim()) || caloriesBurntPerMinute <= 0) {
                     return new InvalidCommand("Calories burnt per minute must be a positive integer value.");
                 }

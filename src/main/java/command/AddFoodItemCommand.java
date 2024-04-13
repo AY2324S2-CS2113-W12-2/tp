@@ -40,10 +40,6 @@ public class AddFoodItemCommand extends Command {
                         caloriesPerSaving * servings, date, time, true);
                 int totalCaloriesConsumed = calculateTotalCaloriesConsumed() + caloriesPerSaving;
                 logMealCommand.execute();
-                if (totalCaloriesConsumed > calorieGoal) {
-                    CommandUi.printCalorieExceedingWarning();
-                }
-
             }
         } catch(Exception e){
             CommandUi.printErrorMessage("An error occurred while adding the meal: " + e.getMessage());

@@ -188,9 +188,9 @@ public class Parser {
     }
 
     public Command parseAddCommand(String input, String date, String time) {
-        if (input.trim().startsWith("add m/")) {
+        if (input.trim().contains("add") && input.trim().contains("m/")) {
             return parseAddMealCommand(input, date, time);
-        } else if (input.trim().startsWith("add e/")) {
+        } else if (input.trim().startsWith("add") && input.trim().contains("e/")) {
             return parseAddExerciseCommand(input, date, time);
         } else {
             return new InvalidCommand("Invalid add command");
@@ -200,14 +200,19 @@ public class Parser {
     private Command parseAddMealCommand(String input, String date, String time) {
         String[] logParts = input.trim().split("m/|c/|s/");
         int length = logParts.length;
-        if (length >= 4) {
+        if (length == 4) {
             String description = logParts[1].trim();
             try {
                 int servings = Integer.parseInt(logParts[3].trim());
                 int caloriesPerServing = Integer.parseInt(logParts[2].trim());
-                if (!input.trim().matches("add m/[^ ]+ c/\\d+ s/\\d+")) {
-                    return new InvalidCommand("Invalid command format.");
+                if (servings != Double.parseDouble(logParts[3].trim()) || servings <= 0) {
+                    return new InvalidCommand("Servings must be a positive integer value.");
                 }
+
+                if (caloriesPerServing != Double.parseDouble(logParts[2].trim()) || caloriesPerServing <= 0) {
+                    return new InvalidCommand("Calories per serving must be a positive integer value.");
+                }
+
                 if (servings == 0 || caloriesPerServing == 0) {
                     return new InvalidCommand("Please input a value above 0!");
                 } else {
@@ -230,12 +235,19 @@ public class Parser {
             try {
                 int caloriesBurntPerMinute = Integer.parseInt(logParts[2].trim());
                 int duration = Integer.parseInt(logParts[3].trim());
-
-                if (!input.trim().matches("add e/[^ ]+ c/\\d+ d/\\d+")) {
-                    return new InvalidCommand("Invalid command format.");
+                if (caloriesBurntPerMinute != Double.parseDouble(logParts[2].trim()) || caloriesBurntPerMinute <= 0) {
+                    return new InvalidCommand("Calories burnt per minute must be a positive integer value.");
                 }
 
-                return new AddExerciseItemCommand(description, duration, caloriesBurntPerMinute, date, time);
+                if (duration != Double.parseDouble(logParts[3].trim()) || duration <= 0) {
+                    return new InvalidCommand("Duration must be a positive integer value.");
+                }
+
+                if (duration == 0 || caloriesBurntPerMinute == 0) {
+                    return new InvalidCommand("Please input a value above 0!");
+                } else {
+                    return new AddExerciseItemCommand(description, duration, caloriesBurntPerMinute, date, time);
+                }
             } catch(NumberFormatException e){
                 return new InvalidCommand("Duration and calories burnt per minute must be an " +
                         "integer value. Please try again.");

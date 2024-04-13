@@ -23,5 +23,5 @@ the user returns.
 
 ####Contributions to Team-Based Tasks
 Set up GitHub team organization and upstream repository.    
-Set up skeleton code with Parser, Command and UI packages.
+Set up the skeleton code for the project with Parser, Command and UI packages.
 Worked on fixing bugs found from PE dry run and internal testing.

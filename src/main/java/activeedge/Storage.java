@@ -94,7 +94,7 @@ public class Storage {
         int j = 0;
         int k = 0;
         int l = 0;
-        System.out.println("Since you are new here or your details are missing, let's start with a few questions " +
+        System.out.println("Since you are new here or your details are missing,\nlet's start with a few questions " +
                 "to set things up!");
         Scanner scanner = new Scanner(System.in); // Create Scanner object outside the loop
 

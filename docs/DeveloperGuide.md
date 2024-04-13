@@ -85,7 +85,7 @@ It is responsible for parsing the input String of the user, and returning an app
 If the input is invalid, it throws exceptions to the Error package for error handling.
 The Parser Class Diagram below shows how Execute, Parser, Error, Command classes of their respective packages work together.
 
-![Main](https://github.com/SuveenE/tp/blob/master/images/Parser.png?raw=true)
+![Parser](https://github.com/SuveenE/tp/blob/master/images/Parser.png?raw=true)
 
 ### Command
 
@@ -103,7 +103,7 @@ AddBMICommand, AddHeightCommand, and AddWeightCommand are commands for adding BM
 The relationships depicted in the diagram are primarily composition and inheritance:
 
 
-![Main](https://github.com/SuveenE/tp/blob/master/images/Storage.png?raw=true)
+![Storage](https://github.com/SuveenE/tp/blob/master/images/Storage.png?raw=true)
 
 Storage has composition relationships with UserDetailsList and TaskList as it manages instances of these classes.
 UserDetailsList and TaskList have a composition relationship with their respective contained classes (LogHeight, LogWeight, GoalTask, MealTask, WaterTask, ExerciseTask) 
@@ -112,13 +112,13 @@ used within the Storage class but don't directly interact with the other classes
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
-![Main Component](https://github.com/SuveenE/tp/blob/master/images/Main-Component.png?raw=true)
+![Main Component](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Main_uml%20diagram.png?raw=true)
 
 
 ### UI Package
 The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating interactions such as printing welcome messages, 
 logging meal and exercise data, displaying goal information, providing help instructions, and managing user queries and commands for health tracking and goal setting.
-![Ui Package](https://github.com/SuveenE/tp/blob/master/images/Ui-package.png?raw=true)
+![Ui Package](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Ui.png?raw=true)
 
 Under commands, there are 17 sub-components:
 ```AddBMICommand```: A command responsible for calculating and adding Body Mass Index (BMI) information.
@@ -228,13 +228,24 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 1. Launching the App 
     - Refer to the [Quick Start](#quick-start) to get ActiveEdge set up and running.
     - Enter your height, weight, calorie and water goals when prompted.
+   
 2. Getting help
     - Run the `help` command by typing `help` and hitting `Enter` key on your keyboard.
+   
 3. With the help guide, you can `log` or `add` meal, exercises and water to your tracker.
+    - Run the following commands `log m/chicken rice s/1`/ `log e/running d/1` /
+      `add m/[FOOD] c/[CALORIES_PER_ERVING] s/[SERVINGS]`/ 
+      `add e/[EXERCISES] c/[CALORIES_BURNT_PER _MIN] d/[DURATION_IN_MINUTES]`
+   
 4. Run `list` to see your logged data.
+
 5. Use `delete` command with help of User Guide to delete any logged entries.
+    - Run the following commands `delete chicken rice` / `delete running`
+   
 6. Run `summary` to track your calorie and water intake.
+
 7. Run the `bye` command to exit app
+
 ## Command Summary
 
 | Action                              | Format                                                            |

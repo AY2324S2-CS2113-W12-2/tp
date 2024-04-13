@@ -112,7 +112,7 @@ used within the Storage class but don't directly interact with the other classes
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
-![Main Component](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Main_uml%20diagram.png?raw=true)
+![Main Component](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Main-component2%20UML.png?raw=true)
 
 
 ### UI Package

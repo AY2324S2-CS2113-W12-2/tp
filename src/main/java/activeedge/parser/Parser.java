@@ -136,7 +136,7 @@ public class Parser {
                             "If you wish to enter a value of more than 10, please do log in\n" +
                             "these meals twice by having the 2 different serving " +
                             "values add up to your intended value.");
-                } 
+                }
                 int mealCalories = 0;
                 boolean isItemPresentInFoodData = false;
 
@@ -148,7 +148,8 @@ public class Parser {
                 }
                 return new LogMealCommand(description, servings, mealCalories, date, time, isItemPresentInFoodData);
             } catch (NumberFormatException e) {
-                return new InvalidCommand("Servings must be a positive integer value. Please try again.");
+                return new InvalidCommand("Servings must be a positive integer value and 10 or lesser. " +
+                        "Please try again.");
             }
         } else {
             return new InvalidCommand("Invalid command. Please enter " +
@@ -279,6 +280,7 @@ public class Parser {
                 }
             } catch (NumberFormatException e) {
                 return new InvalidCommand("Servings and calories per serving must be an integer value. " +
+                        "Servings need to be 10 or lesser. " +
                         "Please try again.");
             }
         } else {

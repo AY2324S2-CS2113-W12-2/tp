@@ -1,9 +1,10 @@
 package command;
 
+
 import activeedge.log.Log;
 import activeedge.log.LogList;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ChangeCalorieGoalCommandTest {
 

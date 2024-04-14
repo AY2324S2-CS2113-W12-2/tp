@@ -77,7 +77,7 @@ The generic sequence diagram provides a visual representation of the interaction
 ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such
 as user interface, data storage, and task management.
 
-![Generic Sequence Diagram](https://github.com/SuveenE/tp/blob/master/images/Generic-Sequence-Diagram.png?raw=true)
+![Generic Sequence Diagram]()
 
 ### Parser
 The Parser components can be found within the Parser package.
@@ -90,9 +90,10 @@ The Parser Class Diagram below shows how Execute, Parser, Error, Command classes
 ### Command
 
 In the provided code, commands are represented as individual classes, each encapsulating a specific action or operation 
-within the ActiveEdge application, promoting modularity and separation of concerns.
+within the ActiveEdge application, promoting modularity and separation of concerns. The graph below depicts the 
+interactions between the different components of  ActiveEdge  when water, a meal or an exercise is logged in.
 
-![Command](https://github.com/SuveenE/tp/blob/master/images/Command-Class.png?raw=true)
+![Command]()
 
 ### Storage
 Storage is the main class responsible for file operations and data management.

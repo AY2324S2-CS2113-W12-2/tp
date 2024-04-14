@@ -1,0 +1,26 @@
+@startuml
+autonumber
+
+actor User
+
+User -> ShowCaloriesCommand: execute()
+ShowCaloriesCommand -> CommandUi: printShowCalMessage()
+
+User -> ShowGoalsCommand: execute()
+ShowGoalsCommand --> LogList: logList
+LogList --> ShowGoalsCommand: logList
+ShowGoalsCommand --> GoalsUi: printShowGoalsMessage()
+
+User -> ShowSummaryCommand: execute()
+ShowSummaryCommand --> LogList: logList
+ShowSummaryCommand --> UserDetailsList: detailsList
+UserDetailsList --> UserDetails: userDetails
+LogList --> ShowSummaryCommand: logList
+ShowSummaryCommand -> CommandUi: printShowSummaryMessage()
+
+User -> ViewWaterIntakeCommand: execute()
+ViewWaterIntakeCommand --> LogList: logList
+LogList --> ViewWaterIntakeCommand: logList
+ViewWaterIntakeCommand -> CommandUi: printWaterIntakeMessage()
+
+@enduml

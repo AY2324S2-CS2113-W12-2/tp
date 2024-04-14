@@ -11,8 +11,8 @@ in real-time, allowing adjustments to be made to maintain consistency and achiev
 **Enhancements implemented:** I spearheaded the implementation of critical enhancements, including the goal-setting and
 find features, along with the functionality for users to add new exercises and the clear function in order to clear all 
 the data and start application from begin. Moreover, I implemented the change water goal command in order for users 
-to change their water goal for the day. These enhancements significantly improved the functionality 
-and usability of our application.
+to change their water goal for the day. These enhancements significantly improved the functionality and usability of 
+our application.
 
 **Contributions to the UG:** My contributions to the User Guide were substantial. I authored the sections outlining the
 basic features of our program and played a key role in refining the user guide format to ensure clarity and 

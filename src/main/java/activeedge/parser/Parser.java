@@ -188,25 +188,32 @@ public class Parser {
     }
 
     private Command parseExerciseLogCommand(String input, String date, String time) {
-        String[] logParts = input.trim().split("e/|d/");
-        int length = logParts.length;
-        assert length >= 3;
-        if (length == 2) {
-            return new InvalidCommand("Duration cannot be empty. Please input a integer above 0!");
-        }
+        input = input.replaceAll("\\s+/\\s+", "/").trim();  // Normalize spaces around slashes
+        input = input.replaceAll("\\s+", " ");  // Normalize spaces elsewhere
 
-        if (length >= 3) {
-            String exerciseName = logParts[1].trim();
-            if (exerciseName.isEmpty()) {
-                return new InvalidCommand("Exercise name must not be empty.");
+        String[] logParts = input.trim().replace("/", " ").replaceAll("\\s+", " ").
+                split(" ");
+        int length = logParts.length;
+        assert length >= 5;
+        String exerciseName = "";
+        if (length >= 5) {
+            for (int i = 2; i <= length - 3; i++) {
+                if (i < length - 3) {
+                    exerciseName = exerciseName + logParts[i].trim() + " ";
+                } else {
+                    exerciseName = exerciseName + logParts[i].trim();
+                }
             }
             if (!exerciseName.matches("[a-zA-Z0-9 \\-]*")) {
                 return new InvalidCommand("Exercise name must not contain symbols.");
             }
             try {
-                int duration = Integer.parseInt(logParts[2].trim());
-                if (duration <= 0) {
-                    return new InvalidCommand("Duration must be a positive integer value.");
+                int duration = Integer.parseInt(logParts[length-1].trim());
+                if (logParts[length-1].equalsIgnoreCase("d")) {
+                    return new InvalidCommand("Duration cannot be empty!");
+                } else if (duration != Double.parseDouble(logParts[length-1].trim()) || duration <= 0) {
+                    return new InvalidCommand("Duration must be a positive integer value. " +
+                            "Please try again.");
                 } else if (duration > 200) {
                     return new InvalidCommand("Please re-enter a value that is 200 or below!\n" +
                             "If you wish to enter a value of more than 200, please do log in\n" +
@@ -227,12 +234,19 @@ public class Parser {
                 return new LogExerciseCommand(exerciseName, duration, caloriesBurnt, date, time,
                         isItemPresentInExerciseData);
             } catch (NumberFormatException e) {
-                return new InvalidCommand("Duration must be a positive integer value. Please try again.");
+                return new InvalidCommand("Duration must be a positive integer value. " +
+                        "Please try again.");
             }
         } else {
-            return new InvalidCommand("Invalid command. Please enter " +
-                    "'log e/[EXERCISE] D/[DURATION_IN_MINUTES]'. " +
-                    "\"For example, 'log e/running d/10'. Enter 'help' for more information.\"");
+            if (length == 4 && logParts[2].equalsIgnoreCase("d")) {
+                return new InvalidCommand("Exercise name must not be empty!");
+            } else if (length == 4 && logParts[3].equalsIgnoreCase("d")) {
+                return new InvalidCommand("Duration must not be empty!");
+            } else {
+                return new InvalidCommand("Invalid command. Please enter " +
+                        "'log e/[EXERCISE] D/[DURATION_IN_MINUTES]'. " +
+                        "\"For example, 'log e/running d/10'. Enter 'help' for more information.\"");
+            }
         }
     }
 

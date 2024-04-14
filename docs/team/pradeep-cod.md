@@ -20,8 +20,9 @@ completeness and also implemented the FAQs. My team members built upon the basic
 initially.
 
 **Contributions to the DG:** I took the lead in creating comprehensive sequence diagrams for both the main component 
-and UI package, amended the target user profile and filled up the part on how a user can do manual testing. These 
-diagrams provided invaluable insights into system interactions, facilitating better understanding and development.
+and UI package, amended the target user profile and filled up the part on how a user can do manual testing easily.
+These diagrams provided invaluable insights into system interactions, facilitating better understanding and 
+development.
 
 **Contributions to team-based tasks:** Within our team, I took on the responsibility of ensuring equitable distribution
 of work among team members, ensuring that each member had an appropriate workload to maintain balance and productivity.

@@ -274,8 +274,6 @@ public class Parser {
 
         String[] logParts = input.trim().replace("/", " ").replaceAll("\\s+", " ").
                 split(" ");
-        int length = logParts.length;
-
         if (logParts[0].equalsIgnoreCase("add") && logParts[1].equalsIgnoreCase("m")) {
             return parseAddMealCommand(input, date, time);
         } else if (logParts[0].equalsIgnoreCase("add") &&
@@ -360,61 +358,77 @@ public class Parser {
     }
 
     private Command parseAddExerciseCommand(String input, String date, String time) {
-        String[] logParts = input.trim().split("e/|c/|d/");
-        int length = logParts.length;
-        if (length == 3) {
-            return new InvalidCommand("Duration cannot be empty. Please input a integer above 0!");
-        } else if (length >= 4) {
-            String description = logParts[1].trim();
-            if (description.isEmpty()) {
-                return new InvalidCommand("Exercise name must not be empty.");
-            }
+        input = input.replaceAll("\\s+/\\s+", "/").trim();  // Normalize spaces around slashes
+        input = input.replaceAll("\\s+", " ");  // Normalize spaces elsewhere
 
+        String[] logParts = input.trim().replace("/", " ").replaceAll("\\s+", " ").
+                split(" ");
+        int length = logParts.length;
+        assert length >= 7;
+        String description = "";
+        if (length >= 7) {
+            for (int i = 2; i <= length - 5; i++) {
+                if (i < length - 5) {
+                    description = description + logParts[i].trim() + " ";
+                } else {
+                    description = description + logParts[i].trim();
+                }
+            }
             if (!description.matches("[a-zA-Z0-9 \\-]*")) {
                 return new InvalidCommand("Exercise name must not contain symbols.");
             }
             try {
-                int caloriesBurntPerMinute = Integer.parseInt(logParts[2].trim());
-                int duration = Integer.parseInt(logParts[3].trim());
-                if (!input.trim().matches("add e/[^ ]+ c/\\d+ d/\\d+")) {
-                    return new InvalidCommand("Invalid command format.");
+                int caloriesBurntPerMinute = Integer.parseInt(logParts[length-3].trim());
+                int duration = Integer.parseInt(logParts[length-1].trim());
+                if (logParts[length-1].equalsIgnoreCase("s") &&
+                        logParts[length-2].equalsIgnoreCase("m")){
+                    return new InvalidCommand("Calories burnt per min and " +
+                            "duration cannot be empty!" );
+                } else if (duration != Double.parseDouble(logParts[length-1].trim()) || duration <= 0) {
+                    return new InvalidCommand("Duration must be a positive integer value.");
+                } else if (caloriesBurntPerMinute != Double.parseDouble(logParts[length-3].trim())
+                        || caloriesBurntPerMinute <= 0) {
+                    return new InvalidCommand("Calories burnt per min must be a positive" +
+                            " integer value.");
+                } else if ((duration != Double.parseDouble(logParts[length-1].trim()) || duration <= 0) &&
+                        (caloriesBurntPerMinute != Double.parseDouble(logParts[length-3].trim())
+                                || caloriesBurntPerMinute <= 0)) {
+                    return new InvalidCommand("Calories per serving and " +
+                            "number of servings must be a positive integer value.");
                 } else if (duration > 200) {
                     return new InvalidCommand("Please re-enter a value that is 200 or below!\n" +
                             "If you wish to enter a value of more than 200, please do log in\n" +
                             "these exercises twice by having the 2 different duration " +
                             "values add up to your intended value.");
-                } else if (description.length() > 48) {
-                    return new InvalidCommand("Please re-enter a exercise name " +
-                            "that is within 48 characters!");
-                }
-                if (logParts[2].trim().isEmpty()) {
-                    return new InvalidCommand("Calories burnt per minute cannot be empty. " +
-                            "Please input a integer above 0!");
-                }
-                if (caloriesBurntPerMinute != Double.parseDouble(logParts[2].trim()) || caloriesBurntPerMinute <= 0) {
-                    return new InvalidCommand("Calories burnt per minute must be a positive " +
-                            "integer value.");
-                }
-
-                if (duration != Double.parseDouble(logParts[3].trim()) || duration <= 0) {
-                    return new InvalidCommand("Duration must be a positive integer value.");
-                }
-
-                if (duration == 0 || caloriesBurntPerMinute == 0) {
-                    return new InvalidCommand("Please input a value above 0!");
-                }
-
-                if (description.length() > 32) {
-                    return new InvalidCommand("Please re-enter a food name that is within 32 characters!");
+                } else if (description.length() > 32) {
+                    return new InvalidCommand("Please re-enter an exercise name that is within 32 characters!");
                 } else {
                     return new AddExerciseItemCommand(description, duration, caloriesBurntPerMinute, date, time);
                 }
             } catch (NumberFormatException e) {
-                return new InvalidCommand("Duration and calories burnt per minute must be an " +
-                        "integer value. Please try again.");
+                if (logParts[length-1].equalsIgnoreCase("d") && !logParts[length-2].
+                        equalsIgnoreCase("c")) {
+                    return new InvalidCommand("Duration cannot be empty!");
+                } else if (logParts[length-3].equalsIgnoreCase("c") && logParts[length-2].
+                        equalsIgnoreCase("d")) {
+                    return new InvalidCommand("Calories burnt per minute cannot be empty. " +
+                            "Please input a integer above 0!");
+                } else {
+                    return new InvalidCommand("Duration and calories burnt per minute must be an " +
+                            "integer value. Please try again.");
+                }
+            }
+        } else {
+            if (length == 6 && logParts[2].equalsIgnoreCase("c")) {
+                return new InvalidCommand("Exercise name must not be empty!");
+            } else if (length == 6 && logParts[length-3].equalsIgnoreCase("c")) {
+                return new InvalidCommand("Calories burnt per min cannot be empty!");
+            } else if (logParts[length-1].equalsIgnoreCase("d")) {
+                return new InvalidCommand("Duration cannot be empty!");
+            } else {
+                return new InvalidCommand("Invalid command format.");
             }
         }
-        return new InvalidCommand("Invalid command format.");
     }
 
     private Command parseChangeCommand(String input) {

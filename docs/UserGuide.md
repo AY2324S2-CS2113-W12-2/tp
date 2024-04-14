@@ -2,11 +2,11 @@
 
 ## Introduction
 
-Welcome to ActiveEdge! ActiveEdge is a productivity tool 
+Welcome to ActiveEdge! **ActiveEdge** is a productivity tool 
 designed to help you track your health and fitness goals
 effectively. Whether you want to manage your calorie 
 intake, track your water consumption, set daily goals,
-or keep a record of your exercises, ActiveEdge has got
+or keep a record of your exercises, **ActiveEdge** has got
 you covered.
 
 ## Quick Start
@@ -17,7 +17,7 @@ follow these simple steps:
 1. Ensure that you have Java 11 or above installed.
 2. Download the latest version of `ActiveEdge` from [here](https://github.com/AY2324S2-CS2113-W12-2/tp/releases).
 3. Copy the file into the folder you want to use as the home folder for your `ActiveEdge`.
-4. Open a command terminal, cd into the home folder you put the jar file in, and run the following command: `java -jar ActiveEdge.jar`. You should see a welcome screen.
+4. Open a command terminal, `cd` into the home folder you put the jar file in, and run the following command: `java -jar ActiveEdge.jar`. You should see a welcome screen.
 ```
 Welcome to ACTIVE EDGE!
 Take the next step in your Healthy Lifestyle!
@@ -76,7 +76,9 @@ Logs the meals consumed along with the number of servings.
 
 Format: `log m/<MEAL_NAME> s/<NUMBER_OF_SERVINGS>`
 
-* The `<MEAL_NAME>` is a meal name that exists in our food database. Check here to add a new meal that
+* The `<MEAL_NAME>` is a meal name that exists in our food database.  
+  To see the meals in our database - [Click here](#view-all-food-items-in-the-database-fooddata)  
+  To log a new meal that's not in the database - [Click here](#log-a-meal-not-in-the-database-add)
 * The `<NUMBER_OF_SERVINGS>` can be any positive integer value.  
 
 Sample input: `log m/chicken rice s/1`  
@@ -107,7 +109,9 @@ Logs the exercises performed.
 
 Format: `log e/<EXERCISE_NAME> d/<DURATION>`
 
-* The `EXERCISE_NAME` is the form of exercise done.
+* The `EXERCISE_NAME` is the form of exercise done.   
+  To see the exercises in our database - [Click here](#view-all-exercises-in-the-database-exercisedata)  
+  To log a new exercise that's not in the database - [Click here](#log-an-exercise-not-in-the-database-add)
 * The `DURATION` is the number of **minutes** the exercise has been done.
 
 Sample input: `log e/running d/10`  

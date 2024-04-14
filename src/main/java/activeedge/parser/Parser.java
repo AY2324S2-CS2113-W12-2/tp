@@ -92,24 +92,39 @@ public class Parser {
     }
 
     private Command parseWaterLogCommand(String input, String date, String time) {
-        String[] logParts = input.trim().split("w/");
-        if (logParts.length == 1) {
-            return new InvalidCommand("The water quantity cannot be empty. Please input a " +
-                    "integer above 0!");
-        } else if (logParts.length < 2 || logParts[1].isEmpty()) {
+        // Normalize input to remove excessive whitespaces around and within the command
+        input = input.replaceAll("\\s+/\\s+", "/").trim();  // Normalize spaces around slashes
+        input = input.replaceAll("\\s+", " ");  // Normalize spaces elsewhere
+
+        // Attempt to split the command based on the presence of "w/"
+        String[] commandParts = input.split("\\s+w/");
+
+        // Check if the command format is incorrect or the quantity is missing
+        if (commandParts.length < 2 || commandParts[1].trim().isEmpty()) {
             return new InvalidCommand("Invalid command. Please enter 'log w/[WATER_QUANTITY]'. " +
-                    "\"For example, 'log w/300'. Enter 'help' for more information.\"");
-        } else if (!logParts[1].matches("[0-9]*")) {
-            return new InvalidCommand("Water quantity must not contain symbols or characters. " +
-                    "Please input a integer above 0!");
-        } else {
-            String quantityString = logParts[1].trim();
-            if (Integer.parseInt(quantityString) > 6000) {
-                return new InvalidCommand("Please enter a water value that is 6000ml or lesser");
-            }
-            return new LogWaterCommand(quantityString, date, time);
+                    "For example, 'log w/300'. Enter 'help' for more information.");
         }
+
+        // Extract the quantity and validate it
+        String quantityString = commandParts[1].trim();
+        if (!quantityString.matches("\\d+")) {  // Ensure the quantity is a positive number
+            return new InvalidCommand("Water quantity must be a positive integer. " +
+                    "Please input an integer above 0!");
+        }
+
+        // Parse the quantity and check the limits
+        int quantity = Integer.parseInt(quantityString);
+        if (quantity <= 0) {
+            return new InvalidCommand("The water quantity must be above 0. Please input a valid integer.");
+        } else if (quantity > 6000) {
+            return new InvalidCommand("Please enter a water value that is 6000ml or lesser.");
+        }
+
+        // Return a valid command if all checks are passed
+        return new LogWaterCommand(Integer.toString(quantity), date, time);
     }
+
+
 
     private Command parseMealLogCommand(String input, String date, String time) {
         String[] logParts = input.trim().split("m/|s/");

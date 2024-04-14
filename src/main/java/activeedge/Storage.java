@@ -68,6 +68,7 @@ public class Storage {
      * @param filePath The path of the file where logs should be saved.
      */
     public static void saveLogsToFile(String filePath) {
+        ensureDirectoryExists(filePath);
         try (FileWriter fw = new FileWriter(filePath, false)) {
             for (int i = 0; i < UserDetailsList.detailsList.size(); i++) {
                 String out = UserDetailsList.detailsList.get(i).toString();
@@ -93,7 +94,7 @@ public class Storage {
         int j = 0;
         int k = 0;
         int l = 0;
-        System.out.println("Since you are new here, let's start with your height and weight " +
+        System.out.println("Since you are new here or your details are missing,\nlet's start with a few questions " +
                 "to set things up!");
         Scanner scanner = new Scanner(System.in); // Create Scanner object outside the loop
 
@@ -199,7 +200,7 @@ public class Storage {
     public static void fetchData() {
         String filePath = Paths.get(System.getProperty("user.dir"), "data", "data.txt").toString();
         File file = new File(filePath);
-
+        ensureDirectoryExists(filePath);
         if (!file.exists()) {
             createFile(filePath);
         }

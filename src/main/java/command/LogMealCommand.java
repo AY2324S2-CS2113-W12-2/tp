@@ -8,7 +8,7 @@ import activeedge.ui.CommandUi;
 
 import static activeedge.log.LogList.logList;
 
-public class LogMealCommand {
+public class LogMealCommand extends Command{
     protected String description;
     protected int servings;
     protected int mealCalories;
@@ -39,7 +39,7 @@ public class LogMealCommand {
                     CommandUi.printCalorieExceedingWarning();
                 }
             } else {
-                CommandUi.printFoodItemNotFoundMessage(description);
+                CommandUi.printFoodItemNotFoundMessage(description, servings);
             }
         } catch(Exception e){
             CommandUi.printErrorMessage("An error occurred while logging the meal: " + e.getMessage());

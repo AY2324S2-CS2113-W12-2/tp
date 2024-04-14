@@ -154,6 +154,11 @@ public class CommandUi {
                 System.out.println(logString.substring(8));
                 matchingLogIndex++;
                 found = true;
+            } else if (logString.startsWith("Exercise") && logString.contains(word)) {
+                System.out.print(matchingLogIndex + ". ");
+                System.out.println(logString.substring(11));
+                matchingLogIndex++;
+                found = true;
             }
         }
 
@@ -176,22 +181,24 @@ public class CommandUi {
      * @param deletedLog The task that was deleted.
      */
     public static void printLogDeletedMessage(Log deletedLog) {
-        System.out.println("Log deleted: " + deletedLog.getDescription());
+        System.out.println("Log deleted: " + deletedLog.toString());
     }
 
-    public static void printFoodItemNotFoundMessage(String description){
+    public static void printFoodItemNotFoundMessage(String description, int servings){
         System.out.println(description + " is not found in our food database.\n" +
                 "Please enter the following command to add it to the database and log your meal.\n\n" +
-                "add m/[FOOD] c/[CALORIES_PER_SERVING(cal)] s/[NUMBER_OF_SERVINGS]\n\n" +
-                "Eg: 'add m/"+ description +" c/120 s/2'\n"
+                "add m/<FOOD> c/<CALORIES_PER_SERVING(cal)> s/<NUMBER_OF_SERVINGS>\n\n" +
+                "Eg: 'add m/"+ description +" c/120 s/" + servings + " '\n\n" + "Remember to replace the" +
+                " actual calories per serving value, if you are using the example command above."
         );
     }
 
-    public static void printExerciseItemNotFoundMessage(String exerciseName){
+    public static void printExerciseItemNotFoundMessage(String exerciseName, int duration){
         System.out.println(exerciseName + " is not found in our exercise database.\n" +
-                "Please enter the following command to add it to the database and log your exercise.\n\n" +
-                "add e/[EXERCISE] c/[CALORIES_BURNT_PER_MIN(cal)] s/[DURATION_IN_MIN]\n\n" +
-                "Eg: 'add e/"+ exerciseName +" c/120 d/2'\n"
+                "Please enter the following command to log your exercise.\n\n" +
+                "add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN(cal)> s/<DURATION_IN_MIN>\n\n" +
+                "Eg: 'add e/"+ exerciseName +" c/8 d/" +duration + " '\n\n" + "Remember to replace the" +
+                " actual calories burnt per minute value, if you are using the example command above."
         );
     }
 
@@ -226,10 +233,14 @@ public class CommandUi {
         System.out.println("Invalid index. View all logged entries using 'list'." );
     }
 
-    public static void printShowSummaryMessage(int totalCalories,int totalWaterIntake, int totalCaloriesBurnt,
+    public static void printShowSummaryMessage(int height, int weight, int BMI, int totalCalories,int
+                                               totalWaterIntake, int totalCaloriesBurnt,
                                                String calorieGoal, String waterGoal,
                                                int netCalories, String calorieStatus) {
         System.out.println("Daily Summary:");
+        System.out.println("Height: " + height + " cm");
+        System.out.println("Weight: " + weight + " kg");
+        System.out.println("BMI: " + BMI);
         System.out.println("Total calories consumed: " + totalCalories + " cal");
         System.out.println("Total water consumed: " + totalWaterIntake + " ml");
         System.out.println("Total calories burnt: " + totalCaloriesBurnt + " cal");
@@ -270,6 +281,10 @@ public class CommandUi {
 
     public static void printCalorieExceedingWarning() {
         System.out.println("WARNING: You are exceeding your calorie intake!");
+    }
+
+    public static void printWaterIntakeExceedingWarning() {
+        System.out.println("Hooray! You have passed your water intake goal for the day!");
     }
 
 

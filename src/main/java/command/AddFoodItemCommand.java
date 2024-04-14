@@ -10,7 +10,7 @@ import static activeedge.FoodData.foodItems;
 import static activeedge.FoodData.appendItem;
 import activeedge.FoodData;
 
-public class AddFoodItemCommand {
+public class AddFoodItemCommand extends Command {
     protected String description;
     protected int servings;
     protected int caloriesPerSaving;
@@ -40,14 +40,22 @@ public class AddFoodItemCommand {
                         caloriesPerSaving * servings, date, time, true);
                 int totalCaloriesConsumed = calculateTotalCaloriesConsumed() + caloriesPerSaving;
                 logMealCommand.execute();
-                if (totalCaloriesConsumed > calorieGoal) {
-                    CommandUi.printCalorieExceedingWarning();
-                }
-
             }
         } catch(Exception e){
             CommandUi.printErrorMessage("An error occurred while adding the meal: " + e.getMessage());
         }
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getServings() {
+        return servings;
+    }
+
+    public int getCaloriesPerSaving() {
+        return caloriesPerSaving;
     }
 
     private int getCalorieGoal() {

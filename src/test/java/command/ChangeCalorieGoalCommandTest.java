@@ -1,4 +1,3 @@
-
 package command;
 
 import activeedge.log.Log;
@@ -31,7 +30,7 @@ public class ChangeCalorieGoalCommandTest {
         for (Log log : LogList.logList) {
             if (log.toString().startsWith("Goal Calorie")) {
                 goalFound = true;
-                assertEquals("Goal Calorie: 2000", log.toString());
+                assertEquals("Goal Calorie 2000 (Recorded on: 2024-04-14 13:54)", log.toString());
                 break;
             }
         }

@@ -5,10 +5,20 @@ import activeedge.log.LogList;
 import activeedge.log.LogWater;
 
 import activeedge.ui.CommandUi;
+
+/**
+ * Represents a command to delete a log entry.
+ */
 public class DeleteLogCommand extends Command{
     private String description;
     private int index;
     private boolean errorRaised;
+
+    /**
+     * Constructs a DeleteLogCommand object with the specified input.
+     *
+     * @param inputTrimmed The trimmed input string containing the description and index of the log to delete.
+     */
     public DeleteLogCommand(String inputTrimmed) {
         String[] parts = inputTrimmed.trim().split("\\s+", 2); // Split at the first space
         String[] indexParts;
@@ -34,6 +44,9 @@ public class DeleteLogCommand extends Command{
         }
     }
 
+    /**
+     * Executes the command to delete a log entry.
+     */
     public void execute() {
         // Search for the log with the specified description
         boolean logFound = false;

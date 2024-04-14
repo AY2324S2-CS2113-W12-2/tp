@@ -469,10 +469,7 @@ and then copy the "data.txt" file into this newly created folder.
 **A**: Unfortunately, deleted logs are not recoverable, so it's 
 important to be careful when using the delete command.
 
-**Q**: I accidentally cleared the data. Is there a way to recover it?
 
-**A**: Unfortunately, cleared data are not recoverable, so it's
-important to be careful when using the clear command.
 
 
 ## Command Summary

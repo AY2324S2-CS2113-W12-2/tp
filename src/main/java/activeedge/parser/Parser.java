@@ -127,25 +127,32 @@ public class Parser {
 
 
     private Command parseMealLogCommand(String input, String date, String time) {
-        String[] logParts = input.trim().split("m/|s/");
-        int length = logParts.length;
-        assert length >= 3;
-        if (length == 2) {
-            return new InvalidCommand("The number of servings cannot be empty. Please input a integer above 0!");
-        }
-        if (length >= 3) {
-            String description = logParts[1].trim();
-            if (description.isEmpty()) {
-                return new InvalidCommand("Meal name must not be empty.");
-            }
+        input = input.replaceAll("\\s+/\\s+", "/").trim();  // Normalize spaces around slashes
+        input = input.replaceAll("\\s+", " ");  // Normalize spaces elsewhere
 
+        String[] logParts = input.trim().replace("/", " ").replaceAll("\\s+", " ").
+                split(" ");
+        int length = logParts.length;
+        assert length >= 5;
+        String description = "";
+        if (length >= 5) {
+            for (int i = 2; i <= length - 3; i++) {
+                if (i < length - 3) {
+                    description = description + logParts[i].trim() + " ";
+                } else {
+                    description = description + logParts[i].trim();
+                }
+            }
             if (!description.matches("[a-zA-Z0-9 \\-]*")) {
                 return new InvalidCommand("Meal name must not contain symbols.");
             }
             try {
-                int servings = Integer.parseInt(logParts[2].trim());
-                if (servings != Double.parseDouble(logParts[2].trim()) || servings <= 0) {
-                    return new InvalidCommand("Servings must be a positive integer value.");
+                int servings = Integer.parseInt(logParts[length-1].trim());
+                if (logParts[length-1].equalsIgnoreCase("s")) {
+                    return new InvalidCommand("Number of servings must not be empty!");
+                } else if (servings != Double.parseDouble(logParts[length-1].trim()) || servings <= 0) {
+                    return new InvalidCommand("Servings must be a positive integer value. " +
+                            "Please try again.");
                 } else if (servings > 10) {
                     return new InvalidCommand("Please re-enter a value that is 10 or below!\n" +
                             "If you wish to enter a value of more than 10, please do log in\n" +
@@ -167,10 +174,16 @@ public class Parser {
                         "Please try again.");
             }
         } else {
-            return new InvalidCommand("Invalid command. Please enter " +
-                    "'log m/[FOOD] s/[NUMBER_OF_SERVINGS]'. " +
-                    "\"For example, 'log m/chicken rice s/2'. \" +\n" +
-                    " \"Enter 'help' for more information.\"");
+            if (length == 4 && logParts[2].equalsIgnoreCase("s")) {
+                return new InvalidCommand("Meal name must not be empty!");
+            } else if (length == 4 && logParts[3].equalsIgnoreCase("s")) {
+                return new InvalidCommand("Number of servings must not be empty!");
+            } else {
+                return new InvalidCommand("Invalid command. Please enter " +
+                        "'log m/[FOOD] s/[NUMBER_OF_SERVINGS]'. " +
+                        "\"For example, 'log m/chicken rice s/2'. \" +\n" +
+                        " \"Enter 'help' for more information.\"");
+            }
         }
     }
 

@@ -273,7 +273,6 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 | Get help                            | `help`                                                            |
 | Clear all logged entries            | `clear`                                                           |
 | Exit the program                    | `bye`                                                             |
-                                                      |
 
 
 ## Acknowledgements

@@ -223,6 +223,8 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 * *Add* - Adding new exercises and food items to existing food and exercise database.
 * *List* - Listing down the users' logged entries.
 * *Summary* - Summarises the logged data of total water, calorie intake comparing it to the goals of the users.
+* *wg* - Water goal (`change wg` used to change water goal)
+* *wcg* - Calorie goal (`change cg` used to change calorie goal)
 ## Instructions for manual testing
 
 1. Launching the App 

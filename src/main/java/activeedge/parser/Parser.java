@@ -58,7 +58,7 @@ public class Parser {
             return new PrintExercisesCommand();
         } else if (input.trim().equalsIgnoreCase("clear")) {
             return new ClearCommand();
-        } else if (input.trim().startsWith("add")) {
+        } else if (input.contains("add")) {
             return parseAddCommand(input, date, time); // Call parseAddCommand
         } else if (inputSplit[0].trim().equalsIgnoreCase("change")) {
             return parseChangeCommand(input);
@@ -176,7 +176,7 @@ public class Parser {
         } else {
             if (length == 4 && logParts[2].equalsIgnoreCase("s")) {
                 return new InvalidCommand("Meal name must not be empty!");
-            } else if (length == 4 && logParts[3].equalsIgnoreCase("s")) {
+            } else if (logParts[length-1].equalsIgnoreCase("s")) {
                 return new InvalidCommand("Number of servings must not be empty!");
             } else {
                 return new InvalidCommand("Invalid command. Please enter " +
@@ -240,7 +240,7 @@ public class Parser {
         } else {
             if (length == 4 && logParts[2].equalsIgnoreCase("d")) {
                 return new InvalidCommand("Exercise name must not be empty!");
-            } else if (length == 4 && logParts[3].equalsIgnoreCase("d")) {
+            } else if (logParts[length-1].equalsIgnoreCase("d")) {
                 return new InvalidCommand("Duration must not be empty!");
             } else {
                 return new InvalidCommand("Invalid command. Please enter " +
@@ -269,9 +269,17 @@ public class Parser {
     }
 
     public Command parseAddCommand(String input, String date, String time) {
-        if (input.trim().contains("add") && input.trim().contains("m/")) {
+        input = input.replaceAll("\\s+/\\s+", "/").trim();  // Normalize spaces around slashes
+        input = input.replaceAll("\\s+", " ");  // Normalize spaces elsewhere
+
+        String[] logParts = input.trim().replace("/", " ").replaceAll("\\s+", " ").
+                split(" ");
+        int length = logParts.length;
+
+        if (logParts[0].equalsIgnoreCase("add") && logParts[1].equalsIgnoreCase("m")) {
             return parseAddMealCommand(input, date, time);
-        } else if (input.trim().startsWith("add") && input.trim().contains("e/")) {
+        } else if (logParts[0].equalsIgnoreCase("add") &&
+                logParts[1].equalsIgnoreCase("e")) {
             return parseAddExerciseCommand(input, date, time);
         } else {
             return new InvalidCommand("Invalid add command. Type 'help' to see the two valid add commands.");
@@ -279,37 +287,42 @@ public class Parser {
     }
 
     private Command parseAddMealCommand(String input, String date, String time) {
-        String[] logParts = input.trim().split("m/|c/|s/");
+        input = input.replaceAll("\\s+/\\s+", "/").trim();  // Normalize spaces around slashes
+        input = input.replaceAll("\\s+", " ");  // Normalize spaces elsewhere
+
+        String[] logParts = input.trim().replace("/", " ").replaceAll("\\s+", " ").
+                split(" ");
         int length = logParts.length;
-
-        if (length == 3) {
-            return new InvalidCommand("The number of servings cannot be empty. Please input a integer above 0!");
-        }
-        if (length == 4) {
-            String description = logParts[1].trim();
-            if (description.isEmpty()) {
-                return new InvalidCommand("Meal name must not be empty.");
+        assert length >= 7;
+        String description = "";
+        if (length >= 7) {
+            for (int i = 2; i <= length - 5; i++) {
+                if (i < length - 5) {
+                    description = description + logParts[i].trim() + " ";
+                } else {
+                    description = description + logParts[i].trim();
+                }
             }
-
             if (!description.matches("[a-zA-Z0-9 \\-]*")) {
                 return new InvalidCommand("Meal name must not contain symbols.");
             }
             try {
-                if (logParts[2].trim().isEmpty()) {
-                    return new InvalidCommand("Calories per serving cannot be empty. Please input a integer above 0!");
-                }
-                int servings = Integer.parseInt(logParts[3].trim());
-                int caloriesPerServing = Integer.parseInt(logParts[2].trim());
-                if (servings != Double.parseDouble(logParts[3].trim()) || servings <= 0) {
+                int servings = Integer.parseInt(logParts[length-1].trim());
+                int caloriesPerServing = Integer.parseInt(logParts[length-3].trim());
+                if (logParts[length-1].equalsIgnoreCase("s") &&
+                        logParts[length-2].equalsIgnoreCase("m")){
+                    return new InvalidCommand("Calories per serving and " +
+                            "number of servings cannot be empty!" );
+                } else if (servings != Double.parseDouble(logParts[length-1].trim()) || servings <= 0) {
                     return new InvalidCommand("Servings must be a positive integer value.");
-                }
-
-                if (caloriesPerServing != Double.parseDouble(logParts[2].trim()) || caloriesPerServing <= 0) {
+                } else if (caloriesPerServing != Double.parseDouble(logParts[length-3].trim())
+                        || caloriesPerServing <= 0) {
                     return new InvalidCommand("Calories per serving must be a positive integer value.");
-                }
-
-                if (servings == 0 || caloriesPerServing == 0) {
-                    return new InvalidCommand("Please input a value above 0!");
+                } else if ((servings != Double.parseDouble(logParts[length-1].trim()) || servings <= 0) &&
+                        (caloriesPerServing != Double.parseDouble(logParts[length-3].trim())
+                                || caloriesPerServing <= 0)) {
+                    return new InvalidCommand("Calories per serving and " +
+                            "number of servings must be a positive integer value.");
                 } else if (servings > 10) {
                     return new InvalidCommand("Please re-enter a value that is 10 or below!\n" +
                             "If you wish to enter a value of more than 10, please do log in\n" +
@@ -321,12 +334,28 @@ public class Parser {
                     return new AddFoodItemCommand(description, servings, caloriesPerServing, date, time);
                 }
             } catch (NumberFormatException e) {
-                return new InvalidCommand("Servings and calories per serving must be an integer value. " +
-                        "Servings need to be 10 or lesser. " +
-                        "Please try again.");
+                if (logParts[length-1].equalsIgnoreCase("s") && !logParts[length-2].
+                        equalsIgnoreCase("c")) {
+                    return new InvalidCommand("Number of servings cannot be empty!");
+                } else if (logParts[length-3].equalsIgnoreCase("c") && logParts[length-2].
+                        equalsIgnoreCase("s")) {
+                    return new InvalidCommand("Calories per serving cannot be empty. " +
+                            "Please input a integer above 0!");
+                } else {
+                    return new InvalidCommand("Servings and calories per serving must be an integer " +
+                            "value. Servings need to be 10 or lesser. Please try again.");
+                }
             }
         } else {
-            return new InvalidCommand("Invalid command format.");
+            if (length == 6 && logParts[2].equalsIgnoreCase("c")) {
+                return new InvalidCommand("Meal name must not be empty!");
+            } else if (length == 6 && logParts[length-3].equalsIgnoreCase("c")) {
+                return new InvalidCommand("Calories per serving cannot be empty!");
+            } else if (logParts[length-1].equalsIgnoreCase("s")) {
+                return new InvalidCommand("Number of servings cannot be empty!");
+            } else {
+                return new InvalidCommand("Invalid command format.");
+            }
         }
     }
 

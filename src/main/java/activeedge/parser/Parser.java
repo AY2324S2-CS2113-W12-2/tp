@@ -28,7 +28,17 @@ import static activeedge.ExerciseData.exercisesList;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Parses user input into commands.
+ */
 public class Parser {
+
+    /**
+     * Handles user input and returns the corresponding command.
+     *
+     * @param input The user input string.
+     * @return The command corresponding to the input.
+     */
     public Command handleInput(String input) {
         input = input.toLowerCase();
         String[] inputSplit = input.trim().split(" ");

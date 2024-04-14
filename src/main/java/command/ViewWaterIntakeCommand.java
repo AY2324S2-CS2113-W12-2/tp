@@ -8,7 +8,14 @@ import activeedge.ui.CommandUi;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a command to view water intake statistics.
+ */
 public class ViewWaterIntakeCommand extends Command {
+
+    /**
+     * Executes the command to view water intake statistics.
+     */
     public void execute() {
         int totalWaterIntake = getTotalWaterIntake(LogList.logList);
         int waterGoal = getWaterGoal(LogList.logList);
@@ -16,6 +23,12 @@ public class ViewWaterIntakeCommand extends Command {
 
     }
 
+    /**
+     * Calculates the total water intake from the log list.
+     *
+     * @param logList The list of logs to calculate total water intake from.
+     * @return The total water intake.
+     */
     int getTotalWaterIntake(ArrayList<Log> logList) {
         int totalWaterIntake = 0;
         for (Log log : logList) {

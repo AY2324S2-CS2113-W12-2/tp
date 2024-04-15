@@ -16,14 +16,6 @@ import activeedge.userdetails.UserDetailsList;
 public class ClearCommand extends Command{
 
     /**
-     * Constructs a ClearCommand object.
-     * This constructor requires no input.
-     */
-    public ClearCommand() {
-        // No input needed for this command
-    }
-
-    /**
      * Executes the clear command.
      * Checks if both task list and user details list are empty.
      * If both lists are already empty, it prints a message indicating the data is already cleared.

@@ -263,5 +263,5 @@ them achieve fitness goals while managing university life.
 
 ## Acknowledgements
 Reference - [AB3 Developer Guide](https://se-education.org/addressbook-level3/DeveloperGuide.html)  
-Meet the [people](https://ay2324s2-cs2113t-w12-2.github.io/tp/AboutUs.html) behind WildWatch!  
+Meet the [people](https://ay2324s2-cs2113t-w12-2.github.io/tp/AboutUs.html) behind ActiveEdge!  
 

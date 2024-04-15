@@ -123,6 +123,8 @@ public class Storage {
                 if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                     ByeUi.printByeMessage();
                     System.exit(0);
+                } else {
+                    System.out.println("I'm not sure what you mean by that!");
                 }
                 try {
                     heightInput = Integer.parseInt(input);
@@ -154,6 +156,8 @@ public class Storage {
             if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                 ByeUi.printByeMessage();
                 System.exit(0);
+            } else {
+                System.out.println("I'm not sure what you mean by that!");
             }
             try {
                 weightInput = Integer.parseInt(input);
@@ -189,6 +193,8 @@ public class Storage {
             if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                 ByeUi.printByeMessage();
                 System.exit(0);
+            } else {
+                System.out.println("I'm not sure what you mean by that!");
             }
             try {
                 calorieGoal = Integer.parseInt(input);
@@ -217,6 +223,8 @@ public class Storage {
             if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                 ByeUi.printByeMessage();
                 System.exit(0);
+            } else {
+                System.out.println("I'm not sure what you mean by that!");
             }
             try {
                 waterGoal = Integer.parseInt(input);

@@ -40,6 +40,8 @@ import static activeedge.userdetails.UserDetailsList.detailsList;
  * and fetching data from files.
  */
 public class Storage {
+    private static final String DATA_FILE_PATH = "data/data.txt";
+    
     /**
      * Ensures that the directory for a given file path exists.
      * If the directory does not exist, it creates all necessary parent directories.
@@ -53,8 +55,6 @@ public class Storage {
             parentDir.mkdirs();
         }
     }
-
-    private static final String DATA_FILE_PATH = "data/data.txt";
 
     /**
      * Deletes all data from the data file.

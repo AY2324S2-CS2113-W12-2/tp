@@ -143,9 +143,7 @@ public class Storage {
         }
         return heightInput;
     }
-
-
-
+    
     public static int userWeight(String date, String time) throws ActiveEdgeException {
         int counter = 0;
         int weightInput = 0;
@@ -154,7 +152,8 @@ public class Storage {
             System.out.println("Please input your weight (in kg): ");
             String input = scanner.nextLine();
             if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
-                ByeUi.printByeMessage();System.exit(0);
+                ByeUi.printByeMessage();
+                System.exit(0);
             } else {
                 System.out.println("I'm not sure what you mean by that!");
             }

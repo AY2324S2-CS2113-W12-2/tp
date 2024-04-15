@@ -26,6 +26,7 @@ Take the next step in your Healthy Lifestyle!
 - [Introduction](#introduction)
 - [Quick Start](#quick-start)
 - [Features](#features)
+  
     - [Log meal: `log`](#log-meal--log)
     - [Log water intake : `log`](#log-water-intake--log)
     - [Log exercises: `log`](#log-exercises-log)

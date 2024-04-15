@@ -17,6 +17,9 @@ import command.AddCalorieGoalCommand;
 import command.AddWaterGoalCommand;
 import command.ActiveEdgeException;
 
+import java.nio.file.*;
+import java.util.List;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -111,9 +114,9 @@ public class Storage {
 
     public static int userHeight(String date, String time) throws ActiveEdgeException {
         int heightInput = 0;
-        int j = 0;
+        int counter = 0;
         Scanner scanner = new Scanner(System.in);
-            while (j < 1) {
+            while (counter < 1) {
                 System.out.println("Please input your height (in cm): ");
                 String input = scanner.nextLine();
                 if ("bye".equalsIgnoreCase(input)) { // Check if the user wants to exit
@@ -127,7 +130,7 @@ public class Storage {
                                 AddHeightCommand(heightInput, date, time);
                         addHeightCommand.execute();
                         saveLogsToFile("data/data.txt");
-                        j++;
+                        counter++;
                     } else {
                         System.out.println("Please input a whole number between 50 and 300!");
                     }
@@ -141,10 +144,10 @@ public class Storage {
 
 
     public static int userWeight(String date, String time) throws ActiveEdgeException {
-        int i = 0;
+        int counter = 0;
         int weightInput = 0;
         Scanner scanner = new Scanner(System.in);
-        while (i < 1) {
+        while (counter < 1) {
             System.out.println("Please input your weight (in kg): ");
             String input = scanner.nextLine();
             if ("bye".equalsIgnoreCase(input)) { // Check if the user wants to exit
@@ -158,7 +161,7 @@ public class Storage {
                             AddWeightCommand(weightInput, date, time);
                     addWeightCommand.execute();
                     saveLogsToFile("data/data.txt");
-                    i++;
+                    counter++;
                 } else {
                     System.out.println("Please input a whole number between 1 and 700!");
                 }
@@ -176,10 +179,10 @@ public class Storage {
         saveLogsToFile("data/data.txt");
     }
     public static void userCalorieGoal(String date, String time) {
-        int k = 0;
+        int counter = 0;
         int calorieGoal = 0;
         Scanner scanner = new Scanner(System.in);
-        while (k < 1) {
+        while (counter < 1) {
             System.out.println("Please set your daily calorie goal (in cal): ");
             String input = scanner.nextLine();
             if ("bye".equalsIgnoreCase(input)) { // Check if the user wants to exit
@@ -193,7 +196,7 @@ public class Storage {
                             AddCalorieGoalCommand(calorieGoal, date, time);
                     addCalorieGoalCommand.execute();
                     saveLogsToFile("data/data.txt");
-                    k++;
+                    counter++;
                 } else {
                     System.out.println("Please input a whole number between 1 and 50000!");
                 }
@@ -204,10 +207,10 @@ public class Storage {
     }
 
     public static void userWaterGoal(String date, String time) {
-        int l = 0;
+        int counter = 0;
         int waterGoal = 0;
         Scanner scanner = new Scanner(System.in);
-        while (l < 1) {
+        while (counter < 1) {
             System.out.println("Please set your daily water goal (in ml): ");
             String input = scanner.nextLine();
             if ("bye".equalsIgnoreCase(input)) { // Check if the user wants to exit
@@ -221,7 +224,7 @@ public class Storage {
                             AddWaterGoalCommand(waterGoal, date, time);
                     addWaterGoalCommand.execute();
                     saveLogsToFile("data/data.txt");
-                    l++;
+                    counter++;
                 } else {
                     System.out.println("Please input a whole number between 1 and 6000!");
                 }
@@ -231,26 +234,39 @@ public class Storage {
         }
     }
 
-//    public static void listMissingData() throws ActiveEdgeException {
-//        LocalDateTime currentDateTime = LocalDateTime.now();
-//        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-//        String date = currentDateTime.format(dateFormatter);
-//        String time = currentDateTime.format(timeFormatter);
-//
-//        System.out.println("Some of your details are missing! Please input them below to continue!");
-//        int userHeight = 0;
-//        String[] item = UserDetailsList.detailsList.get(0).toString().split(" ");
-//        userHeight = Integer.parseInt(item[1]);
-//
-//        if (detailsList.size() == 1) {
-//            int userWeight = userWeight(date, time);
-//            userBMI(userHeight, userWeight, date, time);
-//            userCalorieGoal(date, time);
-//            userWaterGoal(date, time);
-//        }
-//
-//    }
+    public static void listMissingData() throws Exception {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        String date = currentDateTime.format(dateFormatter);
+        String time = currentDateTime.format(timeFormatter);
+
+        System.out.println("Some of your details are missing! Please input them below to continue!");
+
+        int numberOfLines = lineCounter();
+        if (numberOfLines < 2 && numberOfLines >= 1) {
+            int userHeight = 0;
+            String[] item = detailsList.get(0).toString().split(" ");
+            userHeight = Integer.parseInt(item[1]);
+            int userWeight = userWeight(date, time);
+            userBMI(userHeight, userWeight, date, time);
+            userCalorieGoal(date, time);
+            userWaterGoal(date, time);
+        } else if (numberOfLines < 3 && numberOfLines >= 2) {
+            userCalorieGoal(date, time);
+            userWaterGoal(date, time);
+        } else if (numberOfLines < 4 && numberOfLines >= 3) {
+            userWaterGoal(date, time);
+        }
+        System.out.println("You can now start logging data! Type 'help' " +
+                "if you are not sure how to use ActiveEdge.");
+    }
+
+    public static int lineCounter() throws Exception {
+        String filePath = Paths.get(System.getProperty("user.dir"), "data", "data.txt").toString();
+        List<String> lines = Files.readAllLines(Path.of(filePath));
+        return lines.size();
+    }
     /**
      * Fetches and loads data from a specified data file into the application's memory.
      * This method attempts to read tasks from the file, parsing each line to recreate
@@ -266,7 +282,41 @@ public class Storage {
         if (file.length() == 0) {
             listEmpty();
         } else {
-                try (Scanner scanner = new Scanner(file)) {
+            try (Scanner scanner = new Scanner(file)) {
+                int numberOfLines = lineCounter();
+                if (numberOfLines < 5 && numberOfLines >= 1) {
+                    while (scanner.hasNext()) {
+                        String log = scanner.nextLine();
+                        String dateTimeStr = extractDateTimeString(log);
+                        LocalDateTime dateTime = parseDateTime(dateTimeStr);
+                        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+                        String initialDate = dateTime.format(dateFormatter);
+                        String initialTime = dateTime.format(timeFormatter);
+                        if (log.startsWith("Height")) {
+                            String[] items = log.trim().split(" ");
+                            LogHeight newHeight = new LogHeight(Integer.parseInt(items[1]),
+                                    initialDate, initialTime);
+                            UserDetailsList.detailsList.add(newHeight);
+                        } else if (log.startsWith("Weight")) {
+                            String[] items = log.trim().split(" ");
+                            LogWeight newWeight = new LogWeight(Integer.parseInt(items[1]),
+                                    initialDate, initialTime);
+                            UserDetailsList.detailsList.add(newWeight);
+                        } else if (log.startsWith("BMI")) {
+                            String[] items = log.trim().split(" ");
+                            LogBMI newBMI = new LogBMI(Integer.parseInt(items[1]),
+                                    initialDate, initialTime);
+                            UserDetailsList.detailsList.add(newBMI);
+                        } else if (log.startsWith("Goal")) {
+                            String[] items = log.trim().split(" ");
+                            LogGoals newLog = new LogGoals(items[1], Integer.parseInt(items[2]),
+                                    initialDate, initialTime);
+                            logList.add(newLog);
+                        }
+                    }
+                    listMissingData();
+                } else {
                     while (scanner.hasNext()) {
                         String log = scanner.nextLine();
                         String dateTimeStr = extractDateTimeString(log);
@@ -337,9 +387,12 @@ public class Storage {
                             logList.add(newLog);
                         }
                     }
-                } catch (FileNotFoundException e) {
-                    System.out.println("Error: " + e.getMessage());
                 }
+            } catch (FileNotFoundException e) {
+                System.out.println("Error: " + e.getMessage());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

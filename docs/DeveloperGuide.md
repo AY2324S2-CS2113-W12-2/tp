@@ -80,12 +80,14 @@ as user interface, data storage, and task management.
 ![Generic Sequence Diagram](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/GenericSequenceDiagram.png?raw=true)
 
 ### Parser
-The Parser components can be found within the Parser package.
-It is responsible for parsing the input String of the user, and returning an appropriate XYZCommand class.
-If the input is invalid, it throws exceptions to the Error package for error handling.
-The Parser Class Diagram below shows how Execute, Parser, Error, Command classes of their respective packages work together.
+The diagram outlines the structure of the ActiveEdge application's Parser module and its connections with
+various Command classes. The Parser class is responsible for parsing user input and generating appropriate commands, 
+utilizing DateTimeFormatter instances for date and time parsing. It interacts with Command classes such as logging 
+commands (e.g., LogWaterCommand, LogMealCommand), listing commands (ListFullCommand, DeleteLogCommand), and other 
+functionalities like showing summaries and managing goals. This setup promotes modular design and efficient handling 
+of user actions within the ActiveEdge application.
 
-![Parser](https://github.com/SuveenE/tp/blob/master/images/Parser.png?raw=true)
+![Parser](https://github.com/Praneet-25/tp/blob/master/images/Parser.png?raw=true)
 
 ### Command
 
@@ -96,20 +98,29 @@ interactions between the different components of  ActiveEdge  when water, a meal
 ![Command](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/LogCommand.png?raw=true)
 
 ### Storage
-Storage is the main class responsible for file operations and data management.
-UserDetailsList, LogHeight, and LogWeight handle user details such as height and weight logs.
-TaskList manages various types of tasks including goals, meals, water intake, and exercises.
-GoalTask, MealTask, WaterTask, and ExerciseTask are specific task types with their attributes.
-AddBMICommand, AddHeightCommand, and AddWeightCommand are commands for adding BMI, height, and weight respectively.
-The relationships depicted in the diagram are primarily composition and inheritance:
+The provided  diagram represents the structure of the ActiveEdge application, particularly focusing on the commands and log-related classes. Here's a breakdown of the key components:
 
+1. **LogMeal, LogExercise, LogWater:**
+    - These classes represent different types of logs that can be recorded in the ActiveEdge application. For instance, `LogMeal` could log meals consumed, `LogExercise` could log exercises performed, and `LogWater` could log water intake.
 
-![Storage](https://github.com/SuveenE/tp/blob/master/images/Storage.png?raw=true)
+2. **Storage:**
+    - The `Storage` class is responsible for handling file operations within the ActiveEdge application. It includes static methods such as `ensureDirectoryExists`, `createFile`, `saveLogsToFile`, `listEmpty`, and `fetchData`, which manage file creation, saving logs to files, and fetching data from files.
 
-Storage has composition relationships with UserDetailsList and TaskList as it manages instances of these classes.
-UserDetailsList and TaskList have a composition relationship with their respective contained classes (LogHeight, LogWeight, GoalTask, MealTask, WaterTask, ExerciseTask) 
-as they hold lists of instances of these classes. AddBMICommand, AddHeightCommand, and AddWeightCommand are standalone commands 
-used within the Storage class but don't directly interact with the other classes in the diagram.
+3. **Commands (AddCalorieGoalCommand, AddWaterGoalCommand, AddWeightCommand, AddHeightCommand, AddBMICommand):**
+    - These classes represent commands that can be executed within the ActiveEdge application. Each command encapsulates specific actions related to setting calorie goals, water goals, weight, height, or calculating BMI, promoting a modular and reusable design.
+
+4. **LogGoals, LogWeight, LogHeight, LogBMI:**
+    - These classes represent logs related to user goals, weight, height, and BMI. They store relevant data such as the type of goal, weight value, height value, and BMI calculations along with timestamps.
+
+5. **LogList, UserDetailsList:**
+    - These classes manage lists of logs and user details within the ActiveEdge application. They provide functionalities to add, delete, get, and clear logs or user details, facilitating organized data management.
+
+6. **Relationships:**
+    - The diagram shows relationships between various classes, such as inheritance (`Storage` inheriting from `UserDetailsList` and `LogList`) and associations between commands and logs (e.g., `AddBMICommand` associated with `LogBMI`).
+
+Overall, the diagram reflects a structured and modular design for the ActiveEdge application, with separate classes for commands, logs, file storage, and data management, promoting code reusability, maintainability, and separation of concerns.
+
+![Storage](https://github.com/Praneet-25/tp/blob/master/images/Storage.png?raw=true)
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.

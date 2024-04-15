@@ -9,8 +9,16 @@ import java.util.Scanner;
 
 import static activeedge.userdetails.UserDetailsList.detailsList;
 
+/**
+ * This command class handles the process of changing a user's height within the user details system.
+ * It updates the user's height and recalculates their BMI based on the new height.
+ */
 public class ChangeHeightCommand extends Command{
 
+    /**
+     * Executes the height change command. It first removes any existing height and BMI records,
+     * then prompts the user to enter a new height, validates this input, and logs the new height and updated BMI.
+     */
     public void execute() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -18,6 +26,7 @@ public class ChangeHeightCommand extends Command{
         String date = currentDateTime.format(dateFormatter);
         String time = currentDateTime.format(timeFormatter);
 
+        // Delete old height and BMI details from the user's details list
         for (int i = 0; i < detailsList.size(); i++) {
             UserDetails userDetails = UserDetailsList.detailsList.get(i);
             if (userDetails.toString().startsWith("Height")) {

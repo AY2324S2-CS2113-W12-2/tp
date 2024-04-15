@@ -9,8 +9,11 @@ import java.util.Scanner;
 
 import static activeedge.userdetails.UserDetailsList.detailsList;
 
+/**
+ * Executes the weight change command. It first removes any existing weight and BMI records,
+ * then prompts the user to enter a new weight, validates this input, and logs the new weight and updated BMI.
+ */
 public class ChangeWeightCommand extends Command {
-
 
     public void execute() {
         LocalDateTime currentDateTime = LocalDateTime.now();
@@ -19,6 +22,7 @@ public class ChangeWeightCommand extends Command {
         String date = currentDateTime.format(dateFormatter);
         String time = currentDateTime.format(timeFormatter);
 
+        // Delete old weight and BMI details from the user's details list
         for (int i = 0; i < detailsList.size(); i++) {
             UserDetails userDetails = UserDetailsList.detailsList.get(i);
             if (userDetails.toString().startsWith("Weight")) {

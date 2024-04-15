@@ -31,7 +31,6 @@ from wherever they left off
 12. Created `GetHeightCommand` inside `command` package to allow the user to get their height 
 13. Created `GetWeightCommand` inside `command` package to allow the user to get their weight
 
-
 #### Contributions to User Guide
 1. Added on features to the `command summary` part
 
@@ -48,5 +47,4 @@ from wherever they left off
 #### Review/mentoring contributions
 1. Gave constructive feedbacks in PRs
 2. Effectively provided guidance and support to my team, giving my inputs whenever they face an issue
-
 

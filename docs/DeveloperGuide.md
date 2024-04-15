@@ -31,10 +31,12 @@ effectively via the **Command Line Interface (CLI)**. Whether you want to manage
 intake, track your water consumption, set daily goals,
 or keep a record of your exercises, **ActiveEdge** has got
 you covered.
+
 ### Purpose
 This document specifies the architectural and software design decisions in the implementation of **ActiveEdge**.    
 For an in-depth understanding of how to use the application and explanations into each specific command, 
 feel free to visit our [Active Edge User Guide](UserGuide.md).
+
 
 ## Quick Start
 
@@ -54,6 +56,7 @@ Take the next step in your Healthy Lifestyle!
 (e.g. typing ```help``` and pressing `Enter` will give you the list of available commands).
 
 ## Design & implementation 
+
 ### System Architecture
 
 ![System Architecture](https://github.com/SuveenE/tp/blob/master/images/System-Architecture.png?raw=true)
@@ -143,7 +146,6 @@ ensuring structured data handling within the program.
 
 ### User Details Package
 
-
 The `UserDetails` package is designed to capture and manage various user metrics 
 such as height, weight, and BMI within an application. This class is extended by three specific subclasses: `LogHeight`,
 `LogWeight`, and `LogBMI`, each storing respective metrics along with the date and 
@@ -155,7 +157,6 @@ This class offers methods for adding, retrieving, deleting, and clearing
 entries from the list.
 
 ![Userdetails](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Userdetails.png?raw=true)
-
 
 
 ## Product scope
@@ -194,12 +195,11 @@ them achieve fitness goals while managing university life.
 | v2.0    |new user|log in my height and weight|see what range my weight is in|
 
 
-
-
 ## Non-Functional Requirements
 1. Should be portable and working on any mainstream OS as long as it has Java 11 or above installed.
 2. Should be able to hold up to 100 food items or list of exercises without any lag in the performance of the app  for typical usage.
 3. The average keyboard user should complete tasks more quickly using ActiveEdge compared to a standard GUI application.
+
 
 ## Glossary
 
@@ -209,6 +209,7 @@ them achieve fitness goals while managing university life.
 * *Summary* - Summarises the logged data of total water, calorie intake comparing it to the goals of the users.
 * *wg* - Water goal (`change wg` used to change water goal)
 * *cg* - Calorie goal (`change cg` used to change calorie goal)
+
 ## Instructions for manual testing
 
 1. Launching the App 
@@ -231,6 +232,7 @@ them achieve fitness goals while managing university life.
 6. Run `summary` to track your calorie and water intake.
 
 7. Run the `bye` command to exit app.
+
 
 ## Command Summary
 

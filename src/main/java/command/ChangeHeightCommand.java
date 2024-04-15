@@ -47,10 +47,10 @@ public class ChangeHeightCommand extends Command{
                             "You can continue to log your data!");
                     i++;
                 } else {
-                    System.out.println("Please input a positive integer  between 50 and 300!");
+                    System.out.println("Please input a positive integer between 50 and 300!");
                 }
             } catch (NumberFormatException | ActiveEdgeException e) {
-                System.out.println("Please input a positive integer  between 50 and 300!");
+                System.out.println("Please input a positive integer between 50 and 300!");
             }
         }
     }

@@ -10,11 +10,19 @@ public class FindCommand extends Command {
         this.input = input;
     }
     public void execute() {
-        if(input.trim().length() > 4){
-            String word = input.split(" ")[1];
-            CommandUi.printMatchingLog(word);
+        // Trim the input to remove leading and trailing spaces
+        String trimmedInput = input.trim();
+        if (trimmedInput.length() > 4 && trimmedInput.startsWith("find")) {
+            // Split the trimmed input to extract the keyword
+            String[] parts = trimmedInput.split("\\s+", 3); // Split by any whitespace, limit to 3 parts
+            if (parts.length > 1) {
+                String word = parts[1];
+                CommandUi.printMatchingLog(word);
+            } else {
+                System.out.println(LINE + "Oh no! You are missing the keyword you want to search for!\n" + LINE);
+            }
         } else {
-            System.out.println(LINE +"Oh no! You are missing the keyword you want to search for!\n" + LINE);
+            System.out.println(LINE + "Invalid command format. Please provide a keyword to search for.\n" + LINE);
         }
     }
 }

@@ -10,8 +10,9 @@
     - [UI Package](#ui-package)
     - [Parser Package](#parser-package)
     - [Command Package](#command-package)
-    - [LogList Package](#entrylist-package)
+    - [Log Package](#log-package)
     - [Storage Package](#storage-package)
+    - [Userdetails Package](#userdetails-package)
 - [Product Scope](#product-scope)
     - [Target User Profile](#target-user-profile)
     - [Value Proposition](#value-proposition)
@@ -116,60 +117,99 @@ interaction through a command-line interface.
 
 
 ### UI Package
-The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating interactions such as printing welcome messages, 
-logging meal and exercise data, displaying goal information, providing help instructions, and managing user queries and commands for health tracking and goal setting.
+The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating 
+interactions such as printing welcome messages, 
+logging meal and exercise data, displaying goal information, providing help instructions, and managing user queries and 
+commands for health tracking and goal setting.
 ![Ui Package](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Ui.png?raw=true)
 
 Under commands, there are 17 sub-components:
 ```AddBMICommand```: A command responsible for calculating and adding Body Mass Index (BMI) information.
 ```AddGoalsCommand```: A command responsible for users to set and track their fitness goals.
-```AddHeightCommand```: A command responsible for users to input and track their height information for comprehensive health tracking.
-```AddWeightCommand```: A command responsible for users to input and track their weight measurements to monitor their progress and achievements.
-```ClearCommand```: A command responsible for users to clear or delete entries, such as meals, from their tracking history.
+```AddHeightCommand```: A command responsible for users to input and track their height information for comprehensive 
+health tracking.
+```AddWeightCommand```: A command responsible for users to input and track their weight measurements to monitor their 
+progress and achievements.
+```ClearCommand```: A command responsible for users to clear or delete entries, such as meals, from their tracking 
+history.
 ```DeleteTaskCommand```: A command responsible for users to delete or remove exercise tasks.
 ```FindCommand```: A command responsible for users to search specific keywords.
-```ShowSummaryCommand```: A command responsible for users to view a summary or overview of their calorie intake,calorie burnt during exercise .
+```ShowSummaryCommand```: A command responsible for users to view a summary or overview of their calorie intake,calorie 
+burnt during exercise .
 ```ViewWaterIntakeCommand```: A command responsible for users to view and track their water intake levels.
 
-### Task Package
-This package is structured to manage and represent various types of tasks within an application, potentially for goal tracking, 
-exercise logging, meal recording, and water intake monitoring. There are 3 main components of this package.
+### Log Package
+This package is structured to manage and represent various types of logs within an application, potentially for goal 
+tracking, logging exercises done, water intake and meal intake. There are 3 main components of this package.
 ![Ui](https://github.com/SuveenE/tp/blob/master/images/Task_package.png?raw=true)
 
-**Base class:`Task`**
-+ **Purpose**: Serves as the foundational class for all types of tasks. It encapsulates the common
-attribute all tasks share, which is a description
+**Base class:`Log`**
++ **Purpose**: Serves as the foundational class for all types of logs. It encapsulates the common
+attribute all logs share, which is a description
 + **Attributes**: `description`: A `String` that provides a brief description of the task.
 + **Methods**: 
   + `getDescription()`
   + `toString()`
 
-**Derived class:`GoalTask`**
-+ **Attributes**: Stores information about goals
+**Derived class:`LogGoals`**
++ **Attributes**: Stores information about users' calorie and water goals
 + **Functionality**: Allows users to log their goals
 
 **Derived class:`LogExercise`**
-+ **Attributes**: Stores information about exercises, such as the name of food, duration, and calories burnt 
++ **Attributes**: Stores information about exercises, such as the name of exercises, duration, and calories burnt 
 + **Functionality**: Allows users to log their exercsies
 
-**Derived class:`MealTask`**
+**Derived class:`LogMeals`**
 + **Attributes**: Stores information about meals, such as the name of food, number of servings, and calories
 + **Functionality**: Allows users to log their meals 
 
-**Derived class:`WaterTask`**
+**Derived class:`LogWater`**
 + **Attributes**: Stores information about water intake, such as the amount of water
 + **Functionality**: Allows users to log their water intake
 
-**Utility class:`TaskList`**
-+ **Purpose**: Manages a collection of `Task` objects (including all derived types).
-+ **Attributes**: `tasksList`: A static ArrayList that stores instances of `Task` and its subclasses.
+**Utility class:`LogList`**
++ **Purpose**: Manages a collection of `Log` objects (including all derived types).
++ **Attributes**: `logList`: A static ArrayList that stores instances of `Log` and its subclasses.
 + **Methods**:
-  + `add(Task task)`
+  + `add(Log log)`
   + `delete(int index)`
   + `get()`
-  + `clearTasks()`
-  
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+  + `clearLogs()`
+
+### Userdetails Package
+This package is structured to manage and represent various types of userdetails within an application, potentially for 
+tracking height, weight, and BMI. There are 3 main components of this package.
+
+
+**Base class:`UserDetails`**
++ **Purpose**: Represents the basic details of a user. It provides methods to get the value of user details and to 
+represent the object as a string.
++ **Attributes**: `value`: An `Integer` that represents the numerical value of the user's details.
++ **Methods**:
+    + `getValue()`
+    + `toString()`
+
+**Derived class:`LogHeight`**
++ **Attributes**: Stores information about user's height, and date and time they recorded it 
++ **Functionality**: Allows users to log their height
+
+**Derived class:`LogWeight`**
++ **Attributes**: Stores information about user's weight, and date and time they recorded it
++ **Functionality**: Allows users to log their weight
+
+**Derived class:`LogBMI`**
++ **Attributes**: Stores information about user's BMI, and date and time they recorded it.
++ **Functionality**: Allows users to log their BMI based on their height and weight recorded
+
+**Utility class:`UserDetailsList`**
++ **Purpose**: Manages a list of `UserDetail`s objects. Provides methods to 
+add, retrieve, delete, and clear user details.
++ **Attributes**: `detailsList`: A static ArrayList that stores instances of `UserDetails` and its subclasses.
++ **Methods**:
+    + `add(UserDetails details)`
+    + `get()`
+    + `clearDetailsList()`
+    + `delete(int index)`
 
 
 ## Product scope

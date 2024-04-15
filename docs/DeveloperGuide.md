@@ -37,9 +37,8 @@ follow these simple steps:
 1. Ensure that you have Java 11 or above installed.
 2. Down the latest version of `ActiveEdge` from [here](https://github.com/AY2324S2-CS2113-W12-2/tp/releases). 
 3. Copy the file into the folder you want to use as the home folder for your ActiveEdge.
-4. Open a command terminal, cd into the home folder you put the jar file in, and run the following command: `java -jar ActiveEdge.jar`. You should see a welcome screen.
-   
-``````
+4. Open a command terminal, cd into the home folder you put the jar file in, and run the following command: 
+`java -jar ActiveEdge.jar`. You should see a welcome screen.
 5. Type commands beside >>> and press Enter to execute it.
 (e.g. typing ```help``` and pressing Enter will show the help page).
 ## Design & implementation 🏹  

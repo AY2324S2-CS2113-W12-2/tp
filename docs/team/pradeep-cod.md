@@ -6,7 +6,7 @@ water consumption, and exercise routines. It ensures users stay aligned with the
 in real-time, allowing adjustments to be made to maintain consistency and achieve optimal fitness levels.
 
 ### Summary of Contributions
-**Code contributed:** https://shorturl.at/msvFP
+**Code contributed:** [Click here](https://shorturl.at/msvFP)
 
 **Enhancements implemented:** I spearheaded the implementation of critical enhancements, including the goal-setting and
 find features, along with the functionality for users to add new exercises and the clear function in order to clear all 

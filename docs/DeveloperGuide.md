@@ -39,7 +39,10 @@ follow these simple steps:
 3. Copy the file into the folder you want to use as the home folder for your ActiveEdge.
 4. Open a command terminal, cd into the home folder you put the jar file in, and run the following command: `java -jar ActiveEdge.jar`. You should see a welcome screen.
    
-``````
+```
+Welcome to ACTIVE EDGE!
+Take the next step in your Healthy Lifestyle!
+```
 5. Type commands beside >>> and press Enter to execute it.
 (e.g. typing ```help``` and pressing Enter will show the help page).
 ## Design & implementation 🏹  

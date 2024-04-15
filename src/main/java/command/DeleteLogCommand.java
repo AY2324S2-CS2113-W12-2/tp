@@ -26,7 +26,7 @@ public class DeleteLogCommand extends Command{
         this.errorRaised = false;
         if(parts.length == 2){
             if(parts[1].contains("i/")){
-                indexParts = parts[1].trim().split("i/");
+                indexParts = parts[1].trim().split("\\s*i/\\s*");;
                 this.index = Integer.parseInt(indexParts[1].trim());
                 this.description = indexParts[0].trim().replaceAll("\\s+", " ");
                 if(index <= 0){
@@ -36,7 +36,21 @@ public class DeleteLogCommand extends Command{
             } else {
                 //If no index to be deleted is passed, 1 is considered as the index.
                 this.index = 1;
-                this.description = parts[1].trim().replaceAll("\\s+", " ");
+                String[] descriptionParts = parts[1].split("\\s*i/\\s*|\\s+");
+                this.description = descriptionParts[0].trim();
+                if (descriptionParts.length > 1) {
+                    String[] quantityParts = descriptionParts[1].trim().split("\\s+");
+                    if (quantityParts.length > 0) {
+                        try {
+                            Integer.parseInt(quantityParts[0]);
+                            String quantityWithoutSpaces = quantityParts[0].trim().replaceAll("\\s+", "");
+                            this.description += " " + quantityWithoutSpaces;
+                        } catch (NumberFormatException e) {
+                            // If it's not a number, consider it as part of description
+                            this.description += " " + descriptionParts[1].trim();
+                        }
+                    }
+                }
             }
         } else {
             CommandUi.printInvalidDeleteFormatMessage();
@@ -53,12 +67,14 @@ public class DeleteLogCommand extends Command{
         int countIndex = 0;
         for (int i = 0; i < LogList.logList.size(); i++) {
             Log log = LogList.logList.get(i);
-            if (log.getDescription().toLowerCase().startsWith("water")) {
-                if (log instanceof LogWater) { // Check if it's a WaterLog before casting
+            String logDescription = log.getDescription().toLowerCase().trim();
+            if (logDescription.startsWith("water")){
+                if (log instanceof LogWater) {
+                    String targetDescription = description.trim().replaceAll("\\s+", "");
                     LogWater logWater = (LogWater) log;
-
-                    if (((logWater.getQuantity()) + "ml").equalsIgnoreCase(description)) {
-                        countIndex = countIndex + 1;
+                    String quantityString = (logWater.getQuantity()) + "ml";
+                    if (quantityString.equals(targetDescription)) {
+                        countIndex++;
                         if(countIndex == index){
                             Log deletedLog = LogList.delete(i);
                             CommandUi.printLogDeletedMessage(deletedLog);

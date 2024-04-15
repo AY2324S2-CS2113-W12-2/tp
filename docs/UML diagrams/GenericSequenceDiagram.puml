@@ -22,7 +22,6 @@ Command -> Storage: Save Logs to File
 Parser -> Scanner: Input
 User <-- Scanner: Input
 Scanner -> Parser: Handle Input
-Parser -> null: Unknown Command
 User --> Scanner: Input "bye"
 Scanner --> ByeUi: Print Bye Message
 @enduml

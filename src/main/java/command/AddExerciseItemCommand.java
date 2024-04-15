@@ -33,7 +33,6 @@ public class AddExerciseItemCommand extends Command {
     /**
      * Executes the AddExerciseItemCommand by adding the exercise to the list of exercises, printing a success message,
      * and logging the exercise in the application's data.
-     * @throws ActiveEdgeException If an error occurs during the execution of the command.
      */
     public void execute() {
         if (ExerciseData.exerciseExists(exerciseName)) {

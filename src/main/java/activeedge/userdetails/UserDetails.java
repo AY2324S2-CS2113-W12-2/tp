@@ -11,7 +11,6 @@ public class UserDetails {
      */
     protected Integer value;
 
-    protected String stringValue;
     /**
      * Constructs a UserDetails object with the specified value.
      *

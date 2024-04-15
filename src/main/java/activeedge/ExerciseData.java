@@ -94,8 +94,8 @@ public class ExerciseData {
     public static void printExercises() {
         for (int i = 0; i < exercisesList.length; i++) {
             // Concatenate the exercise name and calories burnt per minute in the same line
-            String exerciseInfo = "Exercise Name: " + exercisesList[i][0] + " | Calories Burnt Per Minute: "
-                    + exercisesList[i][1] +" cal";
+            String exerciseInfo = "Exercise: " + exercisesList[i][0] + " | Calories burnt per minute: "
+                    + exercisesList[i][1] +" kcal";
             System.out.println(exerciseInfo);
         }
     }
@@ -124,18 +124,5 @@ public class ExerciseData {
             }
         }
         return false;
-    }
-
-    /**
-     * The main method checks the exercise data validity and prints the exercises.
-     *
-     * @param args The command-line arguments (not used in this method).
-     */
-    public static void main(String[] args) {
-        // Check exercise data validity
-        assertExerciseData();
-
-        // Print exercises
-        printExercises();
     }
 }

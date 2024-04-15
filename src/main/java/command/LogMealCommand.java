@@ -1,13 +1,14 @@
 package command;
 
-import activeedge.task.GoalTask;
-import activeedge.task.Task;
-import activeedge.task.TaskList;
+import activeedge.log.Log;
+import activeedge.log.LogGoals;
+import activeedge.log.LogList;
+import activeedge.log.LogMeal;
 import activeedge.ui.CommandUi;
-import activeedge.task.MealTask;
-import static activeedge.task.TaskList.tasksList;
 
-public class LogMealCommand {
+import static activeedge.log.LogList.logList;
+
+public class LogMealCommand extends Command{
     protected String description;
     protected int servings;
     protected int mealCalories;
@@ -29,22 +30,21 @@ public class LogMealCommand {
         try {
             int calorieGoal = getCalorieGoal();
             if (isItemPresentInFoodData) {
-                MealTask logMeal = new MealTask(description, servings, mealCalories, date, time);
+                LogMeal logMeal = new LogMeal(description, servings, mealCalories, date, time);
                 int totalCaloriesConsumed = calculateTotalCaloriesConsumed() + mealCalories;
-                tasksList.add(logMeal);
+                logList.add(logMeal);
                 CommandUi.printMealLogMessage(logMeal);
 
                 if (totalCaloriesConsumed > calorieGoal) {
                     CommandUi.printCalorieExceedingWarning();
                 }
             } else {
-                CommandUi.printFoodItemNotFoundMessage(description);
+                CommandUi.printFoodItemNotFoundMessage(description, servings);
             }
         } catch(Exception e){
             CommandUi.printErrorMessage("An error occurred while logging the meal: " + e.getMessage());
         }
     }
-
 
     public int getMealCalories() {
         return mealCalories;
@@ -59,19 +59,19 @@ public class LogMealCommand {
     }
 
     private int getCalorieGoal() {
-        for (Task task : TaskList.tasksList) {
-            if (task instanceof GoalTask && task.getDescription().startsWith("Calorie")) {
-                return ((GoalTask) task).getGoalAmount();
+        for (Log log : LogList.logList) {
+            if (log instanceof LogGoals && log.getDescription().startsWith("Calorie")) {
+                return ((LogGoals) log).getGoalAmount();
             }
         }
-        return 0; // Return 0 if the calorie goal is not found
+        return 0;
     }
 
     private int calculateTotalCaloriesConsumed() {
         int totalCaloriesConsumed = 0;
-        for (Task task : TaskList.tasksList) {
-            if (task instanceof MealTask) {
-                totalCaloriesConsumed += ((MealTask) task).getMealCalories();
+        for (Log log : logList) {
+            if (log instanceof LogMeal) {
+                totalCaloriesConsumed += ((LogMeal) log).getMealCalories();
             }
         }
         return totalCaloriesConsumed;

@@ -1,35 +1,36 @@
 ## Manimaran Pradeep  - Project Portfolio Page
 
 ## Overview
-I am an adept idicidial contributor, known for excellent communication and teamwork. My strength lies 
-in meeting deadlines and facilitating productive discussions. I proactively organize meetings and delegate
-tasks, ensuring smooth project progress.
+Active Edge Fitness Tracker is a comprehensive health monitoring tool that meticulously tracks calorie intake,
+water consumption, and exercise routines. It ensures users stay aligned with their goals by monitoring their progress
+in real-time, allowing adjustments to be made to maintain consistency and achieve optimal fitness levels.
 
 ### Summary of Contributions
-**Code contributed:** https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=pradeep-cod&breakdown=true&sort=grou
-pTitle%20dsc&sortWithin=title&since=2024-02-23&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=
-docs~functional-code~test-code~other
+**Code contributed:** https://shorturl.at/msvFP
 
 **Enhancements implemented:** I spearheaded the implementation of critical enhancements, including the goal-setting and
 find features, along with the functionality for users to add new exercises and the clear function in order to clear all 
 the data and start application from begin. Moreover, I implemented the change water goal command in order for users 
-to change their water goal for the day. These enhancements significantly improved the functionality 
-and usability of our application.
+to change their water goal for the day. These enhancements significantly improved the functionality and usability of 
+our application.
 
 **Contributions to the UG:** My contributions to the User Guide were substantial. I authored the sections outlining the
 basic features of our program and played a key role in refining the user guide format to ensure clarity and 
-completeness and also implemented the FAQs.
+completeness and also implemented the FAQs. My team members built upon the basic structure of the UG I have created 
+initially.
 
 **Contributions to the DG:** I took the lead in creating comprehensive sequence diagrams for both the main component 
-and UI package and amended the target user profile. These diagrams provided invaluable insights into system 
-interactions, facilitating better understanding and development.
+and UI package, amended the target user profile and filled up the part on how a user can do manual testing easily.
+These diagrams provided invaluable insights into system interactions, facilitating better understanding and 
+development.
 
 **Contributions to team-based tasks:** Within our team, I took on the responsibility of ensuring equitable distribution
 of work among team members, ensuring that each member had an appropriate workload to maintain balance and productivity.
 We split the work equally, and I actively monitored progress to address any discrepancies. Whenever help was needed, I 
 provided support and guidance to my teammates, offering assistance and sharing knowledge to empower them in carrying
 out their tasks effectively. This collaborative approach fostered a supportive team environment and facilitated smooth 
-project execution.
+project execution. Moreover, I was proactive in fixing bugs whenever someone found a bug in our application and made 
+sure I reported bugs proactively when I find one as well.
 
 **Review/mentoring contributions:**  I effectively delegated tasks, ensured alignment, and conducted thorough reviews 
 of team members' work. I provided extensive feedback and guidance on Pull Requests (PRs), ensuring adherence to 

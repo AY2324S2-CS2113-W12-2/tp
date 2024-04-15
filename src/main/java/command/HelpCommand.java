@@ -1,8 +1,13 @@
 package command;
 import activeedge.ui.HelpUi;
 
-public class HelpCommand {
-    public HelpCommand() {
+/**
+ * The HelpCommand class is responsible for handling the "help" command within the application.
+ */
+public class HelpCommand extends Command{
+
+    @Override
+    public void execute() {
         HelpUi.printHelpMessage();
     }
 }

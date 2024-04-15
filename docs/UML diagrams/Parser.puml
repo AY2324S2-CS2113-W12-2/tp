@@ -1,0 +1,71 @@
+@startuml
+
+package activeedge.parser {
+    class Parser {
+        - DateTimeFormatter dateFormatter
+        - DateTimeFormatter timeFormatter
+        + Command handleInput(String input)
+        - Command parseLogCommand(String input, String date, String time)
+        - Command parseWaterLogCommand(String input, String date, String time)
+        - Command parseMealLogCommand(String input, String date, String time)
+        - Command parseExerciseLogCommand(String input, String date, String time)
+        - Command parseShowCommand(String input)
+        + Command parseAddCommand(String input, String date, String time)
+        - Command parseAddMealCommand(String input, String date, String time)
+        - Command parseAddExerciseCommand(String input, String date, String time)
+        - Command parseChangeCommand(String input)
+    }
+}
+
+package command {
+    class Command
+    class ListFullCommand
+    class DeleteLogCommand
+    class FindCommand
+    class ShowSummaryCommand
+    class HelpCommand
+    class PrintFoodCommand
+    class PrintExercisesCommand
+    class ClearCommand
+    class InvalidCommand
+    class LogWaterCommand
+    class LogMealCommand
+    class LogExerciseCommand
+    class ShowCaloriesCommand
+    class ViewWaterIntakeCommand
+    class ShowGoalsCommand
+    class AddFoodItemCommand
+    class AddExerciseItemCommand
+    class ChangeHeightCommand
+    class ChangeWeightCommand
+    class ChangeWaterGoalCommand
+    class ChangeCalorieGoalCommand
+}
+
+activeedge.parser.Parser --> command.Command
+activeedge.parser.Parser --> command.ListFullCommand
+activeedge.parser.Parser --> command.DeleteLogCommand
+activeedge.parser.Parser --> command.FindCommand
+activeedge.parser.Parser --> command.ShowSummaryCommand
+activeedge.parser.Parser --> command.HelpCommand
+activeedge.parser.Parser --> command.PrintFoodCommand
+activeedge.parser.Parser --> command.PrintExercisesCommand
+activeedge.parser.Parser --> command.ClearCommand
+activeedge.parser.Parser --> command.InvalidCommand
+activeedge.parser.Parser --> command.LogWaterCommand
+activeedge.parser.Parser --> command.LogMealCommand
+activeedge.parser.Parser --> command.LogExerciseCommand
+activeedge.parser.Parser --> command.ShowCaloriesCommand
+activeedge.parser.Parser --> command.ViewWaterIntakeCommand
+activeedge.parser.Parser --> command.ShowGoalsCommand
+activeedge.parser.Parser --> command.AddFoodItemCommand
+activeedge.parser.Parser --> command.AddExerciseItemCommand
+activeedge.parser.Parser --> command.ChangeHeightCommand
+activeedge.parser.Parser --> command.ChangeWeightCommand
+activeedge.parser.Parser --> command.ChangeWaterGoalCommand
+activeedge.parser.Parser --> command.ChangeCalorieGoalCommand
+
+hide circle
+skinparam classAttributeIconSize 0
+
+@enduml

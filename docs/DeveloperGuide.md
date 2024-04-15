@@ -78,48 +78,60 @@ The generic sequence diagram provides a visual representation of the interaction
 ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such
 as user interface, data storage, and task management.
 
-![Generic Sequence Diagram](https://github.com/SuveenE/tp/blob/master/images/Generic-Sequence-Diagram.png?raw=true)
+![Generic Sequence Diagram](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/GenericSequenceDiagram.png?raw=true)
 
 ### Parser
-The Parser components can be found within the Parser package.
-It is responsible for parsing the input String of the user, and returning an appropriate XYZCommand class.
-If the input is invalid, it throws exceptions to the Error package for error handling.
-The Parser Class Diagram below shows how Execute, Parser, Error, Command classes of their respective packages work together.
+The diagram outlines the structure of the ActiveEdge application's Parser module and its connections with
+various Command classes. The Parser class is responsible for parsing user input and generating appropriate commands, 
+utilizing DateTimeFormatter instances for date and time parsing. It interacts with Command classes such as logging 
+commands (e.g., LogWaterCommand, LogMealCommand), listing commands (ListFullCommand, DeleteLogCommand), and other 
+functionalities like showing summaries and managing goals. This setup promotes modular design and efficient handling 
+of user actions within the ActiveEdge application.
 
-![Main](https://github.com/SuveenE/tp/blob/master/images/Parser.png?raw=true)
+![Parser](https://github.com/Praneet-25/tp/blob/master/images/Parser.png?raw=true)
 
 ### Command
 
 In the provided code, commands are represented as individual classes, each encapsulating a specific action or operation 
-within the ActiveEdge application, promoting modularity and separation of concerns.
+within the ActiveEdge application, promoting modularity and separation of concerns. The graph below depicts the 
+interactions between the different components of  ActiveEdge  when water, a meal or an exercise is logged in.
 
-![Command](https://github.com/SuveenE/tp/blob/master/images/Command-Class.png?raw=true)
+![Command](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/LogCommand.png?raw=true)
 
 ### Storage
-Storage is the main class responsible for file operations and data management.
-UserDetailsList, LogHeight, and LogWeight handle user details such as height and weight logs.
-TaskList manages various types of tasks including goals, meals, water intake, and exercises.
-GoalTask, MealTask, WaterTask, and ExerciseTask are specific task types with their attributes.
-AddBMICommand, AddHeightCommand, and AddWeightCommand are commands for adding BMI, height, and weight respectively.
-The relationships depicted in the diagram are primarily composition and inheritance:
+The provided  diagram represents the structure of the ActiveEdge application, particularly focusing on the commands and log-related classes. Here's a breakdown of the key components:
 
+1. **LogMeal, LogExercise, LogWater:**
+    - These classes represent different types of logs that can be recorded in the ActiveEdge application. For instance, `LogMeal` could log meals consumed, `LogExercise` could log exercises performed, and `LogWater` could log water intake.
 
-![Main](https://github.com/SuveenE/tp/blob/master/images/Storage.png?raw=true)
+2. **Storage:**
+    - The `Storage` class is responsible for handling file operations within the ActiveEdge application. It includes static methods such as `ensureDirectoryExists`, `createFile`, `saveLogsToFile`, `listEmpty`, and `fetchData`, which manage file creation, saving logs to files, and fetching data from files.
 
-Storage has composition relationships with UserDetailsList and TaskList as it manages instances of these classes.
-UserDetailsList and TaskList have a composition relationship with their respective contained classes (LogHeight, LogWeight, GoalTask, MealTask, WaterTask, ExerciseTask) 
-as they hold lists of instances of these classes. AddBMICommand, AddHeightCommand, and AddWeightCommand are standalone commands 
-used within the Storage class but don't directly interact with the other classes in the diagram.
+3. **Commands (AddCalorieGoalCommand, AddWaterGoalCommand, AddWeightCommand, AddHeightCommand, AddBMICommand):**
+    - These classes represent commands that can be executed within the ActiveEdge application. Each command encapsulates specific actions related to setting calorie goals, water goals, weight, height, or calculating BMI, promoting a modular and reusable design.
+
+4. **LogGoals, LogWeight, LogHeight, LogBMI:**
+    - These classes represent logs related to user goals, weight, height, and BMI. They store relevant data such as the type of goal, weight value, height value, and BMI calculations along with timestamps.
+
+5. **LogList, UserDetailsList:**
+    - These classes manage lists of logs and user details within the ActiveEdge application. They provide functionalities to add, delete, get, and clear logs or user details, facilitating organized data management.
+
+6. **Relationships:**
+    - The diagram shows relationships between various classes, such as inheritance (`Storage` inheriting from `UserDetailsList` and `LogList`) and associations between commands and logs (e.g., `AddBMICommand` associated with `LogBMI`).
+
+Overall, the diagram reflects a structured and modular design for the ActiveEdge application, with separate classes for commands, logs, file storage, and data management, promoting code reusability, maintainability, and separation of concerns.
+
+![Storage](https://github.com/Praneet-25/tp/blob/master/images/Storage.png?raw=true)
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
-![Main Component](https://github.com/SuveenE/tp/blob/master/images/Main-Component.png?raw=true)
+![Main Component](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Main-component2%20UML.png?raw=true)
 
 
 ### UI Package
 The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating interactions such as printing welcome messages, 
 logging meal and exercise data, displaying goal information, providing help instructions, and managing user queries and commands for health tracking and goal setting.
-![Ui Package](https://github.com/SuveenE/tp/blob/master/images/Ui-package.png?raw=true)
+![Ui Package](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Ui.png?raw=true)
 
 Under commands, there are 17 sub-components:
 ```AddBMICommand```: A command responsible for calculating and adding Body Mass Index (BMI) information.
@@ -220,11 +232,34 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 
 ## Glossary
 
-* *glossary item* - Definition
-
+* *Log* - Entering your food, water and exercise data into the tracker.
+* *Add* - Adding new exercises and food items to existing food and exercise database.
+* *List* - Listing down the users' logged entries.
+* *Summary* - Summarises the logged data of total water, calorie intake comparing it to the goals of the users.
+* *wg* - Water goal (`change wg` used to change water goal)
+* *wcg* - Calorie goal (`change cg` used to change calorie goal)
 ## Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+1. Launching the App 
+    - Refer to the [Quick Start](#quick-start) to get ActiveEdge set up and running.
+    - Enter your height, weight, calorie and water goals when prompted.
+   
+2. Getting help
+    - Run the `help` command by typing `help` and hitting `Enter` key on your keyboard.
+   
+3. With the help guide, you can `log` or `add` meal, exercises and water to your tracker.
+    - Run the following commands `log m/chicken rice s/1`/ `log e/running d/1` /
+      `add m/[FOOD] c/[CALORIES_PER_ERVING] s/[SERVINGS]`/ 
+      `add e/[EXERCISES] c/[CALORIES_BURNT_PER _MIN] d/[DURATION_IN_MINUTES]`
+   
+4. Run `list` to see your logged data.
+
+5. Use `delete` command with help of User Guide to delete any logged entries.
+    - Run the following commands `delete chicken rice` / `delete running`
+   
+6. Run `summary` to track your calorie and water intake.
+
+7. Run the `bye` command to exit app
 
 ## Command Summary
 
@@ -253,9 +288,8 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 | Get help                            | `help`                                                            |
 | Clear all logged entries            | `clear`                                                           |
 | Exit the program                    | `bye`                                                             |
-                                                      |
 
 
 ## Acknowledgements
 
-{list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+

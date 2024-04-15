@@ -1,0 +1,27 @@
+@startuml
+autonumber
+
+actor User
+participant Parser
+participant LogExerciseCommand
+participant LogMealCommand
+participant LogWaterCommand
+participant LogList
+participant CommandUi
+
+User -> Parser: User input
+Parser -> LogExerciseCommand: execute()
+LogExerciseCommand --> LogList: logList
+LogExerciseCommand -> CommandUi: printExerciseLogMessage()
+
+User -> Parser: User input
+Parser -> LogMealCommand: execute()
+LogMealCommand --> LogList: logList
+LogMealCommand -> CommandUi: printMealLogMessage()
+
+User -> Parser: User input
+Parser -> LogWaterCommand: execute()
+LogWaterCommand --> LogList: logList
+LogWaterCommand -> CommandUi: printWaterLogMessage()
+
+@enduml

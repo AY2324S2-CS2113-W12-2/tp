@@ -1,31 +1,35 @@
 package command;
 
-import activeedge.task.Task;
+import activeedge.log.Log;
+import activeedge.userdetails.UserDetails;
 import activeedge.ui.CommandUi;
+import static activeedge.log.LogList.logList;
+import static activeedge.userdetails.UserDetailsList.detailsList;
 
-import static activeedge.task.TaskList.tasksList;
-
-public class ShowSummaryCommand {
+public class ShowSummaryCommand extends Command {
     public void execute() {
         int totalCalories = 0;
         int totalWaterIntake = 0;
         int totalCaloriesBurnt = 0;
+        int height = 0;
+        int weight = 0;
+        int BMI = 0;
 
         String calorieGoal = "0";
         String waterGoal = "0";
 
-        for (Task task : tasksList) {
-            if (task.toString().startsWith("Meal")) {
-                String[] parts = task.toString().split(" ");
-                totalCalories += Integer.parseInt(parts[parts.length - 1]);
-            } else if (task.toString().startsWith("Water")) {
-                String[] parts = task.toString().split(" ");
-                totalWaterIntake += Integer.parseInt(parts[parts.length - 1]);
-            } else if (task.toString().startsWith("Exercise")) {
-                String[] parts = task.toString().split(" ");
-                totalCaloriesBurnt += Integer.parseInt(parts[parts.length - 1]);
-            } else if (task.toString().startsWith("Goal")) {
-                String[] parts = task.toString().split(" ");
+        for (Log log : logList) {
+            if (log.toString().startsWith("Meal")) {
+                String[] parts = log.toString().split("\\s*\\|\\s*|\\s+");
+                totalCalories += Integer.parseInt(parts[parts.length - 6]);
+            } else if (log.toString().startsWith("Water")) {
+                String[] parts = log.toString().split("\\s*\\|\\s*|\\s+");
+                totalWaterIntake += Integer.parseInt(parts[1]);
+            } else if (log.toString().startsWith("Exercise")) {
+                String[] parts = log.toString().split("\\s*\\|\\s*|\\s+");
+                totalCaloriesBurnt += Integer.parseInt(parts[parts.length - 6]);
+            } else if (log.toString().startsWith("Goal")) {
+                String[] parts = log.toString().split(" ");
                 if (parts[1].equals("Calorie")) {
                     calorieGoal = parts[2];
                 } else if (parts[1].equals("Water")) {
@@ -34,10 +38,23 @@ public class ShowSummaryCommand {
             }
         }
 
+        for (UserDetails userdetails : detailsList) {
+            if (userdetails.toString().startsWith("Height")) {
+                String[] parts = userdetails.toString().split(" ");
+                height = Integer.parseInt(parts[1]);
+            } else if (userdetails.toString().startsWith("Weight")) {
+                String[] parts = userdetails.toString().split(" ");
+                weight = Integer.parseInt(parts[1]);
+            } else if (userdetails.toString().startsWith("BMI")) {
+                String[] parts = userdetails.toString().split(" ");
+                BMI = Integer.parseInt(parts[1]);
+            }
+        }
+
         int netCalories = totalCalories - totalCaloriesBurnt;
         String calorieStatus = calculateCalorieStatus(netCalories, Integer.parseInt(calorieGoal));
 
-        CommandUi.printShowSummaryMessage(totalCalories,totalWaterIntake, totalCaloriesBurnt,
+        CommandUi.printShowSummaryMessage(height, weight, BMI, totalCalories,totalWaterIntake, totalCaloriesBurnt,
                 calorieGoal,waterGoal,netCalories, calorieStatus);
     }
 

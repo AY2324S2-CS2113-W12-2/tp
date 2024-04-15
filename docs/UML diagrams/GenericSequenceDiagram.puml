@@ -1,0 +1,28 @@
+@startuml
+autonumber
+
+actor User
+participant "CommandUi" as CommandUi
+participant "Parser" as Parser
+participant "Storage" as Storage
+participant "Command" as Command
+participant "Scanner" as Scanner
+participant "ByeUi" as ByeUi
+
+User -> CommandUi: Print Welcome Message
+User -> Scanner: Input
+Scanner -> Parser: Handle Input
+Parser -> Command: Execute
+Command -> Storage: Save Logs to File
+Parser -> Scanner: Input
+User <-- Scanner: Input
+Scanner -> Parser: Handle Input
+Parser -> Command: Execute
+Command -> Storage: Save Logs to File
+Parser -> Scanner: Input
+User <-- Scanner: Input
+Scanner -> Parser: Handle Input
+Parser -> null: Unknown Command
+User --> Scanner: Input "bye"
+Scanner --> ByeUi: Print Bye Message
+@enduml

@@ -1,20 +1,20 @@
 package command;
 
-import activeedge.task.Task;
-import activeedge.task.TaskList;
+import activeedge.log.Log;
+import activeedge.log.LogList;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-import static activeedge.Storage.saveLogsToFile;
-import static activeedge.task.TaskList.tasksList;
+import static activeedge.log.LogList.logList;
+
 
 /**
  * The ChangeWaterGoalCommand class represents a command to change the user's daily water goal.
  * It prompts the user to set a new water goal and updates it in the task list.
  */
-public class ChangeWaterGoalCommand {
+public class ChangeWaterGoalCommand extends Command{
 
     /**
      * Executes the command to change the user's daily water goal.
@@ -22,18 +22,18 @@ public class ChangeWaterGoalCommand {
      *
      * @throws ActiveEdgeException if an error occurs during the execution of the command.
      */
-    public static void execute() throws ActiveEdgeException {
+    public void execute() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         String date = currentDateTime.format(dateFormatter);
         String time = currentDateTime.format(timeFormatter);
 
-        // Remove existing water goal task
-        for (int i = 0; i < tasksList.size(); i++) {
-            Task tasksList = TaskList.tasksList.get(i);
-            if (tasksList.toString().startsWith("Goal Water")) {
-                TaskList.delete(i);
+        // Remove existing water goal log
+        for (int i = 0; i < logList.size(); i++) {
+            Log logList = LogList.logList.get(i);
+            if (logList.toString().startsWith("Goal Water")) {
+                LogList.delete(i);
             }
         }
 
@@ -48,8 +48,8 @@ public class ChangeWaterGoalCommand {
                 if (waterGoal >= 1 && waterGoal <= 6000) {
                     AddWaterGoalCommand addWaterGoalCommand = new AddWaterGoalCommand(waterGoal, date, time);
                     addWaterGoalCommand.execute();
-                    System.out.println("You have successfully changed your water goal! You can continue logging data!");
-                    saveLogsToFile("data/data.txt");
+                    System.out.println("You have successfully changed your water goal! " +
+                            "You can continue to log your data!");
                     l++;
                 } else {
                     System.out.println("Please input a positive integer between 1 and 6000!");

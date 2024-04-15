@@ -1,0 +1,127 @@
+@startuml
+
+    class LogMeal
+    class LogExercise
+    class LogWater
+
+    class Storage {
+        +{static} ensureDirectoryExists(filePath: String): void
+        +{static} createFile(filePath: String): void
+        +{static} saveLogsToFile(filePath: String): void
+        +{static} listEmpty(): void
+        +{static} fetchData(): void
+        -extractDateTimeString(log: String): String
+        -parseDateTime(dateTimeStr: String): LocalDateTime
+    }
+
+
+
+    class AddCalorieGoalCommand {
+      -int calorieGoal
+      -String date
+      -String time
+      +AddCalorieGoalCommand(int calorieGoal, String date, String time)
+      +execute(): void
+    }
+
+    class AddWaterGoalCommand {
+      -int waterGoal
+      -String date
+      -String time
+      +AddWaterGoalCommand(int waterGoal, String date, String time)
+      +execute(): void
+    }
+
+    class AddWeightCommand {
+      -Integer weight
+      -String date
+      -String time
+      +AddWeightCommand(Integer weight, String date, String time)
+      +execute(): void
+    }
+
+    class AddHeightCommand {
+      -Integer height
+      -String date
+      -String time
+      +AddHeightCommand(Integer height, String date, String time)
+      +execute(): void
+    }
+
+    class AddBMICommand {
+      -Integer heightInput
+      -Integer weightInput
+      -String date
+      -String time
+      +AddBMICommand(Integer heightInput, Integer weightInput, String date, String time)
+      +execute(): void
+    }
+
+    class LogGoals {
+      -String type
+      -int value
+      -String date
+      -String time
+      +LogGoals(String type, int value, String date, String time)
+    }
+
+    class LogWeight {
+      -Integer weight
+      -String date
+      -String time
+      +LogWeight(Integer weight, String date, String time)
+    }
+
+    class LogHeight {
+      -Integer height
+      -String date
+      -String time
+      +LogHeight(Integer height, String date, String time)
+    }
+
+    class LogBMI {
+      -Integer heightInput
+      -Integer weightInput
+      -String date
+      -String time
+      +LogBMI(Integer heightInput, Integer weightInput, String date, String time)
+    }
+
+
+    class LogList {
+      -ArrayList<Log> logList
+      +delete(index: int): Log
+      +add(log: Log): void
+      +get(): Log
+      +clearLogs(): void
+    }
+
+    class UserDetailsList {
+      -ArrayList<UserDetails> detailsList
+      +add(details: UserDetails): void
+      +get(): UserDetails
+      +delete(index: int): UserDetails
+      +clearDetailsList(): void
+    }
+
+
+Storage --|> UserDetailsList
+Storage --|> LogList
+LogGoals --|> LogList
+LogMeal --|> LogList
+LogExercise --|> LogList
+LogWater --|> LogList
+LogBMI --|> UserDetailsList
+LogHeight --|> UserDetailsList
+LogWeight --|> UserDetailsList
+AddBMICommand --> LogBMI
+AddHeightCommand --> LogHeight
+AddWeightCommand --> LogWeight
+AddCalorieGoalCommand --> LogGoals
+AddWaterGoalCommand --> LogWater
+
+hide circle
+skinparam classAttributeIconSize 0
+
+@enduml
+

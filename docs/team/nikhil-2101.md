@@ -6,7 +6,7 @@ the ability to input the food and water they consumed and the exercises they eng
 to incentivise and promote a healthy lifestyle amid their busy and rigid schedules. 
 
 ### Summary of Contributions
-To view the code that I have contributed: https://shorturl.at/owEU5
+To view the code that I have contributed: [Click Here](https://shorturl.at/owEU5)
 
 #### Enhancements Implemented
 1. Created `DeleteLogCommand` class to delete specific logs.   

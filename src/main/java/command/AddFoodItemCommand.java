@@ -46,8 +46,6 @@ public class AddFoodItemCommand extends Command {
      */
     public void execute() {
         try {
-            int calorieGoal = getCalorieGoal();
-
             //Check if the food item already exist and show the necessary steps.
             if (FoodData.foodItemExists(description)) {
                 CommandUi.promptLogFoodMessage(description);
@@ -58,7 +56,7 @@ public class AddFoodItemCommand extends Command {
                 CommandUi.printAddFoodItemMessage(description);
                 LogMealCommand logMealCommand = new LogMealCommand(description, servings,
                         caloriesPerSaving * servings, date, time, true);
-                int totalCaloriesConsumed = calculateTotalCaloriesConsumed() + caloriesPerSaving;
+                //int totalCaloriesConsumed = calculateTotalCaloriesConsumed() + caloriesPerSaving;
                 logMealCommand.execute();
             }
         } catch(Exception e){

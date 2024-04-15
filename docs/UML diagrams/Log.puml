@@ -1,0 +1,33 @@
+@startuml
+autonumber
+
+actor User
+participant Parser
+participant "LogMealCommand" as Meal
+participant "LogWaterCommand" as Water
+participant "LogExerciseCommand" as Exercise
+participant "AddCalorieGoalCommand" as Calorie
+participant "AddWaterGoalCommand" as Water
+participant "LogList" as LogList
+
+User -> Parser : User input to log meal
+Parser -> Meal : execute()
+Weight -> LogList : add(LogMeal)
+Weight -> CommandUi : printMealLogMessage()
+
+User -> Parser : User input to log water
+Parser -> Weight : execute()
+Weight -> DetailsList : add(LogWeight)
+Weight -> CommandUi : printWaterLogMessage()
+
+User -> Parser : User input to log exercise
+Parser -> Exercise : execute()
+Height -> DetailsList : add(LogHeight)
+Height -> CommandUi : printExerciseLogMessage()
+
+User -> Parser : User input to log calories
+Parser -> Goals : execute()
+BMI -> DetailsList : add(LogGoals)
+BMI -> CommandUi : printShowSummaryMessage()
+
+@enduml

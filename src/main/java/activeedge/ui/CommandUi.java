@@ -77,7 +77,7 @@ public class CommandUi {
     public static void printMealLogMessage(LogMeal logMeal) {
         System.out.println("You've logged " + Integer.toString(logMeal.getServings()) +
                 " servings" + " of " + logMeal.getFoodName() + ".") ;
-        System.out.println("Estimated calories: " + Integer.toString(logMeal.getMealCalories()) + " cal");
+        System.out.println("Estimated calories consumed: " + Integer.toString(logMeal.getMealCalories()) + " cal");
     }
 
     /**
@@ -136,7 +136,7 @@ public class CommandUi {
 
         int totalSurplus = totalCalories - Integer.parseInt(goal);
         System.out.println("You have burned " + totalCaloriesFromExercises + " today!");
-        System.out.println("You have consumed " + totalCaloriesFromMeals + " cal out of " + goal + " kcal");
+        System.out.println("You have consumed " + totalCaloriesFromMeals + " kcal out of " + goal + " kcal");
 
         if(totalCaloriesFromMeals > Integer.parseInt(goal)) {
             System.out.println("You have exceeded your calorie intake goal!");

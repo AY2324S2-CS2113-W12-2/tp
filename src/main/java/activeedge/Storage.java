@@ -118,8 +118,9 @@ public class Storage {
         String date = currentDateTime.format(dateFormatter);
         String time = currentDateTime.format(timeFormatter);
         System.out.print("\n");
-        System.out.println("Whether you're new here or your data has been cleared, let's embark on " +
-                "this journey together by setting up your preferences and goals!");
+        System.out.println("Since you are new here or your details are missing," +
+                " let's start with a few questions to set things up!");
+
 
         int heightInput = userHeight(date, time);
         int weightInput = userWeight(date, time);

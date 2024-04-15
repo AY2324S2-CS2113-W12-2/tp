@@ -28,7 +28,7 @@ public class DeleteLogCommand extends Command{
             if(parts[1].contains("i/")){
                 indexParts = parts[1].trim().split("i/");
                 this.index = Integer.parseInt(indexParts[1].trim());
-                this.description = indexParts[0].trim().replaceAll("(?<=\\d)\\s+", "");
+                this.description = indexParts[0].trim().replaceAll("\\s+", " ");
                 if(index <= 0){
                     CommandUi.printInvalidItemIndexMessage();
                     this.errorRaised = true;
@@ -36,7 +36,7 @@ public class DeleteLogCommand extends Command{
             } else {
                 //If no index to be deleted is passed, 1 is considered as the index.
                 this.index = 1;
-                this.description = parts[1].trim().replaceAll("(?<=\\d)\\s+", "");
+                this.description = parts[1].trim().replaceAll("\\s+", " ");
             }
         } else {
             CommandUi.printInvalidDeleteFormatMessage();

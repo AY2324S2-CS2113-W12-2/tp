@@ -50,7 +50,7 @@ public class Parser {
 
         if (inputSplit[0].equalsIgnoreCase("log")) {
             return parseLogCommand(input, date, time);
-        } else if (inputSplit[0].trim().equalsIgnoreCase("list")) {
+        } else if (inputSplit[0].trim().equalsIgnoreCase("list") && inputSplit.length == 1 ) {
             return new ListFullCommand();
         } else if (inputSplit[0].trim().equalsIgnoreCase("show")) {
             return parseShowCommand(input);
@@ -73,10 +73,8 @@ public class Parser {
         } else if (inputSplit[0].trim().equalsIgnoreCase("change")) {
             return parseChangeCommand(input);
         } else {
-            System.out.println("Unknown command. Please enter 'help' to see all the commands.");
+            return new InvalidCommand("Unknown command. Please enter 'help' to see all the commands.");
         }
-        Storage.saveLogsToFile("data/data.txt");
-        return null;
     }
 
     private Command parseLogCommand(String input, String date, String time) {
@@ -102,36 +100,41 @@ public class Parser {
     }
 
     private Command parseWaterLogCommand(String input, String date, String time) {
-        // Normalize input to remove excessive whitespaces around and within the command
-        input = input.replaceAll("\\s+/\\s+", "/").trim();  // Normalize spaces around slashes
-        input = input.replaceAll("\\s+", " ");  // Normalize spaces elsewhere
+        try {
+            // Normalize input to remove excessive whitespaces around and within the command
+            input = input.replaceAll("\\s+/\\s+", "/").trim();  // Normalize spaces around slashes
+            input = input.replaceAll("\\s+", " ");  // Normalize spaces elsewhere
 
-        // Attempt to split the command based on the presence of "w/"
-        String[] commandParts = input.split("\\s+w/");
+            // Attempt to split the command based on the presence of "w/"
+            String[] commandParts = input.split("\\s+w/");
 
-        // Check if the command format is incorrect or the quantity is missing
-        if (commandParts.length < 2 || commandParts[1].trim().isEmpty()) {
-            return new InvalidCommand("Invalid command. Please enter 'log w/[WATER_QUANTITY]'. " +
-                    "For example, 'log w/300'. Enter 'help' for more information.");
+            // Check if the command format is incorrect or the quantity is missing
+            if (commandParts.length < 2 || commandParts[1].trim().isEmpty()) {
+                return new InvalidCommand("Invalid command. Please enter 'log w/[WATER_QUANTITY]'. " +
+                        "For example, 'log w/300'. Enter 'help' for more information.");
+            }
+
+            // Extract the quantity and validate it
+            String quantityString = commandParts[1].trim();
+            if (!quantityString.matches("\\d+")) {  // Ensure the quantity is a positive number
+                return new InvalidCommand("Water quantity must be a positive integer. " +
+                        "Please input an integer above 0!");
+            }
+
+            // Parse the quantity and check the limits
+            int quantity = Integer.parseInt(quantityString);
+            if (quantity <= 0) {
+                return new InvalidCommand("The water quantity must be above 0. Please input a valid integer.");
+            } else if (quantity > 6000) {
+                return new InvalidCommand("Please enter a water value that is 6000ml or lesser.");
+            }
+
+            // Return a valid command if all checks are passed
+            return new LogWaterCommand(Integer.toString(quantity), date, time);
         }
-
-        // Extract the quantity and validate it
-        String quantityString = commandParts[1].trim();
-        if (!quantityString.matches("\\d+")) {  // Ensure the quantity is a positive number
-            return new InvalidCommand("Water quantity must be a positive integer. " +
-                    "Please input an integer above 0!");
-        }
-
-        // Parse the quantity and check the limits
-        int quantity = Integer.parseInt(quantityString);
-        if (quantity <= 0) {
-            return new InvalidCommand("The water quantity must be above 0. Please input a valid integer.");
-        } else if (quantity > 6000) {
+        catch(NumberFormatException e){
             return new InvalidCommand("Please enter a water value that is 6000ml or lesser.");
         }
-
-        // Return a valid command if all checks are passed
-        return new LogWaterCommand(Integer.toString(quantity), date, time);
     }
 
 

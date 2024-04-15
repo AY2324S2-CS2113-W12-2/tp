@@ -6,7 +6,6 @@ package activeedge.log;
  * calories burnt of an exercise activity.
  */
 public class LogExercise extends Log {
-    protected String exerciseName;
     protected int duration;
     protected Integer caloriesBurnt;
     protected String date;

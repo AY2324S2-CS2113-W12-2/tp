@@ -44,12 +44,5 @@ public class UserDetailsList {
             throw new IndexOutOfBoundsException("Index is out of bounds.");
         }
     }
-
-    /**
-     * Clears the list of user details.
-     */
-    public static void clearDetailsList() {
-        detailsList.clear();
-    }
 }
 

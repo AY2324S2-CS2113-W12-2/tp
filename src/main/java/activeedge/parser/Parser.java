@@ -130,8 +130,7 @@ public class Parser {
 
             // Return a valid command if all checks are passed
             return new LogWaterCommand(Integer.toString(quantity), date, time);
-        }
-        catch(NumberFormatException e){
+        } catch(NumberFormatException e){
             return new InvalidCommand("Please enter a water value that is 6000ml or lesser.");
         }
     }

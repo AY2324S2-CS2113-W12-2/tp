@@ -232,7 +232,6 @@ public class FoodData {
     /**
      * Prints the calories of each food item in the foodItems array.
      */
-    // In FoodData class
     public static void printFood() {
         for (int i = 0; i < foodItems.length; i++) {
             // Concatenate the food name, calories, and "kcal" in the same line

@@ -90,7 +90,6 @@ public class ExerciseData {
     /**
      * Prints the exercise details for each exercise activity in the exerciseList array.
      */
-    // In ExerciseData class
     public static void printExercises() {
         for (int i = 0; i < exercisesList.length; i++) {
             // Concatenate the exercise name and calories burnt per minute in the same line

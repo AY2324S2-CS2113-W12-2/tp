@@ -87,7 +87,7 @@ commands (e.g., LogWaterCommand, LogMealCommand), listing commands (ListFullComm
 functionalities like showing summaries and managing goals. This setup promotes modular design and efficient handling 
 of user actions within the ActiveEdge application.
 
-![Parser.png](..%2Fimages%2FParser.png)
+![Parser](https://github.com/Praneet-25/tp/blob/master/images/Parser.png?raw=true)
 
 ### Command
 
@@ -119,7 +119,7 @@ The provided  diagram represents the structure of the ActiveEdge application, pa
 
 Overall, the diagram reflects a structured and modular design for the ActiveEdge application, with separate classes for commands, logs, file storage, and data management, promoting code reusability, maintainability, and separation of concerns.
 
-![Storage.png](..%2Fimages%2FStorage.png)
+![Storage](https://github.com/Praneet-25/tp/blob/master/images/Storage.png?raw=true)
 
 ### Main Component
 The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.

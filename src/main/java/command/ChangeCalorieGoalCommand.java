@@ -43,7 +43,7 @@ public class ChangeCalorieGoalCommand extends Command {
         int newCalorieGoal = 0;
         int i = 0;
         while (i < 1) {
-            System.out.println("Please input your new daily calorie goal: ");
+            System.out.println("Please input your new daily calorie goal (in kcal): ");
             try {
                 newCalorieGoal = Integer.parseInt(scanner.nextLine());
                 if (newCalorieGoal >= 1 && newCalorieGoal <= 10000) {

@@ -1,9 +1,5 @@
 package command;
 
-import activeedge.log.Log;
-import activeedge.log.LogGoals;
-import activeedge.log.LogList;
-import activeedge.log.LogMeal;
 import activeedge.ui.CommandUi;
 
 import static activeedge.FoodData.foodItems;
@@ -46,8 +42,6 @@ public class AddFoodItemCommand extends Command {
      */
     public void execute() {
         try {
-            int calorieGoal = getCalorieGoal();
-
             //Check if the food item already exist and show the necessary steps.
             if (FoodData.foodItemExists(description)) {
                 CommandUi.promptLogFoodMessage(description);
@@ -58,7 +52,6 @@ public class AddFoodItemCommand extends Command {
                 CommandUi.printAddFoodItemMessage(description);
                 LogMealCommand logMealCommand = new LogMealCommand(description, servings,
                         caloriesPerSaving * servings, date, time, true);
-                int totalCaloriesConsumed = calculateTotalCaloriesConsumed() + caloriesPerSaving;
                 logMealCommand.execute();
             }
         } catch(Exception e){
@@ -78,32 +71,4 @@ public class AddFoodItemCommand extends Command {
         return caloriesPerSaving;
     }
 
-    /**
-     * Retrieves the calorie goal of the user.
-     *
-     * @return the calorie goal or zero if not set
-     */
-    private int getCalorieGoal() {
-        for (Log log : LogList.logList) {
-            if (log instanceof LogGoals && log.getDescription().startsWith("Calorie")) {
-                return ((LogGoals) log).getGoalAmount();
-            }
-        }
-        return 0;
-    }
-
-    /**
-     * Calculates the total calories consumed from all meal logs in the log list.
-     *
-     * @return the total calories consumed
-     */
-    private int calculateTotalCaloriesConsumed() {
-        int totalCaloriesConsumed = 0;
-        for (Log log : LogList.logList) {
-            if (log instanceof LogMeal) {
-                totalCaloriesConsumed += ((LogMeal) log).getMealCalories();
-            }
-        }
-        return totalCaloriesConsumed;
-    }
 }

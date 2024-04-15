@@ -23,10 +23,10 @@ Welcome to ACTIVE EDGE!
 Take the next step in your Healthy Lifestyle!
 ```
 ## Table of Contents
-- [Introduction](#introduction)
-- [Quick Start](#quick-start)
-- [Features](#features)
-  
+
+- [Introduction](#introduction)   
+- [Quick Start](#quick-start)   
+- [Features](#features)   
     - [Log meal: `log`](#log-meal--log)
     - [Log water intake : `log`](#log-water-intake--log)
     - [Log exercises: `log`](#log-exercises-log)
@@ -62,7 +62,7 @@ Take the next step in your Healthy Lifestyle!
 At the start of the application, new users are prompted to enter the following information.
 1. **Height** in centimeters (cm)
 2. **Weight** in Kilograms (kg)
-3. **Daily calorie goal** in calories
+3. **Daily calorie goal** in calories (kcal)
 4. **Daily water intake goal** in millimeters (ml)
 
 ```
@@ -85,7 +85,7 @@ Format: `log m/<MEAL_NAME> s/<NUMBER_OF_SERVINGS>`
 Sample input: `log m/chicken rice s/1`  
 Expected output: 
 ```
-You've logged 1 servings of chicken rice.
+You've logged 1 serving(s) of chicken rice.
 Estimated calories consumed: 450 kcal
 ```
 
@@ -101,7 +101,7 @@ Format: `log w/<AMOUNT_OF_WATER>`
 Sample input: `log w/1000`   
 Expected output:
 ```
-You've logged logged 1000 ml of water.
+You've logged 1000 ml of water.
 ```
 
 ---
@@ -215,9 +215,16 @@ Exercise: walking | Calories burnt per minute: 4 kcal
 
 ### Delete meal logs: `delete`
 
-Deletes a meal from the logs list. By default, it deletes the oldest log.
+Deletes a meal from the logs list. By default, it deletes the oldest log. If the **meal consumed is not repeated**, 
+use the following format.
 
 Format:  `delete <MEAL_NAME>`
+
+Sample input: `delete chicken rice`   
+Expected output:
+```
+Log deleted: Meal | chicken rice | 4 serving(s) | 1800 kcal (Recorded on: 2024-04-13 15:22)
+```
 
 If you have **multiple logs with the same meal name**, use the additional parameter N to specify which log to delete.
 
@@ -232,23 +239,28 @@ If you are unsure about the index, try `list` command and figure out the index f
 Sample input: `delete chicken rice i/2`   
 Expected output:
 ```
-Log deleted: Meal | chicken rice | 4 servings | 1800 kcal (Recorded on: 2024-04-13 15:22)
+Log deleted: Meal | chicken rice | 4 serving(s) | 1800 kcal (Recorded on: 2024-04-13 15:22)
 ```
 
 ---
 
 ### Delete water logs: `delete`
 
-Deletes a water log from the logs list. By default, it deletes the oldest log.
+Deletes a water log from the logs list. By default, it deletes the oldest log. If **volume of water consumed not
+repeated**, use the following format.
 
 Format:  `delete <QUANTITY_OF_WATER> ml`
+
+Sample input: `delete 1000 ml`    
+Expected output:
+```
+Log deleted: Water | 1000 ml (Recorded on: 2024-04-13 15:18)
+```
 
 If you have **multiple logs with the same water quantity**, use the additional parameter N to specify which log to 
 delete.
 
-Format: `delete <QUANTITY_OF_WATER> ml i/2`
-
-
+Format: `delete <QUANTITY_OF_WATER> ml i/<N>`
 
 * The `QUANTITY_OF_WATER` can be the quantity of water the
   user logged previously and wishes to delete.
@@ -256,7 +268,7 @@ Format: `delete <QUANTITY_OF_WATER> ml i/2`
   
 If you are unsure about the index, try `list` command and figure out the index first.
 
-Sample input: `delete 1000 ml`    
+Sample input: `delete 1000 ml i/1`    
 Expected output:  
 ```
 Log deleted: Water | 1000 ml (Recorded on: 2024-04-13 15:18)
@@ -266,9 +278,16 @@ Log deleted: Water | 1000 ml (Recorded on: 2024-04-13 15:18)
 
 ### Delete exercise logs: `delete`
 
-Deletes an exercise log from the logs list.  By default, it deletes the oldest log.
+Deletes an exercise log from the logs list.  By default, it deletes the oldest log. If **exercise not
+repeated**, use the following format.
 
 Format:  `delete <EXERCISE_NAME>`
+
+Sample input: `delete running`   
+Expected output:
+```
+Log deleted: Exercise | running | 10 mins | 100 kcal (Recorded on: 2024-04-13 15:18)
+```
 
 If you have **multiple logs with the same exercise**, use the additional parameter N to specify which log to delete.
 
@@ -334,9 +353,9 @@ Format: `change h`
 user: change h
 Please input your height (in cm):
 user: 174
-You have successfully changed your height!
 Your BMI is 23.
 You are in the healthy weight range.
+You have successfully changed your height! You can continue to log your data!
 ```
 ---
 
@@ -348,9 +367,9 @@ Format: `change w`
 user: change w
 Please input your weight (in kg): 
 user: 85
-You have successfully changed your height!
 Your BMI is 28.
 You are in the overweight range.
+You have successfully changed your weight! You can continue to log your data!
 ```
 ---
 
@@ -362,7 +381,7 @@ Format: `change cg`
 user: change cg
 Please input your new daily calorie goal (in kcal): 
 user: 3200
-You have successfully changed your calorie goal! 
+You have successfully changed your calorie goal! You can continue to log your data!
 ```
 ---
 
@@ -374,7 +393,7 @@ Format: `change wg`
 user: change wg
 Please set your new daily water goal (in ml): 
 user: 3500
-You have successfully changed your water goal!
+You have successfully changed your water goal! You can continue to log your data!
 ```
 ---
 

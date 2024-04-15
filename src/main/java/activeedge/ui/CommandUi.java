@@ -35,39 +35,65 @@ public class CommandUi {
      * and exercises.
      */
     public static void printFullList() {
-        System.out.println("Logged data for today:");
+        boolean isMealLogsPresent = false;
+        boolean isWaterLogsPresent = false;
+        boolean isExerciseLogsPresent = false;
 
-        System.out.println("Food: ");
-        System.out.print(LINE);
-        int j = 1;
         for (int i = 0; i < logList.size(); i++) {
             if (logList.get(i).toString().startsWith("Meal")) {
-                System.out.println(j + ". " + logList.get(i).toString().substring(7));
-                j++;
+                isMealLogsPresent = true;
             }
-        }
-        System.out.println(LINE);
-        System.out.println("Water:");
-        System.out.print(LINE);
-        int k = 1;
-        for (int i = 0; i < logList.size(); i++) {
             if (logList.get(i).toString().startsWith("Water")) {
-                System.out.println(k + ". " + logList.get(i).toString().substring(8));
-                k++;
+                isWaterLogsPresent = true;
             }
-        }
-        System.out.println(LINE);
-        System.out.println("Exercises:");
-        System.out.print(LINE);
-        int l = 1;
-        for (int i = 0; i < logList.size(); i++) {
             if (logList.get(i).toString().startsWith("Exercise")) {
-                System.out.print(l + ". " + logList.get(i).toString().substring(11));
-                System.out.println("");
-                l++;
+                isExerciseLogsPresent = true;
             }
         }
-        System.out.println(LINE);
+
+        if (isMealLogsPresent || isWaterLogsPresent || isExerciseLogsPresent){
+            System.out.println("Logged data for today:");
+        }
+
+        if(isMealLogsPresent){
+            System.out.println("Food: ");
+            System.out.print(LINE);
+            int j = 1;
+            for (int i = 0; i < logList.size(); i++) {
+                if (logList.get(i).toString().startsWith("Meal")) {
+                    System.out.println(j + ". " + logList.get(i).toString().substring(7));
+                    j++;
+                }
+            }
+            System.out.println(LINE);
+        }
+
+        if(isWaterLogsPresent){
+            System.out.println("Water:");
+            System.out.print(LINE);
+            int k = 1;
+            for (int i = 0; i < logList.size(); i++) {
+                if (logList.get(i).toString().startsWith("Water")) {
+                    System.out.println(k + ". " + logList.get(i).toString().substring(8));
+                    k++;
+                }
+            }
+            System.out.println(LINE);
+        }
+
+        if(isExerciseLogsPresent){
+            System.out.println("Exercises:");
+            System.out.print(LINE);
+            int l = 1;
+            for (int i = 0; i < logList.size(); i++) {
+                if (logList.get(i).toString().startsWith("Exercise")) {
+                    System.out.print(l + ". " + logList.get(i).toString().substring(11));
+                    System.out.println("");
+                    l++;
+                }
+            }
+            System.out.println(LINE);
+        }
     }
 
     /**

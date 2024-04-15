@@ -29,21 +29,6 @@
 This document specifies the architectural and software design decisions in the implementation of **ActiveEdge**.
 
 
-### How to Use a Developer Guide
-
-Are you a newcomer?
-No problem, navigate to the Quick Start section.
-Feeling disoriented within the content?
-Refer to the Table of Contents to find the appropriate pages.
-Require assistance with the features?
-Consult the Features section in the User Guide for thorough guidance.
-Have inquiries for us?
-Visit the FAQ section in the User Guide.
-Seeking a brief overview of all features?
-Check out the Command Summary page for a summary of all commands.
-Uncertain about a specific term's meaning?
-Refer to the Glossary page for clarification.
-
 ## Quick Start
 
 To get started quickly with ActiveEdge,

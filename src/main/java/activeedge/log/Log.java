@@ -2,7 +2,6 @@ package activeedge.log;
 
 public class Log {
 
-    protected Integer value;
     protected String description;
 
     public Log (String description) {

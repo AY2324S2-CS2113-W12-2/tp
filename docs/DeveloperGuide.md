@@ -25,6 +25,8 @@
 
 ## Introduction
 **ActiveEdge** is a program for a university students to manage their food intake, water intake and exercises via the Command Line Interface (CLI).
+
+
 ### Purpose
 This document specifies the architectural and software design decisions in the implementation of **ActiveEdge**.
 
@@ -44,6 +46,7 @@ Check out the Command Summary page for a summary of all commands.
 Uncertain about a specific term's meaning?
 Refer to the Glossary page for clarification.
 
+
 ## Quick Start
 
 To get started quickly with ActiveEdge,
@@ -55,7 +58,9 @@ follow these simple steps:
 4. Open a command terminal, cd into the home folder you put the jar file in, and run the following command: java -jar ActiveEdge.jar. You should see a welcome screen.
 5. Type commands beside >>> and press Enter to execute it.
 (e.g. typing ```help``` and pressing Enter will show the help page).
+
 ## Design & implementation 🏹  
+
 ### System Architecture
 
 ![System Architecture](https://github.com/SuveenE/tp/blob/master/images/System-Architecture.png?raw=true)
@@ -98,7 +103,7 @@ interactions between the different components of  ActiveEdge  when water, a meal
 ![Command](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/LogCommand.png?raw=true)
 
 ### Storage
-The provided  diagram represents the structure of the ActiveEdge application, particularly focusing on the commands and log-related classes. Here's a breakdown of the key components:
+The provided diagram represents the structure of the ActiveEdge application, particularly focusing on the commands and log-related classes. Here's a breakdown of the key components:
 
 1. **LogMeal, LogExercise, LogWater:**
     - These classes represent different types of logs that can be recorded in the ActiveEdge application. For instance, `LogMeal` could log meals consumed, `LogExercise` could log exercises performed, and `LogWater` could log water intake.
@@ -183,7 +188,6 @@ attribute all tasks share, which is a description
   
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
-
 ## Product scope
 ### Target user profile
 Our target users are NUS university students, including fitness enthusiasts and those striving for a healthier
@@ -222,12 +226,11 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 | v2.0    |new user|log in my height and weight|see what range my weight is in|
 
 
-
-
 ## Non-Functional Requirements
 1. Should be portable and working on any mainstream OS as long as it has Java 11 or above installed.
 2. Should be able to hold up to 100 food items or list of exercises without any lag in the performance of the app  for typical usage.
 3. The average keyboard user should complete tasks more quickly using ActiveEdge compared to a standard GUI application.
+
 
 ## Glossary
 
@@ -237,6 +240,8 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 * *Summary* - Summarises the logged data of total water, calorie intake comparing it to the goals of the users.
 * *wg* - Water goal (`change wg` used to change water goal)
 * *wcg* - Calorie goal (`change cg` used to change calorie goal)
+
+
 ## Instructions for manual testing
 
 1. Launching the App 
@@ -259,6 +264,7 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 6. Run `summary` to track your calorie and water intake.
 
 7. Run the `bye` command to exit app
+
 
 ## Command Summary
 

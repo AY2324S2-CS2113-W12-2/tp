@@ -6,7 +6,6 @@ package activeedge.log;
  * calories burnt of an exercise activity.
  */
 public class LogExercise extends Log {
-    protected String exerciseName;
     protected int duration;
     protected Integer caloriesBurnt;
     protected String date;
@@ -47,6 +46,6 @@ public class LogExercise extends Log {
     @Override
     public String toString() {
         return "Exercise" + " | " + this.getExerciseName() + " | " + this.getDuration() + " mins | " +
-                this.getCaloriesBurnt() + " cal (Recorded on: " + date + " " + time + ")";
+                this.getCaloriesBurnt() + " kcal (Recorded on: " + date + " " + time + ")";
     }
 }

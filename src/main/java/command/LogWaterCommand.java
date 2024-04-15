@@ -35,7 +35,7 @@ public class LogWaterCommand extends Command{
         try {
             quantity = Integer.parseInt(quantityString);
             //@@author nikhil-2101
-            //assert quantity >= 0;
+            assert quantity >= 0;
             if (quantity <= 0) {
                 System.out.println("Water quantity must be above 0. Please try again.");
             } else {

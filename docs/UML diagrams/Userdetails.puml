@@ -1,0 +1,24 @@
+@startuml
+autonumber
+
+actor User
+participant Parser
+participant "LogWeightCommand" as Weight
+participant "LogHeightCommand" as Height
+participant "LogBMICommand" as BMI
+participant "UserDetailsList" as DetailsList
+
+User -> Parser : User input to log weight
+Parser -> Weight : execute()
+Weight -> DetailsList : add(LogWeight)
+
+User -> Parser : User input to log height
+Parser -> Height : execute()
+Height -> DetailsList : add(LogHeight)
+
+User -> Parser : User input to log BMI
+Parser -> BMI : execute()
+BMI -> DetailsList : add(LogBMI)
+
+@enduml
+

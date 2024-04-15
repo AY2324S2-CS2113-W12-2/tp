@@ -40,8 +40,6 @@ import static activeedge.userdetails.UserDetailsList.detailsList;
  * and fetching data from files.
  */
 public class Storage {
-    private static final String DATA_FILE_PATH = "data/data.txt";
-    
     /**
      * Ensures that the directory for a given file path exists.
      * If the directory does not exist, it creates all necessary parent directories.
@@ -53,23 +51,6 @@ public class Storage {
         File parentDir = file.getParentFile();
         if (!parentDir.exists()) {
             parentDir.mkdirs();
-        }
-    }
-
-    /**
-     * Deletes all data from the data file.
-     * It throws an ActiveEdgeException if there is any error during deletion.
-     */
-    public static void deleteData() throws ActiveEdgeException {
-        try {
-            // Delete data file
-            File dataFile = new File(DATA_FILE_PATH);
-            if (dataFile.exists()) {
-                dataFile.delete();
-            }
-        } catch (Exception e) {
-            // If any error occurs during deletion, throw an ActiveEdgeException
-            throw new ActiveEdgeException("Error deleting data file: " + e.getMessage());
         }
     }
 
@@ -118,8 +99,8 @@ public class Storage {
         String date = currentDateTime.format(dateFormatter);
         String time = currentDateTime.format(timeFormatter);
         System.out.print("\n");
-        System.out.println("Whether you're new here or your data has been cleared, let's embark on " +
-                "this journey together by setting up your preferences and goals!");
+        System.out.println("Since you are new here, let's start with a few questions " +
+                "to set things up!");
 
         int heightInput = userHeight(date, time);
         int weightInput = userWeight(date, time);

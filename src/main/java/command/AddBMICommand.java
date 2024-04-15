@@ -21,7 +21,7 @@ public class AddBMICommand {
         int bmi = (int) (weightInput / (heightMeters * heightMeters));
         LogBMI logBMI = new LogBMI(bmi, date, time);
         detailsList.add(logBMI);
-        System.out.println("Your BMI is " + bmi);
+        System.out.println("Your BMI is " + bmi + ".");
         if (bmi < 19) {
             System.out.println("You are in the underweight range.");
         } else if (bmi < 25) {

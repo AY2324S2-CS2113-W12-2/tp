@@ -52,7 +52,9 @@ public class CommandUi {
         }
 
         if (isMealLogsPresent || isWaterLogsPresent || isExerciseLogsPresent){
-            System.out.println("Logged data for today:");
+            System.out.println("Logged data:");
+        } else {
+            System.out.println("Seems like you don't have any logs recorded.");
         }
 
         if(isMealLogsPresent){
@@ -102,8 +104,8 @@ public class CommandUi {
      */
     public static void printMealLogMessage(LogMeal logMeal) {
         System.out.println("You've logged " + Integer.toString(logMeal.getServings()) +
-                " servings" + " of " + logMeal.getFoodName() + ".") ;
-        System.out.println("Estimated calories consumed: " + Integer.toString(logMeal.getMealCalories()) + " cal");
+                " serving(s)" + " of " + logMeal.getFoodName() + ".") ;
+        System.out.println("Estimated calories consumed: " + Integer.toString(logMeal.getMealCalories()) + " kcal");
     }
 
     /**
@@ -113,7 +115,7 @@ public class CommandUi {
     public static void printExerciseLogMessage(LogExercise logExercise) {
         System.out.println("You've logged " + Integer.toString(logExercise.getDuration()) +
                 " minutes" + " of " + logExercise.getExerciseName() + ".") ;
-        System.out.println("Estimated calories burnt: " + Integer.toString(logExercise.getCaloriesBurnt()) + " cal");
+        System.out.println("Estimated calories burnt: " + Integer.toString(logExercise.getCaloriesBurnt()) + " kcal");
     }
 
     /**
@@ -124,7 +126,7 @@ public class CommandUi {
         int totalCalories = 0;
         int totalCaloriesFromMeals = 0;
         int totalCaloriesFromExercises = 0;
-        int caloriegoal;
+
         String goal = "0";
         for (int i = 0; i < logList.size(); i++) {
             String[] parts = logList.get(i).toString().split(" ");
@@ -161,7 +163,7 @@ public class CommandUi {
         totalCalories = totalCaloriesFromMeals - totalCaloriesFromExercises;
 
         int totalSurplus = totalCalories - Integer.parseInt(goal);
-        System.out.println("You have burned " + totalCaloriesFromExercises + " today!");
+        System.out.println("You have burnt " + totalCaloriesFromExercises + " kcal" + " !");
         System.out.println("You have consumed " + totalCaloriesFromMeals + " kcal out of " + goal + " kcal");
 
         if(totalCaloriesFromMeals > Integer.parseInt(goal)) {
@@ -170,9 +172,9 @@ public class CommandUi {
             System.out.println("You're doing an excellent job of managing your calorie intake!");
         }
         if(totalSurplus > 0){
-            System.out.println("Calorie surplus at the moment --> " + totalSurplus);
+            System.out.println("Calorie surplus at the moment --> " + totalSurplus + " kcal");
         } else{
-            System.out.println("Calorie deficit at the moment --> " + -totalSurplus);
+            System.out.println("Calorie deficit at the moment --> " + -totalSurplus + " kcal");
         }
 
     }
@@ -182,7 +184,7 @@ public class CommandUi {
      * @param newLogWater the LogWater object containing the water intake details
      */
     public static void printWaterLogMessage(LogWater newLogWater) {
-        System.out.println("Successfully logged " + newLogWater.getQuantity() + " ml of water.");
+        System.out.println("You've logged " + newLogWater.getQuantity() + " ml of water.");
     }
 
     /**
@@ -192,7 +194,7 @@ public class CommandUi {
      */
     public static void printWaterIntakeMessage(int totalWaterIntake, int waterGoal) {
         double percentage = ((double) totalWaterIntake / waterGoal) * 100;
-        System.out.println("Total water consumed today: " + totalWaterIntake +
+        System.out.println("Total water consumed: " + totalWaterIntake +
                 " ml (" + String.format("%.0f%%", percentage) + " of " + waterGoal + "ml goal).");
     }
 

@@ -85,7 +85,7 @@ Sample input: `log m/chicken rice s/1`
 Expected output: 
 ```
 You've logged 1 servings of chicken rice.
-Estimated calories: 450 cal
+Estimated calories consumed: 450 kcal
 ```
 
 ---
@@ -100,7 +100,7 @@ Format: `log w/<AMOUNT_OF_WATER>`
 Sample input: `log w/1000`   
 Expected output:
 ```
-Successfully logged 1000 ml of water.
+You've logged logged 1000 ml of water.
 ```
 
 ---
@@ -118,7 +118,7 @@ Sample input: `log e/running d/10`
 Expected output:
 ```
 You've logged 10 minutes of running.
-Estimated calories burnt: 100 cal
+Estimated calories burnt: 100 kcal
 ```
 ---
 
@@ -129,7 +129,7 @@ Sample input: `show g`
 Expected output:
 ```
 Current goals 
-Daily calories intake goal: 2800 cal
+Daily calories intake goal: 2800 kcal
 Daily water intake goal: 3000 ml
 ```
 ---
@@ -140,8 +140,8 @@ Displays the total calorie intake, the total amount of calories burnt and where 
 Sample input: `show c`  
 Expected output:
 ```
-You have burned 100 today!
-You have consumed 450 cal out of 2800 kcal
+You have burned 100 kcal today!
+You have consumed 450 kcal out of 2800 kcal
 You're doing an excellent job of managing your calorie intake!
 Calorie deficit at the moment --> 2450
 ```
@@ -186,7 +186,7 @@ ____________________________________________________________
 Displays all the food items in the application database.
 
 Sample input: `foodData`    
-Expected output:
+Expected output: (Only the first 5 items are shown)
 ```
 Meal: fried chicken | Calories per serving: 543 kcal
 Meal: chicken burger | Calories per serving: 357 kcal
@@ -201,7 +201,7 @@ Meal: cheese pizza | Calories per serving: 220 kcal
 Displays all forms of exercises in the application database.
 
 Sample input: `exerciseData`    
-Expected output:
+Expected output: (Only the first 5 items are shown)
 ```
 Exercise: running | Calories burnt per minute: 10 kcal
 Exercise: cycling | Calories burnt per minute: 8 kcal
@@ -231,7 +231,7 @@ If you are unsure about the index, try `list` command and figure out the index f
 Sample input: `delete chicken rice i/2`   
 Expected output:
 ```
-Log deleted: Meal | chicken rice | 4 servings | 1800 cal (Recorded on: 2024-04-13 15:22)
+Log deleted: Meal | chicken rice | 4 servings | 1800 kcal (Recorded on: 2024-04-13 15:22)
 ```
 
 ---
@@ -282,7 +282,7 @@ If you are unsure about the index, try `list` command and figure out the index f
 Sample input: `delete running i/1`   
 Expected output:
 ```
-Log deleted: Exercise | running | 10 mins | 100 cal (Recorded on: 2024-04-13 15:18)
+Log deleted: Exercise | running | 10 mins | 100 kcal (Recorded on: 2024-04-13 15:18)
 ```
 
 ---
@@ -302,8 +302,8 @@ Expected output:
 carrot cake has been added to the food database.
 logging your meal.......
 
-You've logged 2 servings of carrot cake.
-Estimated calories: 1000 cal
+You've logged 2 serving(s) of carrot cake.
+Estimated calories: 1000 kcal
 ```
 ---
 ### Log an exercise not in the database: `add`
@@ -322,7 +322,7 @@ calisthenics has been added to the exercise database.
 logging your exercise.......
 
 You've logged 30 minutes of calisthenics.
-Estimated calories burnt: 300 cal
+Estimated calories burnt: 300 kcal
 ```
 ---
 ### Change user height: `change`
@@ -334,7 +334,7 @@ user: change h
 Please input your height (in cm):
 user: 174
 You have successfully changed your height!
-Your BMI is 23
+Your BMI is 23.
 You are in the healthy weight range.
 ```
 ---
@@ -348,7 +348,7 @@ user: change w
 Please input your weight (in kg): 
 user: 85
 You have successfully changed your height!
-Your BMI is 28
+Your BMI is 28.
 You are in the overweight range.
 ```
 ---
@@ -359,7 +359,7 @@ Changes the daily calorie intake goal.
 Format: `change cg`
 ```
 user: change cg
-Please input your new daily calorie goal: 
+Please input your new daily calorie goal (in kcal): 
 user: 3200
 You have successfully changed your calorie goal! 
 ```
@@ -387,12 +387,12 @@ Daily Summary:
 Height: 174 cm
 Weight: 85 kg
 BMI: 28
-Total calories consumed: 1000 cal
+Total calories consumed: 1000 kcal
 Total water consumed: 0 ml
-Total calories burnt: 300 cal
-Calorie goal: 3200 cal
+Total calories burnt: 300 kcal
+Calorie goal: 3200 kcal
 Water goal: 3500 ml
-Net calories: 700 cal
+Net calories: 700 kcal
 Calorie status: Calories Deficit
 ```
 ---
@@ -408,7 +408,7 @@ Expected output:
 ```
 ____________________________________________________________
 Here are the matching logs in your list:
-1. sushi | 4 servings | 1400 cal (Recorded on: 2024-04-13 15:35)
+1. sushi | 4 serving(s) | 1400 kcal (Recorded on: 2024-04-13 15:35)
 ____________________________________________________________
 ```
 ---
@@ -417,7 +417,7 @@ ____________________________________________________________
 Provides all the possible commands inside ActiveEdge application.
 
 Format: `help`  
-Expected output:
+Expected output: (Only a part of the output is shown here.)
 ```
 Welcome to Active Edge! Here are the available commands:
 1. Log meal: `log m/<MEAL_NAME> s/<NUMBER_OF_SERVINGS>`
@@ -447,7 +447,7 @@ Please input your height (in cm):
 ---
 
 ### Exit the program: `bye`
-Exits the ActiveEdge application.
+Exits the ActiveEdge application whenever you want.
 
 Sample input: `bye`     
 Expected output:

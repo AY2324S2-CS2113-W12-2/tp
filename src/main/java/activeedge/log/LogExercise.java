@@ -47,6 +47,6 @@ public class LogExercise extends Log {
     @Override
     public String toString() {
         return "Exercise" + " | " + this.getExerciseName() + " | " + this.getDuration() + " mins | " +
-                this.getCaloriesBurnt() + " cal (Recorded on: " + date + " " + time + ")";
+                this.getCaloriesBurnt() + " kcal (Recorded on: " + date + " " + time + ")";
     }
 }

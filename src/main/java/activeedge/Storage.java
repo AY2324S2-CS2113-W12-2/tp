@@ -123,8 +123,6 @@ public class Storage {
             if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                 ByeUi.printByeMessage();
                 System.exit(0);
-            } else {
-                System.out.println("I'm not sure what you mean by that!");
             }
             try {
                 heightInput = Integer.parseInt(input);
@@ -143,7 +141,7 @@ public class Storage {
         }
         return heightInput;
     }
-    
+
     public static int userWeight(String date, String time) throws ActiveEdgeException {
         int counter = 0;
         int weightInput = 0;
@@ -154,8 +152,6 @@ public class Storage {
             if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                 ByeUi.printByeMessage();
                 System.exit(0);
-            } else {
-                System.out.println("I'm not sure what you mean by that!");
             }
             try {
                 weightInput = Integer.parseInt(input);
@@ -191,8 +187,6 @@ public class Storage {
             if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                 ByeUi.printByeMessage();
                 System.exit(0);
-            } else {
-                System.out.println("I'm not sure what you mean by that!");
             }
             try {
                 calorieGoal = Integer.parseInt(input);
@@ -221,8 +215,6 @@ public class Storage {
             if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                 ByeUi.printByeMessage();
                 System.exit(0);
-            } else {
-                System.out.println("I'm not sure what you mean by that!");
             }
             try {
                 waterGoal = Integer.parseInt(input);
@@ -262,7 +254,7 @@ public class Storage {
         } else if (numberOfLines < 3 && numberOfLines >= 2) {
             userCalorieGoal(date, time);
             userWaterGoal(date, time);
-        } else if (numberOfLines < 4 && numberOfLines >= 3) {
+        } else if (numberOfLines < 5 && numberOfLines >= 4) {
             userWaterGoal(date, time);
         }
         System.out.println("You can now start logging data! Type 'help' " +

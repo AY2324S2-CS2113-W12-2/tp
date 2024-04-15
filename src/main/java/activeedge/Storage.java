@@ -118,8 +118,8 @@ public class Storage {
         String date = currentDateTime.format(dateFormatter);
         String time = currentDateTime.format(timeFormatter);
         System.out.print("\n");
-        System.out.println("Since you are new here or your details are missing," +
-                " let's start with a few questions to set things up!");
+        System.out.println("Since you are new here or your details are missing,\n" +
+                "let's start with a few questions to set things up!");
 
 
         int heightInput = userHeight(date, time);
@@ -202,7 +202,7 @@ public class Storage {
         int calorieGoal = 0;
         Scanner scanner = new Scanner(System.in);
         while (counter < 1) {
-            System.out.println("Please set your daily calorie goal (in cal): ");
+            System.out.println("Please set your daily calorie goal (in kcal): ");
             String input = scanner.nextLine();
             if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                 ByeUi.printByeMessage();

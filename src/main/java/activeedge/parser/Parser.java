@@ -1,6 +1,5 @@
 package activeedge.parser;
 
-import activeedge.Storage;
 import command.Command;
 import command.ListFullCommand;
 import command.DeleteLogCommand;

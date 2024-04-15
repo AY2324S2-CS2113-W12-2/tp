@@ -46,7 +46,6 @@ public class LogMealCommand extends Command{
         }
     }
 
-
     public int getMealCalories() {
         return mealCalories;
     }

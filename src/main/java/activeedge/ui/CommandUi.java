@@ -106,7 +106,7 @@ public class CommandUi {
             String logString = logList.get(i).toString();
             int calIndex = -1;
             for (int j = 0; j < len; j++) {
-                if (parts[j].equals("cal")) {
+                if (parts[j].equals("kcal")) {
                     calIndex = j - 1; // Assuming calorie value is just before "kcal"
                     break;
                 }
@@ -326,14 +326,14 @@ public class CommandUi {
         System.out.println("Height: " + height + " cm");
         System.out.println("Weight: " + weight + " kg");
         System.out.println("BMI: " + BMI);
-        System.out.println("Total calories consumed: " + totalCalories + " cal");
+        System.out.println("Total calories consumed: " + totalCalories + " kcal");
         System.out.println("Total water consumed: " + totalWaterIntake + " ml");
-        System.out.println("Total calories burnt: " + totalCaloriesBurnt + " cal");
+        System.out.println("Total calories burnt: " + totalCaloriesBurnt + " kcal");
 
-        System.out.println("Calorie goal: " + calorieGoal + " cal");
+        System.out.println("Calorie goal: " + calorieGoal + " kcal");
         System.out.println("Water goal: " + waterGoal + " ml");
 
-        System.out.println("Net calories: " + netCalories + " cal");
+        System.out.println("Net calories: " + netCalories + " kcal");
         System.out.println("Calorie status: " + calorieStatus);
     }
 

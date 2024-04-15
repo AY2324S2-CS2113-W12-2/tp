@@ -109,7 +109,8 @@ Overall, the diagram reflects a structured and modular design for the ActiveEdge
 ![Storage](https://github.com/Praneet-25/tp/blob/master/images/Storage.png?raw=true)
 
 ### Main Component
-The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and interaction through a command-line interface.
+The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and 
+interaction through a command-line interface.
 ![Main Component](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Main-component2%20UML.png?raw=true)
 
 
@@ -222,7 +223,7 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 * *List* - Listing down the users' logged entries.
 * *Summary* - Summarises the logged data of total water, calorie intake comparing it to the goals of the users.
 * *wg* - Water goal (`change wg` used to change water goal)
-* *wcg* - Calorie goal (`change cg` used to change calorie goal)
+* *cg* - Calorie goal (`change cg` used to change calorie goal)
 ## Instructions for manual testing
 
 1. Launching the App 

@@ -36,7 +36,11 @@ public class ClearCommand extends Command{
             LogList.clearLogs();
             UserDetailsList.clearDetailsList();
             CommandUi.printAllLogsClearedMessage();
-            Storage.listEmpty();
+            try {
+                Storage.listEmpty();
+            } catch (ActiveEdgeException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

@@ -77,7 +77,7 @@ The generic sequence diagram provides a visual representation of the interaction
 ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such
 as user interface, data storage, and task management.
 
-![Generic Sequence Diagram](https://github.com/SuveenE/tp/blob/master/images/Generic-Sequence-Diagram.png?raw=true)
+![Generic Sequence Diagram](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/GenericSequenceDiagram.png?raw=true)
 
 ### Parser
 The diagram outlines the structure of the ActiveEdge application's Parser module and its connections with
@@ -92,9 +92,10 @@ of user actions within the ActiveEdge application.
 ### Command
 
 In the provided code, commands are represented as individual classes, each encapsulating a specific action or operation 
-within the ActiveEdge application, promoting modularity and separation of concerns.
+within the ActiveEdge application, promoting modularity and separation of concerns. The graph below depicts the 
+interactions between the different components of  ActiveEdge  when water, a meal or an exercise is logged in.
 
-![Command](https://github.com/SuveenE/tp/blob/master/images/Command-Class.png?raw=true)
+![Command](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/LogCommand.png?raw=true)
 
 ### Storage
 The provided  diagram represents the structure of the ActiveEdge application, particularly focusing on the commands and log-related classes. Here's a breakdown of the key components:
@@ -234,6 +235,8 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 * *Add* - Adding new exercises and food items to existing food and exercise database.
 * *List* - Listing down the users' logged entries.
 * *Summary* - Summarises the logged data of total water, calorie intake comparing it to the goals of the users.
+* *wg* - Water goal (`change wg` used to change water goal)
+* *wcg* - Calorie goal (`change cg` used to change calorie goal)
 ## Instructions for manual testing
 
 1. Launching the App 
@@ -284,7 +287,6 @@ tailored to their individual needs, helping them achieve their fitness goals ami
 | Get help                            | `help`                                                            |
 | Clear all logged entries            | `clear`                                                           |
 | Exit the program                    | `bye`                                                             |
-                                                      |
 
 
 ## Acknowledgements

@@ -117,30 +117,30 @@ public class Storage {
         int heightInput = 0;
         int counter = 0;
         Scanner scanner = new Scanner(System.in);
-            while (counter < 1) {
-                System.out.println("Please input your height (in cm): ");
-                String input = scanner.nextLine();
-                if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
-                    ByeUi.printByeMessage();
-                    System.exit(0);
+        while (counter < 1) {
+            System.out.println("Please input your height (in cm): ");
+            String input = scanner.nextLine();
+            if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
+                ByeUi.printByeMessage();
+                System.exit(0);
+            } else {
+                System.out.println("I'm not sure what you mean by that!");
+            }
+            try {
+                heightInput = Integer.parseInt(input);
+                if (heightInput >= 50 && heightInput <= 300) {
+                    AddHeightCommand addHeightCommand = new
+                            AddHeightCommand(heightInput, date, time);
+                    addHeightCommand.execute();
+                    saveLogsToFile("data/data.txt");
+                    counter++;
                 } else {
-                    System.out.println("I'm not sure what you mean by that!");
-                }
-                try {
-                    heightInput = Integer.parseInt(input);
-                    if (heightInput >= 50 && heightInput <= 300) {
-                        AddHeightCommand addHeightCommand = new
-                                AddHeightCommand(heightInput, date, time);
-                        addHeightCommand.execute();
-                        saveLogsToFile("data/data.txt");
-                        counter++;
-                    } else {
-                        System.out.println("Please input a whole number between 50 and 300!");
-                    }
-                } catch (NumberFormatException e) {
                     System.out.println("Please input a whole number between 50 and 300!");
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("Please input a whole number between 50 and 300!");
             }
+        }
         return heightInput;
     }
 
@@ -154,8 +154,7 @@ public class Storage {
             System.out.println("Please input your weight (in kg): ");
             String input = scanner.nextLine();
             if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
-                ByeUi.printByeMessage();
-                System.exit(0);
+                ByeUi.printByeMessage();System.exit(0);
             } else {
                 System.out.println("I'm not sure what you mean by that!");
             }

@@ -27,21 +27,20 @@ public class ClearCommand extends Command{
      * Executes the clear command.
      * Checks if both task list and user details list are empty.
      * If both lists are already empty, it prints a message indicating the data is already cleared.
-     * Otherwise, it clears both lists and prints a message indicating that all tasks are cleared.
+     * Otherwise, it deletes both lists and deletes the data from the file system.
      */
     public void execute() {
         if (LogList.logList.isEmpty() && UserDetailsList.detailsList.isEmpty()) {
             CommandUi.printDataAlreadyClearedMessage();
         } else {
-            LogList.clearLogs();
-            UserDetailsList.clearDetailsList();
             CommandUi.printAllLogsClearedMessage();
             try {
+                Storage.deleteData(); // Delete data from the file system
                 Storage.listEmpty();
             } catch (ActiveEdgeException e) {
                 throw new RuntimeException(e);
             }
         }
     }
-}
 
+}

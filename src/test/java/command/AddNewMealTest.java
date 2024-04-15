@@ -7,8 +7,16 @@ import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Test class for {@link AddFoodItemCommand} using JUnit. This class contains tests to verify that the
+ * {@link AddFoodItemCommand} class correctly initializes and handles new food item entries
+ * with specified attributes.
+ */
 public class AddNewMealTest {
 
+    /**
+     * Tests the initialization and properties setting of the {@link AddFoodItemCommand}.
+     */
     @Test
     public void testAddNewMeal() {
         LocalDateTime dateTime = LocalDateTime.now();

@@ -101,7 +101,7 @@ Format: `log w/<AMOUNT_OF_WATER>`
 Sample input: `log w/1000`   
 Expected output:
 ```
-You've logged logged 1000 ml of water.
+You've logged 1000 ml of water.
 ```
 
 ---

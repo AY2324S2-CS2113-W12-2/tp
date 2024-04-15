@@ -17,7 +17,8 @@ import command.AddCalorieGoalCommand;
 import command.AddWaterGoalCommand;
 import command.ActiveEdgeException;
 
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 import java.io.File;
@@ -119,7 +120,7 @@ public class Storage {
             while (counter < 1) {
                 System.out.println("Please input your height (in cm): ");
                 String input = scanner.nextLine();
-                if ("bye".equalsIgnoreCase(input)) { // Check if the user wants to exit
+                if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                     ByeUi.printByeMessage();
                     System.exit(0);
                 }
@@ -150,7 +151,7 @@ public class Storage {
         while (counter < 1) {
             System.out.println("Please input your weight (in kg): ");
             String input = scanner.nextLine();
-            if ("bye".equalsIgnoreCase(input)) { // Check if the user wants to exit
+            if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                 ByeUi.printByeMessage();
                 System.exit(0);
             }
@@ -185,7 +186,7 @@ public class Storage {
         while (counter < 1) {
             System.out.println("Please set your daily calorie goal (in cal): ");
             String input = scanner.nextLine();
-            if ("bye".equalsIgnoreCase(input)) { // Check if the user wants to exit
+            if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                 ByeUi.printByeMessage();
                 System.exit(0);
             }
@@ -213,7 +214,7 @@ public class Storage {
         while (counter < 1) {
             System.out.println("Please set your daily water goal (in ml): ");
             String input = scanner.nextLine();
-            if ("bye".equalsIgnoreCase(input)) { // Check if the user wants to exit
+            if ("bye".equalsIgnoreCase(input.trim())) { // Check if the user wants to exit
                 ByeUi.printByeMessage();
                 System.exit(0);
             }

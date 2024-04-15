@@ -19,6 +19,7 @@ the user returns.
 8. Improved the `Parser` class to reduce the rigidness and account small human errors.     
 9. Updated the `README.md` page from Duke to ActiveEdge appropriately.         
 10. Wrote tests for `addNewMeal` and `addNewExercise`.
+11. Improved all `UI` messages for better readability and guidance.
 
 #### Contributions to the UG
 - Compiled the majority of the `UserGuide`.   
@@ -39,6 +40,7 @@ the user returns.
 
 #### Contributions to Team-Based Tasks
 - Set up GitHub team organization and upstream repository.    
-- Set up the skeleton code for the project with `Parser`, `Command` and `UI` packages.  
+- Set up the skeleton code for the project with `Parser`, `Command` and `UI` packages for the team members to work seamlessly.
+- Fixed all the build errors and got the first version which gets built properly up and running.   
 - Created most of the issues for `v2.1` and assign to relevant team members during meetings.  
 - Worked on fixing bugs found from PE dry run and internal testing.

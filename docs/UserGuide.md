@@ -23,9 +23,10 @@ Welcome to ACTIVE EDGE!
 Take the next step in your Healthy Lifestyle!
 ```
 ## Table of Contents
-- [Introduction](#introduction)
-- [Quick Start](#quick-start)
-- [Features](#features)
+
+- [Introduction](#introduction)   
+- [Quick Start](#quick-start)   
+- [Features](#features)   
     - [Log meal: `log`](#log-meal--log)
     - [Log water intake : `log`](#log-water-intake--log)
     - [Log exercises: `log`](#log-exercises-log)
@@ -100,7 +101,7 @@ Format: `log w/<AMOUNT_OF_WATER>`
 Sample input: `log w/1000`   
 Expected output:
 ```
-You've logged logged 1000 ml of water.
+You've logged 1000 ml of water.
 ```
 
 ---

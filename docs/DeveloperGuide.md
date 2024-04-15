@@ -124,7 +124,8 @@ make sure the data is being saved properly during runtime and locally.
 ![Storage](https://github.com/Praneet-25/tp/blob/master/images/Storage.png?raw=true)
 
 ### Log Package
-The `Log` program comprises a base class and multiple derived classes structured to 
+
+The `Log` package comprises a base class and multiple derived classes structured to 
 manage various types of user logs.  
 The derived classes—`LogGoals`, `LogExercise`, `LogMeals`, and `LogWater`—extend the base 
 class to cater to specific logging needs such as tracking calorie and water goals, 
@@ -135,11 +136,14 @@ Additionally, a utility class, `LogList`, handles the organization
 and management of all log types using methods to add, delete, and retrieve log entries, 
 ensuring structured data handling within the program.
 
-![Ui](https://github.com/SuveenE/tp/blob/master/images/Task_package.png?raw=true)
+![Log](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Log.png?raw=true)
+
 
 
 
 ### User Details Package
+
+
 The `UserDetails` package is designed to capture and manage various user metrics 
 such as height, weight, and BMI within an application. This class is extended by three specific subclasses: `LogHeight`,
 `LogWeight`, and `LogBMI`, each storing respective metrics along with the date and 
@@ -149,6 +153,9 @@ Additionally, the package includes a utility class, `UserDetailsList`, which
 operates a static ArrayList to manage collections of `UserDetails` objects. 
 This class offers methods for adding, retrieving, deleting, and clearing
 entries from the list.
+
+![Userdetails](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Userdetails.png?raw=true)
+
 
 
 ## Product scope
@@ -227,31 +234,31 @@ them achieve fitness goals while managing university life.
 
 ## Command Summary
 
-| Action                              | Format                                                            |
-|-------------------------------------|-------------------------------------------------------------------|
-| Log meal                            | `log m/<MEAL_NAME> s/<NUMBER_OF_SERVINGS>`                        |
-| Log water intake                    | `log w/<AMOUNT_OF_WATER>`                                         |
-| Log exercises                       | `log e/<EXERCISE_NAME> d/<DURATION>`                              |
-| View daily goals                    | `show g`                                                          |
-| View daily calorie intake           | `show c`                                                          |
-| View daily water intake             | `show w`                                                          |
-| View all logged entries             | `list`                                                            |
-| View all food items in the database | `foodData`                                                        |
-| View all exercises in the database  | `exerciseData`                                                    |
-| Delete meal logs                    | `delete <MEAL_NAME>`                                              |
-| Delete water logs                   | `delete <QUANTITY_OF_WATER>`                                      |
-| Delete exercise logs                | `delete <EXERCISE_NAME>`                                          |  
-| Log a meal not in the database      | `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>` | 
-| Log an exercise not in the database | `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>` |
-| Change height input                 | `change h`                                                        |
-| Change weight input                 | `change w`                                                        |
-| Change daily calorie intake goal                | `change cg`                                                        |
-| Change daily water intake goal                | `change wg`                                                        |
-| Show daily summary                  | `summary`                                                         |
-| Search for entries                  | `find`                                                            |
-| Get help                            | `help`                                                            |
-| Clear all logged entries            | `clear`                                                           |
-| Exit the program                    | `bye`                                                             |
+| Action                                | Format                                                             |
+|---------------------------------------|--------------------------------------------------------------------|
+| Log meal                              | `log m/<MEAL_NAME> s/<NUMBER_OF_SERVINGS>`                         |
+| Log water intake                      | `log w/<AMOUNT_OF_WATER>`                                          |
+| Log exercises                         | `log e/<EXERCISE_NAME> d/<DURATION>`                               |
+| View daily goals                      | `show g`                                                           |
+| View daily calorie intake             | `show c`                                                           |
+| View daily water intake               | `show w`                                                           |
+| View all logged entries               | `list`                                                             |
+| View all food items in the database   | `foodData`                                                         |
+| View all exercises in the database    | `exerciseData`                                                     |
+| Delete meal logs                      | `delete <MEAL_NAME>`                                               |
+| Delete water logs                     | `delete <QUANTITY_OF_WATER>`                                       |
+| Delete exercise logs                  | `delete <EXERCISE_NAME>`                                           |  
+| Log a meal not in the database        | `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>`  | 
+| Log an exercise not in the database   | `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>`  |
+| Change height input                   | `change h`                                                         |
+| Change weight input                   | `change w`                                                         |
+| Change daily calorie intake goal      | `change cg`                                                        |
+| Change daily water intake goal        | `change wg`                                                        |
+| Show daily summary                    | `summary`                                                          |
+| Search for entries                    | `find`                                                             |
+| Get help                              | `help`                                                             |
+| Clear all logged entries              | `clear`                                                            |
+| Exit the program                      | `bye`                                                              |
 
 
 ## Acknowledgements

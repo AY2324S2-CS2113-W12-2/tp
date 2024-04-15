@@ -30,7 +30,7 @@ public class LogMeal extends Log {
 
     @Override
     public String toString() {
-        return "Meal" + " | " + this.getDescription() + " | " + this.getServings() + " servings | " +
-                this.getMealCalories() + " cal (Recorded on: " + date + " " + time + ")";
+        return "Meal" + " | " + this.getDescription() + " | " + this.getServings() + " serving(s) | " +
+                this.getMealCalories() + " kcal (Recorded on: " + date + " " + time + ")";
     }
 }

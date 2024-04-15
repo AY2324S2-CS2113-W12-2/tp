@@ -32,11 +32,11 @@ are given.
 19. Implemented the feature of printing out calorie deficit or calorie surplus according to the 
 number of calories consumed and burned when the user views their calorie intake.
 
-#### Contributions to the UG
+#### Contributions to the User Guide
 1. Identified errors in the UG such as wrong outputs given for certain commands and made the appropriate changes.
 2. Provided my feedback on the formatting of the UG to make it more concise.
 
-#### Contributions to the DG
+#### Contributions to the Developer Guide
 1. Created the Generic Sequence Diagram and the description for it.
 2. Created the Command Diagram and the description for it, in which I specifically explored how the log commands work.
 

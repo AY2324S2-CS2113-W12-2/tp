@@ -6,13 +6,14 @@
 - [Quick Start](#quick-start)
 - [Design & Implementation](#design--implementation)
     - [System Architecture](#system-architecture)
+    - [Generic Sequence Diagram](#generic-sequence-diagram)
     - [Main Component](#main-component)
+    - [Command Package](#command-package)
     - [UI Package](#ui-package)
     - [Parser Package](#parser-package)
-    - [Command Package](#command-package)
-    - [Log Package](#log-package)
     - [Storage Package](#storage-package)
-    - [Userdetails Package](#userdetails-package)
+    - [Log Package](#log-package)
+    - [User Details Package](#userdetails-package)
 - [Product Scope](#product-scope)
     - [Target User Profile](#target-user-profile)
     - [Value Proposition](#value-proposition)
@@ -45,6 +46,7 @@ Take the next step in your Healthy Lifestyle!
 ```
 5. Type commands beside >>> and press Enter to execute it.
 (e.g. typing ```help``` and pressing Enter will show the help page).
+
 ## Design & implementation 🏹  
 ### System Architecture
 
@@ -52,25 +54,45 @@ Take the next step in your Healthy Lifestyle!
 
 The Architecture Diagram above shows a high-level overview of the architectural design of ActiveEdge.
 
-Active Edge is comprised of 8 major components:
+Active Edge is comprised of 9 major components:
 
-```UI```: A package responsible for handling user interactions, both capturing input and displaying output.\
-```Parser```: A package that analyzes and interprets the user's input commands.\
-```Command```: A package tasked with executing specific actions based on the user's commands.\
-```Storage```: A package focused on persisting and retrieving all relevant data from the application's local storage system, ensuring data continuity and integrity.\
-```LogList```: Maintains logged data throughout the application's runtime.\
-```UserDetails```: Maintains user details throughout the application's runtime.\
-```FoodData```: Active Edge's food database\
-```ExerciseData```: Active Edge's exercise database\
+```Main```: A component for the entry point of the application.
+```UI```: A package responsible for handling user interactions, both capturing input and displaying output.
+```Parser```: A package that analyzes and interprets the user's input commands.
+```Command```: A package tasked with executing specific actions based on the user's commands.
+```Storage```: A package focused on persisting and retrieving all relevant data from the application's local storage system, ensuring data continuity and integrity.
+```LogList```: Maintains logged data throughout the application's runtime.
+```UserDetails```: Maintains user details throughout the application's runtime.
+```FoodData```: Active Edge's food database.
+```ExerciseData```: Active Edge's exercise database.
+
 
 ### Generic Sequence Diagram
 The generic sequence diagram provides a visual representation of the interactions between various components within the
 ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such
 as user interface, data storage, and task management.
-
 ![Generic Sequence Diagram](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/GenericSequenceDiagram.png?raw=true)
 
-### Parser
+### Main Component
+The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and
+interaction through a command-line interface.
+![Main Component](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Main-component2%20UML.png?raw=true)
+
+### Command Package
+In the provided code, commands are represented as individual classes, each encapsulating a specific action or operation
+within the ActiveEdge application, promoting modularity and separation of concerns. The graph below depicts the
+interactions between the different components of  ActiveEdge  when water, a meal or an exercise is logged in.
+
+![Command](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/LogCommand.png?raw=true)
+
+### UI Package
+The `activeedge.ui` package encapsulates the user interface components of the ActiveEdge application, facilitating
+interactions such as printing welcome messages,
+logging meal and exercise data, displaying goal information, providing help instructions, and managing user queries and
+commands for health tracking and goal setting.
+![Ui Package](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Ui.png?raw=true)
+
+### Parser Package
 The diagram outlines the structure of the ActiveEdge application's Parser module and its connections with
 various Command classes. The Parser class is responsible for parsing user input and generating appropriate commands, 
 utilizing DateTimeFormatter instances for date and time parsing. It interacts with Command classes such as logging 
@@ -79,14 +101,6 @@ functionalities like showing summaries and managing goals. This setup promotes m
 of user actions within the ActiveEdge application.
 
 ![Parser](https://github.com/Praneet-25/tp/blob/master/images/Parser.png?raw=true)
-
-### Command
-
-In the provided code, commands are represented as individual classes, each encapsulating a specific action or operation 
-within the ActiveEdge application, promoting modularity and separation of concerns. The graph below depicts the 
-interactions between the different components of  ActiveEdge  when water, a meal or an exercise is logged in.
-
-![Command](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/LogCommand.png?raw=true)
 
 ### Storage
 The provided  diagram represents the structure of the ActiveEdge application, particularly focusing on the commands and log-related classes. Here's a breakdown of the key components:
@@ -112,34 +126,6 @@ The provided  diagram represents the structure of the ActiveEdge application, pa
 Overall, the diagram reflects a structured and modular design for the ActiveEdge application, with separate classes for commands, logs, file storage, and data management, promoting code reusability, maintainability, and separation of concerns.
 
 ![Storage](https://github.com/Praneet-25/tp/blob/master/images/Storage.png?raw=true)
-
-### Main Component
-The ActiveEdge class serves as the main entry point for the ActiveEdge application, handling user input parsing and 
-interaction through a command-line interface.
-![Main Component](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Main-component2%20UML.png?raw=true)
-
-
-### UI Package
-The activeedge.ui package encapsulates the user interface components of the ActiveEdge application, facilitating 
-interactions such as printing welcome messages, 
-logging meal and exercise data, displaying goal information, providing help instructions, and managing user queries and 
-commands for health tracking and goal setting.
-![Ui Package](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Ui.png?raw=true)
-
-Under commands, there are 17 sub-components:
-```AddBMICommand```: A command responsible for calculating and adding Body Mass Index (BMI) information.
-```AddGoalsCommand```: A command responsible for users to set and track their fitness goals.
-```AddHeightCommand```: A command responsible for users to input and track their height information for comprehensive 
-health tracking.
-```AddWeightCommand```: A command responsible for users to input and track their weight measurements to monitor their 
-progress and achievements.
-```ClearCommand```: A command responsible for users to clear or delete entries, such as meals, from their tracking 
-history.
-```DeleteTaskCommand```: A command responsible for users to delete or remove exercise tasks.
-```FindCommand```: A command responsible for users to search specific keywords.
-```ShowSummaryCommand```: A command responsible for users to view a summary or overview of their calorie intake,calorie 
-burnt during exercise .
-```ViewWaterIntakeCommand```: A command responsible for users to view and track their water intake levels.
 
 ### Log Package
 This package is structured to manage and represent various types of logs within an application, potentially for goal 
@@ -179,10 +165,9 @@ attribute all logs share, which is a description
   + `get()`
   + `clearLogs()`
 
-### Userdetails Package
+### User Details Package
 This package is structured to manage and represent various types of userdetails within an application, potentially for 
 tracking height, weight, and BMI. There are 3 main components of this package.
-
 
 **Base class:`UserDetails`**
 + **Purpose**: Represents the basic details of a user. It provides methods to get the value of user details and to 
@@ -217,10 +202,12 @@ add, retrieve, delete, and clear user details.
 
 ## Product scope
 ### Target user profile
-Our target users are NUS university students, including fitness enthusiasts and those striving for a healthier
-lifestyle. They struggle with time constraints due to academic and social commitments, making it difficult to 
-manage nutrition and exercise. Our app aims to provide convenient calorie tracking and personalized exercise routines 
-tailored to their individual needs, helping them achieve their fitness goals amidst the challenges of university life.
+Our app targets NUS university students, including fitness enthusiasts and those striving for healthier lifestyles 
+amidst busy schedules. It provides convenient features like calorie tracking and personalized exercise routines 
+tailored to individual needs. Given their time constraints, our users prefer a command-line interface for efficiency, 
+favoring typing over mouse input. This design choice ensures seamless integration into their daily routines, helping 
+them achieve fitness goals while managing university life.
+
 
 ### Value proposition
 

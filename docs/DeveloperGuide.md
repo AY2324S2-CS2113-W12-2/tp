@@ -29,21 +29,6 @@
 This document specifies the architectural and software design decisions in the implementation of **ActiveEdge**.
 
 
-### How to Use a Developer Guide
-
-Are you a newcomer?
-No problem, navigate to the Quick Start section.
-Feeling disoriented within the content?
-Refer to the Table of Contents to find the appropriate pages.
-Require assistance with the features?
-Consult the Features section in the User Guide for thorough guidance.
-Have inquiries for us?
-Visit the FAQ section in the User Guide.
-Seeking a brief overview of all features?
-Check out the Command Summary page for a summary of all commands.
-Uncertain about a specific term's meaning?
-Refer to the Glossary page for clarification.
-
 ## Quick Start
 
 To get started quickly with ActiveEdge,
@@ -64,14 +49,15 @@ The Architecture Diagram above shows a high-level overview of the architectural 
 
 Active Edge is comprised of 8 major components:
 
-```Main```: The entry point of the application.\
 ```UI```: A package responsible for handling user interactions, both capturing input and displaying output.\
 ```Parser```: A package that analyzes and interprets the user's input commands.\
 ```Command```: A package tasked with executing specific actions based on the user's commands.\
 ```Storage```: A package focused on persisting and retrieving all relevant data from the application's local storage system, ensuring data continuity and integrity.\
 ```LogList```: Maintains logged data throughout the application's runtime.\
+```UserDetails```: Maintains user details throughout the application's runtime.\
 ```FoodData```: Active Edge's food database\
 ```ExerciseData```: Active Edge's exercise database\
+
 ### Generic Sequence Diagram
 The generic sequence diagram provides a visual representation of the interactions between various components within the
 ActiveEdge application. It illustrates how user commands are parsed, executed, and interact with different modules such

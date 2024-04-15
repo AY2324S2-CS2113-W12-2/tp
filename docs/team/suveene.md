@@ -18,7 +18,7 @@ the user returns.
 7. Improved all `delete` commands to delete logs by the index addressing PE dry run issues.   
 8. Improved the `Parser` class to reduce the rigidness and account small human errors.     
 9. Updated the `README.md` page from Duke to ActiveEdge appropriately.         
-10. Wrote tests for `addNewMeal`, `addNewExercise` and `Help` commands.
+10. Wrote tests for `addNewMeal` and `addNewExercise`.
 
 #### Contributions to the UG
 - Compiled the majority of the `UserGuide`.   

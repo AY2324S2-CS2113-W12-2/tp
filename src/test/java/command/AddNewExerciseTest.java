@@ -7,7 +7,23 @@ import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Test class for {@link AddExerciseItemCommand}. It uses JUnit to run tests that check the correct
+ * creation and initialization of {@link AddExerciseItemCommand} instances.
+ *
+ * The tests ensure that when an {@link AddExerciseItemCommand} is created with specified parameters,
+ * those parameters are accurately reflected in the object's state, ensuring the integrity of the
+ * exercise logging process.
+ */
 public class AddNewExerciseTest {
+
+    /**
+     * Tests the functionality of adding a new exercise log with a given name, duration,
+     * and calories burned per minute. It checks that the {@link AddExerciseItemCommand} correctly initializes and stores these values.
+     *
+     * The test uses the current date and time to simulate the logging as it would happen in a real scenario,
+     * validating that the command behaves as expected under typical conditions.
+     */
     @Test
     public void testAddNewMeal() {
         LocalDateTime dateTime = LocalDateTime.now();

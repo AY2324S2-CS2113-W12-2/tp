@@ -130,7 +130,8 @@ Overall, the diagram reflects a structured and modular design for the ActiveEdge
 ### Log Package
 This package is structured to manage and represent various types of logs within an application, potentially for goal 
 tracking, logging exercises done, water intake and meal intake. There are 3 main components of this package.
-![Ui](https://github.com/SuveenE/tp/blob/master/images/Task_package.png?raw=true)
+
+![Log](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Log.png?raw=true)
 
 **Base class:`Log`**
 + **Purpose**: Serves as the foundational class for all types of logs. It encapsulates the common
@@ -168,6 +169,8 @@ attribute all logs share, which is a description
 ### User Details Package
 This package is structured to manage and represent various types of userdetails within an application, potentially for 
 tracking height, weight, and BMI. There are 3 main components of this package.
+
+![Userdetails](https://github.com/AY2324S2-CS2113-W12-2/tp/blob/master/images/Userdetails.png?raw=true)
 
 **Base class:`UserDetails`**
 + **Purpose**: Represents the basic details of a user. It provides methods to get the value of user details and to 
@@ -280,31 +283,31 @@ them achieve fitness goals while managing university life.
 
 ## Command Summary
 
-| Action                              | Format                                                            |
-|-------------------------------------|-------------------------------------------------------------------|
-| Log meal                            | `log m/<MEAL_NAME> s/<NUMBER_OF_SERVINGS>`                        |
-| Log water intake                    | `log w/<AMOUNT_OF_WATER>`                                         |
-| Log exercises                       | `log e/<EXERCISE_NAME> d/<DURATION>`                              |
-| View daily goals                    | `show g`                                                          |
-| View daily calorie intake           | `show c`                                                          |
-| View daily water intake             | `show w`                                                          |
-| View all logged entries             | `list`                                                            |
-| View all food items in the database | `foodData`                                                        |
-| View all exercises in the database  | `exerciseData`                                                    |
-| Delete meal logs                    | `delete <MEAL_NAME>`                                              |
-| Delete water logs                   | `delete <QUANTITY_OF_WATER>`                                      |
-| Delete exercise logs                | `delete <EXERCISE_NAME>`                                          |  
-| Log a meal not in the database      | `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>` | 
-| Log an exercise not in the database | `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>` |
-| Change height input                 | `change h`                                                        |
-| Change weight input                 | `change w`                                                        |
-| Change daily calorie intake goal                | `change cg`                                                        |
-| Change daily water intake goal                | `change wg`                                                        |
-| Show daily summary                  | `summary`                                                         |
-| Search for entries                  | `find`                                                            |
-| Get help                            | `help`                                                            |
-| Clear all logged entries            | `clear`                                                           |
-| Exit the program                    | `bye`                                                             |
+| Action                                | Format                                                             |
+|---------------------------------------|--------------------------------------------------------------------|
+| Log meal                              | `log m/<MEAL_NAME> s/<NUMBER_OF_SERVINGS>`                         |
+| Log water intake                      | `log w/<AMOUNT_OF_WATER>`                                          |
+| Log exercises                         | `log e/<EXERCISE_NAME> d/<DURATION>`                               |
+| View daily goals                      | `show g`                                                           |
+| View daily calorie intake             | `show c`                                                           |
+| View daily water intake               | `show w`                                                           |
+| View all logged entries               | `list`                                                             |
+| View all food items in the database   | `foodData`                                                         |
+| View all exercises in the database    | `exerciseData`                                                     |
+| Delete meal logs                      | `delete <MEAL_NAME>`                                               |
+| Delete water logs                     | `delete <QUANTITY_OF_WATER>`                                       |
+| Delete exercise logs                  | `delete <EXERCISE_NAME>`                                           |  
+| Log a meal not in the database        | `add m/<MEAL_NAME> c/CALORIES_PER_SERVING s/<NUMBER_OF_SERVINGS>`  | 
+| Log an exercise not in the database   | `add e/<EXERCISE> c/<CALORIES_BURNT_PER_MIN> d/<DURATION_IN_MIN>`  |
+| Change height input                   | `change h`                                                         |
+| Change weight input                   | `change w`                                                         |
+| Change daily calorie intake goal      | `change cg`                                                        |
+| Change daily water intake goal        | `change wg`                                                        |
+| Show daily summary                    | `summary`                                                          |
+| Search for entries                    | `find`                                                             |
+| Get help                              | `help`                                                             |
+| Clear all logged entries              | `clear`                                                            |
+| Exit the program                      | `bye`                                                              |
 
 
 ## Acknowledgements

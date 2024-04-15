@@ -54,6 +54,25 @@ public class Storage {
         }
     }
 
+    private static final String DATA_FILE_PATH = "data/data.txt";
+
+    /**
+     * Deletes all data from the data file.
+     * It throws an ActiveEdgeException if there is any error during deletion.
+     */
+    public static void deleteData() throws ActiveEdgeException {
+        try {
+            // Delete data file
+            File dataFile = new File(DATA_FILE_PATH);
+            if (dataFile.exists()) {
+                dataFile.delete();
+            }
+        } catch (Exception e) {
+            // If any error occurs during deletion, throw an ActiveEdgeException
+            throw new ActiveEdgeException("Error deleting data file: " + e.getMessage());
+        }
+    }
+
     /**
      * Creates a new file at the specified file path.
      * If the file's directory does not exist, it ensures the creation of the directory structure.
@@ -99,8 +118,8 @@ public class Storage {
         String date = currentDateTime.format(dateFormatter);
         String time = currentDateTime.format(timeFormatter);
         System.out.print("\n");
-        System.out.println("Since you are new here, let's start with a few questions " +
-                "to set things up!");
+        System.out.println("Whether you're new here or your data has been cleared, let's embark on " +
+                "this journey together by setting up your preferences and goals!");
 
         int heightInput = userHeight(date, time);
         int weightInput = userWeight(date, time);

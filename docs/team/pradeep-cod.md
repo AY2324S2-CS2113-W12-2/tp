@@ -30,7 +30,8 @@ We split the work equally, and I actively monitored progress to address any disc
 provided support and guidance to my teammates, offering assistance and sharing knowledge to empower them in carrying
 out their tasks effectively. This collaborative approach fostered a supportive team environment and facilitated smooth 
 project execution. Moreover, I was proactive in fixing bugs whenever someone found a bug in our application and made 
-sure I reported bugs proactively when I find one as well.
+sure I reported bugs proactively when I find one as well. We created a list for our bugs and assigned one another to 
+fix each other bugs. We equally split the workload for fixing bugs and did well in them.
 
 **Review/mentoring contributions:**  I effectively delegated tasks, ensured alignment, and conducted thorough reviews 
 of team members' work. I provided extensive feedback and guidance on Pull Requests (PRs), ensuring adherence to 

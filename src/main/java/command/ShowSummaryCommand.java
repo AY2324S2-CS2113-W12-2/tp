@@ -6,7 +6,16 @@ import activeedge.ui.CommandUi;
 import static activeedge.log.LogList.logList;
 import static activeedge.userdetails.UserDetailsList.detailsList;
 
+/**
+ * This class represents a command to show a summary of user details and activity logs,
+ * including calorie intake, water intake, calories burnt, height, weight, BMI, and goal progress.
+ * It calculates the net calories and determines the calorie status based on the user's goals.
+ */
 public class ShowSummaryCommand extends Command {
+
+    /**
+     * Executes the command to show the summary of user details and activity logs.
+     */
     public void execute() {
         int totalCalories = 0;
         int totalWaterIntake = 0;
@@ -58,6 +67,13 @@ public class ShowSummaryCommand extends Command {
                 calorieGoal,waterGoal,netCalories, calorieStatus);
     }
 
+    /**
+     * Calculates the calorie status based on net calories and the calorie goal.
+     *
+     * @param netCalories   The net calories (calories consumed - calories burnt).
+     * @param calorieGoal   The user's calorie intake goal.
+     * @return              The calorie status, indicating whether the user is in a surplus, deficit, or maintenance.
+     */
     private String calculateCalorieStatus(int netCalories, int calorieGoal) {
         if (netCalories > calorieGoal) {
             return "Calories Surplus";

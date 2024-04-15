@@ -44,5 +44,9 @@ from wherever they left off
 1. Organized weekly meetings, and sometimes more meetings whenever necessary
 2. Occasionally tested the code for bugs, and reported them whenever one was found 
 3. Delegated tasks amongst the team so that everyone would have a fair share of work
-4. Effectively provided guidance and support to my team, giving my inputs whenever they face an issue
-5. Gave constructive feedbacks in PRs
+
+#### Review/mentoring contributions
+1. Gave constructive feedbacks in PRs
+2. Effectively provided guidance and support to my team, giving my inputs whenever they face an issue
+
+
